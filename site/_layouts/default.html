@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} — {{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <style>
+    body {font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", Meiryo, "Noto Sans JP", sans-serif; margin:24px; line-height:1.6;}
+    header, footer {opacity:.8; font-size:.9em;}
+    .card{margin:12px 0;padding:12px;border:1px solid #e5e5e5;border-radius:8px;}
+    input{padding:8px;width:100%;max-width:480px;border:1px solid #ddd;border-radius:6px;}
+    a{word-break: break-all;}
+  </style>
+</head>
+<body>
+<header>
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+  <nav>
+    <a href="{{ '/' | relative_url }}">Home</a> ·
+    <a href="{{ '/list.html' | relative_url }}">一覧</a> ·
+    <a href="{{ '/data/resources.csv' | relative_url }}">CSV（サンプル）</a>
+  </nav>
+  <hr>
+</header>
+
+<main>
+{{ content }}
+</main>
+
+<footer>
+  <hr>
+  <p>© {{ site.title }}</p>
+</footer>
+</body>
+</html>
