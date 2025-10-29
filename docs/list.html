@@ -7,7 +7,7 @@ title: 一覧
 <div id="list"></div>
 <script>
 async function main(){
-  const res = await fetch('{{ "/data/resources.json" | relative_url }}');
+const res = await fetch('resources.json');
   const data = await res.json();
   const input = document.getElementById('q');
   const list = document.getElementById('list');
