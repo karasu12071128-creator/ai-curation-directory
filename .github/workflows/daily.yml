@@ -40,7 +40,11 @@ jobs:
 
       - name: Export CSV for sale
         run: python scripts/export_csv.py data/resources.json > docs/resources.csv
-
+　　　　- name: Publish artifacts to docs
+  run: |
+    cp data/resources.csv docs/resources.csv
+    # （もし一覧ページでJSONも読むなら）
+    cp data/resources.json docs/resources.json
       - name: Commit & push
         run: |
           git config user.name "karasu12071128-creator"
