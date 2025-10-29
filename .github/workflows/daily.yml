@@ -1,3 +1,12 @@
+name: daily-refresh
+
+on:
+  # 手動実行ボタン（Actions画面の"Run workflow"）
+  workflow_dispatch:
+  # 毎日1回 自動実行（UTCなので日本時間とはズレます）
+  schedule:
+    - cron: "0 0 * * *"
+
 jobs:
   build:
     permissions:
