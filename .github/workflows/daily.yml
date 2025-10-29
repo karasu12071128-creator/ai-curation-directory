@@ -3,7 +3,8 @@ name: daily-refresh
 on:
   # 手動実行ボタン（Actions画面の"Run workflow"）
   workflow_dispatch:
-  # 毎日1回 自動実行（UTCなので日本時間とはズレます）
+
+  # 毎日1回 自動実行（UTCの0時＝日本時間だと朝9時くらい）
   schedule:
     - cron: "0 0 * * *"
 
@@ -32,18 +33,18 @@ jobs:
         run: python scripts/fetch_github.py > gh.json
 
       - name: Merge & Rank
-        run: python scripts/merge_rank.py hf.json gh.json > data/resources.json
+        run: python scripts/merge_and_rank.py hf.json gh.json > data/resources.json
 
       - name: Make daily diff
         run: python scripts/make_diff.py data/resources.json > data/diff.json
 
       - name: Export CSV for sale
-        run: python scripts/export_csv.py data/resources.json > data/resources.csv
+        run: python scripts/export_csv.py data/resources.json > docs/resources.csv
 
       - name: Commit & push
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
-          git commit -m "daily refresh" || echo "nothing to commit"
+          git config user.name "karasu12071128-creator"
+          git config user.email "<あなたのGitHubのメールアドレス>"
+          git add data/resources.json data/diff.json docs/resources.csv
+          git commit -m "auto update"
           git push
