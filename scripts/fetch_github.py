@@ -1,5 +1,4 @@
 import requests, json, os, datetime as dt
-
 GITHUB_TOKEN = os.getenv("GH_TOKEN")
 HEADERS = {"Authorization": f"Bearer {GITHUB_TOKEN}"} if GH_TOKEN else {}
 
