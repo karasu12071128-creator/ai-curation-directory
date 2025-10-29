@@ -2,7 +2,6 @@ import requests, json, os, datetime as dt
 
 # GitHubのパーソナルアクセストークンは GH_TOKEN という環境変数から受け取る
 GITHUB_TOKEN = os.getenv("GH_TOKEN", "")
-
 # トークンがある場合だけ Authorization ヘッダを付ける
 HEADERS = {"Authorization": f"Bearer {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
 def search_repos(q, per_page=50):
