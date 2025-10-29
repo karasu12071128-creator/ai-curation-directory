@@ -1,8 +1,9 @@
 import requests, json, os, datetime as dt
 
-GITHUB_TOKEN = os.getenv("GH_TOKEN")
-HEADERS = {"Authorization": f"Bearer {GITHUB_TOKEN}"} if GH_TOKEN else {}
-
+# GitHubのパーソナルアクセストークンは GH_TOKEN という環境変数から受け取る
+GITHUB_TOKEN = os.getenv("GH_TOKEN", "")
+# トークンがある場合だけ Authorization ヘッダを付ける
+HEADERS = {"Authorization": f"Bearer {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
 def search_repos(q, per_page=50):
     url = "https://api.github.com/search/repositories"
     params = {"q": q, "sort": "stars", "order": "desc", "per_page": per_page}
