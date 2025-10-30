@@ -29,7 +29,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python scripts/fetch_github.py > gh.json
-
+      - name: Debug repo tree
+        run: |
+          pwd
+          git rev-parse --short HEAD
+          ls -la
+          echo "---- scripts ----"
+          ls -la scripts || true
       - name: Merge & Rank
         run: python scripts/merge_rank.py hf.json gh.json > data/resources.json
 
