@@ -4,30 +4,39 @@
   <meta charset="utf-8">
   <title>AI Curation Directory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- SEO（必要なら適宜編集） -->
-  <meta name="description" content="Hugging Face と GitHub の人気AIリソースを毎日自動更新。検索・タグ・スコアで素早く発見。">
+  <meta name="description" content="Hugging Face と GitHub の人気AIリソースを毎日自動更新。検索・タグ・スコア・ライセンスで素早く発見。">
   <link rel="preload" href="resources.json" as="fetch" crossorigin="anonymous">
   <style>
     :root{--fg:#222;--muted:#666;--bd:#e5e5e5;--bg:#fff}
     body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;margin:24px;line-height:1.6;color:var(--fg);background:var(--bg)}
-    header,footer{opacity:.85;font-size:.95rem}
+    header,footer{opacity:.95;font-size:.95rem}
     h1{margin:0 0 4px}
+    .row{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+    .btn{padding:8px 10px;border:1px solid var(--bd);border-radius:6px;background:#fafafa;cursor:pointer;display:inline-block;text-decoration:none;white-space:nowrap}
     .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
     input,select{padding:8px;border:1px solid var(--bd);border-radius:6px}
-    .btn{padding:8px 10px;border:1px solid var(--bd);border-radius:6px;background:#fafafa;cursor:pointer}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:12px}
     .card{border:1px solid var(--bd);border-radius:10px;padding:12px}
     .card b{font-size:1.02rem}
     .muted{color:var(--muted)}
     .tags{margin-top:6px;font-size:.9rem;color:#333}
     .tags small{border:1px solid var(--bd);border-radius:999px;padding:2px 8px;margin:0 4px 4px 0;display:inline-block}
-    .row{display:flex;justify-content:space-between;gap:8px;align-items:center}
     .pill{border:1px solid var(--bd);border-radius:999px;padding:2px 8px}
     nav.pager{display:flex;gap:6px;align-items:center;justify-content:center;margin:16px 0}
     nav.pager .btn[disabled]{opacity:.4;cursor:not-allowed}
-    .right{margin-left:auto}
+    .quick{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+    .chip{border:1px solid var(--bd);border-radius:999px;padding:4px 10px;font-size:.9rem;cursor:pointer;background:#fff}
+    .chip.active{background:#eef4ff;border-color:#c9dafc}
     a{color:#1a73e8;text-decoration:none}
     a:hover{text-decoration:underline}
+
+    /* モバイルでCSVボタンが崩れないように */
+    .header-actions{display:flex;gap:8px;align-items:center}
+    @media (max-width: 640px){
+      .row{flex-direction:column;align-items:flex-start}
+      .header-actions{width:100%}
+      .header-actions .btn{width:fit-content}
+    }
   </style>
 </head>
 <body>
@@ -37,18 +46,19 @@
       <h1>AI Curation Directory</h1>
       <div class="muted">Auto-updating directory of AI resources（毎日自動更新）</div>
     </div>
-    <div class="right">
+    <div class="header-actions">
       <a class="btn" href="resources.csv" download>CSV（サンプル）</a>
     </div>
   </div>
 
+  <!-- 上部ツールバー -->
   <div class="toolbar">
     <input id="q" placeholder="キーワード / tag（例: diffusion, llm）" size="32" />
     <select id="sort">
-      <option value="score-desc">スコア高い順</option>
-      <option value="score-asc">スコア低い順</option>
       <option value="date-desc">更新が新しい順</option>
       <option value="date-asc">更新が古い順</option>
+      <option value="score-desc">スコア高い順</option>
+      <option value="score-asc">スコア低い順</option>
       <option value="title-asc">タイトルA→Z</option>
       <option value="title-desc">タイトルZ→A</option>
     </select>
@@ -58,8 +68,15 @@
       <option value="hf_space">hf_space</option>
       <option value="gh_repo">gh_repo</option>
     </select>
+    <select id="license">
+      <option value="">すべてのライセンス</option>
+      <!-- 動的に埋める -->
+    </select>
     <span id="count" class="pill muted">0 items</span>
   </div>
+
+  <!-- クイックタグ（人気タグを自動抽出） -->
+  <div class="quick" id="quickTags"></div>
 </header>
 
 <main>
@@ -85,6 +102,8 @@
   const q = document.getElementById('q');
   const sortSel = document.getElementById('sort');
   const typeSel = document.getElementById('type');
+  const licenseSel = document.getElementById('license');
+  const quick = document.getElementById('quickTags');
   const list = document.getElementById('list');
   const count = document.getElementById('count');
   const prev = document.getElementById('prev');
@@ -94,13 +113,58 @@
   // ---------- state ----------
   const PAGE = 48; // 1ページ表示件数
   let page = 1;
+  let activeTags = new Set();
 
   function esc(s){return (s||'').toString().replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]))}
-  function toDateStr(s){ if(!s) return ''; return (s+'').slice(0,10); }
+  const toDateStr = s => s ? (s+'').slice(0,10) : '';
 
+  // ---------- build quick filters ----------
+  function topNTags(n=20){
+    const freq = new Map();
+    for(const x of data){
+      for(const t of (x.tags||[])){
+        const k=(t||'').trim();
+        if(!k) continue;
+        freq.set(k, (freq.get(k)||0)+1);
+      }
+    }
+    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
+  }
+
+  function uniqueLicenses(){
+    const set = new Set();
+    for(const x of data){
+      const v = (x.license||'').trim();
+      if(v) set.add(v);
+    }
+    return [...set].sort((a,b)=>a.localeCompare(b));
+  }
+
+  function buildQuickTags(){
+    quick.innerHTML = topNTags().map(t=>`<button class="chip" data-t="${esc(t)}">${esc(t)}</button>`).join('');
+    quick.addEventListener('click', e=>{
+      const el = e.target.closest('.chip'); if(!el) return;
+      const t = el.getAttribute('data-t');
+      if(activeTags.has(t)){ activeTags.delete(t); el.classList.remove('active'); }
+      else{ activeTags.add(t); el.classList.add('active'); }
+      page=1; render();
+    });
+  }
+
+  function buildLicenseOptions(){
+    const opts = uniqueLicenses();
+    licenseSel.innerHTML = '<option value="">すべてのライセンス</option>' + 
+      opts.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');
+  }
+
+  buildQuickTags();
+  buildLicenseOptions();
+
+  // ---------- filter & sort ----------
   function applyFilters(){
     const query = (q.value||'').toLowerCase().trim();
     const type = typeSel.value;
+    const lic = licenseSel.value;
 
     let arr = data.slice();
 
@@ -109,15 +173,22 @@
         const hay = [
           x.title||'',
           x.short_desc||'',
-          (x.tags||[]).join(',')
+          (x.tags||[]).join(','),
+          x.license||''
         ].join('\n').toLowerCase();
         return hay.includes(query);
       });
     }
     if (type) arr = arr.filter(x=> (x.source_type||'') === type);
+    if (lic) arr = arr.filter(x=> (x.license||'') === lic);
+    if (activeTags.size){
+      arr = arr.filter(x=>{
+        const tags = new Set(x.tags||[]);
+        for(const t of activeTags) if(!tags.has(t)) return false;
+        return true;
+      });
+    }
 
-    // sort
-    const s = sortSel.value;
     const by = {
       'score-desc': (a,b)=> (b.score||0) - (a.score||0),
       'score-asc':  (a,b)=> (a.score||0) - (b.score||0),
@@ -125,7 +196,7 @@
       'date-asc':   (a,b)=> (a.updated_at||'').localeCompare(b.updated_at||''),
       'title-asc':  (a,b)=> (a.title||'').localeCompare(b.title||''),
       'title-desc': (a,b)=> (b.title||'').localeCompare(a.title||'')
-    }[s] || ((a,b)=>0);
+    }[sortSel.value] || ((a,b)=>0);
     arr.sort(by);
 
     return arr;
@@ -137,6 +208,7 @@
     const pages = Math.max(1, Math.ceil(total / PAGE));
     if (page > pages) page = pages;
     if (page < 1) page = 1;
+
     const start = (page-1)*PAGE;
     const slice = arr.slice(start, start + PAGE);
 
@@ -145,11 +217,14 @@
 
     list.innerHTML = slice.map(x=>`
       <div class="card">
-        <div class="row">
+        <div style="display:flex;gap:8px;justify-content:space-between;align-items:center">
           <b>${esc(x.title||'')}</b>
           <span class="pill muted">${esc(x.source_type||'–')}</span>
         </div>
-        <div class="muted" style="margin-top:2px">score: ${x.score ?? '-' }・更新: ${esc(toDateStr(x.updated_at))}</div>
+        <div class="muted" style="margin-top:2px">
+          score: ${x.score ?? '-'} ・ 更新: ${esc(toDateStr(x.updated_at))}
+          ${x.license ? ` ・ lic: ${esc(x.license)}` : ''}
+        </div>
         <div style="margin-top:6px">${esc(x.short_desc||'')}</div>
         <div class="tags">
           ${(x.tags||[]).slice(0,12).map(t=>`<small>${esc(t)}</small>`).join('')}
@@ -159,6 +234,7 @@
         </div>
       </div>
     `).join('');
+
     prev.disabled = (page<=1);
     next.disabled = (page>=pages);
   }
@@ -167,6 +243,7 @@
   q.addEventListener('input', ()=>{ page=1; render(); });
   sortSel.addEventListener('change', ()=>{ page=1; render(); });
   typeSel.addEventListener('change', ()=>{ page=1; render(); });
+  licenseSel.addEventListener('change', ()=>{ page=1; render(); });
   prev.addEventListener('click', ()=>{ page--; render(); });
   next.addEventListener('click', ()=>{ page++; render(); });
 
