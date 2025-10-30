@@ -37,7 +37,7 @@ jobs:
           echo "---- scripts ----"
           ls -la scripts || true
       - name: Merge & Rank
-        run: python scripts/merge_rank.py hf.json gh.json > data/resources.json
+        run: python scripts/merge_and_rank.py hf.json gh.json > data/resources.json
 
       - name: Make daily diff
         run: python scripts/make_diff.py data/resources.json > data/diff.json
