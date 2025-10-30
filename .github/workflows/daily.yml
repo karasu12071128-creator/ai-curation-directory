@@ -54,26 +54,17 @@ jobs:
           mkdir -p docs
           cp data/resources.json docs/resources.json
           cp data/resources.csv docs/
-          
-       - name: Commit & push
+              - name: Commit & push
       run: |
-        # bot の署名
         git config --global user.name  "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-        # 念のためディレクトリを用意
         mkdir -p docs data
-
-        # 変更ファイルをステージ（無くてもコケないように || true）
-        git add docs/*.json docs/*.csv || true
-        git add data/*.json           || true
-
-        # 変更がある時だけコミット
+        git add -A docs || true
+        git add -A data || true
         if git diff --cached --quiet; then
           echo "No changes to commit."
         else
           git commit -m "Auto update data"
-          # 競合を避けるため軽くリベース付き pull（失敗しても続行）
           git pull --rebase origin "${GITHUB_REF_NAME:-main}" || true
           git push
         fi
