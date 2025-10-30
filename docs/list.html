@@ -5,109 +5,41 @@ title: 一覧
 
 <h2>Resources</h2>
 <input id="q" placeholder="キーワード / tag を入力（例: diffusion, llm）">
-<div style="margin:8px 0">
-  <select id="typeSel">
-    <option value="">すべての種類</option>
-    <option value="hf_model">hf_model</option>
-    <option value="github_repo">github_repo</option>
-  </select>
-  <span id="count" style="margin-left:8px;opacity:.7"></span>
-</div>
-
-<div id="quickTags" style="margin:6px 0 10px 0;"></div>
 <div id="list"></div>
 
 <script>
-(async function main(){
-  // 取得
+async function main(){
   const res = await fetch('{{ "/data/resources.json" | relative_url }}');
   const data = await res.json();
-
-  // 要素
   const input = document.getElementById('q');
   const list  = document.getElementById('list');
-  const typeSel = document.getElementById('typeSel');
-  const count = document.getElementById('count');
-  const quickTags = document.getElementById('quickTags');
 
-  // ユーティリティ
-  function escapeHtml(s){return (s||'').toString().replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
-  function debounce(fn, ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; }
+  function escapeHtml(s){
+    return (s||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  }
 
-  // クイックタグ（上位出現タグから適当に10個）
-  const tagFreq = {};
-  for (const x of data) for (const t of (x.tags||[])) tagFreq[t]=(tagFreq[t]||0)+1;
-  const topTags = Object.entries(tagFreq).sort((a,b)=>b[1]-a[1]).slice(0,10).map(x=>x[0]);
-  quickTags.innerHTML = topTags.map(t =>
-    `<a href="#" class="pill" data-event="tag_click" data-tag="${escapeHtml(t)}">${escapeHtml(t)}</a>`
-  ).join(' ');
-  quickTags.addEventListener('click', (e)=>{
-    const a = e.target.closest('a[data-tag]');
-    if (!a) return;
-    e.preventDefault();
-    input.value = a.dataset.tag;
-    apply();
-    // data-event は default.html の委譲で送られるのでここでは何もしなくてOK
-  });
-
-  // 描画
   function render(arr){
-    count.textContent = `${arr.length} items`;
-    list.innerHTML = arr.slice(0, 200).map(x => {
-      const tags = (x.tags||[]).map(t=>`<a href="#" class="pill" data-event="tag_click" data-tag="${escapeHtml(t)}">${escapeHtml(t)}</a>`).join(' ');
-      const url = x.url || '#';
-      // Open クリックのイベントは data-event で拾う
-      return `
+    list.innerHTML = arr.slice(0, 200).map(x => `
       <div class="card">
         <b>${escapeHtml(x.title||'')}</b>
-        <small>(${escapeHtml(x.source_type||'')}) score:${x.score}</small>
+        <small> (${escapeHtml(x.source_type||'')}) score:${x.score}</small>
         <div>${escapeHtml(x.short_desc||'')}</div>
-        <div>${tags}</div>
-        <div style="margin-top:6px">
-          <a href="${escapeHtml(url)}" target="_blank" rel="noopener"
-             data-event="open_click"
-             data-id="${escapeHtml(x.id||'')}"
-             data-title="${escapeHtml(x.title||'')}">Open</a>
-        </div>
-      </div>`;
-    }).join('');
+        <div><small>tags: ${(x.tags||[]).map(escapeHtml).join(', ')}</small></div>
+        <a class="open-link" href="${escapeHtml(x.url||'#')}" target="_blank" rel="noopener">Open</a>
+      </div>
+    `).join('');
   }
 
-  // フィルタ
-  function filterAll(q, type){
-    q = (q||'').toLowerCase();
-    return data.filter(x=>{
-      if (type && (x.source_type||'') !== type) return false;
-      const hay = [
-        x.title||'',
-        (x.short_desc||''),
-        (x.tags||[]).join(',')
-      ].join(' ').toLowerCase();
-      return hay.includes(q);
-    });
-  }
+  input.oninput = () => {
+    const q = input.value.toLowerCase();
+    render(data.filter(x =>
+      (x.title||'').toLowerCase().includes(q) ||
+      (x.short_desc||'').toLowerCase().includes(q) ||
+      (x.tags||[]).join(',').toLowerCase().includes(q)
+    ));
+  };
 
-  // 検索イベント送信（600ms デバウンス）
-  const sendSearch = debounce((q, results)=>{
-    if (!q) return;               // 空文字は送らない
-    if (typeof track === 'function') track('search', { q, results });
-  }, 600);
-
-  function apply(){
-    const q = input.value.trim();
-    const type = typeSel.value;
-    const arr = filterAll(q, type);
-    render(arr);
-    sendSearch(q, arr.length);
-  }
-
-  // 入力/種類変更
-  input.addEventListener('input', apply);
-  input.addEventListener('keydown', (e)=>{ if (e.key === 'Enter') apply(); });
-  typeSel.addEventListener('change', apply);
-
-  // 初期表示
   render(data);
-  count.textContent = `${data.length} items`;
-})();
+}
+main();
 </script>
