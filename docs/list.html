@@ -8,28 +8,23 @@ title: 一覧
 <div id="list"></div>
 
 <script>
-async function main(){
-  const res = await fetch('{{ "/data/resources.json" | relative_url }}');
+(async function(){
+  const res = await fetch('{{ "/resources.json" | relative_url }}', {cache:'no-store'});
   const data = await res.json();
   const input = document.getElementById('q');
   const list  = document.getElementById('list');
 
-  function escapeHtml(s){
-    return (s||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-  }
-
+  const esc = s => (s||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
   function render(arr){
     list.innerHTML = arr.slice(0, 200).map(x => `
       <div class="card">
-        <b>${escapeHtml(x.title||'')}</b>
-        <small> (${escapeHtml(x.source_type||'')}) score:${x.score}</small>
-        <div>${escapeHtml(x.short_desc||'')}</div>
-        <div><small>tags: ${(x.tags||[]).map(escapeHtml).join(', ')}</small></div>
-        <a class="open-link" href="${escapeHtml(x.url||'#')}" target="_blank" rel="noopener">Open</a>
+        <b>${esc(x.title||'')}</b> <small>(${esc(x.source_type||'')}) score:${x.score}</small>
+        <div>${esc(x.short_desc||'')}</div>
+        <div><small>tags: ${(x.tags||[]).map(esc).join(', ')}</small></div>
+        <a class="open-link" href="${esc(x.url||'#')}" target="_blank" rel="noopener">Open</a>
       </div>
     `).join('');
   }
-
   input.oninput = () => {
     const q = input.value.toLowerCase();
     render(data.filter(x =>
@@ -38,8 +33,6 @@ async function main(){
       (x.tags||[]).join(',').toLowerCase().includes(q)
     ));
   };
-
   render(data);
-}
-main();
+})();
 </script>
