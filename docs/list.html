@@ -2,25 +2,34 @@
 layout: default
 title: 一覧
 ---
+
 <h2>Resources</h2>
 <input id="q" placeholder="キーワード / tag を入力（例: diffusion, llm）">
 <div id="list"></div>
+
 <script>
 async function main(){
-const res = await fetch('resources.json');
+  const res = await fetch('{{ "/data/resources.json" | relative_url }}');
   const data = await res.json();
   const input = document.getElementById('q');
-  const list = document.getElementById('list');
-  function escapeHtml(s){return (s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  const list  = document.getElementById('list');
+
+  function escapeHtml(s){
+    return (s||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  }
+
   function render(arr){
-    list.innerHTML = arr.slice(0,200).map(x=>`
+    list.innerHTML = arr.slice(0, 200).map(x => `
       <div class="card">
-        <b>${escapeHtml(x.title||'')}</b> <small>(${escapeHtml(x.source_type||'')})</small>  score:${x.score}
+        <b>${escapeHtml(x.title||'')}</b>
+        <small> (${escapeHtml(x.source_type||'')}) score:${x.score}</small>
         <div>${escapeHtml(x.short_desc||'')}</div>
         <div><small>tags: ${(x.tags||[]).map(escapeHtml).join(', ')}</small></div>
-        <a href="${escapeHtml(x.url||'#')}" target="_blank" rel="noopener">Open</a>
-      </div>`).join('');
+        <a class="open-link" href="${escapeHtml(x.url||'#')}" target="_blank" rel="noopener">Open</a>
+      </div>
+    `).join('');
   }
+
   input.oninput = () => {
     const q = input.value.toLowerCase();
     render(data.filter(x =>
@@ -29,6 +38,7 @@ const res = await fetch('resources.json');
       (x.tags||[]).join(',').toLowerCase().includes(q)
     ));
   };
+
   render(data);
 }
 main();
