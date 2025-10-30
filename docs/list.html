@@ -40,7 +40,7 @@ title: Resources
 
 <script>
 (async () => {
-  const res = await fetch('resources.json');
+  const res = await fetch('{{ '/resources.json' | relative_url }}');
   const data = await res.json();
 
   const q = document.getElementById('q');
@@ -58,21 +58,18 @@ title: Resources
   let page = 1;
   let activeTags = new Set();
 
-  // util
   const esc = s => (s||'').toString().replace(/[&<>\"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   const toDate = s => s ? (s+'').slice(0,10) : '';
 
-  // license 候補抽出（tagの "license:xxx" から）
+  // license 抽出（tag の "license:xxx" から）
   const licenses = Array.from(new Set(
     data.flatMap(x => (x.tags||[])
       .filter(t => /^license:/.test(t))
       .map(t => t.replace(/^license:/,'')))
   )).sort();
-
   licenseSel.innerHTML = '<option value="">すべてのライセンス</option>' +
     licenses.map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join('');
 
-  // 上位タグを出す（license: などプレフィクス系は除外）
   function topNTags(n=20){
     const ignore = /^(license:|dataset:)/;
     const freq = new Map();
@@ -89,19 +86,16 @@ title: Resources
       .slice(0,n)
       .map(([k])=>k);
   }
-
   function chip(label, on){
     return `<button data-tag="${esc(label)}" class="chip" style="
       display:inline-block;border:1px solid #ddd;border-radius:16px;padding:4px 10px;margin:3px;
       background:${on?'#eee':'#fff'}">${esc(label)}</button>`;
   }
-
   function renderQuick(){
     const tags = topNTags(20);
     quick.innerHTML = '<div style="margin-bottom:4px;opacity:.8;font-size:.9em;">よく使われるタグ</div>' +
       tags.map(t => chip(t, activeTags.has(t))).join('');
   }
-
   function scoreOf(it){
     const s = Number(it['stars/downloads']||0);
     const star_part = Math.log10(Math.max(1, s));
@@ -112,7 +106,6 @@ title: Resources
     }catch(e){ recency = 0.0; }
     return Math.round((star_part + recency)*1000)/1000;
   }
-
   function card(x){
     const tagHtml = (x.tags||[]).map(esc).join(', ');
     const lic = (x.tags||[]).find(t=>/^license:/.test(t));
@@ -136,7 +129,6 @@ title: Resources
         ${tagHtml?`<div style="margin-top:6px;opacity:.9;"><small>tags: ${tagHtml}</small></div>`:''}
       </div>`;
   }
-
   function applyFilters(){
     const qval = (q.value||'').toLowerCase().trim();
     const typ = (typeSel.value||'').trim();
@@ -154,17 +146,13 @@ title: Resources
       }
       if(qval){
         const hay = [
-          (x.title||''),
-          (x.short_desc||''),
-          (x.source_type||''),
-          ...(x.tags||[])
+          (x.title||''), (x.short_desc||''), (x.source_type||''), ...(x.tags||[])
         ].join(' ').toLowerCase();
         if(!hay.includes(qval)) return false;
       }
       return true;
     });
 
-    // sort
     const how = sortSel.value;
     if(how==='latest'){
       arr.sort((a,b)=>String(b.updated_at).localeCompare(String(a.updated_at)));
@@ -173,10 +161,8 @@ title: Resources
     }else if(how==='title'){
       arr.sort((a,b)=>String(a.title).localeCompare(String(b.title)));
     }
-
     count.textContent = arr.length;
 
-    // pagination
     const pageMax = Math.max(1, Math.ceil(arr.length / PAGE));
     if(page > pageMax) page = pageMax;
     const start = (page-1)*PAGE;
@@ -184,25 +170,18 @@ title: Resources
     pageInfo.textContent = `${page}/${pageMax}`;
 
     list.innerHTML = pageArr.map(card).join('');
-
-    // イベント（外部 Open クリック）
     list.querySelectorAll('a[data-outbound="1"]').forEach(a=>{
       a.addEventListener('click', ()=>{
         if(window.plausible){
-          window.plausible('Open', { props: {
-            source_type: a.closest('.card')?.querySelector('span')?.textContent || '',
-            title: a.closest('.card')?.querySelector('b')?.textContent || ''
-          }});
+          window.plausible('Open', { props: { source_type: a.closest('.card')?.querySelector('span')?.textContent || '', title: a.closest('.card')?.querySelector('b')?.textContent || '' } });
         }
       });
     });
   }
 
-  // 初期 UI
   renderQuick();
   applyFilters();
 
-  // イベント：クイックタグ
   quick.addEventListener('click', (e)=>{
     const btn = e.target.closest('button[data-tag]');
     if(!btn) return;
@@ -213,7 +192,6 @@ title: Resources
     if(window.plausible){ window.plausible('TagFilter', {props:{ tag }}); }
   });
 
-  // イベント：検索（デバウンス）
   let tId=null;
   q.addEventListener('input', ()=>{
     clearTimeout(tId);
@@ -224,17 +202,13 @@ title: Resources
     }, 400);
   });
 
-  // イベント：セレクト
   [sortSel, typeSel, licenseSel].forEach(sel=>{
     sel.addEventListener('change', ()=>{
       page=1; applyFilters();
-      if(window.plausible){ window.plausible('Select', {props:{
-        id: sel.id, value: sel.value
-      }}); }
+      if(window.plausible){ window.plausible('Select', {props:{ id: sel.id, value: sel.value }}); }
     });
   });
 
-  // ページング
   prev.addEventListener('click', ()=>{ if(page>1){ page--; applyFilters(); }});
   next.addEventListener('click', ()=>{ page++; applyFilters(); });
 })();
