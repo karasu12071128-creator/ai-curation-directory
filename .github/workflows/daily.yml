@@ -1,22 +1,21 @@
 name: daily-refresh
 
 on:
-  workflow_dispatch:  # 手動実行
+  workflow_dispatch:        # 手動実行
   schedule:
-    - cron: "0 0 * * *"  # 毎日UTC 0時（日本時間9時）
+    - cron: "0 0 * * *"     # 毎日UTC 0時（日本時間9時）
 
 jobs:
   build:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+
     steps:
       - uses: actions/checkout@v4
-  with:
-    fetch-depth: 0           # 履歴を持った状態でチェックアウト
-    persist-credentials: true # pushできる資格情報を保持（デフォルトtrueだけど明示でOK）
+        with:
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -31,15 +30,9 @@ jobs:
 
       - name: Fetch GitHub
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/fetch_github.py > gh.json
-      - name: Debug repo tree
-        run: |
-          pwd
-          git rev-parse --short HEAD
-          ls -la
-          echo "---- scripts ----"
-          ls -la scripts || true
+
       - name: Merge & Rank
         run: python scripts/merge_and_rank.py hf.json gh.json > data/resources.json
 
@@ -51,20 +44,25 @@ jobs:
 
       - name: Publish artifacts to docs
         run: |
-          mkdir -p docs
+          mkdir -p docs data
           cp data/resources.json docs/resources.json
-          cp data/resources.csv docs/
-              - name: Commit & push
-      run: |
-        git config --global user.name  "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        mkdir -p docs data
-        git add -A docs || true
-        git add -A data || true
-        if git diff --cached --quiet; then
-          echo "No changes to commit."
-        else
-          git commit -m "Auto update data"
-          git pull --rebase origin "${GITHUB_REF_NAME:-main}" || true
-          git push
-        fi
+          cp data/resources.csv docs/resources.csv
+
+      - name: Commit & push
+        run: |
+          git config --global user.name  "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p docs data
+
+          # 変更ファイルをステージ（存在しなくてもOKにする）
+          git add docs/*.json docs/*.csv || true
+          git add data/*.json || true
+
+          # 変更がない場合はスキップ
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto update data"
+            git pull --rebase origin "${GITHUB_REF_NAME:-main}" || true
+            git push
+          fi
