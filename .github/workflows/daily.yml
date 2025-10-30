@@ -14,6 +14,9 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+  with:
+    fetch-depth: 0           # 履歴を持った状態でチェックアウト
+    persist-credentials: true # pushできる資格情報を保持（デフォルトtrueだけど明示でOK）
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -50,18 +53,18 @@ jobs:
         run: |
           mkdir -p docs
           cp data/resources.json docs/resources.json
-          cp data/resources.csv docs/resources.csv
-
-          - name: Commit & push
-      run: |
+          cp data/resources.csv docs/
+          
+      - name: Commit & push
+        run: |
         git config --global user.name  "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-        # 変更ファイルを追加（存在しないパスでコケないようにワイルドカード指定）
+        # 生成物をステージング（存在しない場合でも失敗しないように || true）
         git add docs/*.json docs/*.csv || true
         git add data/*.json || true
 
-        # 変更がなければコミットしない
+        # 変更がある時だけコミット＆プッシュ
         if git diff --cached --quiet; then
           echo "No changes to commit."
         else
