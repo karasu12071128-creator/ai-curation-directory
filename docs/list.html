@@ -3,36 +3,246 @@ layout: default
 title: 一覧
 ---
 
-<h2>Resources</h2>
-<input id="q" placeholder="キーワード / tag を入力（例: diffusion, llm）">
+<div class="toolbar">
+  <input id="q" type="search" placeholder="キーワード / tag を入力（例: diffusion, llm）" style="flex:1; min-width:220px">
+  <select id="sort" title="並び替え">
+    <option value="score_desc">並び: score 高い順</option>
+    <option value="updated_desc">並び: 更新が新しい順</option>
+    <option value="title_asc">並び: タイトル A→Z</option>
+  </select>
+  <select id="type" title="種類フィルタ">
+    <option value="">すべての種類</option>
+  </select>
+  <select id="license" title="ライセンス">
+    <option value="">すべてのライセンス</option>
+  </select>
+  <span class="count" id="count"></span>
+</div>
+
+<div class="toolbar">
+  <strong>クイックタグ:</strong>
+  <span id="quickTags" class="chips"></span>
+  <a href="#" id="clear" class="pill" style="margin-left:auto">条件クリア</a>
+</div>
+
+<div id="pageInfo" class="count" style="margin:6px 0;"></div>
 <div id="list"></div>
 
-<script>
-(async function(){
-  const res = await fetch('{{ "/resources.json" | relative_url }}', {cache:'no-store'});
-  const data = await res.json();
-  const input = document.getElementById('q');
-  const list  = document.getElementById('list');
+<div class="toolbar" style="justify-content:space-between">
+  <a href="#" id="prev" class="pill">← 前へ</a>
+  <a href="#" id="next" class="pill">次へ →</a>
+</div>
 
-  const esc = s => (s||'').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+<script>
+(async () => {
+  const RES_URL = '{{ "/resources.json" | relative_url }}';
+  const res = await fetch(RES_URL);
+  const data = await res.json();
+
+  // UI要素
+  const q = document.getElementById('q');
+  const sortSel = document.getElementById('sort');
+  const typeSel = document.getElementById('type');
+  const licenseSel = document.getElementById('license');
+  const quick = document.getElementById('quickTags');
+  const list = document.getElementById('list');
+  const count = document.getElementById('count');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const pageInfo = document.getElementById('pageInfo');
+  const clearBtn = document.getElementById('clear');
+
+  // 定数
+  const PAGE = 48;
+  let page = 1;
+  let activeTags = new Set();
+
+  // util
+  const esc = s => (s||'').toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const toDate = s => s ? (s+'').slice(0,10) : '';
+
+  // 種別/ライセンスの選択肢をデータから自動生成
+  const types = Array.from(new Set(data.map(x => x.source_type).filter(Boolean))).sort();
+  for (const t of types) {
+    const op = document.createElement('option');
+    op.value = t; op.textContent = t;
+    typeSel.appendChild(op);
+  }
+  const licenses = Array.from(new Set(data.map(x => (x.license||'').toLowerCase()).filter(Boolean))).sort();
+  for (const l of licenses) {
+    const op = document.createElement('option');
+    op.value = l; op.textContent = l;
+    licenseSel.appendChild(op);
+  }
+
+  // 上位タグ（頻出順）を表示
+  function topNTags(n=20){
+    const freq = new Map();
+    for (const x of data) for (const t of (x.tags||[])) {
+      const k = (t||'').trim().toLowerCase();
+      if(!k) continue;
+      freq.set(k, (freq.get(k) || 0) + 1);
+    }
+    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(x=>x[0]);
+  }
+  function renderQuickTags(){
+    quick.innerHTML = topNTags(20).map(t =>
+      `<a href="#" class="tag" data-tag="${esc(t)}">${esc(t)}</a>`
+    ).join('');
+    quick.querySelectorAll('a.tag').forEach(a=>{
+      a.onclick = e => {
+        e.preventDefault();
+        activeTags.add(a.dataset.tag);
+        plausible?.('trackEvent','QuickTag Click',{props:{tag:a.dataset.tag}});
+        update();
+      };
+    });
+  }
+
+  // クエリ適用
+  function applyFilters(){
+    const qv = (q.value||'').toLowerCase().trim();
+    const type = typeSel.value;
+    const lic = (licenseSel.value||'').toLowerCase();
+
+    return data.filter(x=>{
+      // キーワード（title / desc / tags / id / url）
+      const hay = [
+        x.title, x.short_desc, x.id, x.url,
+        ...(x.tags||[])
+      ].join(' ').toLowerCase();
+      if(qv && !hay.includes(qv)) return false;
+
+      // 種別
+      if(type && x.source_type !== type) return false;
+
+      // ライセンス
+      if(lic && ((x.license||'').toLowerCase() !== lic)) return false;
+
+      // アクティブタグ
+      if(activeTags.size){
+        const set = new Set((x.tags||[]).map(t=>t.toLowerCase()));
+        for (const t of activeTags) if(!set.has(t)) return false;
+      }
+      return true;
+    });
+  }
+
+  function scoreOf(item){
+    const s = item["stars/downloads"] || 0;
+    const star = Math.log10(Math.max(1, s));
+    let rec = 0;
+    try{
+      const updated = item.updated_at || '';
+      if (updated && updated.slice(0,10) >= new Date(Date.now()-30*864e5).toISOString().slice(0,10)) rec = .6;
+    }catch(_){}
+    return +(star + rec).toFixed(3);
+  }
+
+  function sortItems(arr){
+    const v = sortSel.value;
+    if (v === 'title_asc') arr.sort((a,b)=> String(a.title||'').localeCompare(String(b.title||'')));
+    else if (v === 'updated_desc') arr.sort((a,b)=> String(b.updated_at||'').localeCompare(String(a.updated_at||'')));
+    else arr.sort((a,b)=> (b.score ?? scoreOf(b)) - (a.score ?? scoreOf(a)));
+  }
+
   function render(arr){
-    list.innerHTML = arr.slice(0, 200).map(x => `
+    // スコア埋め
+    for(const it of arr){ if(typeof it.score!=='number'){ it.score = scoreOf(it); } }
+
+    // 並び替え
+    sortItems(arr);
+
+    // ページング
+    const total = arr.length;
+    const pages = Math.max(1, Math.ceil(total / PAGE));
+    if (page > pages) page = pages;
+
+    const start = (page-1)*PAGE;
+    const view = arr.slice(start, start+PAGE);
+
+    // カード描画
+    list.innerHTML = view.map(x => `
       <div class="card">
-        <b>${esc(x.title||'')}</b> <small>(${esc(x.source_type||'')}) score:${x.score}</small>
-        <div>${esc(x.short_desc||'')}</div>
-        <div><small>tags: ${(x.tags||[]).map(esc).join(', ')}</small></div>
-        <a class="open-link" href="${esc(x.url||'#')}" target="_blank" rel="noopener">Open</a>
+        <b>${esc(x.title||'')}</b>
+        <small style="margin-left:8px;opacity:.8">${esc(x.source_type||'')}</small>
+        <small style="margin-left:8px;opacity:.8">score:${esc(x.score)}</small>
+        <div style="margin:6px 0">${esc(x.short_desc||'')}</div>
+        <div class="chips">
+          ${(x.tags||[]).map(t=>`<a href="#" class="tag" data-tag="${esc(t.toLowerCase())}">${esc(t)}</a>`).join('')}
+        </div>
+        <div style="margin-top:6px">
+          <a class="pill" href="${esc(x.url||'#')}" target="_blank" rel="noopener">Open</a>
+          ${x.license ? `<small style="margin-left:8px;opacity:.8">license:${esc(String(x.license).toLowerCase())}</small>`:''}
+          ${x.updated_at ? `<small style="margin-left:8px;opacity:.8">更新:${esc(toDate(x.updated_at))}</small>`:''}
+        </div>
       </div>
     `).join('');
+
+    // タグクリックで追加
+    list.querySelectorAll('a.tag').forEach(a=>{
+      a.onclick = e => {
+        e.preventDefault();
+        activeTags.add(a.dataset.tag);
+        plausible?.('trackEvent','Tag Click',{props:{tag:a.dataset.tag}});
+        update();
+      };
+    });
+
+    // UI更新
+    count.textContent = `表示: ${view.length} / 全${total}件`;
+    pageInfo.textContent = `ページ ${page} / ${pages}`;
+    prev.style.visibility = (page>1)?'visible':'hidden';
+    next.style.visibility = (page<pages)?'visible':'hidden';
   }
-  input.oninput = () => {
-    const q = input.value.toLowerCase();
-    render(data.filter(x =>
-      (x.title||'').toLowerCase().includes(q) ||
-      (x.short_desc||'').toLowerCase().includes(q) ||
-      (x.tags||[]).join(',').toLowerCase().includes(q)
-    ));
+
+  function syncURL(){
+    const p = new URLSearchParams();
+    if(q.value) p.set('q', q.value);
+    if(sortSel.value !== 'score_desc') p.set('sort', sortSel.value);
+    if(typeSel.value) p.set('type', typeSel.value);
+    if(licenseSel.value) p.set('license', licenseSel.value);
+    if(activeTags.size) p.set('tags', [...activeTags].join(','));
+    if(page>1) p.set('page', String(page));
+    history.replaceState(null, '', location.pathname + (p.toString()?`?${p}`:''));
+  }
+
+  function readURL(){
+    const p = new URLSearchParams(location.search);
+    q.value = p.get('q')||'';
+    sortSel.value = p.get('sort')||'score_desc';
+    typeSel.value = p.get('type')||'';
+    licenseSel.value = p.get('license')||'';
+    activeTags = new Set((p.get('tags')||'').split(',').map(s=>s.trim()).filter(Boolean));
+    page = Math.max(1, +(p.get('page')||1));
+  }
+
+  function update(){
+    const arr = applyFilters();
+    page = 1; // 条件変えたら先頭へ
+    syncURL();
+    render(arr);
+  }
+
+  // 初期化
+  renderQuickTags();
+  readURL();
+  render(applyFilters());
+
+  // ハンドラ
+  q.oninput = () => { plausible?.('trackEvent','Search'); update(); };
+  sortSel.onchange = () => { plausible?.('trackEvent','Sort',{props:{by:sortSel.value}}); update(); };
+  typeSel.onchange = () => { plausible?.('trackEvent','Type Filter',{props:{type:typeSel.value||'all'}}); update(); };
+  licenseSel.onchange = () => { plausible?.('trackEvent','License Filter',{props:{license:licenseSel.value||'all'}}); update(); };
+
+  prev.onclick = (e)=>{ e.preventDefault(); if(page>1){ page--; syncURL(); render(applyFilters()); }};
+  next.onclick = (e)=>{ e.preventDefault(); page++; syncURL(); render(applyFilters()); };
+
+  clearBtn.onclick = (e)=>{
+    e.preventDefault();
+    q.value=''; sortSel.value='score_desc'; typeSel.value=''; licenseSel.value=''; activeTags.clear(); page=1;
+    plausible?.('trackEvent','Clear Filters');
+    syncURL(); render(applyFilters());
   };
-  render(data);
 })();
 </script>
