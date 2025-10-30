@@ -3,21 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }} – {{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
 
   <!-- Plausible -->
   <script defer data-domain="karasu12071128-creator.github.io"
           src="https://plausible.io/js/script.js"></script>
 
-  <title>{{ page.title }} – {{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
   <style>
-    body {font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", Meiryo, "Noto Sans JP", sans-serif; margin:24px; line-height:1.6;}
+    body {font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,
+          "Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+          margin:24px; line-height:1.6;}
     header, footer {opacity:.8; font-size:.9em;}
+    nav a {display:inline-block; margin-right:12px;}
     .card {margin:12px 0; padding:12px; border:1px solid #e5e5e5; border-radius:8px;}
     input {padding:8px; width:100%; max-width:480px; border:1px solid #ddd; border-radius:6px;}
     a {word-break: break-all;}
-    /* CSVリンクのズレを解消（右上固定でなく通常のインライン） */
-    .csv-link {display:inline-block; margin-left:12px;}
   </style>
 </head>
 <body>
@@ -27,13 +28,13 @@
   <nav>
     <a href="{{ '/' | relative_url }}">Home</a> ・
     <a href="{{ '/list.html' | relative_url }}">一覧</a> ・
-    <a class="csv-link" href="{{ '/resources.csv' | relative_url }}" id="csv-link">CSV（サンプル）</a>
+    <a id="csv-link" href="{{ '/resources.csv' | relative_url }}">CSV（サンプル）</a>
   </nav>
   <hr>
 </header>
 
 <main>
-  {{ content }}
+{{ content }}
 </main>
 
 <footer>
@@ -41,15 +42,22 @@
   <p>© {{ site.title }}</p>
 </footer>
 
+<!-- クリックイベントを一括で拾ってPlausibleへ送信 -->
 <script>
-  // CSVクリックをイベント計測（任意のイベント名に変更可）
-  (function () {
-    const a = document.getElementById('csv-link');
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a');
     if (!a) return;
-    a.addEventListener('click', function () {
-      if (window.plausible) plausible('CSV Sample Click');
-    });
-  })();
+    try {
+      // CSVリンク計測
+      if (a.id === 'csv-link') {
+        plausible('CSV Sample Click');
+      }
+      // カード内の「Open」リンク計測
+      if (a.classList && a.classList.contains('open-link')) {
+        plausible('Resource Open', {props: {href: a.href}});
+      }
+    } catch(_) {}
+  });
 </script>
 </body>
 </html>
