@@ -1,7 +1,7 @@
-—
+---
 layout: default
 title: Home
-—
+---
 
 ### はじめに
 このサイトは、Hugging Face や GitHub 上の人気 AI リソースを自動で収集し、毎日更新します。  
