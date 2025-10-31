@@ -11,3 +11,5 @@ title: Home
 - 📄 CSV（サンプル）: [resources.csv]({{ '/resources.csv' | relative_url }})
 
 > 最終更新スナップショットは `resources.json` に保存されます。
+
+<!— v:index-2025-10-31-1 / {{ site.time }} —>
