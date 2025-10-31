@@ -1218,7 +1218,7 @@
     "author": "Comfy-Org",
     "stars/downloads": 6297817,
     "license": "",
-    "updated_at": "2025-09-24T09:45:00.000Z",
+    "updated_at": "2025-10-31T01:21:56.000Z",
     "category": "",
     "score": 6.799
   },
@@ -1421,7 +1421,7 @@
     "author": "Kijai",
     "stars/downloads": 5914521,
     "license": "",
-    "updated_at": "2025-10-30T16:29:12.000Z",
+    "updated_at": "2025-10-31T00:23:09.000Z",
     "category": "",
     "score": 6.772
   },
@@ -3867,9 +3867,9 @@
       "tensorflow"
     ],
     "author": "tensorflow",
-    "stars/downloads": 192260,
+    "stars/downloads": 192268,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:27:25Z",
+    "updated_at": "2025-10-31T03:36:49Z",
     "category": "code",
     "score": 5.284
   },
@@ -3889,9 +3889,9 @@
       "python"
     ],
     "author": "Significant-Gravitas",
-    "stars/downloads": 179380,
+    "stars/downloads": 179385,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:08:40Z",
+    "updated_at": "2025-10-30T23:26:38Z",
     "category": "code",
     "score": 5.254
   },
@@ -3920,7 +3920,7 @@
       "web"
     ],
     "author": "AUTOMATIC1111",
-    "stars/downloads": 157703,
+    "stars/downloads": 157714,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-07T20:06:10Z",
     "category": "code",
@@ -3952,11 +3952,11 @@
       "qwen"
     ],
     "author": "ollama",
-    "stars/downloads": 155040,
+    "stars/downloads": 155068,
     "license": "MIT",
-    "updated_at": "2025-10-30T00:19:36Z",
+    "updated_at": "2025-10-31T00:23:38Z",
     "category": "code",
-    "score": 5.19
+    "score": 5.191
   },
   {
     "id": "gh_huggingface/transformers",
@@ -3986,9 +3986,9 @@
       "vlm"
     ],
     "author": "huggingface",
-    "stars/downloads": 151850,
+    "stars/downloads": 151866,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:25:22Z",
+    "updated_at": "2025-10-30T23:58:13Z",
     "category": "code",
     "score": 5.181
   },
@@ -4007,9 +4007,9 @@
       "react-flow"
     ],
     "author": "langflow-ai",
-    "stars/downloads": 136634,
+    "stars/downloads": 136695,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:28:34Z",
+    "updated_at": "2025-10-31T03:11:33Z",
     "category": "code",
     "score": 5.136
   },
@@ -4027,7 +4027,7 @@
       "language"
     ],
     "author": "f",
-    "stars/downloads": 135929,
+    "stars/downloads": 135946,
     "license": "CC0-1.0",
     "updated_at": "2025-10-14T17:23:13Z",
     "category": "code",
@@ -4037,7 +4037,7 @@
     "id": "gh_langchain-ai/langchain",
     "source_type": "github_repo",
     "title": "langchain-ai/langchain",
-    "short_desc": "🦜🔗 Build context-aware reasoning applications",
+    "short_desc": "🦜🔗 The platform for reliable agents.",
     "url": "https://github.com/langchain-ai/langchain",
     "tags": [
       "agents",
@@ -4061,9 +4061,9 @@
       "rag"
     ],
     "author": "langchain-ai",
-    "stars/downloads": 118465,
+    "stars/downloads": 118489,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:10:11Z",
+    "updated_at": "2025-10-31T00:54:27Z",
     "category": "code",
     "score": 5.074
   },
@@ -4096,9 +4096,9 @@
       "workflow"
     ],
     "author": "langgenius",
-    "stars/downloads": 117677,
+    "stars/downloads": 117700,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T15:25:25Z",
+    "updated_at": "2025-10-31T03:23:38Z",
     "category": "code",
     "score": 5.071
   },
@@ -4126,9 +4126,9 @@
       "webui"
     ],
     "author": "open-webui",
-    "stars/downloads": 113775,
+    "stars/downloads": 113807,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-29T00:31:39Z",
+    "updated_at": "2025-10-30T23:23:37Z",
     "category": "code",
     "score": 5.056
   },
@@ -4155,7 +4155,7 @@
       "transformers"
     ],
     "author": "microsoft",
-    "stars/downloads": 101165,
+    "stars/downloads": 101173,
     "license": "MIT",
     "updated_at": "2025-10-27T03:19:39Z",
     "category": "code",
@@ -4178,9 +4178,9 @@
       "tensor"
     ],
     "author": "pytorch",
-    "stars/downloads": 94401,
+    "stars/downloads": 94410,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:30:35Z",
+    "updated_at": "2025-10-31T03:36:37Z",
     "category": "code",
     "score": 4.975
   },
@@ -4199,9 +4199,9 @@
       "stable-diffusion"
     ],
     "author": "comfyanonymous",
-    "stars/downloads": 92330,
+    "stars/downloads": 92353,
     "license": "GPL-3.0",
-    "updated_at": "2025-10-30T06:49:04Z",
+    "updated_at": "2025-10-31T02:52:03Z",
     "category": "code",
     "score": 4.965
   },
@@ -4233,9 +4233,9 @@
       "websockets"
     ],
     "author": "supabase",
-    "stars/downloads": 90887,
+    "stars/downloads": 90910,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:30:44Z",
+    "updated_at": "2025-10-31T03:28:46Z",
     "category": "code",
     "score": 4.959
   },
@@ -4267,7 +4267,7 @@
       "webui"
     ],
     "author": "ChatGPTNextWeb",
-    "stars/downloads": 86279,
+    "stars/downloads": 86284,
     "license": "MIT",
     "updated_at": "2025-10-27T13:04:31Z",
     "category": "code",
@@ -4290,9 +4290,9 @@
       "uml-diagrams"
     ],
     "author": "mermaid-js",
-    "stars/downloads": 83820,
+    "stars/downloads": 83825,
     "license": "MIT",
-    "updated_at": "2025-10-30T10:49:07Z",
+    "updated_at": "2025-10-31T01:48:10Z",
     "category": "code",
     "score": 4.923
   },
@@ -4312,7 +4312,7 @@
       "pdf"
     ],
     "author": "microsoft",
-    "stars/downloads": 82274,
+    "stars/downloads": 82292,
     "license": "MIT",
     "updated_at": "2025-10-20T23:07:42Z",
     "category": "code",
@@ -4339,7 +4339,7 @@
       "scikit-learn-python"
     ],
     "author": "microsoft",
-    "stars/downloads": 78399,
+    "stars/downloads": 78409,
     "license": "MIT",
     "updated_at": "2025-10-24T10:20:03Z",
     "category": "code",
@@ -4367,7 +4367,7 @@
       "transformer"
     ],
     "author": "rasbt",
-    "stars/downloads": 77243,
+    "stars/downloads": 77305,
     "license": "NOASSERTION",
     "updated_at": "2025-10-29T01:36:22Z",
     "category": "code",
@@ -4381,7 +4381,7 @@
     "url": "https://github.com/fighting41love/funNLP",
     "tags": [],
     "author": "fighting41love",
-    "stars/downloads": 76906,
+    "stars/downloads": 76912,
     "license": "",
     "updated_at": "2024-05-10T07:38:24Z",
     "category": "code",
@@ -4416,9 +4416,9 @@
       "prometheus"
     ],
     "author": "netdata",
-    "stars/downloads": 76529,
+    "stars/downloads": 76533,
     "license": "GPL-3.0",
-    "updated_at": "2025-10-30T15:41:14Z",
+    "updated_at": "2025-10-31T00:14:53Z",
     "category": "code",
     "score": 4.884
   },
@@ -4434,11 +4434,11 @@
       "rag"
     ],
     "author": "Shubhamsaboo",
-    "stars/downloads": 74204,
+    "stars/downloads": 74234,
     "license": "Apache-2.0",
     "updated_at": "2025-10-19T17:51:53Z",
     "category": "code",
-    "score": 4.87
+    "score": 4.871
   },
   {
     "id": "gh_d2l-ai/d2l-zh",
@@ -4457,7 +4457,7 @@
       "python"
     ],
     "author": "d2l-ai",
-    "stars/downloads": 73544,
+    "stars/downloads": 73551,
     "license": "Apache-2.0",
     "updated_at": "2024-07-30T09:32:19Z",
     "category": "code",
@@ -4479,9 +4479,9 @@
       "python"
     ],
     "author": "browser-use",
-    "stars/downloads": 71945,
+    "stars/downloads": 71954,
     "license": "MIT",
-    "updated_at": "2025-10-30T07:55:32Z",
+    "updated_at": "2025-10-31T01:03:50Z",
     "category": "code",
     "score": 4.857
   },
@@ -4501,7 +4501,7 @@
       "tesseract-ocr"
     ],
     "author": "tesseract-ocr",
-    "stars/downloads": 70607,
+    "stars/downloads": 70611,
     "license": "Apache-2.0",
     "updated_at": "2025-10-13T06:03:35Z",
     "category": "code",
@@ -4534,7 +4534,7 @@
       "web-development"
     ],
     "author": "Developer-Y",
-    "stars/downloads": 70100,
+    "stars/downloads": 70103,
     "license": "",
     "updated_at": "2025-10-29T16:13:20Z",
     "category": "code",
@@ -4554,7 +4554,7 @@
       "large-language-models"
     ],
     "author": "binary-husky",
-    "stars/downloads": 69450,
+    "stars/downloads": 69454,
     "license": "GPL-3.0",
     "updated_at": "2025-09-20T13:41:26Z",
     "category": "code",
@@ -4573,9 +4573,9 @@
       "openai-api"
     ],
     "author": "openai",
-    "stars/downloads": 68933,
+    "stars/downloads": 68938,
     "license": "MIT",
-    "updated_at": "2025-10-29T14:53:13Z",
+    "updated_at": "2025-10-31T01:59:06Z",
     "category": "code",
     "score": 4.838
   },
@@ -4605,9 +4605,9 @@
       "rag"
     ],
     "author": "lobehub",
-    "stars/downloads": 67287,
+    "stars/downloads": 67298,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:27:16Z",
+    "updated_at": "2025-10-31T03:32:31Z",
     "category": "code",
     "score": 4.828
   },
@@ -4640,9 +4640,9 @@
       "retrieval-augmented-generation"
     ],
     "author": "infiniflow",
-    "stars/downloads": 66815,
+    "stars/downloads": 66835,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T13:15:16Z",
+    "updated_at": "2025-10-31T02:07:56Z",
     "category": "code",
     "score": 4.825
   },
@@ -4660,7 +4660,7 @@
       "roadmap"
     ],
     "author": "mlabonne",
-    "stars/downloads": 66333,
+    "stars/downloads": 66347,
     "license": "Apache-2.0",
     "updated_at": "2025-06-04T16:09:23Z",
     "category": "code",
@@ -4695,7 +4695,7 @@
       "web-development"
     ],
     "author": "binhnguyennus",
-    "stars/downloads": 66423,
+    "stars/downloads": 66427,
     "license": "MIT",
     "updated_at": "2025-10-04T08:27:18Z",
     "category": "code",
@@ -4721,11 +4721,11 @@
       "rag"
     ],
     "author": "dair-ai",
-    "stars/downloads": 65675,
+    "stars/downloads": 65704,
     "license": "MIT",
-    "updated_at": "2025-10-16T15:44:13Z",
+    "updated_at": "2025-10-30T21:09:05Z",
     "category": "code",
-    "score": 4.817
+    "score": 4.818
   },
   {
     "id": "gh_firecrawl/firecrawl",
@@ -4755,11 +4755,11 @@
       "webscraping"
     ],
     "author": "firecrawl",
-    "stars/downloads": 65499,
+    "stars/downloads": 65586,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T15:40:54Z",
+    "updated_at": "2025-10-30T23:19:24Z",
     "category": "code",
-    "score": 4.816
+    "score": 4.817
   },
   {
     "id": "gh_xtekky/gpt4free",
@@ -4790,9 +4790,9 @@
       "reverse-engineering"
     ],
     "author": "xtekky",
-    "stars/downloads": 65461,
+    "stars/downloads": 65456,
     "license": "GPL-3.0",
-    "updated_at": "2025-10-30T15:48:22Z",
+    "updated_at": "2025-10-31T02:53:20Z",
     "category": "code",
     "score": 4.816
   },
@@ -4814,9 +4814,9 @@
       "openai"
     ],
     "author": "OpenHands",
-    "stars/downloads": 64580,
+    "stars/downloads": 64584,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T15:33:23Z",
+    "updated_at": "2025-10-31T02:21:15Z",
     "category": "code",
     "score": 4.81
   },
@@ -4842,7 +4842,7 @@
       "transformers"
     ],
     "author": "labmlai",
-    "stars/downloads": 63972,
+    "stars/downloads": 63987,
     "license": "MIT",
     "updated_at": "2025-09-19T10:18:51Z",
     "category": "code",
@@ -4862,7 +4862,7 @@
       "statistics"
     ],
     "author": "scikit-learn",
-    "stars/downloads": 63868,
+    "stars/downloads": 63870,
     "license": "BSD-3-Clause",
     "updated_at": "2025-10-30T14:04:40Z",
     "category": "code",
@@ -4887,7 +4887,7 @@
     "author": "keras-team",
     "stars/downloads": 63519,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T04:43:25Z",
+    "updated_at": "2025-10-31T02:33:06Z",
     "category": "code",
     "score": 4.803
   },
@@ -4913,7 +4913,7 @@
       "rag"
     ],
     "author": "PaddlePaddle",
-    "stars/downloads": 62038,
+    "stars/downloads": 62086,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T15:45:37Z",
     "category": "code",
@@ -4948,9 +4948,9 @@
       "transformer"
     ],
     "author": "vllm-project",
-    "stars/downloads": 61465,
+    "stars/downloads": 61491,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:20:24Z",
+    "updated_at": "2025-10-31T00:40:35Z",
     "category": "code",
     "score": 4.789
   },
@@ -4983,7 +4983,7 @@
       "transformers"
     ],
     "author": "hiyouga",
-    "stars/downloads": 61255,
+    "stars/downloads": 61297,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T08:26:35Z",
     "category": "code",
@@ -5004,7 +5004,7 @@
       "python"
     ],
     "author": "openinterpreter",
-    "stars/downloads": 60741,
+    "stars/downloads": 60743,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-30T13:28:36Z",
     "category": "code",
@@ -5024,7 +5024,7 @@
       "multi-agent"
     ],
     "author": "FoundationAgents",
-    "stars/downloads": 59146,
+    "stars/downloads": 59151,
     "license": "MIT",
     "updated_at": "2025-10-04T05:57:57Z",
     "category": "code",
@@ -5044,7 +5044,7 @@
       "gpt"
     ],
     "author": "PlexPt",
-    "stars/downloads": 56682,
+    "stars/downloads": 56683,
     "license": "MIT",
     "updated_at": "2025-01-01T08:34:33Z",
     "category": "code",
@@ -5072,7 +5072,7 @@
       "yolov5"
     ],
     "author": "ultralytics",
-    "stars/downloads": 55867,
+    "stars/downloads": 55874,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-29T09:00:04Z",
     "category": "code",
@@ -5091,7 +5091,7 @@
       "python"
     ],
     "author": "ageitgey",
-    "stars/downloads": 55657,
+    "stars/downloads": 55660,
     "license": "MIT",
     "updated_at": "2024-08-21T06:22:36Z",
     "category": "code",
@@ -5175,7 +5175,7 @@
       "windows"
     ],
     "author": "lencx",
-    "stars/downloads": 54199,
+    "stars/downloads": 54196,
     "license": "",
     "updated_at": "2024-08-29T17:58:11Z",
     "category": "code",
@@ -5203,9 +5203,9 @@
       "stocks"
     ],
     "author": "OpenBB-finance",
-    "stars/downloads": 54046,
+    "stars/downloads": 54063,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T15:38:23Z",
+    "updated_at": "2025-10-31T02:28:10Z",
     "category": "code",
     "score": 4.733
   },
@@ -5228,7 +5228,7 @@
       "llm-framework"
     ],
     "author": "microsoft",
-    "stars/downloads": 51244,
+    "stars/downloads": 51254,
     "license": "CC-BY-4.0",
     "updated_at": "2025-10-08T04:58:17Z",
     "category": "code",
@@ -5262,9 +5262,9 @@
       "web-scraping"
     ],
     "author": "Mintplex-Labs",
-    "stars/downloads": 50542,
+    "stars/downloads": 50553,
     "license": "MIT",
-    "updated_at": "2025-10-29T12:10:57Z",
+    "updated_at": "2025-10-31T01:43:45Z",
     "category": "code",
     "score": 4.704
   },
@@ -5294,7 +5294,7 @@
       "time-series-analysis"
     ],
     "author": "pathwaycom",
-    "stars/downloads": 48955,
+    "stars/downloads": 48953,
     "license": "NOASSERTION",
     "updated_at": "2025-10-28T14:52:53Z",
     "category": "code",
@@ -5327,7 +5327,7 @@
       "tutorial"
     ],
     "author": "Avik-Jain",
-    "stars/downloads": 48597,
+    "stars/downloads": 48598,
     "license": "MIT",
     "updated_at": "2023-12-29T07:57:53Z",
     "category": "code",
@@ -5362,7 +5362,7 @@
       "yolov8"
     ],
     "author": "ultralytics",
-    "stars/downloads": 48063,
+    "stars/downloads": 48082,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-30T16:29:49Z",
     "category": "code",
@@ -5389,7 +5389,7 @@
     "author": "JuliaLang",
     "stars/downloads": 47908,
     "license": "MIT",
-    "updated_at": "2025-10-30T15:14:28Z",
+    "updated_at": "2025-10-30T22:58:21Z",
     "category": "code",
     "score": 4.68
   },
@@ -5422,7 +5422,7 @@
       "voice-cloning"
     ],
     "author": "unslothai",
-    "stars/downloads": 47653,
+    "stars/downloads": 47668,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T13:57:31Z",
     "category": "code",
@@ -5444,7 +5444,7 @@
       "tiktok"
     ],
     "author": "harry0703",
-    "stars/downloads": 47405,
+    "stars/downloads": 47409,
     "license": "MIT",
     "updated_at": "2025-06-11T06:34:54Z",
     "category": "code",
@@ -5476,9 +5476,9 @@
       "workflow-automation"
     ],
     "author": "FlowiseAI",
-    "stars/downloads": 46169,
+    "stars/downloads": 46175,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T13:13:27Z",
+    "updated_at": "2025-10-30T22:01:15Z",
     "category": "code",
     "score": 4.664
   },
@@ -5506,7 +5506,7 @@
       "vector-index"
     ],
     "author": "pathwaycom",
-    "stars/downloads": 46013,
+    "stars/downloads": 46009,
     "license": "MIT",
     "updated_at": "2025-10-23T15:24:08Z",
     "category": "code",
@@ -5539,9 +5539,9 @@
       "sqlserver"
     ],
     "author": "dbeaver",
-    "stars/downloads": 45994,
+    "stars/downloads": 45999,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:48:30Z",
+    "updated_at": "2025-10-30T20:24:57Z",
     "category": "code",
     "score": 4.663
   },
@@ -5553,7 +5553,7 @@
     "url": "https://github.com/oobabooga/text-generation-webui",
     "tags": [],
     "author": "oobabooga",
-    "stars/downloads": 45266,
+    "stars/downloads": 45273,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-28T19:48:04Z",
     "category": "code",
@@ -5578,9 +5578,9 @@
       "vector-database"
     ],
     "author": "run-llama",
-    "stars/downloads": 44979,
+    "stars/downloads": 44984,
     "license": "MIT",
-    "updated_at": "2025-10-30T15:27:02Z",
+    "updated_at": "2025-10-30T23:58:43Z",
     "category": "code",
     "score": 4.653
   },
@@ -5611,9 +5611,9 @@
       "visualization"
     ],
     "author": "metabase",
-    "stars/downloads": 44353,
+    "stars/downloads": 44361,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:27:52Z",
+    "updated_at": "2025-10-31T03:16:08Z",
     "category": "code",
     "score": 4.647
   },
@@ -5646,9 +5646,9 @@
       "vue3"
     ],
     "author": "jeecgboot",
-    "stars/downloads": 44176,
+    "stars/downloads": 44179,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:27:29Z",
+    "updated_at": "2025-10-31T03:31:22Z",
     "category": "code",
     "score": 4.645
   },
@@ -5667,7 +5667,7 @@
       "whisper"
     ],
     "author": "ggml-org",
-    "stars/downloads": 44135,
+    "stars/downloads": 44139,
     "license": "MIT",
     "updated_at": "2025-10-28T18:50:44Z",
     "category": "code",
@@ -5695,7 +5695,7 @@
       "ray"
     ],
     "author": "GokuMohandas",
-    "stars/downloads": 43850,
+    "stars/downloads": 43861,
     "license": "MIT",
     "updated_at": "2024-08-18T04:34:15Z",
     "category": "code",
@@ -5741,7 +5741,7 @@
       "rnn"
     ],
     "author": "microsoft",
-    "stars/downloads": 43455,
+    "stars/downloads": 43465,
     "license": "MIT",
     "updated_at": "2025-10-29T16:38:26Z",
     "category": "code",
@@ -5769,7 +5769,7 @@
       "youtube"
     ],
     "author": "tw93",
-    "stars/downloads": 43180,
+    "stars/downloads": 43185,
     "license": "MIT",
     "updated_at": "2025-10-23T01:39:05Z",
     "category": "code",
@@ -5804,9 +5804,9 @@
       "workflow-orchestration"
     ],
     "author": "apache",
-    "stars/downloads": 42994,
+    "stars/downloads": 43003,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:21:09Z",
+    "updated_at": "2025-10-31T03:01:39Z",
     "category": "code",
     "score": 4.633
   },
@@ -5834,11 +5834,11 @@
       "state-management"
     ],
     "author": "mem0ai",
-    "stars/downloads": 42194,
+    "stars/downloads": 42299,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T11:55:52Z",
+    "updated_at": "2025-10-30T20:08:15Z",
     "category": "code",
-    "score": 4.625
+    "score": 4.626
   },
   {
     "id": "gh_streamlit/streamlit",
@@ -5857,9 +5857,9 @@
       "streamlit"
     ],
     "author": "streamlit",
-    "stars/downloads": 42007,
+    "stars/downloads": 42013,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:24:46Z",
+    "updated_at": "2025-10-30T23:41:23Z",
     "category": "code",
     "score": 4.623
   },
@@ -5885,9 +5885,9 @@
       "zero"
     ],
     "author": "deepspeedai",
-    "stars/downloads": 40559,
+    "stars/downloads": 40561,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T06:08:24Z",
+    "updated_at": "2025-10-31T02:03:49Z",
     "category": "code",
     "score": 4.608
   },
@@ -5914,9 +5914,9 @@
       "ui-components"
     ],
     "author": "gradio-app",
-    "stars/downloads": 40358,
+    "stars/downloads": 40367,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:34:15Z",
+    "updated_at": "2025-10-30T23:14:47Z",
     "category": "code",
     "score": 4.606
   },
@@ -5968,9 +5968,9 @@
       "tensorflow"
     ],
     "author": "ray-project",
-    "stars/downloads": 39604,
+    "stars/downloads": 39608,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:30:33Z",
+    "updated_at": "2025-10-31T03:18:22Z",
     "category": "code",
     "score": 4.598
   },
@@ -6003,7 +6003,7 @@
       "wechat-bot"
     ],
     "author": "zhayujie",
-    "stars/downloads": 39531,
+    "stars/downloads": 39532,
     "license": "MIT",
     "updated_at": "2025-10-22T10:32:10Z",
     "category": "code",
@@ -6037,11 +6037,34 @@
       "webdav"
     ],
     "author": "siyuan-note",
-    "stars/downloads": 38714,
+    "stars/downloads": 38723,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-29T09:37:06Z",
+    "updated_at": "2025-10-31T03:02:42Z",
     "category": "code",
     "score": 4.588
+  },
+  {
+    "id": "gh_janhq/jan",
+    "source_type": "github_repo",
+    "title": "janhq/jan",
+    "short_desc": "Jan is an open source alternative to ChatGPT that runs 100% offline on your computer.",
+    "url": "https://github.com/janhq/jan",
+    "tags": [
+      "chatgpt",
+      "gpt",
+      "llamacpp",
+      "llm",
+      "localai",
+      "open-source",
+      "self-hosted",
+      "tauri"
+    ],
+    "author": "janhq",
+    "stars/downloads": 38631,
+    "license": "NOASSERTION",
+    "updated_at": "2025-10-30T17:27:01Z",
+    "category": "code",
+    "score": 4.587
   },
   {
     "id": "gh_photoprism/photoprism",
@@ -6060,9 +6083,9 @@
       "tensorflow"
     ],
     "author": "photoprism",
-    "stars/downloads": 38670,
+    "stars/downloads": 38671,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T11:42:39Z",
+    "updated_at": "2025-10-31T02:10:19Z",
     "category": "code",
     "score": 4.587
   },
@@ -6095,34 +6118,11 @@
       "vector"
     ],
     "author": "QuivrHQ",
-    "stars/downloads": 38566,
+    "stars/downloads": 38564,
     "license": "NOASSERTION",
     "updated_at": "2025-07-09T12:55:23Z",
     "category": "code",
     "score": 4.586
-  },
-  {
-    "id": "gh_janhq/jan",
-    "source_type": "github_repo",
-    "title": "janhq/jan",
-    "short_desc": "Jan is an open source alternative to ChatGPT that runs 100% offline on your computer.",
-    "url": "https://github.com/janhq/jan",
-    "tags": [
-      "chatgpt",
-      "gpt",
-      "llamacpp",
-      "llm",
-      "localai",
-      "open-source",
-      "self-hosted",
-      "tauri"
-    ],
-    "author": "janhq",
-    "stars/downloads": 38467,
-    "license": "NOASSERTION",
-    "updated_at": "2025-10-30T14:20:05Z",
-    "category": "code",
-    "score": 4.585
   },
   {
     "id": "gh_milvus-io/milvus",
@@ -6151,9 +6151,9 @@
       "vector-store"
     ],
     "author": "milvus-io",
-    "stars/downloads": 38189,
+    "stars/downloads": 38197,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T11:44:10Z",
+    "updated_at": "2025-10-31T02:12:11Z",
     "category": "code",
     "score": 4.582
   },
@@ -6179,7 +6179,7 @@
       "sonnet"
     ],
     "author": "Aider-AI",
-    "stars/downloads": 38116,
+    "stars/downloads": 38125,
     "license": "Apache-2.0",
     "updated_at": "2025-10-05T19:11:17Z",
     "category": "code",
@@ -6211,7 +6211,7 @@
       "tts"
     ],
     "author": "2noise",
-    "stars/downloads": 38060,
+    "stars/downloads": 38062,
     "license": "AGPL-3.0",
     "updated_at": "2025-07-06T15:11:14Z",
     "category": "code",
@@ -6235,7 +6235,7 @@
       "rlhf"
     ],
     "author": "LAION-AI",
-    "stars/downloads": 37485,
+    "stars/downloads": 37484,
     "license": "Apache-2.0",
     "updated_at": "2024-08-17T01:55:35Z",
     "category": "code",
@@ -6254,15 +6254,16 @@
       "claude",
       "copilot",
       "deepseek",
+      "gemini",
       "gpt",
-      "gpt-4",
+      "gpt-5",
       "ollama",
       "openai"
     ],
     "author": "chatboxai",
-    "stars/downloads": 37160,
+    "stars/downloads": 37172,
     "license": "GPL-3.0",
-    "updated_at": "2025-10-29T09:07:44Z",
+    "updated_at": "2025-10-31T02:21:06Z",
     "category": "code",
     "score": 4.57
   },
@@ -6286,9 +6287,9 @@
       "rag"
     ],
     "author": "mindsdb",
-    "stars/downloads": 36696,
+    "stars/downloads": 36714,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:14:50Z",
+    "updated_at": "2025-10-31T03:13:35Z",
     "category": "code",
     "score": 4.565
   },
@@ -6304,7 +6305,7 @@
       "research"
     ],
     "author": "google-research",
-    "stars/downloads": 36625,
+    "stars/downloads": 36627,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T13:16:48Z",
     "category": "code",
@@ -6339,7 +6340,7 @@
       "xinference"
     ],
     "author": "chatchat-space",
-    "stars/downloads": 36376,
+    "stars/downloads": 36377,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T16:15:15Z",
     "category": "code",
@@ -6374,9 +6375,9 @@
       "tts"
     ],
     "author": "mudler",
-    "stars/downloads": 36146,
+    "stars/downloads": 36155,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:26:18Z",
+    "updated_at": "2025-10-30T21:07:33Z",
     "category": "code",
     "score": 4.558
   },
@@ -6428,7 +6429,7 @@
       "yolo"
     ],
     "author": "roboflow",
-    "stars/downloads": 35743,
+    "stars/downloads": 35766,
     "license": "MIT",
     "updated_at": "2025-10-27T17:31:35Z",
     "category": "code",
@@ -6447,7 +6448,7 @@
       "vibe-coding"
     ],
     "author": "upstash",
-    "stars/downloads": 35615,
+    "stars/downloads": 35667,
     "license": "MIT",
     "updated_at": "2025-10-30T08:54:31Z",
     "category": "code",
@@ -6490,7 +6491,7 @@
       "t3-stack"
     ],
     "author": "reworkd",
-    "stars/downloads": 35139,
+    "stars/downloads": 35143,
     "license": "GPL-3.0",
     "updated_at": "2025-04-29T01:19:32Z",
     "category": "code",
@@ -6514,9 +6515,9 @@
       "openai"
     ],
     "author": "CherryHQ",
-    "stars/downloads": 34806,
+    "stars/downloads": 34821,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T13:50:35Z",
+    "updated_at": "2025-10-31T03:21:17Z",
     "category": "code",
     "score": 4.542
   },
@@ -6546,33 +6547,11 @@
     "url": "https://github.com/karpathy/nanochat",
     "tags": [],
     "author": "karpathy",
-    "stars/downloads": 34504,
+    "stars/downloads": 34598,
     "license": "MIT",
     "updated_at": "2025-10-30T15:36:32Z",
     "category": "code",
-    "score": 4.538
-  },
-  {
-    "id": "gh_chatanywhere/GPT_API_free",
-    "source_type": "github_repo",
-    "title": "chatanywhere/GPT_API_free",
-    "short_desc": "Free ChatGPT&DeepSeek API Key，免费ChatGPT&DeepSeek API。免费接入DeepSeek API和GPT4 API，支持 gpt | deepseek | claude | gemini | grok 等排名靠前的常用大模型。",
-    "url": "https://github.com/chatanywhere/GPT_API_free",
-    "tags": [
-      "api",
-      "chatgpt",
-      "claude",
-      "deepseek",
-      "gemini",
-      "gpt",
-      "grok"
-    ],
-    "author": "chatanywhere",
-    "stars/downloads": 33896,
-    "license": "MIT",
-    "updated_at": "2025-10-10T16:11:36Z",
-    "category": "code",
-    "score": 4.53
+    "score": 4.539
   },
   {
     "id": "gh_paperless-ngx/paperless-ngx",
@@ -6594,9 +6573,31 @@
       "pdf"
     ],
     "author": "paperless-ngx",
-    "stars/downloads": 33918,
+    "stars/downloads": 33927,
     "license": "GPL-3.0",
-    "updated_at": "2025-10-30T14:02:04Z",
+    "updated_at": "2025-10-31T03:11:59Z",
+    "category": "code",
+    "score": 4.531
+  },
+  {
+    "id": "gh_chatanywhere/GPT_API_free",
+    "source_type": "github_repo",
+    "title": "chatanywhere/GPT_API_free",
+    "short_desc": "Free ChatGPT&DeepSeek API Key，免费ChatGPT&DeepSeek API。免费接入DeepSeek API和GPT4 API，支持 gpt | deepseek | claude | gemini | grok 等排名靠前的常用大模型。",
+    "url": "https://github.com/chatanywhere/GPT_API_free",
+    "tags": [
+      "api",
+      "chatgpt",
+      "claude",
+      "deepseek",
+      "gemini",
+      "gpt",
+      "grok"
+    ],
+    "author": "chatanywhere",
+    "stars/downloads": 33907,
+    "license": "MIT",
+    "updated_at": "2025-10-10T16:11:36Z",
     "category": "code",
     "score": 4.53
   },
@@ -6616,11 +6617,11 @@
       "webplatform"
     ],
     "author": "servo",
-    "stars/downloads": 33319,
+    "stars/downloads": 33403,
     "license": "MPL-2.0",
-    "updated_at": "2025-10-30T16:21:23Z",
+    "updated_at": "2025-10-31T03:24:00Z",
     "category": "code",
-    "score": 4.523
+    "score": 4.524
   },
   {
     "id": "gh_CMU-Perceptual-Computing-Lab/openpose",
@@ -6651,7 +6652,7 @@
       "real-time"
     ],
     "author": "CMU-Perceptual-Computing-Lab",
-    "stars/downloads": 33372,
+    "stars/downloads": 33375,
     "license": "NOASSERTION",
     "updated_at": "2024-08-03T01:59:11Z",
     "category": "code",
@@ -6682,7 +6683,7 @@
       "sort"
     ],
     "author": "TheAlgorithms",
-    "stars/downloads": 33246,
+    "stars/downloads": 33248,
     "license": "MIT",
     "updated_at": "2025-10-11T14:51:22Z",
     "category": "code",
@@ -6715,7 +6716,7 @@
       "stock-data"
     ],
     "author": "microsoft",
-    "stars/downloads": 32928,
+    "stars/downloads": 32952,
     "license": "MIT",
     "updated_at": "2025-10-17T05:22:09Z",
     "category": "code",
@@ -6744,7 +6745,7 @@
       "tutorial"
     ],
     "author": "mouredev",
-    "stars/downloads": 32702,
+    "stars/downloads": 32710,
     "license": "Apache-2.0",
     "updated_at": "2025-08-11T12:00:01Z",
     "category": "code",
@@ -6776,7 +6777,7 @@
       "tokenization"
     ],
     "author": "explosion",
-    "stars/downloads": 32738,
+    "stars/downloads": 32740,
     "license": "MIT",
     "updated_at": "2025-10-28T08:43:48Z",
     "category": "code",
@@ -6822,9 +6823,9 @@
       "video-processing"
     ],
     "author": "google-ai-edge",
-    "stars/downloads": 31786,
+    "stars/downloads": 31789,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T10:13:46Z",
+    "updated_at": "2025-10-31T01:38:33Z",
     "category": "code",
     "score": 4.502
   },
@@ -6853,9 +6854,9 @@
       "visualizer"
     ],
     "author": "lutzroeder",
-    "stars/downloads": 31667,
+    "stars/downloads": 31669,
     "license": "MIT",
-    "updated_at": "2025-10-30T15:47:22Z",
+    "updated_at": "2025-10-31T03:16:33Z",
     "category": "code",
     "score": 4.501
   },
@@ -6883,11 +6884,11 @@
       "video2video"
     ],
     "author": "huggingface",
-    "stars/downloads": 31439,
+    "stars/downloads": 31447,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T10:32:16Z",
+    "updated_at": "2025-10-30T22:11:17Z",
     "category": "code",
-    "score": 4.497
+    "score": 4.498
   },
   {
     "id": "gh_khoj-ai/khoj",
@@ -6918,7 +6919,7 @@
       "whatsapp-ai"
     ],
     "author": "khoj-ai",
-    "stars/downloads": 31433,
+    "stars/downloads": 31434,
     "license": "AGPL-3.0",
     "updated_at": "2025-09-16T09:17:58Z",
     "category": "code",
@@ -6935,7 +6936,7 @@
       "machine-learning"
     ],
     "author": "openai",
-    "stars/downloads": 31322,
+    "stars/downloads": 31332,
     "license": "MIT",
     "updated_at": "2024-07-23T01:30:44Z",
     "category": "code",
@@ -6970,9 +6971,9 @@
       "webui"
     ],
     "author": "danny-avila",
-    "stars/downloads": 31156,
+    "stars/downloads": 31160,
     "license": "MIT",
-    "updated_at": "2025-10-29T22:28:29Z",
+    "updated_at": "2025-10-30T21:29:44Z",
     "category": "code",
     "score": 4.494
   },
@@ -6987,7 +6988,7 @@
       "storage-engine"
     ],
     "author": "facebook",
-    "stars/downloads": 30888,
+    "stars/downloads": 30889,
     "license": "GPL-2.0",
     "updated_at": "2025-10-29T23:05:16Z",
     "category": "code",
@@ -7016,9 +7017,9 @@
       "vertex-ai"
     ],
     "author": "BerriAI",
-    "stars/downloads": 30496,
+    "stars/downloads": 30510,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:27:45Z",
+    "updated_at": "2025-10-31T03:35:55Z",
     "category": "code",
     "score": 4.484
   },
@@ -7041,7 +7042,7 @@
       "study-plan"
     ],
     "author": "AMAI-GmbH",
-    "stars/downloads": 30441,
+    "stars/downloads": 30438,
     "license": "MIT",
     "updated_at": "2025-09-12T14:59:30Z",
     "category": "code",
@@ -7063,7 +7064,7 @@
       "pytorch"
     ],
     "author": "Lightning-AI",
-    "stars/downloads": 30352,
+    "stars/downloads": 30353,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T17:09:29Z",
     "category": "code",
@@ -7085,7 +7086,7 @@
       "webcam"
     ],
     "author": "iperov",
-    "stars/downloads": 29974,
+    "stars/downloads": 29975,
     "license": "GPL-3.0",
     "updated_at": "2024-11-08T03:07:42Z",
     "category": "code",
@@ -7104,7 +7105,7 @@
       "llm"
     ],
     "author": "JushBJJ",
-    "stars/downloads": 29659,
+    "stars/downloads": 29658,
     "license": "",
     "updated_at": "2025-09-30T08:08:00Z",
     "category": "code",
@@ -7134,9 +7135,9 @@
       "vscode"
     ],
     "author": "continuedev",
-    "stars/downloads": 29565,
+    "stars/downloads": 29572,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:46:57Z",
+    "updated_at": "2025-10-31T03:02:20Z",
     "category": "code",
     "score": 4.471
   },
@@ -7168,11 +7169,46 @@
       "zotero"
     ],
     "author": "Byaidu",
-    "stars/downloads": 29423,
+    "stars/downloads": 29429,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-27T14:06:00Z",
     "category": "code",
     "score": 4.469
+  },
+  {
+    "id": "gh_AvaloniaUI/Avalonia",
+    "source_type": "github_repo",
+    "title": "AvaloniaUI/Avalonia",
+    "short_desc": "Develop Desktop, Embedded, Mobile and WebAssembly apps with C# and XAML. The most popular .NET UI client technology",
+    "url": "https://github.com/AvaloniaUI/Avalonia",
+    "tags": [
+      "android",
+      "app-framework",
+      "avalonia",
+      "avaloniaui",
+      "browser",
+      "c-sharp",
+      "cross-platform",
+      "csharp",
+      "desktop",
+      "dotnet",
+      "gui",
+      "ios",
+      "linux",
+      "macos",
+      "mobile",
+      "mvvm",
+      "wasm",
+      "windows",
+      "xamarin",
+      "xaml"
+    ],
+    "author": "AvaloniaUI",
+    "stars/downloads": 29075,
+    "license": "MIT",
+    "updated_at": "2025-10-30T13:49:27Z",
+    "category": "code",
+    "score": 4.464
   },
   {
     "id": "gh_openai/openai-python",
@@ -7185,7 +7221,7 @@
       "python"
     ],
     "author": "openai",
-    "stars/downloads": 29124,
+    "stars/downloads": 29127,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T11:05:47Z",
     "category": "code",
@@ -7227,41 +7263,6 @@
     "score": 4.463
   },
   {
-    "id": "gh_AvaloniaUI/Avalonia",
-    "source_type": "github_repo",
-    "title": "AvaloniaUI/Avalonia",
-    "short_desc": "Develop Desktop, Embedded, Mobile and WebAssembly apps with C# and XAML. The most popular .NET UI client technology",
-    "url": "https://github.com/AvaloniaUI/Avalonia",
-    "tags": [
-      "android",
-      "app-framework",
-      "avalonia",
-      "avaloniaui",
-      "browser",
-      "c-sharp",
-      "cross-platform",
-      "csharp",
-      "desktop",
-      "dotnet",
-      "gui",
-      "ios",
-      "linux",
-      "macos",
-      "mobile",
-      "mvvm",
-      "wasm",
-      "windows",
-      "xamarin",
-      "xaml"
-    ],
-    "author": "AvaloniaUI",
-    "stars/downloads": 29073,
-    "license": "MIT",
-    "updated_at": "2025-10-30T13:49:27Z",
-    "category": "code",
-    "score": 4.463
-  },
-  {
     "id": "gh_microsoft/graphrag",
     "source_type": "github_repo",
     "title": "microsoft/graphrag",
@@ -7277,7 +7278,7 @@
       "rag"
     ],
     "author": "microsoft",
-    "stars/downloads": 28923,
+    "stars/downloads": 28931,
     "license": "MIT",
     "updated_at": "2025-10-30T12:58:18Z",
     "category": "code",
@@ -7299,7 +7300,7 @@
       "machine-learning-from-scratch"
     ],
     "author": "eriklindernoren",
-    "stars/downloads": 28905,
+    "stars/downloads": 28918,
     "license": "MIT",
     "updated_at": "2023-10-15T06:05:06Z",
     "category": "code",
@@ -7353,7 +7354,7 @@
       "theano"
     ],
     "author": "donnemartin",
-    "stars/downloads": 28621,
+    "stars/downloads": 28622,
     "license": "NOASSERTION",
     "updated_at": "2024-03-20T13:52:34Z",
     "category": "code",
@@ -7382,7 +7383,7 @@
       "search"
     ],
     "author": "eugeneyan",
-    "stars/downloads": 28473,
+    "stars/downloads": 28475,
     "license": "MIT",
     "updated_at": "2024-07-18T22:41:02Z",
     "category": "code",
@@ -7410,7 +7411,7 @@
       "python"
     ],
     "author": "ashishpatel26",
-    "stars/downloads": 28431,
+    "stars/downloads": 28444,
     "license": "",
     "updated_at": "2025-08-01T11:54:09Z",
     "category": "code",
@@ -7488,7 +7489,7 @@
       "proxy"
     ],
     "author": "songquanpeng",
-    "stars/downloads": 27772,
+    "stars/downloads": 27778,
     "license": "MIT",
     "updated_at": "2025-07-18T18:11:50Z",
     "category": "code",
@@ -7513,7 +7514,7 @@
       "science"
     ],
     "author": "academic",
-    "stars/downloads": 27642,
+    "stars/downloads": 27643,
     "license": "MIT",
     "updated_at": "2025-10-29T05:24:41Z",
     "category": "code",
@@ -7557,9 +7558,9 @@
       "xgboost"
     ],
     "author": "dmlc",
-    "stars/downloads": 27550,
+    "stars/downloads": 27551,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T04:25:07Z",
+    "updated_at": "2025-10-30T21:34:02Z",
     "category": "code",
     "score": 4.44
   },
@@ -7582,9 +7583,9 @@
       "webrtc"
     ],
     "author": "jitsi",
-    "stars/downloads": 27469,
+    "stars/downloads": 27470,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:30:35Z",
+    "updated_at": "2025-10-30T22:01:10Z",
     "category": "code",
     "score": 4.439
   },
@@ -7609,7 +7610,7 @@
       "vscode-extension"
     ],
     "author": "voideditor",
-    "stars/downloads": 27370,
+    "stars/downloads": 27374,
     "license": "Apache-2.0",
     "updated_at": "2025-08-07T00:07:32Z",
     "category": "code",
@@ -7642,7 +7643,7 @@
       "tensorflow"
     ],
     "author": "d2l-ai",
-    "stars/downloads": 27223,
+    "stars/downloads": 27224,
     "license": "NOASSERTION",
     "updated_at": "2024-08-18T08:02:36Z",
     "category": "code",
@@ -7667,7 +7668,7 @@
       "searxng-copilot"
     ],
     "author": "ItzCrazyKns",
-    "stars/downloads": 27049,
+    "stars/downloads": 27053,
     "license": "MIT",
     "updated_at": "2025-10-30T11:52:01Z",
     "category": "code",
@@ -7701,9 +7702,9 @@
       "vector-search-engine"
     ],
     "author": "qdrant",
-    "stars/downloads": 26837,
+    "stars/downloads": 26840,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:27:56Z",
+    "updated_at": "2025-10-30T18:42:41Z",
     "category": "code",
     "score": 4.429
   },
@@ -7726,11 +7727,11 @@
       "tensorflow"
     ],
     "author": "mozilla",
-    "stars/downloads": 26637,
+    "stars/downloads": 26638,
     "license": "MPL-2.0",
     "updated_at": "2025-06-19T12:52:51Z",
     "category": "code",
-    "score": 4.425
+    "score": 4.426
   },
   {
     "id": "gh_microsoft/semantic-kernel",
@@ -7746,9 +7747,9 @@
       "sdk"
     ],
     "author": "microsoft",
-    "stars/downloads": 26567,
+    "stars/downloads": 26572,
     "license": "MIT",
-    "updated_at": "2025-10-30T15:32:13Z",
+    "updated_at": "2025-10-30T19:06:04Z",
     "category": "code",
     "score": 4.424
   },
@@ -7770,7 +7771,7 @@
       "recurrent-networks"
     ],
     "author": "ChristosChristofidis",
-    "stars/downloads": 26427,
+    "stars/downloads": 26431,
     "license": "",
     "updated_at": "2025-05-26T12:28:00Z",
     "category": "code",
@@ -7795,9 +7796,9 @@
       "workflow"
     ],
     "author": "labring",
-    "stars/downloads": 26157,
+    "stars/downloads": 26158,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T15:01:41Z",
+    "updated_at": "2025-10-31T03:00:15Z",
     "category": "code",
     "score": 4.418
   },
@@ -7823,7 +7824,7 @@
       "windows"
     ],
     "author": "invoke-ai",
-    "stars/downloads": 26142,
+    "stars/downloads": 26143,
     "license": "Apache-2.0",
     "updated_at": "2025-10-27T18:49:08Z",
     "category": "code",
@@ -7841,7 +7842,7 @@
       "machine-learning"
     ],
     "author": "terryum",
-    "stars/downloads": 26022,
+    "stars/downloads": 26023,
     "license": "",
     "updated_at": "2024-01-18T13:29:44Z",
     "category": "code",
@@ -7873,7 +7874,7 @@
       "typescript"
     ],
     "author": "ComposioHQ",
-    "stars/downloads": 25854,
+    "stars/downloads": 25859,
     "license": "",
     "updated_at": "2025-10-30T13:01:48Z",
     "category": "code",
@@ -7926,7 +7927,7 @@
       "qwen2"
     ],
     "author": "datawhalechina",
-    "stars/downloads": 25560,
+    "stars/downloads": 25564,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T01:54:37Z",
     "category": "code",
@@ -7966,9 +7967,9 @@
       "programming-language"
     ],
     "author": "modular",
-    "stars/downloads": 25082,
+    "stars/downloads": 25086,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T06:42:56Z",
+    "updated_at": "2025-10-30T20:14:16Z",
     "category": "code",
     "score": 4.399
   },
@@ -7999,11 +8000,11 @@
       "typescript"
     ],
     "author": "CopilotKit",
-    "stars/downloads": 24685,
+    "stars/downloads": 24689,
     "license": "MIT",
-    "updated_at": "2025-10-30T15:31:46Z",
+    "updated_at": "2025-10-30T17:38:51Z",
     "category": "code",
-    "score": 4.392
+    "score": 4.393
   },
   {
     "id": "gh_nextai-translator/nextai-translator",
@@ -8021,7 +8022,7 @@
       "translator-app"
     ],
     "author": "nextai-translator",
-    "stars/downloads": 24656,
+    "stars/downloads": 24657,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-30T09:20:05Z",
     "category": "code",
@@ -8043,7 +8044,7 @@
       "shapley"
     ],
     "author": "shap",
-    "stars/downloads": 24638,
+    "stars/downloads": 24639,
     "license": "MIT",
     "updated_at": "2025-10-30T13:20:49Z",
     "category": "code",
@@ -8062,7 +8063,7 @@
       "rag"
     ],
     "author": "Cinnamon",
-    "stars/downloads": 24588,
+    "stars/downloads": 24590,
     "license": "Apache-2.0",
     "updated_at": "2025-07-04T11:31:58Z",
     "category": "code",
@@ -8137,7 +8138,7 @@
       "transformers"
     ],
     "author": "lucidrains",
-    "stars/downloads": 24298,
+    "stars/downloads": 24299,
     "license": "MIT",
     "updated_at": "2025-10-28T19:17:36Z",
     "category": "code",
@@ -8162,9 +8163,9 @@
       "vector-database"
     ],
     "author": "chroma-core",
-    "stars/downloads": 24151,
+    "stars/downloads": 24159,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:09:42Z",
+    "updated_at": "2025-10-31T01:27:15Z",
     "category": "code",
     "score": 4.383
   },
@@ -8184,11 +8185,11 @@
       "python"
     ],
     "author": "fastai",
-    "stars/downloads": 24014,
+    "stars/downloads": 24016,
     "license": "NOASSERTION",
     "updated_at": "2024-08-16T14:38:24Z",
     "category": "code",
-    "score": 4.38
+    "score": 4.381
   },
   {
     "id": "gh_haotian-liu/LLaVA",
@@ -8212,7 +8213,7 @@
       "visual-language-learning"
     ],
     "author": "haotian-liu",
-    "stars/downloads": 23862,
+    "stars/downloads": 23864,
     "license": "Apache-2.0",
     "updated_at": "2024-08-12T09:52:38Z",
     "category": "code",
@@ -8241,7 +8242,7 @@
       "word-embeddings"
     ],
     "author": "srbhr",
-    "stars/downloads": 23810,
+    "stars/downloads": 23813,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T12:12:16Z",
     "category": "code",
@@ -8276,7 +8277,7 @@
       "security-tools"
     ],
     "author": "gitleaks",
-    "stars/downloads": 23768,
+    "stars/downloads": 23769,
     "license": "MIT",
     "updated_at": "2025-10-24T17:30:33Z",
     "category": "code",
@@ -8298,7 +8299,7 @@
       "python"
     ],
     "author": "trekhleb",
-    "stars/downloads": 23752,
+    "stars/downloads": 23750,
     "license": "MIT",
     "updated_at": "2024-11-12T20:53:00Z",
     "category": "code",
@@ -8326,7 +8327,7 @@
       "python"
     ],
     "author": "e2b-dev",
-    "stars/downloads": 23700,
+    "stars/downloads": 23707,
     "license": "NOASSERTION",
     "updated_at": "2025-02-26T10:04:45Z",
     "category": "code",
@@ -8349,9 +8350,9 @@
       "scalability"
     ],
     "author": "PaddlePaddle",
-    "stars/downloads": 23363,
+    "stars/downloads": 23364,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:29:09Z",
+    "updated_at": "2025-10-31T03:21:55Z",
     "category": "code",
     "score": 4.369
   },
@@ -8371,7 +8372,7 @@
       "smolagents"
     ],
     "author": "huggingface",
-    "stars/downloads": 23274,
+    "stars/downloads": 23280,
     "license": "Apache-2.0",
     "updated_at": "2025-10-13T15:41:22Z",
     "category": "code",
@@ -8408,7 +8409,7 @@
     "author": "deepset-ai",
     "stars/downloads": 23207,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:08:08Z",
+    "updated_at": "2025-10-30T18:52:34Z",
     "category": "code",
     "score": 4.366
   },
@@ -8435,7 +8436,7 @@
       "prompts"
     ],
     "author": "asgeirtj",
-    "stars/downloads": 23231,
+    "stars/downloads": 23241,
     "license": "",
     "updated_at": "2025-10-28T02:54:04Z",
     "category": "code",
@@ -8467,7 +8468,7 @@
       "wechatapp"
     ],
     "author": "pppscn",
-    "stars/downloads": 23220,
+    "stars/downloads": 23224,
     "license": "BSD-2-Clause",
     "updated_at": "2025-05-11T11:50:56Z",
     "category": "code",
@@ -8502,7 +8503,7 @@
     "url": "https://github.com/karpathy/minGPT",
     "tags": [],
     "author": "karpathy",
-    "stars/downloads": 22860,
+    "stars/downloads": 22861,
     "license": "MIT",
     "updated_at": "2024-08-15T04:09:40Z",
     "category": "code",
@@ -8535,9 +8536,9 @@
       "prompt-engineering"
     ],
     "author": "mlflow",
-    "stars/downloads": 22735,
+    "stars/downloads": 22737,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:45:13Z",
+    "updated_at": "2025-10-31T03:28:31Z",
     "category": "code",
     "score": 4.357
   },
@@ -8559,9 +8560,9 @@
       "tutorials"
     ],
     "author": "NirDiamant",
-    "stars/downloads": 22634,
+    "stars/downloads": 22640,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-08T16:38:05Z",
+    "updated_at": "2025-10-30T18:09:00Z",
     "category": "code",
     "score": 4.355
   },
@@ -8593,7 +8594,7 @@
       "transformer"
     ],
     "author": "lukasmasuch",
-    "stars/downloads": 22657,
+    "stars/downloads": 22659,
     "license": "CC-BY-SA-4.0",
     "updated_at": "2025-10-30T15:16:34Z",
     "category": "code",
@@ -8621,7 +8622,7 @@
       "text-to-sql"
     ],
     "author": "sinaptik-ai",
-    "stars/downloads": 22470,
+    "stars/downloads": 22475,
     "license": "NOASSERTION",
     "updated_at": "2025-10-28T10:02:13Z",
     "category": "code",
@@ -8649,7 +8650,7 @@
       "opencv3"
     ],
     "author": "spmallick",
-    "stars/downloads": 22449,
+    "stars/downloads": 22450,
     "license": "",
     "updated_at": "2025-10-28T13:56:11Z",
     "category": "code",
@@ -8694,7 +8695,7 @@
       "voice-assistant"
     ],
     "author": "Fosowl",
-    "stars/downloads": 22280,
+    "stars/downloads": 22283,
     "license": "GPL-3.0",
     "updated_at": "2025-09-14T18:15:49Z",
     "category": "code",
@@ -8718,11 +8719,11 @@
       "retrieval-augmented-generation"
     ],
     "author": "HKUDS",
-    "stars/downloads": 22254,
+    "stars/downloads": 22268,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:23:39Z",
+    "updated_at": "2025-10-30T22:12:03Z",
     "category": "code",
-    "score": 4.347
+    "score": 4.348
   },
   {
     "id": "gh_MLEveryday/100-Days-Of-ML-Code",
@@ -8762,7 +8763,7 @@
       "llm"
     ],
     "author": "datawhalechina",
-    "stars/downloads": 21973,
+    "stars/downloads": 21974,
     "license": "",
     "updated_at": "2025-06-12T14:48:07Z",
     "category": "code",
@@ -8797,7 +8798,7 @@
       "xlm-e"
     ],
     "author": "microsoft",
-    "stars/downloads": 21795,
+    "stars/downloads": 21796,
     "license": "MIT",
     "updated_at": "2025-07-03T09:28:33Z",
     "category": "code",
@@ -8819,9 +8820,9 @@
       "tft"
     ],
     "author": "lvgl",
-    "stars/downloads": 21781,
+    "stars/downloads": 21782,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:17:58Z",
+    "updated_at": "2025-10-30T21:34:05Z",
     "category": "code",
     "score": 4.338
   },
@@ -8854,7 +8855,7 @@
       "prometheus"
     ],
     "author": "jina-ai",
-    "stars/downloads": 21772,
+    "stars/downloads": 21773,
     "license": "Apache-2.0",
     "updated_at": "2025-03-24T13:59:54Z",
     "category": "code",
@@ -8889,7 +8890,7 @@
       "webscraping"
     ],
     "author": "ScrapeGraphAI",
-    "stars/downloads": 21663,
+    "stars/downloads": 21664,
     "license": "MIT",
     "updated_at": "2025-10-24T02:13:04Z",
     "category": "code",
@@ -8903,7 +8904,7 @@
     "url": "https://github.com/dennybritz/reinforcement-learning",
     "tags": [],
     "author": "dennybritz",
-    "stars/downloads": 21664,
+    "stars/downloads": 21665,
     "license": "MIT",
     "updated_at": "2023-07-13T09:52:27Z",
     "category": "code",
@@ -8923,7 +8924,7 @@
       "llmops"
     ],
     "author": "liguodongiot",
-    "stars/downloads": 21613,
+    "stars/downloads": 21620,
     "license": "Apache-2.0",
     "updated_at": "2025-10-19T14:55:52Z",
     "category": "code",
@@ -8944,7 +8945,7 @@
       "nlp"
     ],
     "author": "HqWu-HITCS",
-    "stars/downloads": 21563,
+    "stars/downloads": 21567,
     "license": "",
     "updated_at": "2025-05-19T06:11:57Z",
     "category": "code",
@@ -8963,7 +8964,7 @@
       "tvm"
     ],
     "author": "mlc-ai",
-    "stars/downloads": 21543,
+    "stars/downloads": 21542,
     "license": "Apache-2.0",
     "updated_at": "2025-10-28T16:51:14Z",
     "category": "code",
@@ -8984,7 +8985,7 @@
       "pytorch-tutorials"
     ],
     "author": "zergtant",
-    "stars/downloads": 21357,
+    "stars/downloads": 21359,
     "license": "",
     "updated_at": "2024-07-25T07:17:26Z",
     "category": "code",
@@ -8994,7 +8995,7 @@
     "id": "gh_vanna-ai/vanna",
     "source_type": "github_repo",
     "title": "vanna-ai/vanna",
-    "short_desc": "🤖 Chat with your SQL database 📊. Accurate Text-to-SQL Generation via LLMs using RAG 🔄.",
+    "short_desc": "🤖 Chat with your SQL database 📊. Accurate Text-to-SQL Generation via LLMs using Agentic Retrieval 🔄.",
     "url": "https://github.com/vanna-ai/vanna",
     "tags": [
       "agent",
@@ -9007,7 +9008,7 @@
       "text-to-sql"
     ],
     "author": "vanna-ai",
-    "stars/downloads": 21335,
+    "stars/downloads": 21343,
     "license": "MIT",
     "updated_at": "2025-10-30T11:13:11Z",
     "category": "code",
@@ -9058,7 +9059,7 @@
       "chatgpt-plugins"
     ],
     "author": "openai",
-    "stars/downloads": 21231,
+    "stars/downloads": 21230,
     "license": "MIT",
     "updated_at": "2024-07-04T22:00:16Z",
     "category": "code",
@@ -9092,7 +9093,7 @@
       "sort"
     ],
     "author": "TheAlgorithms",
-    "stars/downloads": 21211,
+    "stars/downloads": 21212,
     "license": "GPL-3.0",
     "updated_at": "2024-08-07T21:56:16Z",
     "category": "code",
@@ -9124,7 +9125,7 @@
       "tutorial"
     ],
     "author": "recommenders-team",
-    "stars/downloads": 21068,
+    "stars/downloads": 21069,
     "license": "MIT",
     "updated_at": "2025-10-13T13:43:33Z",
     "category": "code",
@@ -9156,11 +9157,11 @@
       "vgg-face"
     ],
     "author": "serengil",
-    "stars/downloads": 20913,
+    "stars/downloads": 20919,
     "license": "MIT",
     "updated_at": "2025-10-21T18:01:33Z",
     "category": "code",
-    "score": 4.32
+    "score": 4.321
   },
   {
     "id": "gh_huggingface/datasets",
@@ -9187,9 +9188,9 @@
       "tensorflow"
     ],
     "author": "huggingface",
-    "stars/downloads": 20798,
+    "stars/downloads": 20799,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:28:09Z",
+    "updated_at": "2025-10-30T16:43:45Z",
     "category": "code",
     "score": 4.318
   },
@@ -9240,7 +9241,7 @@
       "rag"
     ],
     "author": "datawhalechina",
-    "stars/downloads": 20738,
+    "stars/downloads": 20747,
     "license": "NOASSERTION",
     "updated_at": "2025-10-17T12:25:38Z",
     "category": "code",
@@ -9300,7 +9301,7 @@
       "freechatgpt"
     ],
     "author": "LiLittleCat",
-    "stars/downloads": 20525,
+    "stars/downloads": 20526,
     "license": "MIT",
     "updated_at": "2025-06-23T12:16:37Z",
     "category": "code",
@@ -9332,9 +9333,9 @@
       "web-scraping"
     ],
     "author": "apify",
-    "stars/downloads": 20334,
+    "stars/downloads": 20335,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T08:45:45Z",
+    "updated_at": "2025-10-30T19:38:55Z",
     "category": "code",
     "score": 4.308
   },
@@ -9367,7 +9368,7 @@
       "typescript"
     ],
     "author": "yamadashy",
-    "stars/downloads": 19981,
+    "stars/downloads": 19987,
     "license": "MIT",
     "updated_at": "2025-10-30T16:25:17Z",
     "category": "code",
@@ -9394,7 +9395,7 @@
       "unet"
     ],
     "author": "Zeyi-Lin",
-    "stars/downloads": 20000,
+    "stars/downloads": 20006,
     "license": "Apache-2.0",
     "updated_at": "2025-07-12T05:34:27Z",
     "category": "code",
@@ -9419,11 +9420,32 @@
       "transformers"
     ],
     "author": "huggingface",
-    "stars/downloads": 19947,
+    "stars/downloads": 19952,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T14:17:29Z",
     "category": "code",
     "score": 4.3
+  },
+  {
+    "id": "gh_patchy631/ai-engineering-hub",
+    "source_type": "github_repo",
+    "title": "patchy631/ai-engineering-hub",
+    "short_desc": "In-depth tutorials on LLMs, RAGs and real-world AI agent applications.",
+    "url": "https://github.com/patchy631/ai-engineering-hub",
+    "tags": [
+      "agents",
+      "ai",
+      "llms",
+      "machine-learning",
+      "mcp",
+      "rag"
+    ],
+    "author": "patchy631",
+    "stars/downloads": 19904,
+    "license": "MIT",
+    "updated_at": "2025-10-26T17:58:43Z",
+    "category": "code",
+    "score": 4.299
   },
   {
     "id": "gh_onnx/onnx",
@@ -9445,32 +9467,11 @@
       "tensorflow"
     ],
     "author": "onnx",
-    "stars/downloads": 19796,
+    "stars/downloads": 19799,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-29T10:29:18Z",
+    "updated_at": "2025-10-31T00:04:28Z",
     "category": "code",
     "score": 4.297
-  },
-  {
-    "id": "gh_patchy631/ai-engineering-hub",
-    "source_type": "github_repo",
-    "title": "patchy631/ai-engineering-hub",
-    "short_desc": "In-depth tutorials on LLMs, RAGs and real-world AI agent applications.",
-    "url": "https://github.com/patchy631/ai-engineering-hub",
-    "tags": [
-      "agents",
-      "ai",
-      "llms",
-      "machine-learning",
-      "mcp",
-      "rag"
-    ],
-    "author": "patchy631",
-    "stars/downloads": 19744,
-    "license": "MIT",
-    "updated_at": "2025-10-26T17:58:43Z",
-    "category": "code",
-    "score": 4.295
   },
   {
     "id": "gh_QwenLM/Qwen",
@@ -9487,7 +9488,7 @@
       "pretrained-models"
     ],
     "author": "QwenLM",
-    "stars/downloads": 19612,
+    "stars/downloads": 19615,
     "license": "Apache-2.0",
     "updated_at": "2025-09-30T10:18:02Z",
     "category": "code",
@@ -9505,9 +9506,9 @@
       "llm"
     ],
     "author": "SillyTavern",
-    "stars/downloads": 19578,
+    "stars/downloads": 19585,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T03:23:57Z",
+    "updated_at": "2025-10-30T21:46:47Z",
     "category": "code",
     "score": 4.292
   },
@@ -9524,9 +9525,9 @@
       "rag"
     ],
     "author": "getzep",
-    "stars/downloads": 19546,
+    "stars/downloads": 19558,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:12:23Z",
+    "updated_at": "2025-10-31T02:49:56Z",
     "category": "code",
     "score": 4.291
   },
@@ -9558,7 +9559,7 @@
       "responsible-ai"
     ],
     "author": "EthicalML",
-    "stars/downloads": 19538,
+    "stars/downloads": 19543,
     "license": "MIT",
     "updated_at": "2025-10-26T02:10:57Z",
     "category": "code",
@@ -9593,9 +9594,9 @@
       "vlm"
     ],
     "author": "sgl-project",
-    "stars/downloads": 19492,
+    "stars/downloads": 19499,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:08:10Z",
+    "updated_at": "2025-10-31T03:28:40Z",
     "category": "code",
     "score": 4.29
   },
@@ -9624,7 +9625,7 @@
     "url": "https://github.com/openai/gpt-oss",
     "tags": [],
     "author": "openai",
-    "stars/downloads": 19022,
+    "stars/downloads": 19023,
     "license": "Apache-2.0",
     "updated_at": "2025-10-23T06:39:55Z",
     "category": "code",
@@ -9668,7 +9669,7 @@
       "llm-agent"
     ],
     "author": "letta-ai",
-    "stars/downloads": 18982,
+    "stars/downloads": 18983,
     "license": "Apache-2.0",
     "updated_at": "2025-10-24T22:29:49Z",
     "category": "code",
@@ -9698,9 +9699,9 @@
       "vue"
     ],
     "author": "vercel",
-    "stars/downloads": 18947,
+    "stars/downloads": 18952,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:17:52Z",
+    "updated_at": "2025-10-31T00:21:17Z",
     "category": "code",
     "score": 4.278
   },
@@ -9728,9 +9729,9 @@
       "sql"
     ],
     "author": "cube-js",
-    "stars/downloads": 18984,
+    "stars/downloads": 18985,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T15:04:21Z",
+    "updated_at": "2025-10-30T17:20:23Z",
     "category": "code",
     "score": 4.278
   },
@@ -9783,7 +9784,7 @@
       "rag"
     ],
     "author": "1Panel-dev",
-    "stars/downloads": 18797,
+    "stars/downloads": 18799,
     "license": "GPL-3.0",
     "updated_at": "2025-10-30T09:59:50Z",
     "category": "code",
@@ -9806,9 +9807,9 @@
       "whisper"
     ],
     "author": "SYSTRAN",
-    "stars/downloads": 18799,
+    "stars/downloads": 18806,
     "license": "MIT",
-    "updated_at": "2025-10-22T12:51:56Z",
+    "updated_at": "2025-10-30T19:11:01Z",
     "category": "code",
     "score": 4.274
   },
@@ -9828,9 +9829,9 @@
       "unity3d"
     ],
     "author": "Unity-Technologies",
-    "stars/downloads": 18800,
+    "stars/downloads": 18802,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T15:44:36Z",
+    "updated_at": "2025-10-30T22:56:31Z",
     "category": "code",
     "score": 4.274
   },
@@ -9893,7 +9894,7 @@
       "neural-networks"
     ],
     "author": "iperov",
-    "stars/downloads": 18715,
+    "stars/downloads": 18716,
     "license": "GPL-3.0",
     "updated_at": "2024-11-13T19:29:05Z",
     "category": "code",
@@ -9916,7 +9917,7 @@
       "unsupervised-learning"
     ],
     "author": "afshinea",
-    "stars/downloads": 18688,
+    "stars/downloads": 18689,
     "license": "MIT",
     "updated_at": "2020-05-20T04:57:25Z",
     "category": "code",
@@ -9938,7 +9939,7 @@
       "vercel"
     ],
     "author": "vercel",
-    "stars/downloads": 18526,
+    "stars/downloads": 18530,
     "license": "NOASSERTION",
     "updated_at": "2025-10-09T19:03:09Z",
     "category": "code",
@@ -9968,7 +9969,7 @@
       "tauri"
     ],
     "author": "winfunc",
-    "stars/downloads": 18494,
+    "stars/downloads": 18499,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-16T12:05:56Z",
     "category": "code",
@@ -10000,7 +10001,7 @@
     "url": "https://github.com/facebook/yoga",
     "tags": [],
     "author": "facebook",
-    "stars/downloads": 18364,
+    "stars/downloads": 18365,
     "license": "MIT",
     "updated_at": "2025-10-27T06:54:02Z",
     "category": "code",
@@ -10032,7 +10033,7 @@
       "workflow"
     ],
     "author": "coze-dev",
-    "stars/downloads": 18228,
+    "stars/downloads": 18237,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T06:58:06Z",
     "category": "code",
@@ -10056,9 +10057,9 @@
       "tensorflow"
     ],
     "author": "microsoft",
-    "stars/downloads": 18233,
+    "stars/downloads": 18238,
     "license": "MIT",
-    "updated_at": "2025-10-30T08:40:00Z",
+    "updated_at": "2025-10-31T01:07:55Z",
     "category": "code",
     "score": 4.261
   },
@@ -10100,39 +10101,11 @@
       "vllm"
     ],
     "author": "meta-llama",
-    "stars/downloads": 17980,
+    "stars/downloads": 17982,
     "license": "MIT",
-    "updated_at": "2025-10-30T15:20:15Z",
+    "updated_at": "2025-10-30T22:30:44Z",
     "category": "code",
     "score": 4.255
-  },
-  {
-    "id": "gh_AI4Finance-Foundation/FinGPT",
-    "source_type": "github_repo",
-    "title": "AI4Finance-Foundation/FinGPT",
-    "short_desc": "FinGPT: Open-Source Financial Large Language Models!  Revolutionize 🔥    We release the trained model on HuggingFace.",
-    "url": "https://github.com/AI4Finance-Foundation/FinGPT",
-    "tags": [
-      "chatgpt",
-      "finance",
-      "fingpt",
-      "fintech",
-      "large-language-models",
-      "machine-learning",
-      "nlp",
-      "prompt-engineering",
-      "pytorch",
-      "reinforcement-learning",
-      "robo-advisor",
-      "sentiment-analysis",
-      "technical-analysis"
-    ],
-    "author": "AI4Finance-Foundation",
-    "stars/downloads": 17915,
-    "license": "MIT",
-    "updated_at": "2025-10-03T14:40:08Z",
-    "category": "code",
-    "score": 4.253
   },
   {
     "id": "gh_mastra-ai/mastra",
@@ -10156,11 +10129,39 @@
       "workflows"
     ],
     "author": "mastra-ai",
-    "stars/downloads": 17880,
+    "stars/downloads": 17889,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:28:41Z",
+    "updated_at": "2025-10-31T03:33:23Z",
     "category": "code",
-    "score": 4.252
+    "score": 4.253
+  },
+  {
+    "id": "gh_AI4Finance-Foundation/FinGPT",
+    "source_type": "github_repo",
+    "title": "AI4Finance-Foundation/FinGPT",
+    "short_desc": "FinGPT: Open-Source Financial Large Language Models!  Revolutionize 🔥    We release the trained model on HuggingFace.",
+    "url": "https://github.com/AI4Finance-Foundation/FinGPT",
+    "tags": [
+      "chatgpt",
+      "finance",
+      "fingpt",
+      "fintech",
+      "large-language-models",
+      "machine-learning",
+      "nlp",
+      "prompt-engineering",
+      "pytorch",
+      "reinforcement-learning",
+      "robo-advisor",
+      "sentiment-analysis",
+      "technical-analysis"
+    ],
+    "author": "AI4Finance-Foundation",
+    "stars/downloads": 17923,
+    "license": "MIT",
+    "updated_at": "2025-10-03T14:40:08Z",
+    "category": "code",
+    "score": 4.253
   },
   {
     "id": "gh_keon/awesome-nlp",
@@ -10179,7 +10180,7 @@
       "text-mining"
     ],
     "author": "keon",
-    "stars/downloads": 17861,
+    "stars/downloads": 17864,
     "license": "CC0-1.0",
     "updated_at": "2025-09-13T20:55:14Z",
     "category": "code",
@@ -10211,52 +10212,9 @@
       "typescript"
     ],
     "author": "bytedance",
-    "stars/downloads": 17786,
+    "stars/downloads": 17791,
     "license": "MIT",
     "updated_at": "2025-10-29T02:12:33Z",
-    "category": "code",
-    "score": 4.25
-  },
-  {
-    "id": "gh_huggingface/sentence-transformers",
-    "source_type": "github_repo",
-    "title": "huggingface/sentence-transformers",
-    "short_desc": "State-of-the-Art Text Embeddings",
-    "url": "https://github.com/huggingface/sentence-transformers",
-    "tags": [],
-    "author": "huggingface",
-    "stars/downloads": 17786,
-    "license": "Apache-2.0",
-    "updated_at": "2025-10-22T11:00:18Z",
-    "category": "code",
-    "score": 4.25
-  },
-  {
-    "id": "gh_microsoft/LightGBM",
-    "source_type": "github_repo",
-    "title": "microsoft/LightGBM",
-    "short_desc": "A fast, distributed, high performance gradient boosting (GBT, GBDT, GBRT, GBM or MART) framework based on decision tree algorithms, used for ranking, classification and many other machine learning tasks.",
-    "url": "https://github.com/microsoft/LightGBM",
-    "tags": [
-      "data-mining",
-      "decision-trees",
-      "distributed",
-      "gbdt",
-      "gbm",
-      "gbrt",
-      "gradient-boosting",
-      "kaggle",
-      "lightgbm",
-      "machine-learning",
-      "microsoft",
-      "parallel",
-      "python",
-      "r"
-    ],
-    "author": "microsoft",
-    "stars/downloads": 17787,
-    "license": "MIT",
-    "updated_at": "2025-10-30T04:13:44Z",
     "category": "code",
     "score": 4.25
   },
@@ -10288,11 +10246,54 @@
       "ycombinator"
     ],
     "author": "langfuse",
-    "stars/downloads": 17743,
+    "stars/downloads": 17764,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:14:43Z",
+    "updated_at": "2025-10-31T00:31:30Z",
     "category": "code",
-    "score": 4.249
+    "score": 4.25
+  },
+  {
+    "id": "gh_huggingface/sentence-transformers",
+    "source_type": "github_repo",
+    "title": "huggingface/sentence-transformers",
+    "short_desc": "State-of-the-Art Text Embeddings",
+    "url": "https://github.com/huggingface/sentence-transformers",
+    "tags": [],
+    "author": "huggingface",
+    "stars/downloads": 17790,
+    "license": "Apache-2.0",
+    "updated_at": "2025-10-22T11:00:18Z",
+    "category": "code",
+    "score": 4.25
+  },
+  {
+    "id": "gh_microsoft/LightGBM",
+    "source_type": "github_repo",
+    "title": "microsoft/LightGBM",
+    "short_desc": "A fast, distributed, high performance gradient boosting (GBT, GBDT, GBRT, GBM or MART) framework based on decision tree algorithms, used for ranking, classification and many other machine learning tasks.",
+    "url": "https://github.com/microsoft/LightGBM",
+    "tags": [
+      "data-mining",
+      "decision-trees",
+      "distributed",
+      "gbdt",
+      "gbm",
+      "gbrt",
+      "gradient-boosting",
+      "kaggle",
+      "lightgbm",
+      "machine-learning",
+      "microsoft",
+      "parallel",
+      "python",
+      "r"
+    ],
+    "author": "microsoft",
+    "stars/downloads": 17789,
+    "license": "MIT",
+    "updated_at": "2025-10-30T04:13:44Z",
+    "category": "code",
+    "score": 4.25
   },
   {
     "id": "gh_SWE-agent/SWE-agent",
@@ -10310,7 +10311,7 @@
       "lms"
     ],
     "author": "SWE-agent",
-    "stars/downloads": 17676,
+    "stars/downloads": 17677,
     "license": "MIT",
     "updated_at": "2025-10-27T21:14:40Z",
     "category": "code",
@@ -10331,7 +10332,7 @@
       "vision-language-pretraining"
     ],
     "author": "deepseek-ai",
-    "stars/downloads": 17601,
+    "stars/downloads": 17602,
     "license": "MIT",
     "updated_at": "2025-02-01T07:58:29Z",
     "category": "code",
@@ -10386,7 +10387,7 @@
     "author": "eosphoros-ai",
     "stars/downloads": 17545,
     "license": "MIT",
-    "updated_at": "2025-10-30T01:40:56Z",
+    "updated_at": "2025-10-30T16:41:43Z",
     "category": "code",
     "score": 4.244
   },
@@ -10408,9 +10409,9 @@
       "tutorials"
     ],
     "author": "NirDiamant",
-    "stars/downloads": 17474,
+    "stars/downloads": 17477,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-08T16:42:52Z",
+    "updated_at": "2025-10-30T17:58:50Z",
     "category": "code",
     "score": 4.242
   },
@@ -10441,9 +10442,9 @@
       "typescript"
     ],
     "author": "simstudioai",
-    "stars/downloads": 17406,
+    "stars/downloads": 17412,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T07:23:36Z",
+    "updated_at": "2025-10-31T03:29:59Z",
     "category": "code",
     "score": 4.241
   },
@@ -10475,9 +10476,9 @@
       "vercel"
     ],
     "author": "dyad-sh",
-    "stars/downloads": 17336,
+    "stars/downloads": 17339,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T04:26:03Z",
+    "updated_at": "2025-10-30T18:27:56Z",
     "category": "code",
     "score": 4.239
   },
@@ -10509,9 +10510,9 @@
       "transformers"
     ],
     "author": "arc53",
-    "stars/downloads": 17300,
+    "stars/downloads": 17302,
     "license": "MIT",
-    "updated_at": "2025-10-28T23:49:47Z",
+    "updated_at": "2025-10-30T20:08:57Z",
     "category": "code",
     "score": 4.238
   },
@@ -10529,7 +10530,7 @@
       "openai"
     ],
     "author": "xx025",
-    "stars/downloads": 17055,
+    "stars/downloads": 17056,
     "license": "",
     "updated_at": "2025-10-27T15:58:14Z",
     "category": "code",
@@ -10563,7 +10564,7 @@
       "voice-cloning"
     ],
     "author": "FunAudioLLM",
-    "stars/downloads": 17043,
+    "stars/downloads": 17044,
     "license": "Apache-2.0",
     "updated_at": "2025-10-21T07:30:45Z",
     "category": "code",
@@ -10593,9 +10594,9 @@
       "telegram"
     ],
     "author": "elizaOS",
-    "stars/downloads": 17029,
+    "stars/downloads": 17033,
     "license": "MIT",
-    "updated_at": "2025-10-29T23:54:58Z",
+    "updated_at": "2025-10-30T19:05:30Z",
     "category": "code",
     "score": 4.231
   },
@@ -10615,7 +10616,7 @@
       "oreilly-books"
     ],
     "author": "HandsOnLLM",
-    "stars/downloads": 16950,
+    "stars/downloads": 16953,
     "license": "Apache-2.0",
     "updated_at": "2025-07-21T05:49:15Z",
     "category": "code",
@@ -10636,9 +10637,9 @@
       "python"
     ],
     "author": "openai",
-    "stars/downloads": 16939,
+    "stars/downloads": 16952,
     "license": "MIT",
-    "updated_at": "2025-10-30T11:45:35Z",
+    "updated_at": "2025-10-31T03:24:04Z",
     "category": "code",
     "score": 4.229
   },
@@ -10671,7 +10672,7 @@
       "xinghuo"
     ],
     "author": "lss233",
-    "stars/downloads": 16935,
+    "stars/downloads": 16942,
     "license": "AGPL-3.0",
     "updated_at": "2025-06-28T19:24:48Z",
     "category": "code",
@@ -10701,7 +10702,7 @@
       "superagi"
     ],
     "author": "TransformerOptimus",
-    "stars/downloads": 16818,
+    "stars/downloads": 16820,
     "license": "MIT",
     "updated_at": "2025-01-22T22:14:07Z",
     "category": "code",
@@ -10749,7 +10750,7 @@
       "structured-data"
     ],
     "author": "google",
-    "stars/downloads": 16694,
+    "stars/downloads": 16702,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T06:13:02Z",
     "category": "code",
@@ -10816,7 +10817,7 @@
       "sso"
     ],
     "author": "ory",
-    "stars/downloads": 16628,
+    "stars/downloads": 16629,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T16:13:46Z",
     "category": "code",
@@ -10840,7 +10841,7 @@
       "web-agent"
     ],
     "author": "Alibaba-NLP",
-    "stars/downloads": 16579,
+    "stars/downloads": 16600,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T16:02:20Z",
     "category": "code",
@@ -10875,11 +10876,11 @@
       "prompt-tuning"
     ],
     "author": "linshenkx",
-    "stars/downloads": 16457,
+    "stars/downloads": 16464,
     "license": "NOASSERTION",
     "updated_at": "2025-10-30T15:56:20Z",
     "category": "code",
-    "score": 4.216
+    "score": 4.217
   },
   {
     "id": "gh_openai/tiktoken",
@@ -10889,7 +10890,7 @@
     "url": "https://github.com/openai/tiktoken",
     "tags": [],
     "author": "openai",
-    "stars/downloads": 16389,
+    "stars/downloads": 16388,
     "license": "MIT",
     "updated_at": "2025-10-06T20:21:57Z",
     "category": "code",
@@ -10913,7 +10914,7 @@
       "typescript"
     ],
     "author": "mayooear",
-    "stars/downloads": 16109,
+    "stars/downloads": 16110,
     "license": "MIT",
     "updated_at": "2025-02-20T18:19:58Z",
     "category": "code",
@@ -10969,7 +10970,7 @@
       "llmops"
     ],
     "author": "raga-ai-hub",
-    "stars/downloads": 16043,
+    "stars/downloads": 16044,
     "license": "Apache-2.0",
     "updated_at": "2025-10-22T19:57:43Z",
     "category": "code",
@@ -11003,7 +11004,7 @@
       "txt2img"
     ],
     "author": "camenduru",
-    "stars/downloads": 15941,
+    "stars/downloads": 15942,
     "license": "Unlicense",
     "updated_at": "2024-10-15T09:00:05Z",
     "category": "code",
@@ -11034,7 +11035,7 @@
       "tutorial"
     ],
     "author": "datawhalechina",
-    "stars/downloads": 15932,
+    "stars/downloads": 15933,
     "license": "NOASSERTION",
     "updated_at": "2025-10-22T09:20:40Z",
     "category": "code",
@@ -11060,7 +11061,7 @@
       "rag"
     ],
     "author": "humanlayer",
-    "stars/downloads": 15911,
+    "stars/downloads": 15916,
     "license": "NOASSERTION",
     "updated_at": "2025-09-21T14:37:40Z",
     "category": "code",
@@ -11084,11 +11085,11 @@
       "vision"
     ],
     "author": "mediar-ai",
-    "stars/downloads": 15866,
+    "stars/downloads": 15868,
     "license": "MIT",
     "updated_at": "2025-09-01T20:21:42Z",
     "category": "code",
-    "score": 4.2
+    "score": 4.201
   },
   {
     "id": "gh_zai-org/ChatGLM2-6B",
@@ -11150,9 +11151,9 @@
       "rag"
     ],
     "author": "onyx-dot-app",
-    "stars/downloads": 15638,
+    "stars/downloads": 15637,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T10:07:37Z",
+    "updated_at": "2025-10-31T03:09:40Z",
     "category": "code",
     "score": 4.194
   },
@@ -11177,7 +11178,7 @@
       "transformers"
     ],
     "author": "stas00",
-    "stars/downloads": 15545,
+    "stars/downloads": 15551,
     "license": "CC-BY-SA-4.0",
     "updated_at": "2025-10-27T17:20:58Z",
     "category": "code",
@@ -11193,7 +11194,7 @@
       "whisper"
     ],
     "author": "chidiwilliams",
-    "stars/downloads": 15542,
+    "stars/downloads": 15545,
     "license": "MIT",
     "updated_at": "2025-10-26T08:05:49Z",
     "category": "code",
@@ -11216,7 +11217,7 @@
       "vercel"
     ],
     "author": "steven-tey",
-    "stars/downloads": 15520,
+    "stars/downloads": 15521,
     "license": "Apache-2.0",
     "updated_at": "2025-01-18T14:26:33Z",
     "category": "code",
@@ -11275,9 +11276,9 @@
       "workflow"
     ],
     "author": "Skyvern-AI",
-    "stars/downloads": 15385,
+    "stars/downloads": 15392,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T16:07:54Z",
+    "updated_at": "2025-10-31T02:02:29Z",
     "category": "code",
     "score": 4.187
   },
@@ -11304,11 +11305,37 @@
       "wechat"
     ],
     "author": "openimsdk",
-    "stars/downloads": 15350,
+    "stars/downloads": 15352,
     "license": "Apache-2.0",
     "updated_at": "2025-10-24T07:56:35Z",
     "category": "code",
     "score": 4.186
+  },
+  {
+    "id": "gh_emcie-co/parlant",
+    "source_type": "github_repo",
+    "title": "emcie-co/parlant",
+    "short_desc": "LLM agents built for control. Designed for real-world use. Deployed in minutes.",
+    "url": "https://github.com/emcie-co/parlant",
+    "tags": [
+      "ai-agents",
+      "ai-alignment",
+      "customer-service",
+      "customer-success",
+      "gemini",
+      "genai",
+      "hacktoberfest",
+      "llama3",
+      "llm",
+      "openai",
+      "python"
+    ],
+    "author": "emcie-co",
+    "stars/downloads": 15313,
+    "license": "Apache-2.0",
+    "updated_at": "2025-10-30T22:12:16Z",
+    "category": "code",
+    "score": 4.185
   },
   {
     "id": "gh_comet-ml/opik",
@@ -11331,37 +11358,11 @@
       "prompt-engineering"
     ],
     "author": "comet-ml",
-    "stars/downloads": 15292,
+    "stars/downloads": 15304,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:24:10Z",
+    "updated_at": "2025-10-31T00:17:38Z",
     "category": "code",
-    "score": 4.184
-  },
-  {
-    "id": "gh_emcie-co/parlant",
-    "source_type": "github_repo",
-    "title": "emcie-co/parlant",
-    "short_desc": "LLM agents built for control. Designed for real-world use. Deployed in minutes.",
-    "url": "https://github.com/emcie-co/parlant",
-    "tags": [
-      "ai-agents",
-      "ai-alignment",
-      "customer-service",
-      "customer-success",
-      "gemini",
-      "genai",
-      "hacktoberfest",
-      "llama3",
-      "llm",
-      "openai",
-      "python"
-    ],
-    "author": "emcie-co",
-    "stars/downloads": 15236,
-    "license": "Apache-2.0",
-    "updated_at": "2025-10-30T12:50:48Z",
-    "category": "code",
-    "score": 4.183
+    "score": 4.185
   },
   {
     "id": "gh_xcanwin/KeepChatGPT",
@@ -11409,7 +11410,7 @@
       "scenario"
     ],
     "author": "elder-plinius",
-    "stars/downloads": 14817,
+    "stars/downloads": 14833,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-29T23:02:25Z",
     "category": "code",
@@ -11428,11 +11429,11 @@
       "webml"
     ],
     "author": "huggingface",
-    "stars/downloads": 14771,
+    "stars/downloads": 14775,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T04:49:36Z",
     "category": "code",
-    "score": 4.169
+    "score": 4.17
   },
   {
     "id": "gh_LlamaFamily/Llama-Chinese",
@@ -11449,7 +11450,7 @@
       "rl"
     ],
     "author": "LlamaFamily",
-    "stars/downloads": 14726,
+    "stars/downloads": 14725,
     "license": "",
     "updated_at": "2025-04-06T09:16:55Z",
     "category": "code",
@@ -11477,9 +11478,9 @@
       "tutorials"
     ],
     "author": "NirDiamant",
-    "stars/downloads": 14614,
+    "stars/downloads": 14619,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-26T16:50:49Z",
+    "updated_at": "2025-10-30T18:17:00Z",
     "category": "code",
     "score": 4.165
   },
@@ -11508,7 +11509,7 @@
       "terminal-ui"
     ],
     "author": "plandex-ai",
-    "stars/downloads": 14586,
+    "stars/downloads": 14588,
     "license": "MIT",
     "updated_at": "2025-10-03T21:49:58Z",
     "category": "code",
@@ -11526,7 +11527,7 @@
       "key-value"
     ],
     "author": "boltdb",
-    "stars/downloads": 14545,
+    "stars/downloads": 14546,
     "license": "MIT",
     "updated_at": "2018-03-02T18:00:53Z",
     "category": "code",
@@ -11550,11 +11551,11 @@
       "small-specialized-models"
     ],
     "author": "llmware-ai",
-    "stars/downloads": 14437,
+    "stars/downloads": 14438,
     "license": "Apache-2.0",
     "updated_at": "2025-07-24T19:13:39Z",
     "category": "code",
-    "score": 4.159
+    "score": 4.16
   },
   {
     "id": "gh_rust-embedded/rust-raspberrypi-OS-tutorials",
@@ -11581,7 +11582,7 @@
       "tutorial"
     ],
     "author": "rust-embedded",
-    "stars/downloads": 14410,
+    "stars/downloads": 14411,
     "license": "Apache-2.0",
     "updated_at": "2024-02-10T03:24:45Z",
     "category": "code",
@@ -11610,7 +11611,7 @@
     "author": "botpress",
     "stars/downloads": 14319,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:26:07Z",
+    "updated_at": "2025-10-30T21:45:20Z",
     "category": "code",
     "score": 4.156
   },
@@ -11685,9 +11686,9 @@
       "transformers"
     ],
     "author": "NVIDIA",
-    "stars/downloads": 14002,
+    "stars/downloads": 14009,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:18:07Z",
+    "updated_at": "2025-10-31T02:46:51Z",
     "category": "code",
     "score": 4.146
   },
@@ -11720,7 +11721,7 @@
       "wechat"
     ],
     "author": "langbot-app",
-    "stars/downloads": 13875,
+    "stars/downloads": 13878,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T15:17:10Z",
     "category": "code",
@@ -11758,7 +11759,7 @@
       "stable-diffusion"
     ],
     "author": "divamgupta",
-    "stars/downloads": 13438,
+    "stars/downloads": 13437,
     "license": "AGPL-3.0",
     "updated_at": "2024-10-30T16:56:14Z",
     "category": "code",
@@ -11841,9 +11842,9 @@
       "wasm"
     ],
     "author": "electric-sql",
-    "stars/downloads": 13124,
+    "stars/downloads": 13126,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-29T15:48:37Z",
+    "updated_at": "2025-10-30T21:18:49Z",
     "category": "code",
     "score": 4.118
   },
@@ -11907,9 +11908,9 @@
       "telegram"
     ],
     "author": "AstrBotDevs",
-    "stars/downloads": 13039,
+    "stars/downloads": 13045,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T06:15:02Z",
+    "updated_at": "2025-10-30T17:49:35Z",
     "category": "code",
     "score": 4.115
   },
@@ -11969,11 +11970,46 @@
       "security"
     ],
     "author": "threat9",
-    "stars/downloads": 12794,
+    "stars/downloads": 12793,
     "license": "NOASSERTION",
     "updated_at": "2025-06-10T08:33:42Z",
     "category": "code",
     "score": 4.107
+  },
+  {
+    "id": "gh_wasp-lang/open-saas",
+    "source_type": "github_repo",
+    "title": "wasp-lang/open-saas",
+    "short_desc": "A free, open-source SaaS app starter for React & Node.js with superpowers. Full-featured. Community-driven.",
+    "url": "https://github.com/wasp-lang/open-saas",
+    "tags": [
+      "ai",
+      "authentication",
+      "aws-s3",
+      "boilerplate",
+      "chatgpt",
+      "full-stack",
+      "google-auth",
+      "hacktoberfest",
+      "nodejs",
+      "open-source",
+      "openai-api",
+      "postgresql",
+      "prisma",
+      "react",
+      "saas",
+      "saas-boilerplate",
+      "saas-starter",
+      "saas-template",
+      "typesafe",
+      "typescript"
+    ],
+    "author": "wasp-lang",
+    "stars/downloads": 12758,
+    "license": "MIT",
+    "updated_at": "2025-10-16T16:37:56Z",
+    "category": "code",
+    "score": 4.106
   },
   {
     "id": "gh_jina-ai/clip-as-service",
@@ -12006,41 +12042,6 @@
     "score": 4.106
   },
   {
-    "id": "gh_wasp-lang/open-saas",
-    "source_type": "github_repo",
-    "title": "wasp-lang/open-saas",
-    "short_desc": "A free, open-source SaaS app starter for React & Node.js with superpowers. Full-featured. Community-driven.",
-    "url": "https://github.com/wasp-lang/open-saas",
-    "tags": [
-      "ai",
-      "authentication",
-      "aws-s3",
-      "boilerplate",
-      "chatgpt",
-      "full-stack",
-      "google-auth",
-      "hacktoberfest",
-      "nodejs",
-      "open-source",
-      "openai-api",
-      "postgresql",
-      "prisma",
-      "react",
-      "saas",
-      "saas-boilerplate",
-      "saas-starter",
-      "saas-template",
-      "typesafe",
-      "typescript"
-    ],
-    "author": "wasp-lang",
-    "stars/downloads": 12736,
-    "license": "MIT",
-    "updated_at": "2025-10-16T16:37:56Z",
-    "category": "code",
-    "score": 4.105
-  },
-  {
     "id": "gh_Canner/WrenAI",
     "source_type": "github_repo",
     "title": "Canner/WrenAI",
@@ -12068,11 +12069,11 @@
       "vertex"
     ],
     "author": "Canner",
-    "stars/downloads": 12614,
+    "stars/downloads": 12643,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-30T05:22:57Z",
     "category": "code",
-    "score": 4.101
+    "score": 4.102
   },
   {
     "id": "gh_ShishirPatil/gorilla",
@@ -12093,7 +12094,7 @@
     "author": "ShishirPatil",
     "stars/downloads": 12517,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-27T09:01:11Z",
+    "updated_at": "2025-10-30T23:55:43Z",
     "category": "code",
     "score": 4.098
   },
@@ -12110,7 +12111,7 @@
       "python"
     ],
     "author": "FujiwaraChoki",
-    "stars/downloads": 12314,
+    "stars/downloads": 12312,
     "license": "MIT",
     "updated_at": "2025-07-03T14:32:16Z",
     "category": "code",
@@ -12136,9 +12137,9 @@
       "websocket"
     ],
     "author": "cesanta",
-    "stars/downloads": 12282,
+    "stars/downloads": 12283,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-29T20:15:34Z",
+    "updated_at": "2025-10-30T17:50:39Z",
     "category": "code",
     "score": 4.089
   },
@@ -12150,7 +12151,7 @@
     "url": "https://github.com/QwenLM/Qwen-Agent",
     "tags": [],
     "author": "QwenLM",
-    "stars/downloads": 12162,
+    "stars/downloads": 12167,
     "license": "Apache-2.0",
     "updated_at": "2025-09-26T03:53:35Z",
     "category": "code",
@@ -12185,7 +12186,7 @@
       "word-embeddings"
     ],
     "author": "Embedding",
-    "stars/downloads": 12109,
+    "stars/downloads": 12110,
     "license": "Apache-2.0",
     "updated_at": "2023-10-30T14:44:50Z",
     "category": "code",
@@ -12206,7 +12207,7 @@
       "video-generation"
     ],
     "author": "zai-org",
-    "stars/downloads": 12072,
+    "stars/downloads": 12075,
     "license": "Apache-2.0",
     "updated_at": "2025-09-07T12:50:45Z",
     "category": "code",
@@ -12249,7 +12250,7 @@
       "wav2lip"
     ],
     "author": "xszyou",
-    "stars/downloads": 11988,
+    "stars/downloads": 11987,
     "license": "GPL-3.0",
     "updated_at": "2025-10-15T11:57:37Z",
     "category": "code",
@@ -12278,11 +12279,41 @@
       "vectorstore"
     ],
     "author": "h2oai",
-    "stars/downloads": 11940,
+    "stars/downloads": 11941,
     "license": "Apache-2.0",
     "updated_at": "2025-10-09T23:30:01Z",
     "category": "code",
     "score": 4.077
+  },
+  {
+    "id": "gh_GoogleCloudPlatform/generative-ai",
+    "source_type": "github_repo",
+    "title": "GoogleCloudPlatform/generative-ai",
+    "short_desc": "Sample code and notebooks for Generative AI on Google Cloud, with Gemini on Vertex AI",
+    "url": "https://github.com/GoogleCloudPlatform/generative-ai",
+    "tags": [
+      "agents",
+      "gcp",
+      "gemini",
+      "gemini-api",
+      "gen-ai",
+      "generative-ai",
+      "google",
+      "google-cloud",
+      "google-gemini",
+      "langchain",
+      "large-language-models",
+      "llm",
+      "vertex-ai",
+      "vertex-ai-gemini-api",
+      "vertexai"
+    ],
+    "author": "GoogleCloudPlatform",
+    "stars/downloads": 11901,
+    "license": "Apache-2.0",
+    "updated_at": "2025-10-30T17:13:00Z",
+    "category": "code",
+    "score": 4.076
   },
   {
     "id": "gh_RUCAIBox/LLMSurvey",
@@ -12304,7 +12335,7 @@
       "rlhf"
     ],
     "author": "RUCAIBox",
-    "stars/downloads": 11905,
+    "stars/downloads": 11907,
     "license": "",
     "updated_at": "2025-03-11T09:51:42Z",
     "category": "code",
@@ -12333,41 +12364,11 @@
       "toolbox"
     ],
     "author": "DLR-RM",
-    "stars/downloads": 11906,
+    "stars/downloads": 11907,
     "license": "MIT",
     "updated_at": "2025-10-29T21:43:55Z",
     "category": "code",
     "score": 4.076
-  },
-  {
-    "id": "gh_GoogleCloudPlatform/generative-ai",
-    "source_type": "github_repo",
-    "title": "GoogleCloudPlatform/generative-ai",
-    "short_desc": "Sample code and notebooks for Generative AI on Google Cloud, with Gemini on Vertex AI",
-    "url": "https://github.com/GoogleCloudPlatform/generative-ai",
-    "tags": [
-      "agents",
-      "gcp",
-      "gemini",
-      "gemini-api",
-      "gen-ai",
-      "generative-ai",
-      "google",
-      "google-cloud",
-      "google-gemini",
-      "langchain",
-      "large-language-models",
-      "llm",
-      "vertex-ai",
-      "vertex-ai-gemini-api",
-      "vertexai"
-    ],
-    "author": "GoogleCloudPlatform",
-    "stars/downloads": 11893,
-    "license": "Apache-2.0",
-    "updated_at": "2025-10-29T19:46:18Z",
-    "category": "code",
-    "score": 4.075
   },
   {
     "id": "gh_bentoml/OpenLLM",
@@ -12417,11 +12418,34 @@
       "rerank"
     ],
     "author": "QuantumNous",
-    "stars/downloads": 11843,
+    "stars/downloads": 11852,
     "license": "NOASSERTION",
     "updated_at": "2025-10-30T15:28:25Z",
     "category": "code",
-    "score": 4.073
+    "score": 4.074
+  },
+  {
+    "id": "gh_Kilo-Org/kilocode",
+    "source_type": "github_repo",
+    "title": "Kilo-Org/kilocode",
+    "short_desc": "Open Source AI coding assistant for planning, building, and fixing code. We frequently merge features from open-source projects while building our own vision. Follow us: kilocode.ai/social",
+    "url": "https://github.com/Kilo-Org/kilocode",
+    "tags": [
+      "ai-coding",
+      "ai-developer-tools",
+      "chatgpt",
+      "claude",
+      "gemini",
+      "sonnet",
+      "vscode",
+      "vscode-extension"
+    ],
+    "author": "Kilo-Org",
+    "stars/downloads": 11785,
+    "license": "Apache-2.0",
+    "updated_at": "2025-10-31T00:38:10Z",
+    "category": "code",
+    "score": 4.071
   },
   {
     "id": "gh_neuml/txtai",
@@ -12452,32 +12476,9 @@
       "vector-search"
     ],
     "author": "neuml",
-    "stars/downloads": 11757,
+    "stars/downloads": 11758,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-22T17:39:41Z",
-    "category": "code",
-    "score": 4.07
-  },
-  {
-    "id": "gh_Kilo-Org/kilocode",
-    "source_type": "github_repo",
-    "title": "Kilo-Org/kilocode",
-    "short_desc": "Open Source AI coding assistant for planning, building, and fixing code. We frequently merge features from open-source projects while building our own vision. Follow us: kilocode.ai/social",
-    "url": "https://github.com/Kilo-Org/kilocode",
-    "tags": [
-      "ai-coding",
-      "ai-developer-tools",
-      "chatgpt",
-      "claude",
-      "gemini",
-      "sonnet",
-      "vscode",
-      "vscode-extension"
-    ],
-    "author": "Kilo-Org",
-    "stars/downloads": 11751,
-    "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:43:05Z",
+    "updated_at": "2025-10-31T01:37:46Z",
     "category": "code",
     "score": 4.07
   },
@@ -12496,9 +12497,9 @@
       "validation"
     ],
     "author": "567-labs",
-    "stars/downloads": 11724,
+    "stars/downloads": 11728,
     "license": "MIT",
-    "updated_at": "2025-10-29T21:20:51Z",
+    "updated_at": "2025-10-30T21:23:27Z",
     "category": "code",
     "score": 4.069
   },
@@ -12548,11 +12549,11 @@
     "url": "https://github.com/openresty/lua-nginx-module",
     "tags": [],
     "author": "openresty",
-    "stars/downloads": 11654,
+    "stars/downloads": 11655,
     "license": "",
     "updated_at": "2025-10-30T00:30:09Z",
     "category": "code",
-    "score": 4.066
+    "score": 4.067
   },
   {
     "id": "gh_AsyncFuncAI/deepwiki-open",
@@ -12572,7 +12573,7 @@
       "wiki"
     ],
     "author": "AsyncFuncAI",
-    "stars/downloads": 11605,
+    "stars/downloads": 11611,
     "license": "MIT",
     "updated_at": "2025-10-28T06:09:20Z",
     "category": "code",
@@ -12607,11 +12608,11 @@
       "transparency"
     ],
     "author": "elder-plinius",
-    "stars/downloads": 11566,
+    "stars/downloads": 11578,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-29T21:46:36Z",
     "category": "code",
-    "score": 4.063
+    "score": 4.064
   },
   {
     "id": "gh_TheR1D/shell_gpt",
@@ -12637,7 +12638,7 @@
       "terminal"
     ],
     "author": "TheR1D",
-    "stars/downloads": 11482,
+    "stars/downloads": 11484,
     "license": "MIT",
     "updated_at": "2025-10-30T03:33:26Z",
     "category": "code",
@@ -12710,7 +12711,7 @@
       "vision-transformer"
     ],
     "author": "NielsRogge",
-    "stars/downloads": 11315,
+    "stars/downloads": 11316,
     "license": "MIT",
     "updated_at": "2025-07-02T12:45:27Z",
     "category": "code",
@@ -12746,9 +12747,9 @@
       "llmops"
     ],
     "author": "explodinggradients",
-    "stars/downloads": 11248,
+    "stars/downloads": 11251,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:31:22Z",
+    "updated_at": "2025-10-30T18:01:45Z",
     "category": "code",
     "score": 4.051
   },
@@ -12781,7 +12782,7 @@
       "unetplusplus"
     ],
     "author": "qubvel-org",
-    "stars/downloads": 11016,
+    "stars/downloads": 11017,
     "license": "MIT",
     "updated_at": "2025-10-29T01:13:45Z",
     "category": "code",
@@ -12841,7 +12842,7 @@
       "structured-prompts"
     ],
     "author": "langgptai",
-    "stars/downloads": 10983,
+    "stars/downloads": 10985,
     "license": "Apache-2.0",
     "updated_at": "2025-10-24T07:22:16Z",
     "category": "code",
@@ -12924,7 +12925,7 @@
       "web-automation"
     ],
     "author": "nanobrowser",
-    "stars/downloads": 10874,
+    "stars/downloads": 10875,
     "license": "Apache-2.0",
     "updated_at": "2025-10-07T04:11:30Z",
     "category": "code",
@@ -12947,9 +12948,9 @@
       "prompt-engineering"
     ],
     "author": "microsoft",
-    "stars/downloads": 10836,
+    "stars/downloads": 10838,
     "license": "MIT",
-    "updated_at": "2025-10-23T21:21:38Z",
+    "updated_at": "2025-10-31T01:08:11Z",
     "category": "code",
     "score": 4.035
   },
@@ -12977,7 +12978,7 @@
       "youdao"
     ],
     "author": "tisfeng",
-    "stars/downloads": 10798,
+    "stars/downloads": 10800,
     "license": "GPL-3.0",
     "updated_at": "2025-10-25T12:03:11Z",
     "category": "code",
@@ -12998,7 +12999,7 @@
       "text-semantic-similarity"
     ],
     "author": "FlagOpen",
-    "stars/downloads": 10768,
+    "stars/downloads": 10769,
     "license": "MIT",
     "updated_at": "2025-10-22T06:13:59Z",
     "category": "code",
@@ -13086,9 +13087,9 @@
       "voice-recognition"
     ],
     "author": "speechbrain",
-    "stars/downloads": 10635,
+    "stars/downloads": 10643,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T10:20:20Z",
+    "updated_at": "2025-10-31T02:07:39Z",
     "category": "code",
     "score": 4.027
   },
@@ -13110,7 +13111,7 @@
       "transformer"
     ],
     "author": "huggingface",
-    "stars/downloads": 10608,
+    "stars/downloads": 10610,
     "license": "Apache-2.0",
     "updated_at": "2025-09-17T00:46:42Z",
     "category": "code",
@@ -13127,7 +13128,7 @@
       "rag"
     ],
     "author": "datawhalechina",
-    "stars/downloads": 10569,
+    "stars/downloads": 10573,
     "license": "",
     "updated_at": "2025-10-02T11:20:39Z",
     "category": "code",
@@ -13157,7 +13158,7 @@
     "author": "nasa",
     "stars/downloads": 10505,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:04:25Z",
+    "updated_at": "2025-10-31T02:21:55Z",
     "category": "code",
     "score": 4.021
   },
@@ -13190,9 +13191,9 @@
       "rust"
     ],
     "author": "tensorzero",
-    "stars/downloads": 10480,
+    "stars/downloads": 10483,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:14:17Z",
+    "updated_at": "2025-10-31T02:30:46Z",
     "category": "code",
     "score": 4.02
   },
@@ -13216,7 +13217,7 @@
       "streaming-api"
     ],
     "author": "sashabaranov",
-    "stars/downloads": 10353,
+    "stars/downloads": 10352,
     "license": "Apache-2.0",
     "updated_at": "2025-10-21T19:27:34Z",
     "category": "code",
@@ -13234,9 +13235,9 @@
       "typescript"
     ],
     "author": "openai",
-    "stars/downloads": 10298,
+    "stars/downloads": 10300,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T05:07:43Z",
+    "updated_at": "2025-10-30T19:25:15Z",
     "category": "code",
     "score": 4.013
   },
@@ -13269,9 +13270,9 @@
       "typescript"
     ],
     "author": "MODSetter",
-    "stars/downloads": 10204,
+    "stars/downloads": 10218,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T06:53:28Z",
+    "updated_at": "2025-10-30T23:16:26Z",
     "category": "code",
     "score": 4.009
   },
@@ -13332,9 +13333,9 @@
       "webassembly"
     ],
     "author": "WasmEdge",
-    "stars/downloads": 10210,
+    "stars/downloads": 10209,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:56:37Z",
+    "updated_at": "2025-10-30T21:25:00Z",
     "category": "code",
     "score": 4.009
   },
@@ -13378,7 +13379,7 @@
       "typescript"
     ],
     "author": "huggingface",
-    "stars/downloads": 10181,
+    "stars/downloads": 10184,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T21:54:43Z",
     "category": "code",
@@ -13421,7 +13422,7 @@
       "prompt"
     ],
     "author": "0xk1h0",
-    "stars/downloads": 10106,
+    "stars/downloads": 10107,
     "license": "",
     "updated_at": "2024-08-17T04:06:53Z",
     "category": "code",
@@ -13435,7 +13436,7 @@
     "url": "https://github.com/sparksuite/simplemde-markdown-editor",
     "tags": [],
     "author": "sparksuite",
-    "stars/downloads": 10112,
+    "stars/downloads": 10111,
     "license": "MIT",
     "updated_at": "2024-06-11T05:28:19Z",
     "category": "code",
@@ -13453,7 +13454,7 @@
       "openai"
     ],
     "author": "simonw",
-    "stars/downloads": 10019,
+    "stars/downloads": 10020,
     "license": "Apache-2.0",
     "updated_at": "2025-10-16T00:18:38Z",
     "category": "code",
@@ -13526,7 +13527,7 @@
       "webdav"
     ],
     "author": "codexu",
-    "stars/downloads": 9842,
+    "stars/downloads": 9845,
     "license": "GPL-3.0",
     "updated_at": "2025-10-30T06:49:12Z",
     "category": "code",
@@ -13561,7 +13562,7 @@
       "workflow"
     ],
     "author": "dataelement",
-    "stars/downloads": 9837,
+    "stars/downloads": 9836,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T13:23:03Z",
     "category": "code",
@@ -13575,7 +13576,7 @@
     "url": "https://github.com/Const-me/Whisper",
     "tags": [],
     "author": "Const-me",
-    "stars/downloads": 9845,
+    "stars/downloads": 9847,
     "license": "MPL-2.0",
     "updated_at": "2024-08-03T02:35:39Z",
     "category": "code",
@@ -13610,11 +13611,11 @@
       "retrieval-augmented-generation"
     ],
     "author": "HKUDS",
-    "stars/downloads": 9780,
+    "stars/downloads": 9793,
     "license": "MIT",
     "updated_at": "2025-10-20T07:46:31Z",
     "category": "code",
-    "score": 3.99
+    "score": 3.991
   },
   {
     "id": "gh_Portkey-AI/gateway",
@@ -13640,11 +13641,11 @@
       "openai"
     ],
     "author": "Portkey-AI",
-    "stars/downloads": 9759,
+    "stars/downloads": 9764,
     "license": "MIT",
     "updated_at": "2025-10-29T13:54:37Z",
     "category": "code",
-    "score": 3.989
+    "score": 3.99
   },
   {
     "id": "gh_e2b-dev/E2B",
@@ -13675,7 +13676,7 @@
     "author": "e2b-dev",
     "stars/downloads": 9752,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:11:39Z",
+    "updated_at": "2025-10-31T00:14:02Z",
     "category": "code",
     "score": 3.989
   },
@@ -13708,9 +13709,9 @@
       "xaml"
     ],
     "author": "unoplatform",
-    "stars/downloads": 9675,
+    "stars/downloads": 9676,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:13:37Z",
+    "updated_at": "2025-10-31T01:52:03Z",
     "category": "code",
     "score": 3.986
   },
@@ -13784,7 +13785,7 @@
       "vector-database"
     ],
     "author": "langchain4j",
-    "stars/downloads": 9449,
+    "stars/downloads": 9451,
     "license": "Apache-2.0",
     "updated_at": "2025-10-28T11:02:38Z",
     "category": "code",
@@ -13851,11 +13852,11 @@
       "swarm-intelligence"
     ],
     "author": "ruvnet",
-    "stars/downloads": 9428,
+    "stars/downloads": 9436,
     "license": "MIT",
     "updated_at": "2025-10-27T10:19:26Z",
     "category": "code",
-    "score": 3.974
+    "score": 3.975
   },
   {
     "id": "gh_Fechin/reference",
@@ -13880,7 +13881,7 @@
       "vim"
     ],
     "author": "Fechin",
-    "stars/downloads": 9350,
+    "stars/downloads": 9351,
     "license": "GPL-3.0",
     "updated_at": "2025-10-14T10:23:00Z",
     "category": "code",
@@ -13905,7 +13906,7 @@
       "xgo"
     ],
     "author": "goplus",
-    "stars/downloads": 9342,
+    "stars/downloads": 9343,
     "license": "Apache-2.0",
     "updated_at": "2025-10-26T23:28:10Z",
     "category": "code",
@@ -13934,7 +13935,7 @@
       "whisper"
     ],
     "author": "niedev",
-    "stars/downloads": 9307,
+    "stars/downloads": 9308,
     "license": "Apache-2.0",
     "updated_at": "2025-10-28T20:16:51Z",
     "category": "code",
@@ -13952,9 +13953,9 @@
       "stable-diffusion"
     ],
     "author": "Acly",
-    "stars/downloads": 9304,
+    "stars/downloads": 9305,
     "license": "GPL-3.0",
-    "updated_at": "2025-10-28T18:33:31Z",
+    "updated_at": "2025-10-30T22:26:39Z",
     "category": "code",
     "score": 3.969
   },
@@ -14037,7 +14038,7 @@
       "whois-lookup"
     ],
     "author": "jason5ng32",
-    "stars/downloads": 9209,
+    "stars/downloads": 9212,
     "license": "MIT",
     "updated_at": "2025-09-26T02:51:52Z",
     "category": "code",
@@ -14051,7 +14052,7 @@
     "url": "https://github.com/etcd-io/bbolt",
     "tags": [],
     "author": "etcd-io",
-    "stars/downloads": 9166,
+    "stars/downloads": 9167,
     "license": "MIT",
     "updated_at": "2025-10-16T08:27:39Z",
     "category": "code",
@@ -14071,7 +14072,7 @@
       "vision-language-transformer"
     ],
     "author": "IDEA-Research",
-    "stars/downloads": 9159,
+    "stars/downloads": 9163,
     "license": "Apache-2.0",
     "updated_at": "2024-08-12T08:52:02Z",
     "category": "code",
@@ -14105,11 +14106,11 @@
       "yolo"
     ],
     "author": "openvinotoolkit",
-    "stars/downloads": 9130,
+    "stars/downloads": 9134,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:05:19Z",
+    "updated_at": "2025-10-31T02:36:38Z",
     "category": "code",
-    "score": 3.96
+    "score": 3.961
   },
   {
     "id": "gh_dice2o/BingGPT",
@@ -14194,26 +14195,6 @@
     "score": 3.956
   },
   {
-    "id": "gh_kyrolabs/awesome-langchain",
-    "source_type": "github_repo",
-    "title": "kyrolabs/awesome-langchain",
-    "short_desc": "😎 Awesome list of tools and projects with the awesome LangChain framework",
-    "url": "https://github.com/kyrolabs/awesome-langchain",
-    "tags": [
-      "ai",
-      "awesome",
-      "awesome-list",
-      "langchain",
-      "llm"
-    ],
-    "author": "kyrolabs",
-    "stars/downloads": 8901,
-    "license": "CC0-1.0",
-    "updated_at": "2025-10-23T18:30:44Z",
-    "category": "code",
-    "score": 3.949
-  },
-  {
     "id": "gh_promptfoo/promptfoo",
     "source_type": "github_repo",
     "title": "promptfoo/promptfoo",
@@ -14240,9 +14221,29 @@
       "vulnerability-scanners"
     ],
     "author": "promptfoo",
-    "stars/downloads": 8902,
+    "stars/downloads": 8906,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:05:40Z",
+    "updated_at": "2025-10-31T01:46:46Z",
+    "category": "code",
+    "score": 3.95
+  },
+  {
+    "id": "gh_kyrolabs/awesome-langchain",
+    "source_type": "github_repo",
+    "title": "kyrolabs/awesome-langchain",
+    "short_desc": "😎 Awesome list of tools and projects with the awesome LangChain framework",
+    "url": "https://github.com/kyrolabs/awesome-langchain",
+    "tags": [
+      "ai",
+      "awesome",
+      "awesome-list",
+      "langchain",
+      "llm"
+    ],
+    "author": "kyrolabs",
+    "stars/downloads": 8902,
+    "license": "CC0-1.0",
+    "updated_at": "2025-10-23T18:30:44Z",
     "category": "code",
     "score": 3.949
   },
@@ -14275,7 +14276,7 @@
       "vector-search"
     ],
     "author": "activeloopai",
-    "stars/downloads": 8876,
+    "stars/downloads": 8878,
     "license": "Apache-2.0",
     "updated_at": "2025-10-24T19:03:18Z",
     "category": "code",
@@ -14304,7 +14305,7 @@
       "streaming"
     ],
     "author": "apache",
-    "stars/downloads": 8848,
+    "stars/downloads": 8849,
     "license": "Apache-2.0",
     "updated_at": "2025-10-28T01:40:18Z",
     "category": "code",
@@ -14318,7 +14319,7 @@
     "url": "https://github.com/facebookresearch/ImageBind",
     "tags": [],
     "author": "facebookresearch",
-    "stars/downloads": 8843,
+    "stars/downloads": 8844,
     "license": "NOASSERTION",
     "updated_at": "2025-10-03T16:36:13Z",
     "category": "code",
@@ -14332,7 +14333,7 @@
     "url": "https://github.com/vikhyat/moondream",
     "tags": [],
     "author": "vikhyat",
-    "stars/downloads": 8856,
+    "stars/downloads": 8858,
     "license": "Apache-2.0",
     "updated_at": "2025-09-24T17:31:29Z",
     "category": "code",
@@ -14386,7 +14387,7 @@
       "tree"
     ],
     "author": "spacejam",
-    "stars/downloads": 8752,
+    "stars/downloads": 8754,
     "license": "Apache-2.0",
     "updated_at": "2025-05-16T10:17:32Z",
     "category": "code",
@@ -14421,7 +14422,7 @@
       "windows"
     ],
     "author": "k2-fsa",
-    "stars/downloads": 8653,
+    "stars/downloads": 8656,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T01:30:56Z",
     "category": "code",
@@ -14482,7 +14483,7 @@
       "voice-activity-detection"
     ],
     "author": "pyannote",
-    "stars/downloads": 8596,
+    "stars/downloads": 8599,
     "license": "MIT",
     "updated_at": "2025-10-23T05:46:05Z",
     "category": "code",
@@ -14572,7 +14573,7 @@
       "webui"
     ],
     "author": "sigoden",
-    "stars/downloads": 8433,
+    "stars/downloads": 8438,
     "license": "Apache-2.0",
     "updated_at": "2025-10-10T03:07:46Z",
     "category": "code",
@@ -14688,7 +14689,7 @@
       "software-engineer"
     ],
     "author": "m3y54m",
-    "stars/downloads": 8251,
+    "stars/downloads": 8263,
     "license": "CC-BY-SA-4.0",
     "updated_at": "2025-10-06T16:54:30Z",
     "category": "code",
@@ -14708,7 +14709,7 @@
       "trustfulness"
     ],
     "author": "OpenSPG",
-    "stars/downloads": 8119,
+    "stars/downloads": 8120,
     "license": "Apache-2.0",
     "updated_at": "2025-09-22T06:49:24Z",
     "category": "code",
@@ -14764,7 +14765,7 @@
       "llm-application"
     ],
     "author": "cloudwego",
-    "stars/downloads": 7905,
+    "stars/downloads": 7910,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T13:02:21Z",
     "category": "code",
@@ -14783,7 +14784,7 @@
       "langchain"
     ],
     "author": "tmc",
-    "stars/downloads": 7898,
+    "stars/downloads": 7900,
     "license": "MIT",
     "updated_at": "2025-10-20T05:25:11Z",
     "category": "code",
@@ -14830,7 +14831,7 @@
       "stable-diffusion"
     ],
     "author": "TheLastBen",
-    "stars/downloads": 7859,
+    "stars/downloads": 7858,
     "license": "MIT",
     "updated_at": "2025-08-25T20:27:50Z",
     "category": "code",
@@ -14853,9 +14854,9 @@
       "vector-database"
     ],
     "author": "lancedb",
-    "stars/downloads": 7849,
+    "stars/downloads": 7853,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T00:28:26Z",
+    "updated_at": "2025-10-31T01:14:42Z",
     "category": "code",
     "score": 3.895
   },
@@ -14888,9 +14889,9 @@
       "vector-database"
     ],
     "author": "topoteretes",
-    "stars/downloads": 7817,
+    "stars/downloads": 7818,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:13:28Z",
+    "updated_at": "2025-10-30T21:23:12Z",
     "category": "code",
     "score": 3.893
   },
@@ -14912,7 +14913,7 @@
       "swiftui"
     ],
     "author": "MochiDiffusion",
-    "stars/downloads": 7792,
+    "stars/downloads": 7791,
     "license": "GPL-3.0",
     "updated_at": "2025-10-27T00:05:54Z",
     "category": "code",
@@ -14967,7 +14968,7 @@
     "author": "Future-House",
     "stars/downloads": 7789,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-29T21:50:38Z",
+    "updated_at": "2025-10-31T00:40:17Z",
     "category": "code",
     "score": 3.891
   },
@@ -15010,7 +15011,7 @@
       "visualization"
     ],
     "author": "jessevig",
-    "stars/downloads": 7726,
+    "stars/downloads": 7727,
     "license": "Apache-2.0",
     "updated_at": "2025-06-01T14:38:39Z",
     "category": "code",
@@ -15031,9 +15032,9 @@
       "rust"
     ],
     "author": "embassy-rs",
-    "stars/downloads": 7673,
+    "stars/downloads": 7678,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T13:04:42Z",
+    "updated_at": "2025-10-30T18:14:03Z",
     "category": "code",
     "score": 3.885
   },
@@ -15107,9 +15108,9 @@
       "smolagents"
     ],
     "author": "Arize-ai",
-    "stars/downloads": 7563,
+    "stars/downloads": 7566,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T16:10:15Z",
+    "updated_at": "2025-10-31T03:30:59Z",
     "category": "code",
     "score": 3.879
   },
@@ -15182,7 +15183,7 @@
       "rust"
     ],
     "author": "rust-embedded",
-    "stars/downloads": 7424,
+    "stars/downloads": 7425,
     "license": "NOASSERTION",
     "updated_at": "2025-10-09T10:17:13Z",
     "category": "code",
@@ -15196,7 +15197,7 @@
     "url": "https://github.com/weaviate/Verba",
     "tags": [],
     "author": "weaviate",
-    "stars/downloads": 7407,
+    "stars/downloads": 7408,
     "license": "BSD-3-Clause",
     "updated_at": "2025-07-14T11:24:41Z",
     "category": "code",
@@ -15219,7 +15220,7 @@
       "search"
     ],
     "author": "SciPhi-AI",
-    "stars/downloads": 7405,
+    "stars/downloads": 7406,
     "license": "MIT",
     "updated_at": "2025-08-17T17:40:05Z",
     "category": "code",
@@ -15331,11 +15332,11 @@
       "stable-diffusion"
     ],
     "author": "AbdullahAlfaraj",
-    "stars/downloads": 7153,
+    "stars/downloads": 7154,
     "license": "MIT",
     "updated_at": "2024-04-22T18:44:01Z",
     "category": "code",
-    "score": 3.854
+    "score": 3.855
   },
   {
     "id": "gh_MaartenGr/BERTopic",
@@ -15356,7 +15357,7 @@
       "transformers"
     ],
     "author": "MaartenGr",
-    "stars/downloads": 7135,
+    "stars/downloads": 7136,
     "license": "MIT",
     "updated_at": "2025-10-25T07:33:55Z",
     "category": "code",
@@ -15370,7 +15371,7 @@
     "url": "https://github.com/stanfordnlp/GloVe",
     "tags": [],
     "author": "stanfordnlp",
-    "stars/downloads": 7122,
+    "stars/downloads": 7124,
     "license": "Apache-2.0",
     "updated_at": "2025-07-27T18:05:10Z",
     "category": "code",
@@ -15402,7 +15403,7 @@
       "zilliz"
     ],
     "author": "zilliztech",
-    "stars/downloads": 7098,
+    "stars/downloads": 7099,
     "license": "Apache-2.0",
     "updated_at": "2025-07-10T12:40:41Z",
     "category": "code",
@@ -15433,7 +15434,7 @@
       "web-scraping"
     ],
     "author": "apify",
-    "stars/downloads": 7080,
+    "stars/downloads": 7083,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T15:03:37Z",
     "category": "code",
@@ -15456,7 +15457,7 @@
       "json"
     ],
     "author": "bblanchon",
-    "stars/downloads": 7046,
+    "stars/downloads": 7047,
     "license": "MIT",
     "updated_at": "2025-10-24T14:19:09Z",
     "category": "code",
@@ -15476,11 +15477,46 @@
       "mcp"
     ],
     "author": "Arindam200",
-    "stars/downloads": 7022,
+    "stars/downloads": 7035,
     "license": "MIT",
     "updated_at": "2025-10-29T15:39:12Z",
     "category": "code",
-    "score": 3.846
+    "score": 3.847
+  },
+  {
+    "id": "gh_Tencent/WeKnora",
+    "source_type": "github_repo",
+    "title": "Tencent/WeKnora",
+    "short_desc": "LLM-powered framework for deep document understanding, semantic retrieval, and context-aware answers using RAG paradigm.",
+    "url": "https://github.com/Tencent/WeKnora",
+    "tags": [
+      "agent",
+      "agentic",
+      "ai",
+      "chatbot",
+      "chatbots",
+      "embeddings",
+      "evaluation",
+      "generative-ai",
+      "golang",
+      "knowledge-base",
+      "llm",
+      "multi-tenant",
+      "multimodel",
+      "ollama",
+      "openai",
+      "question-answering",
+      "rag",
+      "reranking",
+      "semantic-search",
+      "vector-search"
+    ],
+    "author": "Tencent",
+    "stars/downloads": 6957,
+    "license": "NOASSERTION",
+    "updated_at": "2025-10-30T10:08:47Z",
+    "category": "code",
+    "score": 3.842
   },
   {
     "id": "gh_ZHO-ZHO-ZHO/ComfyUI-Workflows-ZHO",
@@ -15516,7 +15552,7 @@
       "wenxinyiyan"
     ],
     "author": "mylxsw",
-    "stars/downloads": 6887,
+    "stars/downloads": 6888,
     "license": "MIT",
     "updated_at": "2025-08-03T09:04:46Z",
     "category": "code",
@@ -15534,46 +15570,11 @@
       "stable-diffusion"
     ],
     "author": "civitai",
-    "stars/downloads": 6867,
+    "stars/downloads": 6869,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T05:03:56Z",
+    "updated_at": "2025-10-30T20:50:02Z",
     "category": "code",
     "score": 3.837
-  },
-  {
-    "id": "gh_Tencent/WeKnora",
-    "source_type": "github_repo",
-    "title": "Tencent/WeKnora",
-    "short_desc": "LLM-powered framework for deep document understanding, semantic retrieval, and context-aware answers using RAG paradigm.",
-    "url": "https://github.com/Tencent/WeKnora",
-    "tags": [
-      "agent",
-      "agentic",
-      "ai",
-      "chatbot",
-      "chatbots",
-      "embeddings",
-      "evaluation",
-      "generative-ai",
-      "golang",
-      "knowledge-base",
-      "llm",
-      "multi-tenant",
-      "multimodel",
-      "ollama",
-      "openai",
-      "question-answering",
-      "rag",
-      "reranking",
-      "semantic-search",
-      "vector-search"
-    ],
-    "author": "Tencent",
-    "stars/downloads": 6835,
-    "license": "NOASSERTION",
-    "updated_at": "2025-10-30T10:08:47Z",
-    "category": "code",
-    "score": 3.835
   },
   {
     "id": "gh_techfort/LokiJS",
@@ -15583,7 +15584,7 @@
     "url": "https://github.com/techfort/LokiJS",
     "tags": [],
     "author": "techfort",
-    "stars/downloads": 6829,
+    "stars/downloads": 6830,
     "license": "MIT",
     "updated_at": "2023-06-22T14:01:04Z",
     "category": "code",
@@ -15597,7 +15598,7 @@
     "url": "https://github.com/apple/ml-fastvlm",
     "tags": [],
     "author": "apple",
-    "stars/downloads": 6825,
+    "stars/downloads": 6827,
     "license": "NOASSERTION",
     "updated_at": "2025-05-05T22:59:29Z",
     "category": "code",
@@ -15621,9 +15622,9 @@
       "text2image"
     ],
     "author": "LykosAI",
-    "stars/downloads": 6810,
+    "stars/downloads": 6815,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-27T23:13:49Z",
+    "updated_at": "2025-10-31T02:11:24Z",
     "category": "code",
     "score": 3.833
   },
@@ -15649,9 +15650,9 @@
       "webui"
     ],
     "author": "vladmandic",
-    "stars/downloads": 6687,
+    "stars/downloads": 6689,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T00:42:01Z",
+    "updated_at": "2025-10-31T00:08:00Z",
     "category": "code",
     "score": 3.825
   },
@@ -15731,9 +15732,9 @@
       "vespa"
     ],
     "author": "vespa-engine",
-    "stars/downloads": 6517,
+    "stars/downloads": 6518,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:18:11Z",
+    "updated_at": "2025-10-30T21:29:48Z",
     "category": "code",
     "score": 3.814
   },
@@ -15782,11 +15783,11 @@
       "webui"
     ],
     "author": "WangRongsheng",
-    "stars/downloads": 6493,
+    "stars/downloads": 6501,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T11:21:53Z",
     "category": "code",
-    "score": 3.812
+    "score": 3.813
   },
   {
     "id": "gh_purocean/yn",
@@ -15816,11 +15817,11 @@
       "vue"
     ],
     "author": "purocean",
-    "stars/downloads": 6403,
+    "stars/downloads": 6405,
     "license": "AGPL-3.0",
     "updated_at": "2025-10-21T15:10:58Z",
     "category": "code",
-    "score": 3.806
+    "score": 3.807
   },
   {
     "id": "gh_QwenLM/Qwen-VL",
@@ -15885,7 +15886,7 @@
       "tutorial"
     ],
     "author": "SkalskiP",
-    "stars/downloads": 6219,
+    "stars/downloads": 6220,
     "license": "",
     "updated_at": "2024-04-22T09:19:00Z",
     "category": "code",
@@ -15927,7 +15928,7 @@
       "serial-studio"
     ],
     "author": "Serial-Studio",
-    "stars/downloads": 6204,
+    "stars/downloads": 6205,
     "license": "NOASSERTION",
     "updated_at": "2025-10-27T04:51:57Z",
     "category": "code",
@@ -15974,7 +15975,7 @@
       "webusb"
     ],
     "author": "hathach",
-    "stars/downloads": 6189,
+    "stars/downloads": 6192,
     "license": "MIT",
     "updated_at": "2025-10-30T13:39:51Z",
     "category": "code",
@@ -15988,7 +15989,7 @@
     "url": "https://github.com/meta-pytorch/gpt-fast",
     "tags": [],
     "author": "meta-pytorch",
-    "stars/downloads": 6138,
+    "stars/downloads": 6140,
     "license": "BSD-3-Clause",
     "updated_at": "2025-08-22T23:37:14Z",
     "category": "code",
@@ -16033,11 +16034,11 @@
       "webassembly"
     ],
     "author": "boa-dev",
-    "stars/downloads": 6114,
+    "stars/downloads": 6120,
     "license": "MIT",
     "updated_at": "2025-10-29T20:24:23Z",
     "category": "code",
-    "score": 3.786
+    "score": 3.787
   },
   {
     "id": "gh_swyxio/ai-notes",
@@ -16055,7 +16056,7 @@
       "stable-diffusion"
     ],
     "author": "swyxio",
-    "stars/downloads": 6077,
+    "stars/downloads": 6078,
     "license": "MIT",
     "updated_at": "2025-09-15T03:17:56Z",
     "category": "code",
@@ -16133,7 +16134,7 @@
       "python"
     ],
     "author": "cvxpy",
-    "stars/downloads": 5981,
+    "stars/downloads": 5982,
     "license": "Apache-2.0",
     "updated_at": "2025-10-27T12:05:31Z",
     "category": "code",
@@ -16182,7 +16183,7 @@
       "transformers"
     ],
     "author": "microsoft",
-    "stars/downloads": 5954,
+    "stars/downloads": 5956,
     "license": "MIT",
     "updated_at": "2025-10-30T15:24:00Z",
     "category": "code",
@@ -16208,7 +16209,7 @@
       "windows"
     ],
     "author": "go-flutter-desktop",
-    "stars/downloads": 5932,
+    "stars/downloads": 5931,
     "license": "BSD-3-Clause",
     "updated_at": "2025-10-08T17:02:59Z",
     "category": "code",
@@ -16236,7 +16237,7 @@
     "url": "https://github.com/QwenLM/Qwen-Image",
     "tags": [],
     "author": "QwenLM",
-    "stars/downloads": 5857,
+    "stars/downloads": 5858,
     "license": "Apache-2.0",
     "updated_at": "2025-09-30T10:19:02Z",
     "category": "code",
@@ -16250,7 +16251,7 @@
     "url": "https://github.com/langchain-ai/rag-from-scratch",
     "tags": [],
     "author": "langchain-ai",
-    "stars/downloads": 5788,
+    "stars/downloads": 5789,
     "license": "",
     "updated_at": "2025-06-26T03:16:10Z",
     "category": "code",
@@ -16283,7 +16284,7 @@
       "stable-diffusion"
     ],
     "author": "Akegarasu",
-    "stars/downloads": 5763,
+    "stars/downloads": 5762,
     "license": "AGPL-3.0",
     "updated_at": "2025-09-08T09:56:23Z",
     "category": "code",
@@ -16368,9 +16369,9 @@
       "rust"
     ],
     "author": "lancedb",
-    "stars/downloads": 5613,
+    "stars/downloads": 5615,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:28:05Z",
+    "updated_at": "2025-10-31T00:48:08Z",
     "category": "code",
     "score": 3.749
   },
@@ -16454,7 +16455,7 @@
     "author": "NexaAI",
     "stars/downloads": 5575,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:50:56Z",
+    "updated_at": "2025-10-31T03:31:58Z",
     "category": "code",
     "score": 3.746
   },
@@ -16487,11 +16488,11 @@
       "workflow"
     ],
     "author": "PySpur-Dev",
-    "stars/downloads": 5565,
+    "stars/downloads": 5567,
     "license": "Apache-2.0",
     "updated_at": "2025-07-20T19:18:16Z",
     "category": "code",
-    "score": 3.745
+    "score": 3.746
   },
   {
     "id": "gh_salesforce/BLIP",
@@ -16530,9 +16531,9 @@
       "rag"
     ],
     "author": "logancyang",
-    "stars/downloads": 5534,
+    "stars/downloads": 5535,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T06:02:12Z",
+    "updated_at": "2025-10-30T23:58:34Z",
     "category": "code",
     "score": 3.743
   },
@@ -16544,7 +16545,7 @@
     "url": "https://github.com/rednote-hilab/dots.ocr",
     "tags": [],
     "author": "rednote-hilab",
-    "stars/downloads": 5507,
+    "stars/downloads": 5508,
     "license": "MIT",
     "updated_at": "2025-10-11T06:57:00Z",
     "category": "code",
@@ -16563,7 +16564,7 @@
       "rag"
     ],
     "author": "timescale",
-    "stars/downloads": 5466,
+    "stars/downloads": 5469,
     "license": "PostgreSQL",
     "updated_at": "2025-10-29T22:16:32Z",
     "category": "code",
@@ -16634,9 +16635,9 @@
       "tree-of-thoughts"
     ],
     "author": "kyegomez",
-    "stars/downloads": 5350,
+    "stars/downloads": 5351,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T00:55:53Z",
+    "updated_at": "2025-10-31T02:03:32Z",
     "category": "code",
     "score": 3.728
   },
@@ -16740,7 +16741,7 @@
       "vector-search"
     ],
     "author": "superduper-io",
-    "stars/downloads": 5220,
+    "stars/downloads": 5219,
     "license": "Apache-2.0",
     "updated_at": "2025-09-01T15:20:18Z",
     "category": "code",
@@ -16764,7 +16765,7 @@
       "whisper"
     ],
     "author": "argmaxinc",
-    "stars/downloads": 5160,
+    "stars/downloads": 5161,
     "license": "MIT",
     "updated_at": "2025-10-17T00:54:04Z",
     "category": "code",
@@ -16836,9 +16837,9 @@
       "prompt-management"
     ],
     "author": "coze-dev",
-    "stars/downloads": 5048,
+    "stars/downloads": 5050,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:10:45Z",
+    "updated_at": "2025-10-31T03:27:16Z",
     "category": "code",
     "score": 3.703
   },
@@ -16929,7 +16930,7 @@
     "author": "AgentOps-AI",
     "stars/downloads": 4997,
     "license": "MIT",
-    "updated_at": "2025-10-23T02:20:09Z",
+    "updated_at": "2025-10-30T18:52:13Z",
     "category": "code",
     "score": 3.699
   },
@@ -16964,7 +16965,7 @@
     "author": "marqo-ai",
     "stars/downloads": 4984,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T11:20:46Z",
+    "updated_at": "2025-10-31T03:13:13Z",
     "category": "code",
     "score": 3.698
   },
@@ -16986,7 +16987,7 @@
       "rag"
     ],
     "author": "potpie-ai",
-    "stars/downloads": 4988,
+    "stars/downloads": 4989,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T08:24:54Z",
     "category": "code",
@@ -17028,9 +17029,9 @@
       "scripting-language"
     ],
     "author": "luau-lang",
-    "stars/downloads": 4976,
+    "stars/downloads": 4979,
     "license": "MIT",
-    "updated_at": "2025-10-29T18:51:49Z",
+    "updated_at": "2025-10-31T03:18:46Z",
     "category": "code",
     "score": 3.697
   },
@@ -17051,7 +17052,7 @@
       "translation"
     ],
     "author": "argosopentech",
-    "stars/downloads": 4970,
+    "stars/downloads": 4971,
     "license": "MIT",
     "updated_at": "2025-10-21T09:36:24Z",
     "category": "code",
@@ -17084,7 +17085,7 @@
       "vit"
     ],
     "author": "cmhungsteve",
-    "stars/downloads": 4957,
+    "stars/downloads": 4958,
     "license": "",
     "updated_at": "2024-07-30T06:57:18Z",
     "category": "code",
@@ -17127,7 +17128,7 @@
       "webassembly"
     ],
     "author": "rhaiscript",
-    "stars/downloads": 4950,
+    "stars/downloads": 4951,
     "license": "Apache-2.0",
     "updated_at": "2025-10-26T23:42:45Z",
     "category": "code",
@@ -17174,6 +17175,29 @@
     "score": 3.688
   },
   {
+    "id": "gh_firebase/genkit",
+    "source_type": "github_repo",
+    "title": "firebase/genkit",
+    "short_desc": "Open-source framework for building AI-powered apps in JavaScript, Go, and Python, built and used in production by Google",
+    "url": "https://github.com/firebase/genkit",
+    "tags": [
+      "agents",
+      "ai",
+      "embedders",
+      "genkit",
+      "llm",
+      "multimodal",
+      "rag",
+      "vector-database"
+    ],
+    "author": "firebase",
+    "stars/downloads": 4870,
+    "license": "Apache-2.0",
+    "updated_at": "2025-10-31T00:53:59Z",
+    "category": "code",
+    "score": 3.688
+  },
+  {
     "id": "gh_shibing624/text2vec",
     "source_type": "github_repo",
     "title": "shibing624/text2vec",
@@ -17196,29 +17220,6 @@
     "score": 3.688
   },
   {
-    "id": "gh_firebase/genkit",
-    "source_type": "github_repo",
-    "title": "firebase/genkit",
-    "short_desc": "Open-source framework for building AI-powered apps in JavaScript, Go, and Python, built and used in production by Google",
-    "url": "https://github.com/firebase/genkit",
-    "tags": [
-      "agents",
-      "ai",
-      "embedders",
-      "genkit",
-      "llm",
-      "multimodal",
-      "rag",
-      "vector-database"
-    ],
-    "author": "firebase",
-    "stars/downloads": 4867,
-    "license": "Apache-2.0",
-    "updated_at": "2025-10-30T14:36:04Z",
-    "category": "code",
-    "score": 3.687
-  },
-  {
     "id": "gh_philz1337x/clarity-upscaler",
     "source_type": "github_repo",
     "title": "philz1337x/clarity-upscaler",
@@ -17239,7 +17240,7 @@
       "upscalerimage"
     ],
     "author": "philz1337x",
-    "stars/downloads": 4845,
+    "stars/downloads": 4846,
     "license": "AGPL-3.0",
     "updated_at": "2025-03-06T05:43:49Z",
     "category": "code",
@@ -17399,9 +17400,9 @@
       "workflow"
     ],
     "author": "refly-ai",
-    "stars/downloads": 4767,
+    "stars/downloads": 4766,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T14:52:34Z",
+    "updated_at": "2025-10-31T03:13:30Z",
     "category": "code",
     "score": 3.678
   },
@@ -17419,7 +17420,7 @@
     "author": "ParisNeo",
     "stars/downloads": 4764,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T13:02:46Z",
+    "updated_at": "2025-10-30T17:47:45Z",
     "category": "code",
     "score": 3.678
   },
@@ -17491,7 +17492,7 @@
       "weakly-supervised-learning"
     ],
     "author": "argilla-io",
-    "stars/downloads": 4737,
+    "stars/downloads": 4738,
     "license": "Apache-2.0",
     "updated_at": "2025-10-27T21:27:30Z",
     "category": "code",
@@ -17547,7 +17548,7 @@
       "sql"
     ],
     "author": "SPLWare",
-    "stars/downloads": 4676,
+    "stars/downloads": 4677,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T03:21:30Z",
     "category": "code",
@@ -17583,7 +17584,7 @@
     "author": "Helicone",
     "stars/downloads": 4654,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T16:21:25Z",
+    "updated_at": "2025-10-31T00:11:40Z",
     "category": "code",
     "score": 3.668
   },
@@ -17601,7 +17602,7 @@
       "rag"
     ],
     "author": "luhengshiwo",
-    "stars/downloads": 4635,
+    "stars/downloads": 4636,
     "license": "Apache-2.0",
     "updated_at": "2025-10-13T07:02:32Z",
     "category": "code",
@@ -17622,9 +17623,9 @@
       "transformers"
     ],
     "author": "NVlabs",
-    "stars/downloads": 4623,
+    "stars/downloads": 4626,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T09:26:28Z",
+    "updated_at": "2025-10-31T02:53:45Z",
     "category": "code",
     "score": 3.665
   },
@@ -17709,7 +17710,7 @@
       "word-embeddings"
     ],
     "author": "bentrevett",
-    "stars/downloads": 4554,
+    "stars/downloads": 4555,
     "license": "MIT",
     "updated_at": "2024-03-27T17:27:27Z",
     "category": "code",
@@ -17817,9 +17818,9 @@
       "transformers"
     ],
     "author": "transformerlab",
-    "stars/downloads": 4473,
+    "stars/downloads": 4475,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T15:54:39Z",
+    "updated_at": "2025-10-30T18:45:16Z",
     "category": "code",
     "score": 3.651
   },
@@ -17871,7 +17872,7 @@
       "transformers"
     ],
     "author": "kermitt2",
-    "stars/downloads": 4394,
+    "stars/downloads": 4395,
     "license": "Apache-2.0",
     "updated_at": "2025-10-29T16:48:56Z",
     "category": "code",
@@ -17893,7 +17894,7 @@
       "stable-diffusion"
     ],
     "author": "yangjian102621",
-    "stars/downloads": 4394,
+    "stars/downloads": 4395,
     "license": "Apache-2.0",
     "updated_at": "2025-10-27T08:50:17Z",
     "category": "code",
@@ -17926,11 +17927,53 @@
       "retrieval-augmented-generation"
     ],
     "author": "Marker-Inc-Korea",
-    "stars/downloads": 4380,
+    "stars/downloads": 4382,
     "license": "Apache-2.0",
     "updated_at": "2025-10-13T05:33:43Z",
     "category": "code",
-    "score": 3.641
+    "score": 3.642
+  },
+  {
+    "id": "gh_luban-agi/Awesome-AIGC-Tutorials",
+    "source_type": "github_repo",
+    "title": "luban-agi/Awesome-AIGC-Tutorials",
+    "short_desc": "Curated tutorials and resources for Large Language Models, AI Painting, and more.",
+    "url": "https://github.com/luban-agi/Awesome-AIGC-Tutorials",
+    "tags": [
+      "ai",
+      "aigc",
+      "awesome",
+      "chatgpt",
+      "courses-resource",
+      "deep-learning",
+      "llm",
+      "midjourney",
+      "multimodal",
+      "nlp",
+      "prompt-engineering",
+      "stable-diffusion",
+      "tutorials"
+    ],
+    "author": "luban-agi",
+    "stars/downloads": 4367,
+    "license": "MIT",
+    "updated_at": "2024-03-31T09:18:04Z",
+    "category": "code",
+    "score": 3.64
+  },
+  {
+    "id": "gh_showlab/Tune-A-Video",
+    "source_type": "github_repo",
+    "title": "showlab/Tune-A-Video",
+    "short_desc": "[ICCV 2023] Tune-A-Video: One-Shot Tuning of Image Diffusion Models for Text-to-Video Generation",
+    "url": "https://github.com/showlab/Tune-A-Video",
+    "tags": [],
+    "author": "showlab",
+    "stars/downloads": 4365,
+    "license": "Apache-2.0",
+    "updated_at": "2023-10-25T02:00:06Z",
+    "category": "code",
+    "score": 3.64
   },
   {
     "id": "gh_promptslab/Promptify",
@@ -17961,53 +18004,11 @@
       "transformers"
     ],
     "author": "promptslab",
-    "stars/downloads": 4361,
+    "stars/downloads": 4360,
     "license": "Apache-2.0",
     "updated_at": "2025-02-12T19:26:51Z",
     "category": "code",
-    "score": 3.64
-  },
-  {
-    "id": "gh_luban-agi/Awesome-AIGC-Tutorials",
-    "source_type": "github_repo",
-    "title": "luban-agi/Awesome-AIGC-Tutorials",
-    "short_desc": "Curated tutorials and resources for Large Language Models, AI Painting, and more.",
-    "url": "https://github.com/luban-agi/Awesome-AIGC-Tutorials",
-    "tags": [
-      "ai",
-      "aigc",
-      "awesome",
-      "chatgpt",
-      "courses-resource",
-      "deep-learning",
-      "llm",
-      "midjourney",
-      "multimodal",
-      "nlp",
-      "prompt-engineering",
-      "stable-diffusion",
-      "tutorials"
-    ],
-    "author": "luban-agi",
-    "stars/downloads": 4366,
-    "license": "MIT",
-    "updated_at": "2024-03-31T09:18:04Z",
-    "category": "code",
-    "score": 3.64
-  },
-  {
-    "id": "gh_showlab/Tune-A-Video",
-    "source_type": "github_repo",
-    "title": "showlab/Tune-A-Video",
-    "short_desc": "[ICCV 2023] Tune-A-Video: One-Shot Tuning of Image Diffusion Models for Text-to-Video Generation",
-    "url": "https://github.com/showlab/Tune-A-Video",
-    "tags": [],
-    "author": "showlab",
-    "stars/downloads": 4365,
-    "license": "Apache-2.0",
-    "updated_at": "2023-10-25T02:00:06Z",
-    "category": "code",
-    "score": 3.64
+    "score": 3.639
   },
   {
     "id": "gh_lucidrains/deep-daze",
@@ -18119,17 +18120,17 @@
       "vscode-extension"
     ],
     "author": "zilliztech",
-    "stars/downloads": 4287,
+    "stars/downloads": 4293,
     "license": "MIT",
     "updated_at": "2025-09-16T13:01:10Z",
     "category": "code",
-    "score": 3.632
+    "score": 3.633
   },
   {
     "id": "gh_airweave-ai/airweave",
     "source_type": "github_repo",
     "title": "airweave-ai/airweave",
-    "short_desc": "Airweave lets agents search any app",
+    "short_desc": "Context retrieval for AI agents across apps and databases",
     "url": "https://github.com/airweave-ai/airweave",
     "tags": [
       "agents",
@@ -18144,7 +18145,7 @@
     "author": "airweave-ai",
     "stars/downloads": 4286,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:01:33Z",
+    "updated_at": "2025-10-30T21:03:34Z",
     "category": "code",
     "score": 3.632
   },
@@ -18281,7 +18282,7 @@
       "obsidian-plugin"
     ],
     "author": "brianpetro",
-    "stars/downloads": 4220,
+    "stars/downloads": 4221,
     "license": "GPL-3.0",
     "updated_at": "2025-10-21T18:45:15Z",
     "category": "code",
@@ -18299,7 +18300,7 @@
       "sqlite"
     ],
     "author": "canonical",
-    "stars/downloads": 4203,
+    "stars/downloads": 4204,
     "license": "NOASSERTION",
     "updated_at": "2025-10-30T16:22:39Z",
     "category": "code",
@@ -18329,7 +18330,7 @@
       "transformers"
     ],
     "author": "CLUEbenchmark",
-    "stars/downloads": 4199,
+    "stars/downloads": 4198,
     "license": "",
     "updated_at": "2025-09-08T01:37:23Z",
     "category": "code",
@@ -18380,7 +18381,7 @@
       "framework"
     ],
     "author": "chromiumembedded",
-    "stars/downloads": 4188,
+    "stars/downloads": 4187,
     "license": "NOASSERTION",
     "updated_at": "2025-10-28T04:00:54Z",
     "category": "code",
@@ -18415,11 +18416,11 @@
       "rag"
     ],
     "author": "casibase",
-    "stars/downloads": 4173,
+    "stars/downloads": 4175,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T13:32:08Z",
+    "updated_at": "2025-10-30T18:36:38Z",
     "category": "code",
-    "score": 3.62
+    "score": 3.621
   },
   {
     "id": "gh_dataease/SQLBot",
@@ -18438,11 +18439,11 @@
       "text2sql"
     ],
     "author": "dataease",
-    "stars/downloads": 4171,
+    "stars/downloads": 4175,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T10:22:27Z",
+    "updated_at": "2025-10-31T01:30:38Z",
     "category": "code",
-    "score": 3.62
+    "score": 3.621
   },
   {
     "id": "gh_IDEA-CCNL/Fengshenbang-LM",
@@ -18527,11 +18528,11 @@
       "transformers"
     ],
     "author": "amazon-science",
-    "stars/downloads": 4094,
+    "stars/downloads": 4106,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-30T15:44:34Z",
+    "updated_at": "2025-10-30T18:32:49Z",
     "category": "code",
-    "score": 3.612
+    "score": 3.613
   },
   {
     "id": "gh_neo4j-labs/llm-graph-builder",
@@ -18555,7 +18556,7 @@
       "vectordb"
     ],
     "author": "neo4j-labs",
-    "stars/downloads": 4082,
+    "stars/downloads": 4083,
     "license": "Apache-2.0",
     "updated_at": "2025-10-24T06:13:05Z",
     "category": "code",
@@ -18625,11 +18626,11 @@
       "rust"
     ],
     "author": "cberner",
-    "stars/downloads": 4022,
+    "stars/downloads": 4024,
     "license": "Apache-2.0",
     "updated_at": "2025-10-28T00:01:21Z",
     "category": "code",
-    "score": 3.604
+    "score": 3.605
   },
   {
     "id": "gh_apple/embedding-atlas",
@@ -18658,7 +18659,7 @@
       "knowledge-embedding"
     ],
     "author": "thunlp",
-    "stars/downloads": 3988,
+    "stars/downloads": 3990,
     "license": "",
     "updated_at": "2024-01-10T11:51:05Z",
     "category": "code",
@@ -18726,7 +18727,7 @@
       "transformers"
     ],
     "author": "datawhalechina",
-    "stars/downloads": 3944,
+    "stars/downloads": 3946,
     "license": "",
     "updated_at": "2025-08-30T08:03:41Z",
     "category": "code",
@@ -18889,7 +18890,7 @@
     "url": "https://github.com/QwenLM/Qwen2.5-Omni",
     "tags": [],
     "author": "QwenLM",
-    "stars/downloads": 3757,
+    "stars/downloads": 3758,
     "license": "Apache-2.0",
     "updated_at": "2025-06-12T11:03:07Z",
     "category": "code",
@@ -18908,7 +18909,7 @@
       "webgpu"
     ],
     "author": "0hq",
-    "stars/downloads": 3735,
+    "stars/downloads": 3736,
     "license": "NOASSERTION",
     "updated_at": "2024-01-12T20:11:43Z",
     "category": "code",
@@ -18958,7 +18959,7 @@
       "vision-transformer"
     ],
     "author": "google-research",
-    "stars/downloads": 3697,
+    "stars/downloads": 3696,
     "license": "Apache-2.0",
     "updated_at": "2025-10-09T09:15:33Z",
     "category": "code",
@@ -19056,7 +19057,7 @@
     "url": "https://github.com/NVlabs/VILA",
     "tags": [],
     "author": "NVlabs",
-    "stars/downloads": 3620,
+    "stars/downloads": 3621,
     "license": "Apache-2.0",
     "updated_at": "2025-10-20T09:25:00Z",
     "category": "code",
@@ -19222,7 +19223,7 @@
       "stable-diffusion"
     ],
     "author": "AIDC-AI",
-    "stars/downloads": 3464,
+    "stars/downloads": 3466,
     "license": "MIT",
     "updated_at": "2025-10-29T09:42:14Z",
     "category": "code",
@@ -19248,6 +19249,24 @@
     "score": 3.539
   },
   {
+    "id": "gh_zyds/transformers-code",
+    "source_type": "github_repo",
+    "title": "zyds/transformers-code",
+    "short_desc": "手把手带你实战 Huggingface Transformers 课程视频同步更新在B站与YouTube",
+    "url": "https://github.com/zyds/transformers-code",
+    "tags": [
+      "huggingface",
+      "peft",
+      "transformers"
+    ],
+    "author": "zyds",
+    "stars/downloads": 3448,
+    "license": "",
+    "updated_at": "2024-07-15T16:29:29Z",
+    "category": "code",
+    "score": 3.538
+  },
+  {
     "id": "gh_Tencent-Hunyuan/Hunyuan3D-1",
     "source_type": "github_repo",
     "title": "Tencent-Hunyuan/Hunyuan3D-1",
@@ -19260,29 +19279,11 @@
       "text"
     ],
     "author": "Tencent-Hunyuan",
-    "stars/downloads": 3449,
+    "stars/downloads": 3448,
     "license": "NOASSERTION",
     "updated_at": "2025-10-17T10:04:51Z",
     "category": "code",
     "score": 3.538
-  },
-  {
-    "id": "gh_zyds/transformers-code",
-    "source_type": "github_repo",
-    "title": "zyds/transformers-code",
-    "short_desc": "手把手带你实战 Huggingface Transformers 课程视频同步更新在B站与YouTube",
-    "url": "https://github.com/zyds/transformers-code",
-    "tags": [
-      "huggingface",
-      "peft",
-      "transformers"
-    ],
-    "author": "zyds",
-    "stars/downloads": 3447,
-    "license": "",
-    "updated_at": "2024-07-15T16:29:29Z",
-    "category": "code",
-    "score": 3.537
   },
   {
     "id": "gh_minimaxir/gpt-2-simple",
@@ -19302,6 +19303,37 @@
     "updated_at": "2022-12-14T11:50:45Z",
     "category": "code",
     "score": 3.532
+  },
+  {
+    "id": "gh_yichuan-w/LEANN",
+    "source_type": "github_repo",
+    "title": "yichuan-w/LEANN",
+    "short_desc": "RAG on Everything with LEANN. Enjoy 97% storage savings while running a fast, accurate, and 100% private RAG application on your personal device.",
+    "url": "https://github.com/yichuan-w/LEANN",
+    "tags": [
+      "ai",
+      "faiss",
+      "gpt-oss",
+      "langchain",
+      "llama-index",
+      "llm",
+      "localstorage",
+      "offline-first",
+      "ollama",
+      "privacy",
+      "python",
+      "rag",
+      "retrieval-augmented-generation",
+      "vector-database",
+      "vector-search",
+      "vectors"
+    ],
+    "author": "yichuan-w",
+    "stars/downloads": 3389,
+    "license": "MIT",
+    "updated_at": "2025-10-30T23:39:14Z",
+    "category": "code",
+    "score": 3.53
   },
   {
     "id": "gh_iusztinpaul/hands-on-llms",
@@ -19330,42 +19362,11 @@
       "transformers"
     ],
     "author": "iusztinpaul",
-    "stars/downloads": 3364,
+    "stars/downloads": 3365,
     "license": "MIT",
     "updated_at": "2024-12-09T14:55:28Z",
     "category": "code",
     "score": 3.527
-  },
-  {
-    "id": "gh_yichuan-w/LEANN",
-    "source_type": "github_repo",
-    "title": "yichuan-w/LEANN",
-    "short_desc": "RAG on Everything with LEANN. Enjoy 97% storage savings while running a fast, accurate, and 100% private RAG application on your personal device.",
-    "url": "https://github.com/yichuan-w/LEANN",
-    "tags": [
-      "ai",
-      "faiss",
-      "gpt-oss",
-      "langchain",
-      "llama-index",
-      "llm",
-      "localstorage",
-      "offline-first",
-      "ollama",
-      "privacy",
-      "python",
-      "rag",
-      "retrieval-augmented-generation",
-      "vector-database",
-      "vector-search",
-      "vectors"
-    ],
-    "author": "yichuan-w",
-    "stars/downloads": 3335,
-    "license": "MIT",
-    "updated_at": "2025-10-29T23:22:11Z",
-    "category": "code",
-    "score": 3.523
   },
   {
     "id": "gh_dvlab-research/MGM",
@@ -19431,7 +19432,7 @@
       "stable-diffusion"
     ],
     "author": "mcmonkeyprojects",
-    "stars/downloads": 3286,
+    "stars/downloads": 3289,
     "license": "MIT",
     "updated_at": "2025-10-30T12:22:08Z",
     "category": "code",
@@ -19484,27 +19485,6 @@
     "score": 3.516
   },
   {
-    "id": "gh_YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy",
-    "source_type": "github_repo",
-    "title": "YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy",
-    "short_desc": "Diffusion model papers, survey, and taxonomy",
-    "url": "https://github.com/YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy",
-    "tags": [
-      "diffusion-models",
-      "stable-diffusion",
-      "survey",
-      "text-to-3d",
-      "text-to-image",
-      "text-to-video"
-    ],
-    "author": "YangLing0818",
-    "stars/downloads": 3272,
-    "license": "",
-    "updated_at": "2025-09-27T02:49:32Z",
-    "category": "code",
-    "score": 3.515
-  },
-  {
     "id": "gh_Michael-A-Kuykendall/shimmy",
     "source_type": "github_repo",
     "title": "Michael-A-Kuykendall/shimmy",
@@ -19532,11 +19512,32 @@
       "transformers"
     ],
     "author": "Michael-A-Kuykendall",
-    "stars/downloads": 3237,
+    "stars/downloads": 3273,
     "license": "MIT",
     "updated_at": "2025-10-23T15:16:41Z",
     "category": "code",
-    "score": 3.51
+    "score": 3.515
+  },
+  {
+    "id": "gh_YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy",
+    "source_type": "github_repo",
+    "title": "YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy",
+    "short_desc": "Diffusion model papers, survey, and taxonomy",
+    "url": "https://github.com/YangLing0818/Diffusion-Models-Papers-Survey-Taxonomy",
+    "tags": [
+      "diffusion-models",
+      "stable-diffusion",
+      "survey",
+      "text-to-3d",
+      "text-to-image",
+      "text-to-video"
+    ],
+    "author": "YangLing0818",
+    "stars/downloads": 3272,
+    "license": "",
+    "updated_at": "2025-09-27T02:49:32Z",
+    "category": "code",
+    "score": 3.515
   },
   {
     "id": "gh_JoePenna/Dreambooth-Stable-Diffusion",
@@ -19613,7 +19614,7 @@
       "vlm"
     ],
     "author": "MiniMax-AI",
-    "stars/downloads": 3215,
+    "stars/downloads": 3217,
     "license": "MIT",
     "updated_at": "2025-07-07T12:24:30Z",
     "category": "code",
@@ -19694,7 +19695,7 @@
       "transformers"
     ],
     "author": "huggingface",
-    "stars/downloads": 3131,
+    "stars/downloads": 3133,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T10:46:04Z",
     "category": "code",
@@ -19747,7 +19748,7 @@
       "typescript"
     ],
     "author": "pezzolabs",
-    "stars/downloads": 3132,
+    "stars/downloads": 3133,
     "license": "Apache-2.0",
     "updated_at": "2025-06-28T05:49:58Z",
     "category": "code",
@@ -19804,11 +19805,11 @@
       "rag"
     ],
     "author": "LazyAGI",
-    "stars/downloads": 3091,
+    "stars/downloads": 3099,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-29T11:36:05Z",
+    "updated_at": "2025-10-31T02:26:14Z",
     "category": "code",
-    "score": 3.49
+    "score": 3.491
   },
   {
     "id": "gh_phodal/prompt-patterns",
@@ -19866,9 +19867,9 @@
       "tools"
     ],
     "author": "langchain-ai",
-    "stars/downloads": 3006,
+    "stars/downloads": 3007,
     "license": "MIT",
-    "updated_at": "2025-10-29T19:45:45Z",
+    "updated_at": "2025-10-30T21:35:11Z",
     "category": "code",
     "score": 3.478
   },
@@ -19894,11 +19895,11 @@
       "visualization"
     ],
     "author": "SwanHubX",
-    "stars/downloads": 2993,
+    "stars/downloads": 2997,
     "license": "Apache-2.0",
     "updated_at": "2025-10-30T03:20:47Z",
     "category": "code",
-    "score": 3.476
+    "score": 3.477
   },
   {
     "id": "gh_jingyi0000/VLM_survey",
@@ -19988,7 +19989,7 @@
       "transformers"
     ],
     "author": "IntelLabs",
-    "stars/downloads": 2938,
+    "stars/downloads": 2939,
     "license": "Apache-2.0",
     "updated_at": "2022-11-07T16:21:47Z",
     "category": "code",
@@ -20116,7 +20117,7 @@
       "transformers"
     ],
     "author": "Blaizzy",
-    "stars/downloads": 2771,
+    "stars/downloads": 2772,
     "license": "MIT",
     "updated_at": "2025-10-21T14:43:02Z",
     "category": "code",
@@ -20166,7 +20167,7 @@
       "zero-shot-transfer"
     ],
     "author": "isl-org",
-    "stars/downloads": 2724,
+    "stars/downloads": 2723,
     "license": "MIT",
     "updated_at": "2025-05-05T18:18:49Z",
     "category": "code",
@@ -20256,7 +20257,7 @@
       "youtube-shorts"
     ],
     "author": "SamurAIGPT",
-    "stars/downloads": 2681,
+    "stars/downloads": 2682,
     "license": "MIT",
     "updated_at": "2025-10-04T19:25:53Z",
     "category": "code",
@@ -20324,7 +20325,7 @@
       "vqa"
     ],
     "author": "roboflow",
-    "stars/downloads": 2641,
+    "stars/downloads": 2642,
     "license": "Apache-2.0",
     "updated_at": "2025-10-27T17:31:26Z",
     "category": "code",
@@ -20359,7 +20360,7 @@
       "whisper"
     ],
     "author": "linto-ai",
-    "stars/downloads": 2640,
+    "stars/downloads": 2641,
     "license": "AGPL-3.0",
     "updated_at": "2025-09-09T07:04:36Z",
     "category": "code",
@@ -20454,7 +20455,7 @@
     "author": "bghira",
     "stars/downloads": 2586,
     "license": "AGPL-3.0",
-    "updated_at": "2025-10-30T15:58:39Z",
+    "updated_at": "2025-10-31T03:07:38Z",
     "category": "code",
     "score": 3.413
   },
@@ -20544,7 +20545,7 @@
       "text-to-image"
     ],
     "author": "lucidrains",
-    "stars/downloads": 2569,
+    "stars/downloads": 2570,
     "license": "MIT",
     "updated_at": "2022-02-06T18:04:34Z",
     "category": "code",
@@ -20633,9 +20634,9 @@
       "video-generation"
     ],
     "author": "hao-ai-lab",
-    "stars/downloads": 2498,
+    "stars/downloads": 2502,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-29T20:54:13Z",
+    "updated_at": "2025-10-31T03:03:58Z",
     "category": "code",
     "score": 3.398
   },
@@ -20690,7 +20691,7 @@
       "transformer"
     ],
     "author": "WeThinkIn",
-    "stars/downloads": 2449,
+    "stars/downloads": 2451,
     "license": "GPL-3.0",
     "updated_at": "2025-10-27T15:22:04Z",
     "category": "code",
@@ -20945,11 +20946,11 @@
       "stable-diffusion"
     ],
     "author": "rgthree",
-    "stars/downloads": 2358,
+    "stars/downloads": 2357,
     "license": "MIT",
     "updated_at": "2025-10-06T00:58:37Z",
     "category": "code",
-    "score": 3.373
+    "score": 3.372
   },
   {
     "id": "gh_6174/comflowyspace",
@@ -20983,7 +20984,7 @@
       "stable-diffusion"
     ],
     "author": "GaParmar",
-    "stars/downloads": 2294,
+    "stars/downloads": 2295,
     "license": "MIT",
     "updated_at": "2025-08-01T20:39:35Z",
     "category": "code",
@@ -21012,7 +21013,7 @@
       "weaviate"
     ],
     "author": "athina-ai",
-    "stars/downloads": 2297,
+    "stars/downloads": 2298,
     "license": "MIT",
     "updated_at": "2025-02-17T10:05:33Z",
     "category": "code",
@@ -21071,7 +21072,7 @@
       "python"
     ],
     "author": "refuel-ai",
-    "stars/downloads": 2278,
+    "stars/downloads": 2279,
     "license": "MIT",
     "updated_at": "2025-03-05T01:15:43Z",
     "category": "code",
@@ -21249,11 +21250,11 @@
       "transformers"
     ],
     "author": "protectai",
-    "stars/downloads": 2205,
+    "stars/downloads": 2208,
     "license": "MIT",
     "updated_at": "2025-10-27T14:09:34Z",
     "category": "code",
-    "score": 3.343
+    "score": 3.344
   },
   {
     "id": "gh_InternLM/lagent",
@@ -21289,7 +21290,7 @@
       "llms"
     ],
     "author": "langchain-ai",
-    "stars/downloads": 2189,
+    "stars/downloads": 2190,
     "license": "NOASSERTION",
     "updated_at": "2025-10-17T15:08:23Z",
     "category": "code",
@@ -21316,6 +21317,20 @@
     "score": 3.339
   },
   {
+    "id": "gh_OmniSVG/OmniSVG",
+    "source_type": "github_repo",
+    "title": "OmniSVG/OmniSVG",
+    "short_desc": "[NeurIPS 2025] OmniSVG is the first family of end-to-end multimodal SVG generators that leverage pre-trained Vision-Language Models (VLMs), capable of generating complex and detailed SVGs, from simple icons to intricate anime characters.",
+    "url": "https://github.com/OmniSVG/OmniSVG",
+    "tags": [],
+    "author": "OmniSVG",
+    "stars/downloads": 2177,
+    "license": "Apache-2.0",
+    "updated_at": "2025-09-18T14:16:19Z",
+    "category": "code",
+    "score": 3.338
+  },
+  {
     "id": "gh_alibaba/EasyNLP",
     "source_type": "github_repo",
     "title": "alibaba/EasyNLP",
@@ -21338,23 +21353,9 @@
       "transformers"
     ],
     "author": "alibaba",
-    "stars/downloads": 2171,
+    "stars/downloads": 2172,
     "license": "Apache-2.0",
     "updated_at": "2024-11-27T07:51:25Z",
-    "category": "code",
-    "score": 3.337
-  },
-  {
-    "id": "gh_OmniSVG/OmniSVG",
-    "source_type": "github_repo",
-    "title": "OmniSVG/OmniSVG",
-    "short_desc": "[NeurIPS 2025] OmniSVG is the first family of end-to-end multimodal SVG generators that leverage pre-trained Vision-Language Models (VLMs), capable of generating complex and detailed SVGs, from simple icons to intricate anime characters.",
-    "url": "https://github.com/OmniSVG/OmniSVG",
-    "tags": [],
-    "author": "OmniSVG",
-    "stars/downloads": 2175,
-    "license": "Apache-2.0",
-    "updated_at": "2025-09-18T14:16:19Z",
     "category": "code",
     "score": 3.337
   },
@@ -21528,7 +21529,7 @@
       "stable-diffusion"
     ],
     "author": "pydn",
-    "stars/downloads": 2085,
+    "stars/downloads": 2086,
     "license": "MIT",
     "updated_at": "2025-09-26T23:53:00Z",
     "category": "code",
@@ -21563,7 +21564,7 @@
       "weaviate"
     ],
     "author": "Mintplex-Labs",
-    "stars/downloads": 2075,
+    "stars/downloads": 2076,
     "license": "MIT",
     "updated_at": "2025-04-15T20:40:32Z",
     "category": "code",
@@ -21641,6 +21642,20 @@
     "score": 3.307
   },
   {
+    "id": "gh_rahulnyk/knowledge_graph",
+    "source_type": "github_repo",
+    "title": "rahulnyk/knowledge_graph",
+    "short_desc": "Convert any text to a graph of knowledge. This can be used for Graph Augmented Generation or Knowledge Graph based QnA",
+    "url": "https://github.com/rahulnyk/knowledge_graph",
+    "tags": [],
+    "author": "rahulnyk",
+    "stars/downloads": 2026,
+    "license": "",
+    "updated_at": "2025-05-15T13:31:41Z",
+    "category": "code",
+    "score": 3.307
+  },
+  {
     "id": "gh_LC1332/Chat-Haruhi-Suzumiya",
     "source_type": "github_repo",
     "title": "LC1332/Chat-Haruhi-Suzumiya",
@@ -21654,20 +21669,6 @@
     "stars/downloads": 2025,
     "license": "Apache-2.0",
     "updated_at": "2024-08-13T11:13:29Z",
-    "category": "code",
-    "score": 3.306
-  },
-  {
-    "id": "gh_rahulnyk/knowledge_graph",
-    "source_type": "github_repo",
-    "title": "rahulnyk/knowledge_graph",
-    "short_desc": "Convert any text to a graph of knowledge. This can be used for Graph Augmented Generation or Knowledge Graph based QnA",
-    "url": "https://github.com/rahulnyk/knowledge_graph",
-    "tags": [],
-    "author": "rahulnyk",
-    "stars/downloads": 2025,
-    "license": "",
-    "updated_at": "2025-05-15T13:31:41Z",
     "category": "code",
     "score": 3.306
   },
@@ -21722,7 +21723,7 @@
     "author": "wangkai930418",
     "stars/downloads": 1995,
     "license": "",
-    "updated_at": "2025-10-30T12:05:29Z",
+    "updated_at": "2025-10-31T02:09:58Z",
     "category": "code",
     "score": 3.3
   },
@@ -22116,6 +22117,20 @@
     "score": 3.273
   },
   {
+    "id": "gh_jonyzhang2023/awesome-embodied-vla-va-vln",
+    "source_type": "github_repo",
+    "title": "jonyzhang2023/awesome-embodied-vla-va-vln",
+    "short_desc": "A curated list of state-of-the-art research in embodied AI, focusing on vision-language-action (VLA) models, vision-language navigation (VLN), and related multimodal learning approaches.",
+    "url": "https://github.com/jonyzhang2023/awesome-embodied-vla-va-vln",
+    "tags": [],
+    "author": "jonyzhang2023",
+    "stars/downloads": 1860,
+    "license": "",
+    "updated_at": "2025-10-30T10:54:09Z",
+    "category": "code",
+    "score": 3.27
+  },
+  {
     "id": "gh_PixArt-alpha/PixArt-sigma",
     "source_type": "github_repo",
     "title": "PixArt-alpha/PixArt-sigma",
@@ -22126,20 +22141,6 @@
     "stars/downloads": 1857,
     "license": "Apache-2.0",
     "updated_at": "2024-10-31T01:20:19Z",
-    "category": "code",
-    "score": 3.269
-  },
-  {
-    "id": "gh_jonyzhang2023/awesome-embodied-vla-va-vln",
-    "source_type": "github_repo",
-    "title": "jonyzhang2023/awesome-embodied-vla-va-vln",
-    "short_desc": "A curated list of state-of-the-art research in embodied AI, focusing on vision-language-action (VLA) models, vision-language navigation (VLN), and related multimodal learning approaches.",
-    "url": "https://github.com/jonyzhang2023/awesome-embodied-vla-va-vln",
-    "tags": [],
-    "author": "jonyzhang2023",
-    "stars/downloads": 1856,
-    "license": "",
-    "updated_at": "2025-10-30T10:54:09Z",
     "category": "code",
     "score": 3.269
   },
@@ -22227,7 +22228,7 @@
       "visual-recognition"
     ],
     "author": "NVlabs",
-    "stars/downloads": 1829,
+    "stars/downloads": 1830,
     "license": "NOASSERTION",
     "updated_at": "2025-07-22T22:12:11Z",
     "category": "code",
@@ -22325,11 +22326,11 @@
       "transformersjs"
     ],
     "author": "huggingface",
-    "stars/downloads": 1805,
+    "stars/downloads": 1806,
     "license": "Apache-2.0",
     "updated_at": "2025-10-02T04:02:20Z",
     "category": "code",
-    "score": 3.256
+    "score": 3.257
   },
   {
     "id": "gh_zai-org/CogView",
@@ -22386,6 +22387,34 @@
     "score": 3.253
   },
   {
+    "id": "gh_Blaizzy/mlx-vlm",
+    "source_type": "github_repo",
+    "title": "Blaizzy/mlx-vlm",
+    "short_desc": "MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VLMs) on your Mac using MLX.",
+    "url": "https://github.com/Blaizzy/mlx-vlm",
+    "tags": [
+      "apple-silicon",
+      "florence2",
+      "idefics",
+      "llava",
+      "llm",
+      "local-ai",
+      "mlx",
+      "molmo",
+      "paligemma",
+      "pixtral",
+      "vision-framework",
+      "vision-language-model",
+      "vision-transformer"
+    ],
+    "author": "Blaizzy",
+    "stars/downloads": 1786,
+    "license": "MIT",
+    "updated_at": "2025-10-30T12:45:31Z",
+    "category": "code",
+    "score": 3.252
+  },
+  {
     "id": "gh_n4ze3m/dialoqbase",
     "source_type": "github_repo",
     "title": "n4ze3m/dialoqbase",
@@ -22413,58 +22442,11 @@
       "privategpt"
     ],
     "author": "n4ze3m",
-    "stars/downloads": 1785,
+    "stars/downloads": 1784,
     "license": "MIT",
     "updated_at": "2024-10-15T14:24:20Z",
     "category": "code",
-    "score": 3.252
-  },
-  {
-    "id": "gh_Blaizzy/mlx-vlm",
-    "source_type": "github_repo",
-    "title": "Blaizzy/mlx-vlm",
-    "short_desc": "MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VLMs) on your Mac using MLX.",
-    "url": "https://github.com/Blaizzy/mlx-vlm",
-    "tags": [
-      "apple-silicon",
-      "florence2",
-      "idefics",
-      "llava",
-      "llm",
-      "local-ai",
-      "mlx",
-      "molmo",
-      "paligemma",
-      "pixtral",
-      "vision-framework",
-      "vision-language-model",
-      "vision-transformer"
-    ],
-    "author": "Blaizzy",
-    "stars/downloads": 1782,
-    "license": "MIT",
-    "updated_at": "2025-10-30T12:45:31Z",
-    "category": "code",
     "score": 3.251
-  },
-  {
-    "id": "gh_LuChengTHU/dpm-solver",
-    "source_type": "github_repo",
-    "title": "LuChengTHU/dpm-solver",
-    "short_desc": "Official code for \"DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps\" (Neurips 2022 Oral)",
-    "url": "https://github.com/LuChengTHU/dpm-solver",
-    "tags": [
-      "diffusion-models",
-      "machine-learning",
-      "score-based-generative-models",
-      "stable-diffusion"
-    ],
-    "author": "LuChengTHU",
-    "stars/downloads": 1776,
-    "license": "MIT",
-    "updated_at": "2024-02-06T20:38:31Z",
-    "category": "code",
-    "score": 3.249
   },
   {
     "id": "gh_minitap-ai/mobile-use",
@@ -22485,9 +22467,28 @@
       "qa"
     ],
     "author": "minitap-ai",
+    "stars/downloads": 1779,
+    "license": "MIT",
+    "updated_at": "2025-10-31T03:29:44Z",
+    "category": "code",
+    "score": 3.25
+  },
+  {
+    "id": "gh_LuChengTHU/dpm-solver",
+    "source_type": "github_repo",
+    "title": "LuChengTHU/dpm-solver",
+    "short_desc": "Official code for \"DPM-Solver: A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps\" (Neurips 2022 Oral)",
+    "url": "https://github.com/LuChengTHU/dpm-solver",
+    "tags": [
+      "diffusion-models",
+      "machine-learning",
+      "score-based-generative-models",
+      "stable-diffusion"
+    ],
+    "author": "LuChengTHU",
     "stars/downloads": 1776,
     "license": "MIT",
-    "updated_at": "2025-10-28T14:05:11Z",
+    "updated_at": "2024-02-06T20:38:31Z",
     "category": "code",
     "score": 3.249
   },
@@ -22510,11 +22511,11 @@
       "stable-diffusion"
     ],
     "author": "zombieyang",
-    "stars/downloads": 1772,
+    "stars/downloads": 1773,
     "license": "BSD-3-Clause",
     "updated_at": "2025-10-26T14:42:07Z",
     "category": "code",
-    "score": 3.248
+    "score": 3.249
   },
   {
     "id": "gh_richardyc/Chrome-GPT",
@@ -22674,6 +22675,37 @@
     "score": 3.233
   },
   {
+    "id": "gh_pipeshub-ai/pipeshub-ai",
+    "source_type": "github_repo",
+    "title": "pipeshub-ai/pipeshub-ai",
+    "short_desc": "PipesHub is a fully extensible and explainable workplace AI platform for enterprise search and workflow automation",
+    "url": "https://github.com/pipeshub-ai/pipeshub-ai",
+    "tags": [
+      "agent",
+      "agents",
+      "ai",
+      "drive",
+      "glean",
+      "gmail",
+      "knowledge-graph",
+      "langchain",
+      "langgraph",
+      "llamaparse",
+      "notion",
+      "ollama",
+      "perplexity",
+      "python",
+      "rag",
+      "slack"
+    ],
+    "author": "pipeshub-ai",
+    "stars/downloads": 1694,
+    "license": "Apache-2.0",
+    "updated_at": "2025-10-30T22:47:55Z",
+    "category": "code",
+    "score": 3.229
+  },
+  {
     "id": "gh_peremartra/Large-Language-Model-Notebooks-Course",
     "source_type": "github_repo",
     "title": "peremartra/Large-Language-Model-Notebooks-Course",
@@ -22713,7 +22745,7 @@
       "video-editing"
     ],
     "author": "omerbt",
-    "stars/downloads": 1681,
+    "stars/downloads": 1683,
     "license": "MIT",
     "updated_at": "2025-02-03T15:34:18Z",
     "category": "code",
@@ -22763,37 +22795,6 @@
     "updated_at": "2025-03-13T07:26:48Z",
     "category": "code",
     "score": 3.222
-  },
-  {
-    "id": "gh_pipeshub-ai/pipeshub-ai",
-    "source_type": "github_repo",
-    "title": "pipeshub-ai/pipeshub-ai",
-    "short_desc": "PipesHub is a fully extensible and explainable workplace AI platform for enterprise search and workflow automation",
-    "url": "https://github.com/pipeshub-ai/pipeshub-ai",
-    "tags": [
-      "agent",
-      "agents",
-      "ai",
-      "drive",
-      "glean",
-      "gmail",
-      "knowledge-graph",
-      "langchain",
-      "langgraph",
-      "llamaparse",
-      "notion",
-      "ollama",
-      "perplexity",
-      "python",
-      "rag",
-      "slack"
-    ],
-    "author": "pipeshub-ai",
-    "stars/downloads": 1664,
-    "license": "Apache-2.0",
-    "updated_at": "2025-10-30T06:12:01Z",
-    "category": "code",
-    "score": 3.221
   },
   {
     "id": "gh_SamurAIGPT/Open-Custom-GPT",
@@ -22937,7 +22938,7 @@
       "stable-diffusion-webui"
     ],
     "author": "win4r",
-    "stars/downloads": 1602,
+    "stars/downloads": 1604,
     "license": "Apache-2.0",
     "updated_at": "2025-05-21T04:55:10Z",
     "category": "code",
@@ -23035,7 +23036,7 @@
       "wysiwyg"
     ],
     "author": "aieditor-team",
-    "stars/downloads": 1576,
+    "stars/downloads": 1577,
     "license": "LGPL-2.1",
     "updated_at": "2025-10-22T03:39:44Z",
     "category": "code",
@@ -23160,6 +23161,24 @@
     "score": 3.186
   },
   {
+    "id": "gh_OpenHelix-Team/VLA-Adapter",
+    "source_type": "github_repo",
+    "title": "OpenHelix-Team/VLA-Adapter",
+    "short_desc": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
+    "url": "https://github.com/OpenHelix-Team/VLA-Adapter",
+    "tags": [
+      "embodied-ai",
+      "robotics",
+      "vision-language-action-model"
+    ],
+    "author": "OpenHelix-Team",
+    "stars/downloads": 1536,
+    "license": "MIT",
+    "updated_at": "2025-10-13T14:38:04Z",
+    "category": "code",
+    "score": 3.186
+  },
+  {
     "id": "gh_showlab/ShowUI",
     "source_type": "github_repo",
     "title": "showlab/ShowUI",
@@ -23192,24 +23211,6 @@
     "updated_at": "2025-05-10T12:07:22Z",
     "category": "code",
     "score": 3.184
-  },
-  {
-    "id": "gh_OpenHelix-Team/VLA-Adapter",
-    "source_type": "github_repo",
-    "title": "OpenHelix-Team/VLA-Adapter",
-    "short_desc": "VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model",
-    "url": "https://github.com/OpenHelix-Team/VLA-Adapter",
-    "tags": [
-      "embodied-ai",
-      "robotics",
-      "vision-language-action-model"
-    ],
-    "author": "OpenHelix-Team",
-    "stars/downloads": 1525,
-    "license": "MIT",
-    "updated_at": "2025-10-13T14:38:04Z",
-    "category": "code",
-    "score": 3.183
   },
   {
     "id": "gh_Anil-matcha/ChatPDF",
@@ -23301,11 +23302,43 @@
       "python"
     ],
     "author": "starpig1129",
-    "stars/downloads": 1492,
+    "stars/downloads": 1493,
     "license": "MIT",
-    "updated_at": "2025-10-30T11:38:20Z",
+    "updated_at": "2025-10-31T00:24:27Z",
     "category": "code",
     "score": 3.174
+  },
+  {
+    "id": "gh_apconw/sanic-web",
+    "source_type": "github_repo",
+    "title": "apconw/sanic-web",
+    "short_desc": "一个轻量级、支持全链路且易于二次开发的大模型应用项目(Large Model Data Assistant) 支持DeepSeek/Qwen3等大模型 基于 Dify 、LangChain/LangGraph、Ollama&Vllm、Sanic 和 Text2SQL 📊 等技术构建的一站式大模型应用开发项目，采用 Vue3、TypeScript 和 Vite 5 打造现代UI。它支持通过 ECharts 📈 实现基于大模型的数据图形化问答，具备处理 CSV 文件 📂 表格问答的能力。同时，能方便对接第三方开源 RAG 系统 检索系统 🌐等，以支持广泛的通用知识问答。",
+    "url": "https://github.com/apconw/sanic-web",
+    "tags": [
+      "bigdata",
+      "deepseek-r1",
+      "dify",
+      "echarts",
+      "lamaindex",
+      "langchain",
+      "langgraph-python",
+      "llm",
+      "mcp",
+      "neo4j",
+      "ollama",
+      "python",
+      "qwen",
+      "sanic",
+      "text2sql",
+      "vllm",
+      "vue3"
+    ],
+    "author": "apconw",
+    "stars/downloads": 1489,
+    "license": "",
+    "updated_at": "2025-10-23T05:55:26Z",
+    "category": "code",
+    "score": 3.173
   },
   {
     "id": "gh_guy-hartstein/company-research-agent",
@@ -23335,38 +23368,6 @@
     "updated_at": "2025-10-24T22:00:33Z",
     "category": "code",
     "score": 3.173
-  },
-  {
-    "id": "gh_apconw/sanic-web",
-    "source_type": "github_repo",
-    "title": "apconw/sanic-web",
-    "short_desc": "一个轻量级、支持全链路且易于二次开发的大模型应用项目(Large Model Data Assistant) 支持DeepSeek/Qwen3等大模型 基于 Dify 、LangChain/LangGraph、Ollama&Vllm、Sanic 和 Text2SQL 📊 等技术构建的一站式大模型应用开发项目，采用 Vue3、TypeScript 和 Vite 5 打造现代UI。它支持通过 ECharts 📈 实现基于大模型的数据图形化问答，具备处理 CSV 文件 📂 表格问答的能力。同时，能方便对接第三方开源 RAG 系统 检索系统 🌐等，以支持广泛的通用知识问答。",
-    "url": "https://github.com/apconw/sanic-web",
-    "tags": [
-      "bigdata",
-      "deepseek-r1",
-      "dify",
-      "echarts",
-      "lamaindex",
-      "langchain",
-      "langgraph-python",
-      "llm",
-      "mcp",
-      "neo4j",
-      "ollama",
-      "python",
-      "qwen",
-      "sanic",
-      "text2sql",
-      "vllm",
-      "vue3"
-    ],
-    "author": "apconw",
-    "stars/downloads": 1486,
-    "license": "",
-    "updated_at": "2025-10-23T05:55:26Z",
-    "category": "code",
-    "score": 3.172
   },
   {
     "id": "gh_ByteDance-Seed/Seed1.5-VL",
@@ -23458,7 +23459,7 @@
       "memory"
     ],
     "author": "wassim249",
-    "stars/downloads": 1451,
+    "stars/downloads": 1453,
     "license": "MIT",
     "updated_at": "2025-09-28T14:20:41Z",
     "category": "code",
@@ -23509,7 +23510,7 @@
       "stable-diffusion"
     ],
     "author": "1038lab",
-    "stars/downloads": 1446,
+    "stars/downloads": 1447,
     "license": "GPL-3.0",
     "updated_at": "2025-10-05T08:45:33Z",
     "category": "code",
@@ -23555,7 +23556,7 @@
     "author": "lunary-ai",
     "stars/downloads": 1432,
     "license": "Apache-2.0",
-    "updated_at": "2025-10-29T20:19:04Z",
+    "updated_at": "2025-10-30T23:17:40Z",
     "category": "code",
     "score": 3.156
   },
@@ -23739,7 +23740,7 @@
       "vision-language-model"
     ],
     "author": "2U1",
-    "stars/downloads": 1330,
+    "stars/downloads": 1331,
     "license": "Apache-2.0",
     "updated_at": "2025-10-22T08:13:26Z",
     "category": "code",
@@ -23767,7 +23768,7 @@
       "web"
     ],
     "author": "emcf",
-    "stars/downloads": 1327,
+    "stars/downloads": 1328,
     "license": "MIT",
     "updated_at": "2025-10-18T22:40:09Z",
     "category": "code",
@@ -23969,6 +23970,29 @@
     "score": 3.104
   },
   {
+    "id": "gh_aws-samples/amazon-bedrock-samples",
+    "source_type": "github_repo",
+    "title": "aws-samples/amazon-bedrock-samples",
+    "short_desc": "This repository contains examples for customers to get started using the Amazon Bedrock Service. This contains examples for all available foundational models",
+    "url": "https://github.com/aws-samples/amazon-bedrock-samples",
+    "tags": [
+      "amazon-bedrock",
+      "amazon-titan",
+      "bedrock",
+      "embeddings",
+      "generative-ai",
+      "knowledge-base",
+      "langchain",
+      "rag"
+    ],
+    "author": "aws-samples",
+    "stars/downloads": 1261,
+    "license": "MIT-0",
+    "updated_at": "2025-10-08T20:16:48Z",
+    "category": "code",
+    "score": 3.101
+  },
+  {
     "id": "gh_Storia-AI/sage",
     "source_type": "github_repo",
     "title": "Storia-AI/sage",
@@ -23994,29 +24018,6 @@
     "stars/downloads": 1260,
     "license": "Apache-2.0",
     "updated_at": "2024-11-11T04:49:34Z",
-    "category": "code",
-    "score": 3.1
-  },
-  {
-    "id": "gh_aws-samples/amazon-bedrock-samples",
-    "source_type": "github_repo",
-    "title": "aws-samples/amazon-bedrock-samples",
-    "short_desc": "This repository contains examples for customers to get started using the Amazon Bedrock Service. This contains examples for all available foundational models",
-    "url": "https://github.com/aws-samples/amazon-bedrock-samples",
-    "tags": [
-      "amazon-bedrock",
-      "amazon-titan",
-      "bedrock",
-      "embeddings",
-      "generative-ai",
-      "knowledge-base",
-      "langchain",
-      "rag"
-    ],
-    "author": "aws-samples",
-    "stars/downloads": 1260,
-    "license": "MIT-0",
-    "updated_at": "2025-10-08T20:16:48Z",
     "category": "code",
     "score": 3.1
   },
@@ -24137,7 +24138,7 @@
       "python"
     ],
     "author": "curiousily",
-    "stars/downloads": 1215,
+    "stars/downloads": 1216,
     "license": "Apache-2.0",
     "updated_at": "2024-01-07T15:10:58Z",
     "category": "code",
@@ -24158,7 +24159,7 @@
       "text-to-audio"
     ],
     "author": "declare-lab",
-    "stars/downloads": 1202,
+    "stars/downloads": 1203,
     "license": "NOASSERTION",
     "updated_at": "2025-07-29T02:13:29Z",
     "category": "code",
@@ -24219,7 +24220,7 @@
     "author": "unum-cloud",
     "stars/downloads": 1188,
     "license": "Apache-2.0",
-    "updated_at": "2025-09-03T08:30:54Z",
+    "updated_at": "2025-10-30T23:39:54Z",
     "category": "code",
     "score": 3.075
   },
@@ -24332,11 +24333,11 @@
       "zeabur"
     ],
     "author": "yym68686",
-    "stars/downloads": 1153,
+    "stars/downloads": 1152,
     "license": "GPL-3.0",
     "updated_at": "2025-09-15T09:36:24Z",
     "category": "code",
-    "score": 3.062
+    "score": 3.061
   },
   {
     "id": "gh_SmythOS/sre",
@@ -24367,11 +24368,11 @@
       "retrieval-augmented-generation"
     ],
     "author": "SmythOS",
-    "stars/downloads": 1149,
+    "stars/downloads": 1151,
     "license": "MIT",
-    "updated_at": "2025-10-30T16:10:25Z",
+    "updated_at": "2025-10-30T21:11:39Z",
     "category": "code",
-    "score": 3.06
+    "score": 3.061
   },
   {
     "id": "gh_kaushikb11/awesome-llm-agents",
@@ -24385,7 +24386,7 @@
       "llm"
     ],
     "author": "kaushikb11",
-    "stars/downloads": 1145,
+    "stars/downloads": 1146,
     "license": "",
     "updated_at": "2025-10-26T02:05:37Z",
     "category": "code",
@@ -24411,11 +24412,11 @@
       "word2vec"
     ],
     "author": "SkalskiP",
-    "stars/downloads": 1139,
+    "stars/downloads": 1145,
     "license": "Apache-2.0",
     "updated_at": "2025-01-23T11:23:09Z",
     "category": "code",
-    "score": 3.057
+    "score": 3.059
   },
   {
     "id": "gh_showlab/Show-1",
@@ -24425,11 +24426,11 @@
     "url": "https://github.com/showlab/Show-1",
     "tags": [],
     "author": "showlab",
-    "stars/downloads": 1131,
+    "stars/downloads": 1132,
     "license": "NOASSERTION",
     "updated_at": "2025-09-13T02:49:54Z",
     "category": "code",
-    "score": 3.053
+    "score": 3.054
   },
   {
     "id": "gh_liucongg/GPT2-NewsTitle",
@@ -24598,7 +24599,7 @@
       "wunjo"
     ],
     "author": "wladradchenko",
-    "stars/downloads": 1069,
+    "stars/downloads": 1070,
     "license": "MIT",
     "updated_at": "2025-09-27T11:14:32Z",
     "category": "code",
@@ -24612,7 +24613,7 @@
     "url": "https://github.com/PromtEngineer/Verbi",
     "tags": [],
     "author": "PromtEngineer",
-    "stars/downloads": 1066,
+    "stars/downloads": 1067,
     "license": "MIT",
     "updated_at": "2025-05-20T01:09:45Z",
     "category": "code",
@@ -24724,11 +24725,11 @@
       "voice-cloning"
     ],
     "author": "MiniMax-AI",
-    "stars/downloads": 1008,
+    "stars/downloads": 1012,
     "license": "MIT",
     "updated_at": "2025-07-08T11:51:13Z",
     "category": "code",
-    "score": 3.003
+    "score": 3.005
   },
   {
     "id": "gh_aiwaves-cn/RecurrentGPT",
@@ -25543,20 +25544,6 @@
     "score": 2.898
   },
   {
-    "id": "gh_allenai/molmo",
-    "source_type": "github_repo",
-    "title": "allenai/molmo",
-    "short_desc": "Code for the Molmo Vision-Language Model",
-    "url": "https://github.com/allenai/molmo",
-    "tags": [],
-    "author": "allenai",
-    "stars/downloads": 786,
-    "license": "Apache-2.0",
-    "updated_at": "2024-12-12T17:37:41Z",
-    "category": "code",
-    "score": 2.895
-  },
-  {
     "id": "gh_gcui-art/album-ai",
     "source_type": "github_repo",
     "title": "gcui-art/album-ai",
@@ -25576,6 +25563,20 @@
     "stars/downloads": 786,
     "license": "Apache-2.0",
     "updated_at": "2024-11-22T15:47:44Z",
+    "category": "code",
+    "score": 2.895
+  },
+  {
+    "id": "gh_allenai/molmo",
+    "source_type": "github_repo",
+    "title": "allenai/molmo",
+    "short_desc": "Code for the Molmo Vision-Language Model",
+    "url": "https://github.com/allenai/molmo",
+    "tags": [],
+    "author": "allenai",
+    "stars/downloads": 785,
+    "license": "Apache-2.0",
+    "updated_at": "2024-12-12T17:37:41Z",
     "category": "code",
     "score": 2.895
   },
@@ -25628,11 +25629,11 @@
       "tool-use"
     ],
     "author": "LLaVA-VL",
-    "stars/downloads": 759,
+    "stars/downloads": 760,
     "license": "Apache-2.0",
     "updated_at": "2024-02-01T12:51:10Z",
     "category": "code",
-    "score": 2.88
+    "score": 2.881
   },
   {
     "id": "gh_longzw1997/Open-GroundingDino",
@@ -25672,7 +25673,7 @@
       "vision-language"
     ],
     "author": "mees",
-    "stars/downloads": 729,
+    "stars/downloads": 730,
     "license": "MIT",
     "updated_at": "2025-09-08T08:52:01Z",
     "category": "code",
@@ -25763,11 +25764,11 @@
       "scripts-collection"
     ],
     "author": "prathimacode-hub",
-    "stars/downloads": 644,
+    "stars/downloads": 645,
     "license": "MPL-2.0",
     "updated_at": "2025-04-13T06:15:04Z",
     "category": "code",
-    "score": 2.809
+    "score": 2.81
   },
   {
     "id": "gh_mbzuai-oryx/GeoChat",
@@ -25833,11 +25834,11 @@
       "whisper"
     ],
     "author": "Woolverine94",
-    "stars/downloads": 627,
+    "stars/downloads": 629,
     "license": "GPL-3.0",
-    "updated_at": "2025-10-29T17:45:18Z",
+    "updated_at": "2025-10-30T17:46:51Z",
     "category": "code",
-    "score": 2.797
+    "score": 2.799
   },
   {
     "id": "gh_Ucas-HaoranWei/Vary-toy",
@@ -25896,11 +25897,11 @@
       "robotics"
     ],
     "author": "jacobkrantz",
-    "stars/downloads": 597,
+    "stars/downloads": 598,
     "license": "MIT",
     "updated_at": "2025-01-07T18:53:33Z",
     "category": "code",
-    "score": 2.776
+    "score": 2.777
   },
   {
     "id": "gh_bdaiinstitute/vlfm",
@@ -26377,24 +26378,10 @@
     "score": 2.68
   },
   {
-    "id": "gh_xiaomi-mlab/Orion",
-    "source_type": "github_repo",
-    "title": "xiaomi-mlab/Orion",
-    "short_desc": "[ICCV 2025] Official code of \"ORION: A Holistic End-to-End Autonomous Driving Framework by Vision-Language Instructed Action Generation\"",
-    "url": "https://github.com/xiaomi-mlab/Orion",
-    "tags": [],
-    "author": "xiaomi-mlab",
-    "stars/downloads": 475,
-    "license": "Apache-2.0",
-    "updated_at": "2025-10-09T15:06:44Z",
-    "category": "code",
-    "score": 2.677
-  },
-  {
     "id": "gh_vipshop/cache-dit",
     "source_type": "github_repo",
     "title": "vipshop/cache-dit",
-    "short_desc": "A Unified Cache Acceleration Framework for 🤗Diffusers: Qwen-Image-Lightning, Qwen-Image, HunyuanImage, Wan, FLUX, etc.",
+    "short_desc": "A Unified and Flexible Inference Engine with Cache Acceleration, Parallelism and Quantization for 🤗Diffusers.",
     "url": "https://github.com/vipshop/cache-dit",
     "tags": [
       "context-parallelism",
@@ -26410,11 +26397,25 @@
       "wan"
     ],
     "author": "vipshop",
-    "stars/downloads": 474,
+    "stars/downloads": 479,
     "license": "NOASSERTION",
-    "updated_at": "2025-10-30T12:40:15Z",
+    "updated_at": "2025-10-31T03:29:11Z",
     "category": "code",
-    "score": 2.676
+    "score": 2.68
+  },
+  {
+    "id": "gh_xiaomi-mlab/Orion",
+    "source_type": "github_repo",
+    "title": "xiaomi-mlab/Orion",
+    "short_desc": "[ICCV 2025] Official code of \"ORION: A Holistic End-to-End Autonomous Driving Framework by Vision-Language Instructed Action Generation\"",
+    "url": "https://github.com/xiaomi-mlab/Orion",
+    "tags": [],
+    "author": "xiaomi-mlab",
+    "stars/downloads": 475,
+    "license": "Apache-2.0",
+    "updated_at": "2025-10-09T15:06:44Z",
+    "category": "code",
+    "score": 2.677
   },
   {
     "id": "gh_yeungchenwa/FontDiffuser",
