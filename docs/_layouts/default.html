@@ -26,14 +26,6 @@
       display:inline-block; padding:8px 12px; border:1px solid #ddd; border-radius:999px;
       text-decoration:none;
     }
-    .toolbar{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:12px 0;}
-    .toolbar input, .toolbar select{
-      padding:8px; border:1px solid #ddd; border-radius:6px;
-    }
-    .count{opacity:.8}
-    .card{margin:12px 0; padding:12px; border:1px solid #e5e5e5; border-radius:8px;}
-    .tag{display:inline-block; margin:2px 6px 0 0; padding:2px 8px; border:1px solid #ddd; border-radius:999px; font-size:.85em; text-decoration:none;}
-    .chips a{margin-right:6px}
     @media (max-width:640px){
       .nav-right{float:none; display:block; margin-top:8px;}
     }
@@ -48,7 +40,7 @@
         <a href="{{ '/' | relative_url }}">Home</a>・
         <a href="{{ '/list.html' | relative_url }}">一覧</a>
         <span class="nav-right">
-          <a class="pill" href="{{ '/resources.csv' | relative_url }}">CSV（サンプル）</a>
+          <a id="csv-link" class="pill" href="{{ '/resources.csv' | relative_url }}">CSV（サンプル）</a>
         </span>
       </nav>
       <hr>
@@ -63,5 +55,14 @@
       <p>© {{ site.title }}</p>
     </footer>
   </div>
+
+  <script>
+    // CSV クリックの明示イベント送信（ゴール名: CSVClick）
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('#csv-link');
+      if(!a) return;
+      try { if (window.plausible) plausible('CSVClick'); } catch(_){}
+    }, true);
+  </script>
 </body>
 </html>
