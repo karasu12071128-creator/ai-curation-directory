@@ -2,81 +2,53 @@
 layout: default
 title: Resources
 ---
+
 <h2>Resources</h2>
 
-<div id="err" style="display:none;margin:12px 0;padding:10px;border:1px solid #f2b; background:#fff0f6; border-radius:6px; font-size:.95em;"></div>
-
-<div style="margin:12px 0;">
-  <input id="q" placeholder="キーワード / tag を入力（例: diffusion, llm）"
-         style="padding:8px;width:100%;max-width:480px;border:1px solid #ddd;border-radius:6px;">
+<div style="margin:12px 0">
+  <input id="q" type="search" placeholder="キーワード / tag を入力（例: diffusion, llm）" style="width:100%;max-width:720px;padding:8px;border:1px solid #ddd;border-radius:6px;">
 </div>
 
-<div style="margin:8px 0;">
-  <select id="sort">
-    <option value="updated_desc">更新が新しい順</option>
-    <option value="score_desc">スコアが高い順</option>
-    <option value="title_asc">タイトル順</option>
+<div id="controls" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 12px;">
+  <select id="sort" style="padding:6px;border:1px solid #ddd;border-radius:6px;">
+    <option value="updated">更新が新しい順</option>
+    <option value="score">スコアが高い順</option>
+    <option value="title">名前順</option>
   </select>
-  <select id="type"><option value="">すべての種類</option></select>
-  <select id="license"><option value="">すべてのライセンス</option></select>
+
+  <select id="type" style="padding:6px;border:1px solid #ddd;border-radius:6px;">
+    <option value="">すべての種類</option>
+  </select>
+
+  <select id="license" style="padding:6px;border:1px solid #ddd;border-radius:6px;">
+    <option value="">すべてのライセンス</option>
+  </select>
 </div>
 
-<div id="quickTags" style="margin:8px 0;"></div>
+<div id="quickTags" style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px;"></div>
 
-<div style="opacity:.8;font-size:.9em;">
-  <span id="count">0</span> items
-  <span id="pageInfo" style="float:right;"></span>
-</div>
+<div id="count" style="margin:12px 0;font-weight:600"></div>
 
-<div id="list" style="margin-top:8px;"></div>
+<div id="list" style="display:grid;gap:14px"></div>
 
-<div style="margin:12px 0;display:flex;gap:8px;justify-content:center;">
+<div style="display:flex;gap:10px;align-items:center;margin:16px 0;">
   <button id="prev" disabled>Prev</button>
   <button id="next" disabled>Next</button>
+  <span id="pageInfo" style="margin-left:8px;color:#666"></span>
 </div>
 
 <script>
 (async () => {
-  const errBox = document.getElementById('err');
-  function showErr(msg){
-    errBox.style.display='block';
-    errBox.innerHTML = msg;
-  }
-
-  // 1) resources.json の候補パスを複数用意（ベースURL差異に強くする）
-  const stamp = '{{ site.time | date: "%s" }}';
-  const candidates = [
-    '{{ "/resources.json" | relative_url }}',
-    (location.pathname.replace(/\/[^\/]*$/, '') + '/resources.json'),
-    '/ai-curation-directory/resources.json' // 明示（GitHub Pages の repo パス用）
-  ].map(u => u + '?v=' + stamp);
-
-  let data = null;
-  let tried = [];
-  for (const url of candidates){
-    try {
-      tried.push(url);
-      const r = await fetch(url, {cache:'no-store'});
-      if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
-      const j = await r.json();
-      if (!Array.isArray(j)) throw new Error('JSON is not an array');
-      data = j;
-      break;
-    } catch(e){
-      // 次の候補へ
-    }
-  }
-
-  if (!Array.isArray(data)){
-    showErr(
-      'データの取得に失敗しました。次のURLを試しました:<br>' +
-      tried.map(x=>`<code>${x}</code>`).join('<br>') +
-      '<br>ページを再読込してください。改善しない場合はこの表示のスクショを送ってください。'
-    );
+  // ====== 1) データ読込（同一オリジン / キャッシュ避け） ======
+  const resp = await fetch('{{ "/resources.json" | relative_url }}?v=5');
+  if (!resp.ok) {
+    console.error('Failed to load resources.json', resp.status, resp.statusText);
+    document.getElementById('count').textContent = '0 items';
     return;
   }
+  const data = await resp.json();
 
-  // ====== UI 要素 ======
+  // ====== 2) DOM 参照 ======
   const q = document.getElementById('q');
   const sortSel = document.getElementById('sort');
   const typeSel = document.getElementById('type');
@@ -92,153 +64,180 @@ title: Resources
   let page = 1;
   let activeTags = new Set();
 
-  // ====== util ======
-  const esc = s => (s||'').toString().replace(/[&<>\"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  // ====== 3) 補助関数 ======
+  const esc = s => (s||'').toString().replace(/[<&>"']/g,m=>({ '<':'&lt;','&':'&amp;','"':'&quot;',"'":'&#39;','>':'&gt;'}[m]));
   const toDate = s => s ? (s+'').slice(0,10) : '';
 
-  // 種類とライセンス候補
-  const types = Array.from(new Set(data.map(x=>x && x.source_type).filter(Boolean))).sort();
-  for (const t of types){ const o=document.createElement('option'); o.value=t; o.textContent=t; typeSel.appendChild(o); }
-  const licenses = Array.from(new Set(
-    data.flatMap(x => (x && x.tags || []).filter(t=>/^license:/i.test(t)).map(t=>t.replace(/^license:/i,'')))
-  )).sort();
-  for (const l of licenses){ const o=document.createElement('option'); o.value=l; o.textContent=l; licenseSel.appendChild(o); }
-
-  // 上位タグ20
+  function pickLicense(tags) {
+    if (!Array.isArray(tags)) return '';
+    const t = tags.find(t => t.startsWith('license:'));
+    return t ? t.slice(8) : '';
+  }
   function topNTags(n=20){
     const freq = new Map();
-    for(const x of data){
-      for(const t of (x && x.tags || [])){
-        if(/^license:/i.test(t)) continue;
-        const k=(t||'').trim(); if(!k) continue;
-        freq.set(k,(freq.get(k)||0)+1);
-      }
+    for (const x of data) for (const t of (x.tags||[])) {
+      const k = (t||'').trim();
+      if (!k || k.startsWith('license:') || k.startsWith('dataset:')) continue;
+      freq.set(k, (freq.get(k)||0)+1);
     }
-    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
+    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(v=>v[0]);
   }
-  function renderQuick(){
-    const tags = topNTags(20);
-    quick.innerHTML = tags.map(t =>
-      `<button class="qt" data-t="${esc(t)}" style="margin:2px 6px 2px 0;padding:4px 10px;border:1px solid #ddd;border-radius:999px;background:${activeTags.has(t)?'#333':'#fff'};color:${activeTags.has(t)?'#fff':'#000'}">${esc(t)}</button>`
-    ).join('');
-    quick.querySelectorAll('button.qt').forEach(b=>{
-      b.addEventListener('click', ()=>{
-        const t = b.dataset.t;
-        if(activeTags.has(t)) activeTags.delete(t); else activeTags.add(t);
-        try{ window.plausible && plausible('TagFilter', {props:{ tag:t }}); }catch(_){}
-        page=1; render();
-      });
+
+  // 種類(Type)とライセンスの選択肢をデータから自動生成
+  (function hydrateSelectors(){
+    const types = new Set();
+    const licenses = new Set();
+    data.forEach(x=>{
+      if (x.source_type) types.add(x.source_type);
+      const lic = pickLicense(x.tags||[]);
+      if (lic) licenses.add(lic);
     });
-  }
+    [...types].sort().forEach(t=>{
+      const o = document.createElement('option'); o.value=t; o.textContent=t; typeSel.appendChild(o);
+    });
+    [...licenses].sort().forEach(l=>{
+      const o = document.createElement('option'); o.value=l; o.textContent=l; licenseSel.appendChild(o);
+    });
+  })();
 
-  function scoreOf(it){
-    const s = Number(it && it['stars/downloads'] || 0);
-    const star = Math.log10(Math.max(1,s));
-    let rec = 0;
-    try{
-      const ok = it.updated_at && it.updated_at.slice(0,10) >= (new Date(Date.now()-30*864e5)).toISOString().slice(0,10);
-      rec = ok ? 0.6 : 0;
-    }catch(_){}
-    return +(star+rec).toFixed(3);
-  }
+  // クイックタグ（上位20件）
+  (function renderQuick(){
+    quick.innerHTML = '';
+    for (const tag of topNTags(20)) {
+      const btn = document.createElement('button');
+      btn.textContent = tag;
+      btn.style.cssText = 'padding:6px 10px;border:1px solid #ddd;border-radius:999px;background:#fff;';
+      btn.addEventListener('click', ()=>{
+        if (activeTags.has(tag)) activeTags.delete(tag); else activeTags.add(tag);
+        plausibleSafe('TagFilter', { tag });
+        page = 1; render();
+      });
+      quick.appendChild(btn);
+    }
+  })();
 
-  function apply(){
-    const qv = (q.value||'').toLowerCase().trim();
-    const typ = typeSel.value;
+  // ====== 4) レンダリング ======
+  function filterAll(){
+    const kw = (q.value||'').toLowerCase().trim();
+    const ty = typeSel.value;
     const lic = licenseSel.value;
 
     let arr = data.filter(x=>{
-      if(!x) return false;
-      if(typ && x.source_type!==typ) return false;
-      if(lic){
-        const has = (x.tags||[]).some(t=>(t||'').toLowerCase()==='license:'+lic.toLowerCase());
-        if(!has) return false;
+      // 種類
+      if (ty && x.source_type !== ty) return false;
+      // ライセンス
+      const xl = pickLicense(x.tags||[]);
+      if (lic && xl !== lic) return false;
+      // キーワード
+      if (kw) {
+        const hay = [
+          x.title, x.short_desc, (x.id||''),
+          ...(x.tags||[])
+        ].join(' ').toLowerCase();
+        if (!hay.includes(kw)) return false;
       }
-      if(activeTags.size){
-        const s = new Set(x.tags||[]);
-        for(const t of activeTags){ if(!s.has(t)) return false; }
-      }
-      if(qv){
-        const hay=[x.title,x.short_desc,x.url,x.id,(x.tags||[]).join(' ')].join(' ').toLowerCase();
-        if(!hay.includes(qv)) return false;
+      // クイックタグ
+      if (activeTags.size) {
+        const tset = new Set(x.tags||[]);
+        for (const t of activeTags) if (!tset.has(t)) return false;
       }
       return true;
     });
 
-    for(const it of arr){ if(typeof it.score!=='number') it.score = scoreOf(it); }
-
-    const how = sortSel.value;
-    if(how==='updated_desc') arr.sort((a,b)=>String(b.updated_at||'').localeCompare(String(a.updated_at||'')));
-    else if(how==='score_desc') arr.sort((a,b)=>(b.score||0)-(a.score||0));
-    else if(how==='title_asc') arr.sort((a,b)=>String(a.title||'').localeCompare(String(b.title||'')));
-
+    // ソート
+    const sortBy = sortSel.value;
+    if (sortBy === 'updated') {
+      arr.sort((a,b)=> String(b.updated_at||'').localeCompare(String(a.updated_at||'')));
+    } else if (sortBy === 'score') {
+      arr.sort((a,b)=> (b.score||0)-(a.score||0));
+    } else {
+      arr.sort((a,b)=> String(a.title||'').localeCompare(String(b.title||'')));
+    }
     return arr;
   }
 
   function render(){
-    const arr = apply();
+    const arr = filterAll();
     const total = arr.length;
-    const pages = Math.max(1, Math.ceil(total/PAGE));
-    if(page>pages) page = pages;
+    const maxPage = Math.max(1, Math.ceil(total / PAGE));
+    if (page > maxPage) page = maxPage;
 
-    const view = arr.slice((page-1)*PAGE, page*PAGE);
-    count.textContent = String(total);
+    count.textContent = `${total} items`;
+    list.innerHTML = '';
 
-    list.innerHTML = view.map(x=>`
-      <div class="card" style="margin:12px 0;padding:12px;border:1px solid #e5e5e5;border-radius:8px;">
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-          <b>${esc(x.title||'')}</b>
-          ${x.source_type?`<span style="border:1px solid #ddd;border-radius:12px;padding:2px 8px;font-size:.85em;opacity:.8;">${esc(x.source_type)}</span>`:''}
-          <small style="opacity:.8">score:${esc(x.score)}</small>
-          ${x.updated_at?`<small style="opacity:.8">更新:${esc(toDate(x.updated_at))}</small>`:''}
-          <a href="${esc(x.url||'#')}" target="_blank" rel="noopener" class="open" style="margin-left:auto;">Open</a>
+    const start = (page-1)*PAGE;
+    const chunk = arr.slice(start, start+PAGE);
+
+    for (const x of chunk) {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.style.cssText = 'padding:12px;border:1px solid #e5e5e5;border-radius:10px;';
+
+      const tags = (x.tags||[]).map(t=>`<span style="display:inline-block;margin:3px 6px 0 0;padding:2px 8px;border:1px solid #e5e5e5;border-radius:999px;background:#fff">${esc(t)}</span>`).join(' ');
+
+      const lic = pickLicense(x.tags||[]) || '—';
+
+      div.innerHTML = `
+        <div style="font-weight:700;margin-bottom:4px">${esc(x.title||x.id||'Untitled')}</div>
+        <div style="color:#666;margin-bottom:6px">
+          <b>${esc(x.source_type||'')}</b>
+          ・score: <b>${(x.score??'').toString()}</b>
+          ・更新: <b>${esc(toDate(x.updated_at||x.pushed_at||''))}</b>
+          ・license: <b>${esc(lic)}</b>
         </div>
-        ${x.short_desc?`<div style="margin-top:6px;">${esc(x.short_desc)}</div>`:''}
-        <div style="margin-top:6px">${(x.tags||[]).map(t=>`<a href="#" class="tag" data-t="${esc(t)}" style="display:inline-block;margin:2px 6px 2px 0;padding:2px 8px;border:1px solid #ddd;border-radius:999px;font-size:.85em;">${esc(t)}</a>`).join('')}</div>
-      </div>
-    `).join('');
+        <div style="margin-bottom:8px">${esc(x.short_desc||'')}</div>
+        <div style="margin-bottom:8px">${tags}</div>
+        <a class="openLink" href="${esc(x.url||'#')}" target="_blank" rel="noopener">Open</a>
+      `;
+      list.appendChild(div);
+    }
 
-    pageInfo.textContent = `${page} / ${pages}`;
-    prev.disabled = page<=1; next.disabled = page>=pages;
+    prev.disabled = (page<=1);
+    next.disabled = (page>=maxPage);
+    pageInfo.textContent = `${page}/${maxPage}`;
 
-    // Open イベント
-    list.querySelectorAll('a.open').forEach(a=>{
+    // Open の計測
+    list.querySelectorAll('.openLink').forEach(a=>{
       a.addEventListener('click', ()=>{
-        try{ window.plausible && plausible('Open'); }catch(_){}
-      });
-    });
-    // tag（カード側）
-    list.querySelectorAll('a.tag').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const t = a.dataset.t;
-        if(activeTags.has(t)) activeTags.delete(t); else activeTags.add(t);
-        try{ window.plausible && plausible('TagFilter', {props:{ tag:t }}); }catch(_){}
-        page=1; render();
-      });
+        plausibleSafe('Open', { href: a.href });
+      }, {once:false});
     });
   }
 
-  // 初期描画
-  renderQuick(); render();
+  // ====== 5) イベントハンドラ ======
+  q.addEventListener('input', debounce(()=>{
+    page = 1; render();
+    if (q.value.trim()) plausibleSafe('Search', { q: q.value.trim() });
+  }, 250));
 
-  // 検索（デバウンス）
-  let tid=null;
-  q.addEventListener('input', ()=>{
-    clearTimeout(tid);
-    tid=setTimeout(()=>{
-      page=1; render();
-      try{ window.plausible && plausible('Search', {props:{ q:q.value }}); }catch(_){}
-    }, 400);
+  sortSel.addEventListener('change', ()=>{
+    page = 1; render();
+    plausibleSafe('Select', { control:'sort', value: sortSel.value });
   });
 
-  // セレクト変更
-  sortSel.addEventListener('change', ()=>{ page=1; render(); try{ window.plausible && plausible('Sort', {props:{ sort:sortSel.value }});}catch(_){} });
-  typeSel.addEventListener('change', ()=>{ page=1; render(); try{ window.plausible && plausible('TypeFilter', {props:{ type:typeSel.value||'all' }});}catch(_){} });
-  licenseSel.addEventListener('change', ()=>{ page=1; render(); try{ window.plausible && plausible('LicenseFilter', {props:{ license:licenseSel.value||'all' }});}catch(_){} });
+  typeSel.addEventListener('change', ()=>{
+    page = 1; render();
+    plausibleSafe('Select', { control:'type', value: typeSel.value || 'all' });
+  });
 
-  // ページング
-  prev.addEventListener('click', ()=>{ if(page>1){ page--; render(); }});
-  next.addEventListener('click', ()=>{ page++; render(); }});
+  licenseSel.addEventListener('change', ()=>{
+    page = 1; render();
+    plausibleSafe('Select', { control:'license', value: licenseSel.value || 'all' });
+  });
+
+  prev.addEventListener('click', ()=>{ if (page>1){ page--; render(); window.scrollTo(0,0);} });
+  next.addEventListener('click', ()=>{ page++; render(); window.scrollTo(0,0); });
+
+  // ヘッダの CSV リンク計測（存在すれば）
+  const csvLink = [...document.querySelectorAll('a')].find(a=>/resources\.csv$/i.test(a.getAttribute('href')||''));
+  if (csvLink) {
+    csvLink.addEventListener('click', ()=>plausibleSafe('File Download', { href: csvLink.href||csvLink.getAttribute('href') }));
+  }
+
+  function debounce(fn,ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),ms); }; }
+  function plausibleSafe(name, props){ try{ window.plausible && window.plausible(name, {props}); }catch(e){} }
+
+  // 初回描画
+  render();
 })();
 </script>
