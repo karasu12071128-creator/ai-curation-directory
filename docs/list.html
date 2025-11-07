@@ -4,8 +4,11 @@ title: Resources
 ---
 <h2>Resources</h2>
 
+<div id="err" style="display:none;margin:12px 0;padding:10px;border:1px solid #f2b; background:#fff0f6; border-radius:6px; font-size:.95em;"></div>
+
 <div style="margin:12px 0;">
-  <input id="q" placeholder="キーワード / tag を入力（例: diffusion, llm）" style="padding:8px;width:100%;max-width:480px;border:1px solid #ddd;border-radius:6px;">
+  <input id="q" placeholder="キーワード / tag を入力（例: diffusion, llm）"
+         style="padding:8px;width:100%;max-width:480px;border:1px solid #ddd;border-radius:6px;">
 </div>
 
 <div style="margin:8px 0;">
@@ -34,11 +37,46 @@ title: Resources
 
 <script>
 (async () => {
-  const RES_URL = '{{ "/resources.json" | relative_url }}?v=' + Date.now();
-  const res = await fetch(RES_URL, {cache:'no-store'});
-  const data = await res.json();
+  const errBox = document.getElementById('err');
+  function showErr(msg){
+    errBox.style.display='block';
+    errBox.innerHTML = msg;
+  }
 
-  // UI
+  // 1) resources.json の候補パスを複数用意（ベースURL差異に強くする）
+  const stamp = '{{ site.time | date: "%s" }}';
+  const candidates = [
+    '{{ "/resources.json" | relative_url }}',
+    (location.pathname.replace(/\/[^\/]*$/, '') + '/resources.json'),
+    '/ai-curation-directory/resources.json' // 明示（GitHub Pages の repo パス用）
+  ].map(u => u + '?v=' + stamp);
+
+  let data = null;
+  let tried = [];
+  for (const url of candidates){
+    try {
+      tried.push(url);
+      const r = await fetch(url, {cache:'no-store'});
+      if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+      const j = await r.json();
+      if (!Array.isArray(j)) throw new Error('JSON is not an array');
+      data = j;
+      break;
+    } catch(e){
+      // 次の候補へ
+    }
+  }
+
+  if (!Array.isArray(data)){
+    showErr(
+      'データの取得に失敗しました。次のURLを試しました:<br>' +
+      tried.map(x=>`<code>${x}</code>`).join('<br>') +
+      '<br>ページを再読込してください。改善しない場合はこの表示のスクショを送ってください。'
+    );
+    return;
+  }
+
+  // ====== UI 要素 ======
   const q = document.getElementById('q');
   const sortSel = document.getElementById('sort');
   const typeSel = document.getElementById('type');
@@ -54,15 +92,15 @@ title: Resources
   let page = 1;
   let activeTags = new Set();
 
-  // util
+  // ====== util ======
   const esc = s => (s||'').toString().replace(/[&<>\"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   const toDate = s => s ? (s+'').slice(0,10) : '';
 
-  // 種類（source_type）/ ライセンス（tags: license:*）を抽出
-  const types = Array.from(new Set(data.map(x=>x.source_type).filter(Boolean))).sort();
+  // 種類とライセンス候補
+  const types = Array.from(new Set(data.map(x=>x && x.source_type).filter(Boolean))).sort();
   for (const t of types){ const o=document.createElement('option'); o.value=t; o.textContent=t; typeSel.appendChild(o); }
   const licenses = Array.from(new Set(
-    data.flatMap(x => (x.tags||[]).filter(t=>/^license:/i.test(t)).map(t=>t.replace(/^license:/i,'')))
+    data.flatMap(x => (x && x.tags || []).filter(t=>/^license:/i.test(t)).map(t=>t.replace(/^license:/i,'')))
   )).sort();
   for (const l of licenses){ const o=document.createElement('option'); o.value=l; o.textContent=l; licenseSel.appendChild(o); }
 
@@ -70,7 +108,7 @@ title: Resources
   function topNTags(n=20){
     const freq = new Map();
     for(const x of data){
-      for(const t of (x.tags||[])){
+      for(const t of (x && x.tags || [])){
         if(/^license:/i.test(t)) continue;
         const k=(t||'').trim(); if(!k) continue;
         freq.set(k,(freq.get(k)||0)+1);
@@ -79,14 +117,22 @@ title: Resources
     return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
   }
   function renderQuick(){
-    quick.innerHTML = topNTags(20).map(t =>
+    const tags = topNTags(20);
+    quick.innerHTML = tags.map(t =>
       `<button class="qt" data-t="${esc(t)}" style="margin:2px 6px 2px 0;padding:4px 10px;border:1px solid #ddd;border-radius:999px;background:${activeTags.has(t)?'#333':'#fff'};color:${activeTags.has(t)?'#fff':'#000'}">${esc(t)}</button>`
     ).join('');
+    quick.querySelectorAll('button.qt').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const t = b.dataset.t;
+        if(activeTags.has(t)) activeTags.delete(t); else activeTags.add(t);
+        try{ window.plausible && plausible('TagFilter', {props:{ tag:t }}); }catch(_){}
+        page=1; render();
+      });
+    });
   }
 
-  // スコア（スター/ダウンロードの対数 + 直近更新ボーナス）
   function scoreOf(it){
-    const s = Number(it['stars/downloads']||0);
+    const s = Number(it && it['stars/downloads'] || 0);
     const star = Math.log10(Math.max(1,s));
     let rec = 0;
     try{
@@ -96,16 +142,16 @@ title: Resources
     return +(star+rec).toFixed(3);
   }
 
-  // フィルタ＆ソート適用
   function apply(){
     const qv = (q.value||'').toLowerCase().trim();
     const typ = typeSel.value;
     const lic = licenseSel.value;
 
     let arr = data.filter(x=>{
+      if(!x) return false;
       if(typ && x.source_type!==typ) return false;
       if(lic){
-        const has = (x.tags||[]).some(t=>t.toLowerCase()==='license:'+lic.toLowerCase());
+        const has = (x.tags||[]).some(t=>(t||'').toLowerCase()==='license:'+lic.toLowerCase());
         if(!has) return false;
       }
       if(activeTags.size){
@@ -155,20 +201,20 @@ title: Resources
     pageInfo.textContent = `${page} / ${pages}`;
     prev.disabled = page<=1; next.disabled = page>=pages;
 
-    // イベント：Open
+    // Open イベント
     list.querySelectorAll('a.open').forEach(a=>{
       a.addEventListener('click', ()=>{
-        try{ plausible && plausible('Open'); }catch(_){}
+        try{ window.plausible && plausible('Open'); }catch(_){}
       });
     });
-    // イベント：タグクリック
+    // tag（カード側）
     list.querySelectorAll('a.tag').forEach(a=>{
       a.addEventListener('click', (e)=>{
         e.preventDefault();
         const t = a.dataset.t;
         if(activeTags.has(t)) activeTags.delete(t); else activeTags.add(t);
-        try{ plausible && plausible('TagFilter', {props:{ tag:t }}); }catch(_){}
-        render(); // 再描画
+        try{ window.plausible && plausible('TagFilter', {props:{ tag:t }}); }catch(_){}
+        page=1; render();
       });
     });
   }
@@ -182,14 +228,14 @@ title: Resources
     clearTimeout(tid);
     tid=setTimeout(()=>{
       page=1; render();
-      try{ plausible && plausible('Search', {props:{ q:q.value }}); }catch(_){}
+      try{ window.plausible && plausible('Search', {props:{ q:q.value }}); }catch(_){}
     }, 400);
   });
 
-  // セレクト（イベント名を明示）
-  sortSel.addEventListener('change', ()=>{ page=1; render(); try{ plausible && plausible('Sort', {props:{ sort:sortSel.value }});}catch(_){} });
-  typeSel.addEventListener('change', ()=>{ page=1; render(); try{ plausible && plausible('TypeFilter', {props:{ type:typeSel.value||'all' }});}catch(_){} });
-  licenseSel.addEventListener('change', ()=>{ page=1; render(); try{ plausible && plausible('LicenseFilter', {props:{ license:licenseSel.value||'all' }});}catch(_){} });
+  // セレクト変更
+  sortSel.addEventListener('change', ()=>{ page=1; render(); try{ window.plausible && plausible('Sort', {props:{ sort:sortSel.value }});}catch(_){} });
+  typeSel.addEventListener('change', ()=>{ page=1; render(); try{ window.plausible && plausible('TypeFilter', {props:{ type:typeSel.value||'all' }});}catch(_){} });
+  licenseSel.addEventListener('change', ()=>{ page=1; render(); try{ window.plausible && plausible('LicenseFilter', {props:{ license:licenseSel.value||'all' }});}catch(_){} });
 
   // ページング
   prev.addEventListener('click', ()=>{ if(page>1){ page--; render(); }});
