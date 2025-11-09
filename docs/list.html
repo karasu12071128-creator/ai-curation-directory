@@ -63,24 +63,38 @@ title: Resources
   const PAGE = 48;
   let page = 1;
   let activeTags = new Set();
-// === Filters (Sort / Type / License) => Plausible ===
-sortSel.addEventListener('change', () => {
-  plausible('Sort', { props: { value: sortSel.value } });
-  page = 1;
-  render();
-});
+<!-- ===== Filters (Sort / Type / License) => Plausible + render ===== -->
+<script>
+  function track(name, props = {}) {
+    try { window.plausible && window.plausible(name, { props }); } catch (e) {}
+  }
 
-typeSel.addEventListener('change', () => {
-  plausible('TypeFilter', { props: { value: typeSel.value } });
-  page = 1;
-  render();
-});
+  const fireSelect = () => track('Select', {
+    sort: (sortSel.value || ''),
+    type: (typeSel.value || ''),
+    license: (licenseSel.value || '')
+  });
 
-licenseSel.addEventListener('change', () => {
-  plausible('LicenseFilter', { props: { value: licenseSel.value } });
-  page = 1;
-  render();
-});
+  // iOS 対策で change と input の両方を監視
+  ['change','input'].forEach(evt => {
+    sortSel.addEventListener(evt, () => {
+      track('Sort', { value: sortSel.value });
+      fireSelect();
+      page = 1; render();
+    });
+    typeSel.addEventListener(evt, () => {
+      track('TypeFilter', { value: typeSel.value });
+      fireSelect();
+      page = 1; render();
+    });
+    licenseSel.addEventListener(evt, () => {
+      track('LicenseFilter', { value: licenseSel.value });
+      fireSelect();
+      page = 1; render();
+    });
+  });
+</script>
+<!-- ===== /Filters ===== -->
   // ====== 3) 補助関数 ======
   const esc = s => (s||'').toString().replace(/[<&>"']/g,m=>({ '<':'&lt;','&':'&amp;','"':'&quot;',"'":'&#39;','>':'&gt;'}[m]));
   const toDate = s => s ? (s+'').slice(0,10) : '';
