@@ -13,49 +13,25 @@
     body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,"Hiragino Kaku Gothic ProN",Meiryo,"Noto Sans JP",sans-serif;margin:24px;line-height:1.6}
     header,footer{opacity:.8;font-size:.9em}
     a{color:#5a3bd6;text-decoration:none}
-    .nav a{display:inline-block;margin-right:12px}
-    .btn{display:inline-block;padding:6px 12px;border:1px solid var(--bd);border-radius:9999px;background:#fff}
-    .csv{padding:10px 16px}
-    .wrap{max-width:940px}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-    .chip{background:var(--pill);border:1px solid var(--bd);border-radius:9999px;padding:4px 10px;cursor:pointer}
-    .chip.active{outline:2px solid #5a3bd6}
-    .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    input[type="search"],select{padding:8px;border:1px solid #ddd;border-radius:6px;max-width:100%}
-    .count{color:var(--muted)}
-    .card{margin:12px 0;padding:12px;border:1px solid var(--bd);border-radius:8px}
-    .pill{background:var(--pill);border:1px solid var(--bd);border-radius:9999px;padding:2px 8px;margin-left:8px}
-    .tags{margin-top:6px}
-    .tags .tag{display:inline-block;margin:2px 6px 0 0;padding:2px 8px;border:1px solid var(--bd);border-radius:9999px;background:var(--pill);font-size:.9em}
-    .pager{margin:14px 0}
-    .pager button{padding:6px 12px;border:1px solid var(--bd);border-radius:6px;background:#fff}
-    hr{border:0;border-top:1px solid var(--bd);margin:18px 0}
+    nav a{display:inline-block;margin-right:12px}
+    .csv{display:inline-block;padding:10px 16px;border:1px solid var(--bd);border-radius:30px;text-decoration:none;margin-right:12px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1 style="margin-bottom:6px">{{ site.title }}</h1>
-    <p class="muted">Auto-updating directory of AI resources（毎日自動更新）</p>
-
-    <nav class="nav" aria-label="main">
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/list.html' | relative_url }}">一覧</a>
-      <a class="btn csv csv-link" href="{{ '/data/resources.csv' | relative_url }}">CSV（サンプル）</a>
-    </nav>
-    <hr>
-
-    {{ content }}
-
-    <hr>
-    <footer>© AI Curation Directory</footer>
-  </div>
-
-  <!-- CSVクリックを計測 -->
-  <script>
-    (function(){
-      const a=document.querySelector('a.csv-link');
-      if(a){ a.addEventListener('click',()=>{ try{ if(window.plausible) plausible('CSVClick'); }catch(_){}}); }
-    }());
-  </script>
+<header>
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+  <nav>
+    <a href="{{ '/' | relative_url }}">Home</a>・
+    <a href="{{ '/list.html' | relative_url }}">一覧</a>
+    <a class="csv" href="{{ '/resources.csv' | relative_url }}">CSV（サンプル）</a>
+  </nav>
+</header>
+<main>
+  {{ content }}
+</main>
+<footer>
+  <p>© {{ site.title }}</p>
+</footer>
 </body>
 </html>
