@@ -5,270 +5,213 @@ title: Resources
 
 <h2>Resources</h2>
 
-<div style="margin:12px 0">
-  <input id="q" type="search" placeholder="キーワード / tag を入力（例: diffusion, llm）" style="width:100%;max-width:720px;padding:8px;border:1px solid #ddd;border-radius:6px;">
-</div>
-
-<div id="controls" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 12px;">
-  <select id="sort" style="padding:6px;border:1px solid #ddd;border-radius:6px;">
-    <option value="updated">更新が新しい順</option>
-    <option value="score">スコアが高い順</option>
-    <option value="title">名前順</option>
+<div class="row" style="gap:10px;margin:8px 0 6px">
+  <input id="q" type="search" placeholder="キーワード / tag を入力（例: diffusion, llm）" style="flex:1;min-width:260px">
+  <select id="sort" aria-label="ソート">
+    <option value="updated-desc">更新が新しい順</option>
+    <option value="updated-asc">更新が古い順</option>
+    <option value="score-desc">score 高い順</option>
+    <option value="score-asc">score 低い順</option>
+    <option value="title-asc">タイトル順</option>
   </select>
-
-  <select id="type" style="padding:6px;border:1px solid #ddd;border-radius:6px;">
+  <select id="type" aria-label="種類">
     <option value="">すべての種類</option>
   </select>
-
-  <select id="license" style="padding:6px;border:1px solid #ddd;border-radius:6px;">
+  <select id="license" aria-label="ライセンス">
     <option value="">すべてのライセンス</option>
   </select>
 </div>
 
-<div id="quickTags" style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px;"></div>
+<div id="quickTags" class="chips" aria-label="クイックタグ"></div>
 
-<div id="count" style="margin:12px 0;font-weight:600"></div>
+<p class="count"><span id="count">0</span> items <span id="pageInfo"></span></p>
 
-<div id="list" style="display:grid;gap:14px"></div>
+<div id="list" aria-live="polite"></div>
 
-<div style="display:flex;gap:10px;align-items:center;margin:16px 0;">
+<div class="pager">
   <button id="prev" disabled>Prev</button>
   <button id="next" disabled>Next</button>
-  <span id="pageInfo" style="margin-left:8px;color:#666"></span>
 </div>
 
 <script>
-(async () => {
-  // ====== 1) データ読込（同一オリジン / キャッシュ避け） ======
-  const resp = await fetch('{{ "/resources.json" | relative_url }}?v=5');
-  if (!resp.ok) {
-    console.error('Failed to load resources.json', resp.status, resp.statusText);
-    document.getElementById('count').textContent = '0 items';
-    return;
-  }
-  const data = await resp.json();
+(async function(){
+  // ===== 0) helpers =====
+  const esc = s => (s ?? '').toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const toDate = s => s ? (s+'').slice(0,10) : '';
+  const track = (name, props={}) => { try{ if(window.plausible) plausible(name,{props}); }catch(_){ } };
 
-  // ====== 2) DOM 参照 ======
-  const q = document.getElementById('q');
-  const sortSel = document.getElementById('sort');
-  const typeSel = document.getElementById('type');
-  const licenseSel = document.getElementById('license');
-  const quick = document.getElementById('quickTags');
-  const list = document.getElementById('list');
-  const count = document.getElementById('count');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
+  // ===== 1) DOM =====
+  const q        = document.getElementById('q');
+  const sortSel  = document.getElementById('sort');
+  const typeSel  = document.getElementById('type');
+  const licSel   = document.getElementById('license');
+  const quick    = document.getElementById('quickTags');
+  const list     = document.getElementById('list');
+  const count    = document.getElementById('count');
+  const prevBtn  = document.getElementById('prev');
+  const nextBtn  = document.getElementById('next');
   const pageInfo = document.getElementById('pageInfo');
 
   const PAGE = 48;
   let page = 1;
   let activeTags = new Set();
-<!-- ===== Filters (Sort / Type / License) => Plausible + render ===== -->
-<script>
-  function track(name, props = {}) {
-    try { window.plausible && window.plausible(name, { props }); } catch (e) {}
+
+  // ===== 2) fetch data =====
+  const url = "{{ '/data/resources.json' | relative_url }}?v={{ site.time | date: '%s' }}";
+  const data = await fetch(url).then(r=>r.json());
+
+  // ===== 3) derive options =====
+  // unique types
+  const types = Array.from(new Set(data.map(x => x.source_type).filter(Boolean))).sort();
+  for(const t of types){
+    const opt = document.createElement('option'); opt.value=t; opt.textContent=t;
+    typeSel.appendChild(opt);
+  }
+  // license candidates
+  function pickLicense(tags){
+    if(!Array.isArray(tags)) return '';
+    // license:xxx 優先
+    const p = tags.find(t => /^license:/i.test(t));
+    if(p) return p.split(':')[1].toLowerCase();
+    // 代表的ライセンスっぽいタグを拾う
+    const rx=/^(mit|apache.*|bsd.*|gpl.*|agpl.*|lgpl.*|mpl.*|cc-.*|unlicense)$/i;
+    const f = tags.find(t => rx.test(t));
+    return f ? f.toLowerCase() : '';
+  }
+  const licenses = Array.from(new Set(
+    data.map(x => pickLicense(x.tags)).filter(Boolean)
+  )).sort();
+  for(const l of licenses){
+    const opt = document.createElement('option'); opt.value=l; opt.textContent=l;
+    licSel.appendChild(opt);
   }
 
-  const fireSelect = () => track('Select', {
-    sort: (sortSel.value || ''),
-    type: (typeSel.value || ''),
-    license: (licenseSel.value || '')
-  });
-
-  // iOS 対策で change と input の両方を監視
-  ['change','input'].forEach(evt => {
-    sortSel.addEventListener(evt, () => {
-      track('Sort', { value: sortSel.value });
-      fireSelect();
-      page = 1; render();
-    });
-    typeSel.addEventListener(evt, () => {
-      track('TypeFilter', { value: typeSel.value });
-      fireSelect();
-      page = 1; render();
-    });
-    licenseSel.addEventListener(evt, () => {
-      track('LicenseFilter', { value: licenseSel.value });
-      fireSelect();
-      page = 1; render();
-    });
-  });
-</script>
-<!-- ===== /Filters ===== -->
-  // ====== 3) 補助関数 ======
-  const esc = s => (s||'').toString().replace(/[<&>"']/g,m=>({ '<':'&lt;','&':'&amp;','"':'&quot;',"'":'&#39;','>':'&gt;'}[m]));
-  const toDate = s => s ? (s+'').slice(0,10) : '';
-
-  function pickLicense(tags) {
-    if (!Array.isArray(tags)) return '';
-    const t = tags.find(t => t.startsWith('license:'));
-    return t ? t.slice(8) : '';
-  }
+  // quick tags: 上位20
   function topNTags(n=20){
     const freq = new Map();
-    for (const x of data) for (const t of (x.tags||[])) {
-      const k = (t||'').trim();
-      if (!k || k.startsWith('license:') || k.startsWith('dataset:')) continue;
-      freq.set(k, (freq.get(k)||0)+1);
+    for(const x of data) for(const t of (x.tags||[])){
+      const k = (t||'').trim().toLowerCase();
+      if(!k || /^dataset:/i.test(k) || /^license:/i.test(k)) continue;
+      freq.set(k,(freq.get(k)||0)+1);
     }
-    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(v=>v[0]);
+    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
   }
-
-  // 種類(Type)とライセンスの選択肢をデータから自動生成
-  (function hydrateSelectors(){
-    const types = new Set();
-    const licenses = new Set();
-    data.forEach(x=>{
-      if (x.source_type) types.add(x.source_type);
-      const lic = pickLicense(x.tags||[]);
-      if (lic) licenses.add(lic);
-    });
-    [...types].sort().forEach(t=>{
-      const o = document.createElement('option'); o.value=t; o.textContent=t; typeSel.appendChild(o);
-    });
-    [...licenses].sort().forEach(l=>{
-      const o = document.createElement('option'); o.value=l; o.textContent=l; licenseSel.appendChild(o);
-    });
-  })();
-
-  // クイックタグ（上位20件）
-  (function renderQuick(){
+  function renderQuickTags(){
     quick.innerHTML = '';
-    for (const tag of topNTags(20)) {
-      const btn = document.createElement('button');
-      btn.textContent = tag;
-      btn.style.cssText = 'padding:6px 10px;border:1px solid #ddd;border-radius:999px;background:#fff;';
-      btn.addEventListener('click', ()=>{
-        if (activeTags.has(tag)) activeTags.delete(tag); else activeTags.add(tag);
-        plausibleSafe('TagFilter', { tag });
-        page = 1; render();
+    for(const t of topNTags(20)){
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'chip' + (activeTags.has(t) ? ' active' : '');
+      el.textContent = t;
+      el.setAttribute('data-tag', t);
+      el.addEventListener('click', ()=>{
+        if(activeTags.has(t)) activeTags.delete(t); else activeTags.add(t);
+        track('TagFilter', { tag: t, active: activeTags.size });
+        page = 1; render(); renderQuickTags();
       });
-      quick.appendChild(btn);
+      quick.appendChild(el);
     }
-  })();
+  }
+  renderQuickTags();
 
-  // ====== 4) レンダリング ======
-  function filterAll(){
-    const kw = (q.value||'').toLowerCase().trim();
-    const ty = typeSel.value;
-    const lic = licenseSel.value;
-
-    let arr = data.filter(x=>{
-      // 種類
-      if (ty && x.source_type !== ty) return false;
-      // ライセンス
-      const xl = pickLicense(x.tags||[]);
-      if (lic && xl !== lic) return false;
-      // キーワード
-      if (kw) {
-        const hay = [
-          x.title, x.short_desc, (x.id||''),
-          ...(x.tags||[])
-        ].join(' ').toLowerCase();
-        if (!hay.includes(kw)) return false;
-      }
-      // クイックタグ
-      if (activeTags.size) {
-        const tset = new Set(x.tags||[]);
-        for (const t of activeTags) if (!tset.has(t)) return false;
-      }
-      return true;
-    });
-
-    // ソート
-    const sortBy = sortSel.value;
-    if (sortBy === 'updated') {
-      arr.sort((a,b)=> String(b.updated_at||'').localeCompare(String(a.updated_at||'')));
-    } else if (sortBy === 'score') {
-      arr.sort((a,b)=> (b.score||0)-(a.score||0));
-    } else {
-      arr.sort((a,b)=> String(a.title||'').localeCompare(String(b.title||'')));
+  // ===== 4) filter + sort + paginate =====
+  function matches(x){
+    // query
+    const terms = (q.value||'').trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const hay = [x.id,x.title,x.short_desc,(x.tags||[]).join(' '),(x.source_type||'')].join(' ').toLowerCase();
+    if(terms.length && !terms.every(t => hay.includes(t))) return false;
+    // tags
+    if(activeTags.size){
+      const ts = new Set((x.tags||[]).map(s => (s||'').toLowerCase()));
+      for(const t of activeTags) if(!ts.has(t)) return false;
     }
+    // type
+    if(typeSel.value && x.source_type !== typeSel.value) return false;
+    // license
+    if(licSel.value && pickLicense(x.tags) !== licSel.value) return false;
+    return true;
+  }
+  function sortBy(arr){
+    const v = sortSel.value;
+    const gd = (d)=> new Date(d||0).getTime()||0;
+    const sc = (x)=> Number(x.score||0);
+    if(v==='updated-desc') arr.sort((a,b)=>gd(b.updated)-gd(a.updated));
+    else if(v==='updated-asc') arr.sort((a,b)=>gd(a.updated)-gd(b.updated));
+    else if(v==='score-desc') arr.sort((a,b)=>sc(b)-sc(a));
+    else if(v==='score-asc') arr.sort((a,b)=>sc(a)-sc(b));
+    else if(v==='title-asc') arr.sort((a,b)=> esc(a.id).localeCompare(esc(b.id)));
     return arr;
   }
 
   function render(){
-    const arr = filterAll();
-    const total = arr.length;
-    const maxPage = Math.max(1, Math.ceil(total / PAGE));
-    if (page > maxPage) page = maxPage;
-
-    count.textContent = `${total} items`;
-    list.innerHTML = '';
+    const filtered = data.filter(matches);
+    count.textContent = filtered.length.toLocaleString();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE));
+    page = Math.min(Math.max(1,page), totalPages);
+    prevBtn.disabled = page<=1;
+    nextBtn.disabled = page>=totalPages;
+    pageInfo.textContent = filtered.length ? `（${page}/${totalPages}ページ）` : '';
 
     const start = (page-1)*PAGE;
-    const chunk = arr.slice(start, start+PAGE);
+    const view = sortBy(filtered).slice(start, start+PAGE);
 
-    for (const x of chunk) {
-      const div = document.createElement('div');
-      div.className = 'card';
-      div.style.cssText = 'padding:12px;border:1px solid #e5e5e5;border-radius:10px;';
+    list.innerHTML = view.map(x => {
+      const lic = pickLicense(x.tags);
+      const tags = (x.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join(' ');
+      return `
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <strong>${esc(x.id||x.title||'')}</strong>
+            ${x.source_type ? `<span class="pill">${esc(x.source_type)}</span>`:''}
+            ${lic ? `<span class="pill" title="license">${esc(lic)}</span>`:''}
+          </div>
+          <div class="muted" style="margin-top:2px">score: ${esc(x.score||'')} ・ 更新: ${esc(toDate(x.updated))}</div>
+          ${x.short_desc ? `<p style="margin:8px 0">${esc(x.short_desc)}</p>`:''}
+          <div class="tags">${tags}</div>
+          ${x.url ? `<p style="margin:8px 0"><a class="openLink btn" data-id="${esc(x.id||'')}" href="${esc(x.url)}" target="_blank" rel="noopener">Open</a></p>`:''}
+        </div>`;
+    }).join('');
 
-      const tags = (x.tags||[]).map(t=>`<span style="display:inline-block;margin:3px 6px 0 0;padding:2px 8px;border:1px solid #e5e5e5;border-radius:999px;background:#fff">${esc(t)}</span>`).join(' ');
-
-      const lic = pickLicense(x.tags||[]) || '—';
-
-      div.innerHTML = `
-        <div style="font-weight:700;margin-bottom:4px">${esc(x.title||x.id||'Untitled')}</div>
-        <div style="color:#666;margin-bottom:6px">
-          <b>${esc(x.source_type||'')}</b>
-          ・score: <b>${(x.score??'').toString()}</b>
-          ・更新: <b>${esc(toDate(x.updated_at||x.pushed_at||''))}</b>
-          ・license: <b>${esc(lic)}</b>
-        </div>
-        <div style="margin-bottom:8px">${esc(x.short_desc||'')}</div>
-        <div style="margin-bottom:8px">${tags}</div>
-        <a class="openLink" href="${esc(x.url||'#')}" target="_blank" rel="noopener">Open</a>
-      `;
-      list.appendChild(div);
-    }
-
-    prev.disabled = (page<=1);
-    next.disabled = (page>=maxPage);
-    pageInfo.textContent = `${page}/${maxPage}`;
-
-    // Open の計測
+    // Open 計測（イベント委譲）
     list.querySelectorAll('.openLink').forEach(a=>{
-      a.addEventListener('click', ()=>{
-        plausibleSafe('Open', { href: a.href });
-      }, {once:false});
+      a.addEventListener('click', (e)=>{
+        track('Open', { id: e.currentTarget.dataset.id||'' });
+      }, { once:true });
     });
   }
 
-  // ====== 5) イベントハンドラ ======
-  q.addEventListener('input', debounce(()=>{
-    page = 1; render();
-    if (q.value.trim()) plausibleSafe('Search', { q: q.value.trim() });
-  }, 250));
+  render();
+
+  // ===== 5) events (Plausible 計測込み) =====
+  // Search: Enterで計測 / 入力ごとに描画
+  let lastSearch='';
+  q.addEventListener('input', ()=>{ page=1; render(); });
+  q.addEventListener('keydown', (e)=>{
+    if(e.key==='Enter'){
+      if(q.value!==lastSearch){ track('Search', { q: q.value.trim().slice(0,80) }); lastSearch=q.value; }
+    }
+  });
 
   sortSel.addEventListener('change', ()=>{
-    page = 1; render();
-    plausibleSafe('Select', { control:'sort', value: sortSel.value });
+    track('Sort', { value: sortSel.value });
+    page=1; render();
   });
-
   typeSel.addEventListener('change', ()=>{
-    page = 1; render();
-    plausibleSafe('Select', { control:'type', value: typeSel.value || 'all' });
+    track('TypeFilter', { value: typeSel.value||'all' });
+    page=1; render();
+  });
+  licSel.addEventListener('change', ()=>{
+    track('LicenseFilter', { value: licSel.value||'all' });
+    page=1; render();
   });
 
-  licenseSel.addEventListener('change', ()=>{
-    page = 1; render();
-    plausibleSafe('Select', { control:'license', value: licenseSel.value || 'all' });
+  prevBtn.addEventListener('click', ()=>{ if(page>1){ page--; render(); window.scrollTo({top:0,behavior:'smooth'});} });
+  nextBtn.addEventListener('click', ()=>{ page++; render(); window.scrollTo({top:0,behavior:'smooth'}); });
+
+  // ヘッダCSVのクリック計測（保険：レイアウト側でも設定済み）
+  document.querySelectorAll('a[href$="resources.csv"]').forEach(a=>{
+    a.addEventListener('click',()=>track('CSVClick'));
   });
 
-  prev.addEventListener('click', ()=>{ if (page>1){ page--; render(); window.scrollTo(0,0);} });
-  next.addEventListener('click', ()=>{ page++; render(); window.scrollTo(0,0); });
-
-  // ヘッダの CSV リンク計測（存在すれば）
-  const csvLink = [...document.querySelectorAll('a')].find(a=>/resources\.csv$/i.test(a.getAttribute('href')||''));
-  if (csvLink) {
-    csvLink.addEventListener('click', ()=>plausibleSafe('File Download', { href: csvLink.href||csvLink.getAttribute('href') }));
-  }
-
-  function debounce(fn,ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a),ms); }; }
-  function plausibleSafe(name, props){ try{ window.plausible && window.plausible(name, {props}); }catch(e){} }
-
-  // 初回描画
-  render();
-})();
+}());
 </script>
