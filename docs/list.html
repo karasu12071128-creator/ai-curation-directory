@@ -3,12 +3,18 @@ layout: default
 title: Resources
 ---
 
-<h2>Resources</h2>
-<input id="q" placeholder="キーワード / tag を入力（例: diffusion, llm）">
+<h1>Resources</h1>
+
 <div class="row">
+  <input id="q" type="search" autocomplete="off"
+         placeholder="キーワード / tag を入力（例: diffusion, llm）">
+</div>
+
+<div class="row" aria-label="並び替え / 種類 / ライセンス">
   <select id="sort">
-    <option value="updated_at" selected>更新が新しい順</option>
-    <option value="score">スコア順</option>
+    <option value="date_desc">更新が新しい順</option>
+    <option value="score_desc">スコアが高い順</option>
+    <option value="title_asc">名前順（A→Z）</option>
   </select>
   <select id="type">
     <option value="">すべての種類</option>
@@ -17,147 +23,245 @@ title: Resources
     <option value="">すべてのライセンス</option>
   </select>
 </div>
-<div id="tags" class="chips"></div>
-<p id="count"></p>
+
+<div id="quickTags" class="chips" aria-label="クイックタグ"></div>
+
+<div id="count">0 items</div>
 <div id="list"></div>
-<div class="row">
-  <button id="prev">Prev</button>
-  <button id="next">Next</button>
+
+<div class="pager">
+  <button id="prev" disabled>Prev</button>
+  <div id="pageInfo" aria-live="polite"></div>
+  <button id="next" disabled>Next</button>
 </div>
-<p id="pageInfo"></p>
+
+<style>
+.row{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 14px}
+input#q{width:100%;max-width:560px;padding:10px;border:1px solid #e5e5e5;border-radius:6px}
+select{padding:8px;border:1px solid #e5e5e5;border-radius:6px}
+#count{color:#777;margin:6px 0 10px}
+
+/* タグ・クイックタグ：丸いチップ */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
+.chip{
+  display:inline-block; padding:6px 10px; border:1px solid #e5e5e5;
+  border-radius:9999px; background:#f7f7fb; font-size:13px; line-height:1;
+  cursor:pointer; user-select:none;
+}
+.chip:hover{filter:brightness(0.98)}
+.chip:active{transform:scale(0.98)}
+.chip.active{background:#ece7ff;border-color:#c9befa}
+.chip.active::after{content:" ✓"; font-size:12px}
+
+/* カード */
+.card{border:1px solid #e5e5e5;border-radius:8px;padding:12px;margin:12px 0}
+.card b{font-size:18px}
+.card .meta{color:#777;font-size:12px;margin-left:6px}
+.card .tags{margin-top:8px}
+.card .tags .chip{background:#fff}
+
+.pager{display:flex;gap:10px;margin:10px 0;align-items:center}
+.pager button{padding:8px 12px;border:1px solid #e5e5e5;border-radius:6px;background:#fff;cursor:pointer}
+.pager button:disabled{opacity:.5;cursor:not-allowed}
+</style>
 
 <script>
-async function loadData() {
-  const candidates = [
-    "{{ '/resources.json' | relative_url }}",
-    "{{ '/data/resources.json' | relative_url }}"
-  ];
-  for (const url of candidates) {
-    try {
-      const r = await fetch(url);
-      if (r.ok) {
-        return await r.json();
-      }
-    } catch (e) {
-      continue;
-    }
-  }
-  throw new Error('resources.json not found');
-}
-function escapeHtml(s) {
-  return (s||'').toString().replace(/[&<>"]/g, m =>
-    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-}
-async function main() {
-  const data = await loadData();
-  const q = document.getElementById('q');
-  const sortSel = document.getElementById('sort');
-  const typeSel = document.getElementById('type');
-  const licenseSel = document.getElementById('license');
-  const tagsDiv = document.getElementById('tags');
-  const listDiv = document.getElementById('list');
-  const countSpan = document.getElementById('count');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-  const pageInfo = document.getElementById('pageInfo');
+(async function(){
+  // ========= 0) helpers =========
+  const esc = s => (s||'').toString()
+     .replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const toDate = x => (x.updated_at || x.pushed_at || x.last_modified || x.date || '');
+  const by = f => (a,b)=> (f(b)>f(a)?1:f(b)<f(a)?-1:0);
 
-  // populate Type and License filters
-  const types = new Set(data.map(x => x.source_type).filter(Boolean));
-  types.forEach(t => {
-    const opt = document.createElement('option');
-    opt.value = t; opt.textContent = t;
-    typeSel.appendChild(opt);
-  });
-  const licenses = new Set();
-  data.forEach(x => {
-    const lic = (x.license || '').split(',').map(s => s.trim()).filter(Boolean);
-    lic.forEach(l => licenses.add(l));
-  });
-  licenses.forEach(l => {
-    const opt = document.createElement('option');
-    opt.value = l; opt.textContent = l;
-    licenseSel.appendChild(opt);
-  });
+  // ========= 1) DOM refs =========
+  const q         = document.getElementById('q');
+  const sortSel   = document.getElementById('sort');
+  const typeSel   = document.getElementById('type');
+  const licenseSel= document.getElementById('license');
+  const quick     = document.getElementById('quickTags');
+  const list      = document.getElementById('list');
+  const count     = document.getElementById('count');
+  const prev      = document.getElementById('prev');
+  const next      = document.getElementById('next');
+  const pageInfo  = document.getElementById('pageInfo');
 
-  // quick tags (top 20)
-  const freq = {};
-  data.forEach(x => (x.tags||[]).forEach(t => {freq[t] = (freq[t]||0)+1;}));
-  const topTags = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,20).map(x=>x[0]);
-  topTags.forEach(t => {
-    const span = document.createElement('span');
-    span.textContent = t;
-    span.className = 'chip';
-    span.addEventListener('click', () => {
-      plausible('TagFilter', {props:{value:t}});
-      if (activeTags.has(t)) { activeTags.delete(t); span.classList.remove('active'); }
-      else { activeTags.add(t); span.classList.add('active'); }
-      page = 1; render();
-    });
-    tagsDiv.appendChild(span);
-  });
-
-  let page = 1;
+  // ========= 2) state =========
   const PAGE = 48;
-  const activeTags = new Set();
+  let page = 1;
+  let data = [];
+  let activeTags = new Set();
 
-  function render() {
-    let arr = data;
-    if (q.value.trim()) {
-      const kw = q.value.trim().toLowerCase();
-      arr = arr.filter(x =>
-        (x.title || '').toLowerCase().includes(kw) ||
-        (x.tags || []).some(t => t.toLowerCase().includes(kw)) ||
-        (x.short_desc || '').toLowerCase().includes(kw)
-      );
-    }
-    if (activeTags.size) {
-      arr = arr.filter(x => [...activeTags].every(t => (x.tags||[]).includes(t)));
-    }
-    if (typeSel.value) {
-      arr = arr.filter(x => x.source_type === typeSel.value);
-    }
-    if (licenseSel.value) {
-      arr = arr.filter(x => (x.license || '').split(',').map(s => s.trim()).includes(licenseSel.value));
-    }
-    if (sortSel.value === 'updated_at') {
-      arr.sort((a,b) => (b.updated_at||'').localeCompare(a.updated_at||''));
-    } else {
-      arr.sort((a,b) => (b.score || 0) - (a.score || 0));
-    }
-    const total = arr.length;
-    countSpan.textContent = `${total} items`;
-    const pages = Math.ceil(total / PAGE) || 1;
-    if (page > pages) page = pages;
-    pageInfo.textContent = `${page} / ${pages}`;
-    const start = (page - 1) * PAGE;
-    const end = start + PAGE;
-    listDiv.innerHTML = arr.slice(start,end).map(x => {
-      const tagsHtml = (x.tags||[]).map(t => `<small>${escapeHtml(t)}</small>`).join(', ');
-      return `
-        <div class="card">
-          <b>${escapeHtml(x.title || '')}</b>
-          <small>${escapeHtml(x.source_type||'')}</small>
-          score:${x.score}
-          <div>${escapeHtml(x.short_desc||'')}</div>
-          <div><small>tags: ${tagsHtml}</small></div>
-          <a href="${escapeHtml(x.url||'#')}" target="_blank" rel="noopener"
-             onclick="plausible('Open',{props:{value:'Open'}})">Open</a>
-        </div>
-      `;
-    }).join('');
+  // ========= 3) load JSON (2経路フォールバック) =========
+  async function tryFetch(url){
+    try{
+      const r = await fetch(url,{cache:'no-store'});
+      if(r.ok) return await r.json();
+    }catch(_){}
+    return null;
   }
-  // listeners
-  q.addEventListener('input', () => { plausible('Search'); page=1; render(); });
-  sortSel.addEventListener('change', () => { plausible('Sort',{props:{value:sortSel.value}}); page=1; render(); });
-  typeSel.addEventListener('change', () => { plausible('TypeFilter',{props:{value:typeSel.value}}); page=1; render(); });
-  licenseSel.addEventListener('change', () => { plausible('LicenseFilter',{props:{value:licenseSel.value}}); page=1; render(); });
-  prev.addEventListener('click', () => { if (page>1) { page--; render(); } });
-  next.addEventListener('click', () => { page++; render(); });
+  data = await tryFetch('{{ "/resources.json" | relative_url }}')
+      || await tryFetch('{{ "/data/resources.json" | relative_url }}')
+      || [];
+  if(!Array.isArray(data)) data = [];
 
+  // ========= 4) build selects & quick tags =========
+  // 種類（source_type）
+  const types = [...new Set(data.map(x => x.source_type).filter(Boolean))].sort();
+  types.forEach(t => typeSel.insertAdjacentHTML('beforeend',
+    `<option value="${esc(t)}">${esc(t)}</option>`));
+
+  // ライセンス（tags から license:xxx を抽出）
+  const licSet = new Set();
+  data.forEach(x => (x.tags||[]).forEach(t=>{
+    if(typeof t==='string' && t.startsWith('license:')) licSet.add(t.slice(8));
+  }));
+  [...licSet].sort().forEach(lc => licenseSel.insertAdjacentHTML('beforeend',
+    `<option value="${esc(lc)}">${esc(lc)}</option>`));
+
+  // 上位タグ20件（dataset:/license:/region: は除外）
+  function topNTags(n=20){
+    const freq = new Map();
+    for(const x of data){
+      for(const traw of (x.tags||[])){
+        const t = (traw||'').toString();
+        if(!t || t.startsWith('dataset:') || t.startsWith('license:') || t.startsWith('region:')) continue;
+        const k = t.trim();
+        freq.set(k, (freq.get(k)||0)+1);
+      }
+    }
+    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
+  }
+  for(const t of topNTags(20)){
+    quick.insertAdjacentHTML('beforeend',
+      `<button type="button" class="chip" data-tag="${esc(t)}"
+        aria-pressed="false" aria-label="タグ ${esc(t)}">${esc(t)}</button>`);
+  }
+
+  // ========= 5) render =========
+  const norm = s => (s||'').toString().toLowerCase();
+  function matches(x, terms){
+    if(!terms.length) return true;
+    const hay = norm(x.title)+' '+norm(x.id)+' '+norm(x.short_desc)+' '+norm((x.tags||[]).join(' '));
+    return terms.every(t => hay.includes(t));
+  }
+  function licenseOf(x){
+    const t = (x.tags||[]).find(v=> (v||'').toString().startsWith('license:'));
+    return t ? t.slice(8) : '';
+  }
+
+  function cardHTML(x){
+    const tagChips = (x.tags||[]).slice(0,30).map(t =>
+      `<button type="button" class="chip tag" data-tag="${esc(t)}"
+         role="button" aria-label="タグ ${esc(t)} を切り替え">${esc(t)}</button>`
+    ).join(' '); // ← 半角スペースで確実に区切る
+
+    return `
+      <div class="card">
+        <div><b>${esc(x.title||'')}</b>
+          ${x.source_type ? `<span class="meta">${esc(x.source_type)}</span>`:''}
+          ${x.score != null ? `<span class="meta">score:${esc(x.score)}</span>`:''}
+          ${toDate(x) ? `<span class="meta">${esc(toDate(x).slice(0,10))}</span>`:''}
+        </div>
+        ${x.short_desc ? `<div>${esc(x.short_desc)}</div>`:''}
+        <div class="tags chips" aria-label="このカードのタグ">${tagChips}</div>
+        ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener"
+           onclick="plausible && plausible('Open',{props:{value:'Open'}})">Open</a>`:''}
+      </div>`;
+  }
+
+  function render(){
+    const terms = norm(q.value).split(/\s+/).filter(Boolean);
+    let arr = data.filter(x => matches(x, terms));
+
+    // tagフィルタ
+    if(activeTags.size){
+      arr = arr.filter(x => {
+        const s = new Set((x.tags||[]).map(String));
+        for(const t of activeTags){ if(!s.has(t)) return false; }
+        return true;
+      });
+    }
+    // 種類
+    if(typeSel.value) arr = arr.filter(x => x.source_type === typeSel.value);
+    // ライセンス
+    if(licenseSel.value) arr = arr.filter(x => licenseOf(x) === licenseSel.value);
+
+    // ソート
+    const mode = sortSel.value;
+    if(mode === 'date_desc') arr.sort(by(x=>toDate(x)||''));
+    else if(mode === 'score_desc') arr.sort(by(x=>+x.score||0));
+    else if(mode === 'title_asc') arr.sort((a,b)=>esc(a.title||'').localeCompare(esc(b.title||'')));
+
+    // ページング
+    const total = arr.length;
+    const pages = Math.max(1, Math.ceil(total / PAGE));
+    page = Math.min(Math.max(1, page), pages);
+    const start = (page-1)*PAGE, end = start + PAGE;
+
+    count.textContent = `${total} items`;
+    pageInfo.textContent = `${page}/${pages}`;
+    prev.disabled = (page<=1);
+    next.disabled = (page>=pages);
+
+    list.innerHTML = arr.slice(start,end).map(cardHTML).join('');
+    // 選択済みタグの見た目同期（クイックタグ）
+    [...quick.querySelectorAll('.chip')].forEach(ch=>{
+      const on = activeTags.has(ch.dataset.tag);
+      ch.classList.toggle('active', on);
+      ch.setAttribute('aria-pressed', on?'true':'false');
+    });
+  }
+
+  // ========= 6) events =========
+  // 検索（デバウンス）
+  let tmr=null;
+  q.addEventListener('input', () => {
+    clearTimeout(tmr);
+    tmr = setTimeout(()=>{
+      plausible && plausible('Search', {props:{value:q.value||'(clear)'}});
+      page=1; render();
+    }, 500);
+  });
+
+  // 並び替え / 種類 / ライセンス
+  sortSel.addEventListener('change', ()=>{
+    plausible && plausible('Sort', {props:{value: sortSel.value}});
+    page=1; render();
+  });
+  typeSel.addEventListener('change', ()=>{
+    plausible && plausible('TypeFilter', {props:{value: typeSel.value || 'all'}});
+    page=1; render();
+  });
+  licenseSel.addEventListener('change', ()=>{
+    plausible && plausible('LicenseFilter', {props:{value: licenseSel.value || 'all'}});
+    page=1; render();
+  });
+
+  // クイックタグ
+  quick.addEventListener('click', e=>{
+    const b = e.target.closest('.chip'); if(!b) return;
+    const tag = b.dataset.tag; if(!tag) return;
+    const turnOn = !activeTags.has(tag);
+    if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
+    plausible && plausible('TagFilter', {props:{value: tag}});
+    page=1; render();
+  });
+
+  // カード内タグ
+  list.addEventListener('click', e=>{
+    const b = e.target.closest('.tag'); if(!b) return;
+    const tag = b.dataset.tag; if(!tag) return;
+    const turnOn = !activeTags.has(tag);
+    if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
+    plausible && plausible('TagFilter', {props:{value: tag}});
+    page=1; render();
+  });
+
+  // ページャ
+  prev.addEventListener('click', ()=>{ page--; render(); });
+  next.addEventListener('click', ()=>{ page++; render(); });
+
+  // 初回描画
   render();
-}
-main().catch(err => {
-  document.getElementById('list').textContent = 'Error loading resources';
-  console.error(err);
-});
+})();
 </script>
