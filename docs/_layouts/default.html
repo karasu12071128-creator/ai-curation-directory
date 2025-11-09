@@ -2,67 +2,60 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Plausible -->
-  <script defer data-domain="karasu12071128-creator.github.io" src="https://plausible.io/js/script.js"></script>
-
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ page.title }} — {{ site.title }}</title>
   <meta name="description" content="{{ site.description }}">
-
+  <!-- Plausible -->
+  <link rel="preconnect" href="https://plausible.io">
+  <script defer data-domain="karasu12071128-creator.github.io" src="https://plausible.io/js/script.js"></script>
   <style>
-    :root { --maxw: 980px; }
-    body{
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial,
-                   "Hiragino Kaku Gothic ProN", Meiryo, "Noto Sans JP", sans-serif;
-      margin: 24px; line-height: 1.6;
-    }
-    header, footer{opacity:.85; font-size:.9em;}
-    .wrap{max-width: var(--maxw); margin: 0 auto;}
-    hr{border:none; border-top:1px solid #e5e5e5; margin:16px 0;}
-    nav a{display:inline-block; margin-right:12px;}
-    .nav-right{float:right;}
-    .pill{
-      display:inline-block; padding:8px 12px; border:1px solid #ddd; border-radius:999px;
-      text-decoration:none;
-    }
-    @media (max-width:640px){
-      .nav-right{float:none; display:block; margin-top:8px;}
-    }
+    :root{--bd:#e5e5e5;--muted:#777;--pill:#f6f6f6}
+    body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,"Hiragino Kaku Gothic ProN",Meiryo,"Noto Sans JP",sans-serif;margin:24px;line-height:1.6}
+    header,footer{opacity:.8;font-size:.9em}
+    a{color:#5a3bd6;text-decoration:none}
+    .nav a{display:inline-block;margin-right:12px}
+    .btn{display:inline-block;padding:6px 12px;border:1px solid var(--bd);border-radius:9999px;background:#fff}
+    .csv{padding:10px 16px}
+    .wrap{max-width:940px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+    .chip{background:var(--pill);border:1px solid var(--bd);border-radius:9999px;padding:4px 10px;cursor:pointer}
+    .chip.active{outline:2px solid #5a3bd6}
+    .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    input[type="search"],select{padding:8px;border:1px solid #ddd;border-radius:6px;max-width:100%}
+    .count{color:var(--muted)}
+    .card{margin:12px 0;padding:12px;border:1px solid var(--bd);border-radius:8px}
+    .pill{background:var(--pill);border:1px solid var(--bd);border-radius:9999px;padding:2px 8px;margin-left:8px}
+    .tags{margin-top:6px}
+    .tags .tag{display:inline-block;margin:2px 6px 0 0;padding:2px 8px;border:1px solid var(--bd);border-radius:9999px;background:var(--pill);font-size:.9em}
+    .pager{margin:14px 0}
+    .pager button{padding:6px 12px;border:1px solid var(--bd);border-radius:6px;background:#fff}
+    hr{border:0;border-top:1px solid var(--bd);margin:18px 0}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <h1 style="margin:0">{{ site.title }}</h1>
-      <p style="margin:4px 0 10px">{{ site.description }}</p>
-      <nav>
-        <a href="{{ '/' | relative_url }}">Home</a>・
-        <a href="{{ '/list.html' | relative_url }}">一覧</a>
-        <span class="nav-right">
-          <a id="csv-link" class="pill" href="{{ '/resources.csv' | relative_url }}">CSV（サンプル）</a>
-        </span>
-      </nav>
-      <hr>
-    </header>
+    <h1 style="margin-bottom:6px">{{ site.title }}</h1>
+    <p class="muted">Auto-updating directory of AI resources（毎日自動更新）</p>
 
-    <main>
-      {{ content }}
-    </main>
+    <nav class="nav" aria-label="main">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/list.html' | relative_url }}">一覧</a>
+      <a class="btn csv csv-link" href="{{ '/data/resources.csv' | relative_url }}">CSV（サンプル）</a>
+    </nav>
+    <hr>
+
+    {{ content }}
 
     <hr>
-    <footer>
-      <p>© {{ site.title }}</p>
-    </footer>
+    <footer>© AI Curation Directory</footer>
   </div>
 
+  <!-- CSVクリックを計測 -->
   <script>
-    // CSV クリックの明示イベント送信（ゴール名: CSVClick）
-    document.addEventListener('click', function(e){
-      const a = e.target.closest('#csv-link');
-      if(!a) return;
-      try { if (window.plausible) plausible('CSVClick'); } catch(_){}
-    }, true);
+    (function(){
+      const a=document.querySelector('a.csv-link');
+      if(a){ a.addEventListener('click',()=>{ try{ if(window.plausible) plausible('CSVClick'); }catch(_){}}); }
+    }());
   </script>
 </body>
 </html>
