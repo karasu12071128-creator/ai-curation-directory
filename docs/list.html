@@ -161,11 +161,25 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
     }
     return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
   }
-  for(const t of topNTags(20)){
-    quick.insertAdjacentHTML('beforeend',
-      `<button type="button" class="chip" data-tag="${esc(t)}"
-        aria-pressed="false" aria-label="タグ ${esc(t)}">${esc(t)}</button>`);
-  }
+	  for(const t of topNTags(20)){
+	    quick.insertAdjacentHTML('beforeend',
+	      `<button type="button" class="chip" data-tag="${esc(t)}"
+	        aria-pressed="false" aria-label="タグ ${esc(t)}">${esc(t)}</button>`);
+	  }
+	  
+	  // クイックタグのクリックイベント
+	  quick.addEventListener('click', e=>{
+	    const b = e.target.closest('.chip'); if(!b) return;
+	    const tag = b.dataset.tag; if(!tag) return;
+	    
+	    const turnOn = !activeTags.has(tag);
+	    if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
+	    
+	    // 見た目の更新はrender()内で行われるため、ここでは不要
+	    
+	    plausible && plausible('QuickTagFilter', {props:{value: tag}});
+	    page=1; render();
+	  });
 
   // ========= 5) render =========
 	  function showLoading(){
