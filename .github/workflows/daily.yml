@@ -40,13 +40,23 @@ jobs:
         run: python scripts/make_diff.py data/resources.json > data/diff.json
 
       - name: Export CSV for sale
-        run: python scripts/export_csv.py data/resources.json > data/resources.csv
+        run: python scripts/export_csv.py data/resources.json > data/resources.
 
       - name: Publish artifacts to docs
         run: |
           mkdir -p docs data
+          
+          # 必須: ビルド前テスト (items > 0 をアサート)
+          ITEM_COUNT=$(python -c "import json; print(len(json.load(open('data/resources.json'))))")
+          if [ "$ITEM_COUNT" -eq 0 ]; then
+            echo "::error::resources.json のアイテム数が 0 です。データ更新をブロックします。"
+            exit 1
+          fi
+          echo "resources.json のアイテム数: $ITEM_COUNT"
+          
           cp data/resources.json docs/resources.json
           cp data/resources.csv docs/resources.csv
+
 
       - name: Commit & push
         run: |
