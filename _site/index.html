@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page.title }} — {{ site.title }}</title>
-  <meta name="description" content="{{ site.description }}">
+  <title>Home — AI Curation Directory</title>
+  <meta name="description" content="An auto-updating directory of trending AI resources, refreshed daily.">
   <!-- Plausible -->
   <link rel="preconnect" href="https://plausible.io">
   <script defer data-domain="karasu12071128-creator.github.io" src="https://plausible.io/js/script.js"></script>
@@ -23,7 +23,7 @@
 	      line-height:1.8; /* 行間を広げて和のゆったり感を出す */
 	      background-color: var(--color-background);
 	      color: var(--color-text);
-	      background-image: url('{{ "/assets/images/washi_texture.jpg" | relative_url }}');
+	      background-image: url('/ai-curation-directory/assets/images/washi_texture.jpg');
 	      background-repeat: repeat;
 	      background-size: 400px; /* テクスチャのサイズ調整 */
 	    }
@@ -35,19 +35,32 @@
 </head>
 <body>
 <header>
-  <h1>{{ site.title }}</h1>
-  <p>{{ site.description }}</p>
+  <h1>AI Curation Directory</h1>
+  <p>An auto-updating directory of trending AI resources, refreshed daily.</p>
   <nav>
-    <a href="{{ '/' | relative_url }}">Home</a>・
-    <a href="{{ '/list.html' | relative_url }}">一覧</a>
-    <a class="csv" href="{{ '/resources.csv' | relative_url }}">CSV（サンプル）</a>
+    <a href="/ai-curation-directory/">Home</a>・
+    <a href="/ai-curation-directory/list.html">一覧</a>
+    <a class="csv" href="/ai-curation-directory/resources.csv">CSV（サンプル）</a>
   </nav>
 </header>
 <main>
-  {{ content }}
+  <h3 id="はじめに">はじめに</h3>
+
+<p>このサイトは、Hugging Face や GitHub 上の人気 AI リソースを自動で収集し、毎日更新します。<br />
+下のリンクから最新一覧をご覧ください。</p>
+
+<ul>
+  <li>👉 <a href="/ai-curation-directory/list.html">新着・人気一覧</a></li>
+  <li>🗎 CSV（サンプル）： <a href="/ai-curation-directory/resources.csv">resources.csv</a></li>
+</ul>
+
+<blockquote>
+  <p>最終更新スナップショットは <code class="language-plaintext highlighter-rouge">resources.json</code> に保存されます。</p>
+</blockquote>
+
 </main>
 <footer>
-  <p>© {{ site.title }}</p>
+  <p>© AI Curation Directory</p>
 </footer>
 </body>
 </html>
