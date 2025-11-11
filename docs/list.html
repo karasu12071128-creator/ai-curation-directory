@@ -28,7 +28,8 @@ title: Resources
 	  <div id="quickTags" class="chips" aria-label="クイックタグ"></div>
 	</div>
 
-<div id="count">0 items</div>
+	<div id="count">0 items</div>
+	<div id="lastUpdated" style="font-size: 0.8em; color: var(--color-text); opacity: 0.6; margin-bottom: 10px;"></div>
 <div id="list"></div>
 
 <div class="pager">
@@ -100,7 +101,8 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
   const by = f => (a,b)=> (f(b)>f(a)?1:f(b)<f(a)?-1:0);
 
   // ========= 1) DOM refs =========
-  const q         = document.getElementById('q');
+	  const q         = document.getElementById('q');
+	  const lastUpdated = document.getElementById('lastUpdated');
   const sortSel   = document.getElementById('sort');
   const typeSel   = document.getElementById('type');
   const licenseSel= document.getElementById('license');
@@ -126,6 +128,8 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
     return null;
   }
   data = await tryFetch('{{ "/resources.json" | relative_url }}')
+      || await tryFetch('./resources.json') // for local dev
+      || await tryFetch('../resources.json') // for local dev
       || await tryFetch('{{ "/data/resources.json" | relative_url }}')
       || [];
   if(!Array.isArray(data)) data = [];
@@ -189,8 +193,45 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
     return t ? t.slice(8) : '';
   }
 
-  function cardHTML(x)	        ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener"
-	           onclick="plausible && plausible('Open',{props:{id:'${esc(x.id)}', src:'${esc(x.source_type)}'}})">Open</a>`:''}, src:'${esc(x.source_type)}'}})">Open</a>` : '';
+	  function cardHTML(x){
+	    const openLink = x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener"
+	           onclick="plausible && plausible('Open',{props:{id:'${esc(x.id)}', src:'${esc(x.source_type)}'}})">Open</a>` : '';
+	
+	    const tagChips = (x.tags||[]).slice(0,30).map(t =>
+	      `<button type="button" class="chip tag" data-tag="${esc(t)}"
+	         role="button" aria-label="タグ ${esc(t)} を切り替え">${esc(t)}</button>`
+	    ).join(' '); // ← 半角スペースで確実に区切る
+	
+	    return `
+	      <div class="card">
+	        <div class="card-header">
+	          <b>${esc(x.title||'')}</b>
+	          ${x.source_type ? `<span class="meta source-type">${esc(x.source_type)}</span>`:''}
+	          ${x.score != null ? `<span class="meta score">Score: ${esc(x.score)}</span>`:''}
+	          ${toDate(x) ? `<span class="meta date">${esc(toDate(x).slice(0,10))}</span>`:''}
+	        </div>
+	        ${x.short_desc ? `<div class="card-desc">${esc(x.short_desc)}</div>`:''}
+	        <div class="tags chips" aria-label="このカードのタグ">${tagChips}</div>
+	        ${openLink}
+	      </div>`;
+	  }[]).slice(0,30).map(t =>
+	      `<button type="button" class="chip tag" data-tag="${esc(t)}"
+	         role="button" aria-label="タグ ${esc(t)} を切り替え">${esc(t)}</button>`
+	    ).join(' '); // ← 半角スペースで確実に区切る
+	
+	    return `
+	      <div class="card">
+	        <div class="card-header">
+	          <b>${esc(x.title||'')}</b>
+	          ${x.source_type ? `<span class="meta source-type">${esc(x.source_type)}</span>`:''}
+	          ${x.score != null ? `<span class="meta score">Score: ${esc(x.score)}</span>`:''}
+	          ${toDate(x) ? `<span class="meta date">${esc(toDate(x).slice(0,10))}</span>`:''}
+	        </div>
+	        ${x.short_desc ? `<div class="card-desc">${esc(x.short_desc)}</div>`:''}
+	        <div class="tags chips" aria-label="このカードのタグ">${tagChips}</div>
+	        ${openLink}
+	      </div>`;
+	  }
 	
 	    const tagChips = (x.tags||[]).slice(0,30).map(t =>
 	      `<button type="button" class="chip tag" data-tag="${esc(t)}"
@@ -266,6 +307,7 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
 	      list.innerHTML = `<div class="empty-state">
 	        <p>該当するリソースが見つかりませんでした。</p>
 	        <p>検索条件を変更するか、タグやフィルターを解除してみてください。</p>
+	        <button id="resetFilters" class="chip active" style="margin-top: 15px;">フィルターをリセット</button>
 	      </div>`;
 	    } else {
 	      list.innerHTML = arr.slice(start,end).map(cardHTML).join('');
@@ -313,15 +355,29 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
     page=1; render();
   });
 
-  // カード内タグ
-  list.addEventListener('click', e=>{
-    const b = e.target.closest('.tag'); if(!b) return;
-    const tag = b.dataset.tag; if(!tag) return;
-    const turnOn = !activeTags.has(tag);
-    if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
-    plausible && plausible('TagFilter', {props:{value: tag}});
-    page=1; render();
-  });
+	  // カード内タグとリセットボタン
+	  list.addEventListener('click', e=>{
+	    const b = e.target.closest('.tag');
+	    if(b){
+	      const tag = b.dataset.tag; if(!tag) return;
+	      const turnOn = !activeTags.has(tag);
+	      if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
+	      plausible && plausible('TagFilter', {props:{value: tag}});
+	      page=1; render();
+	      return;
+	    }
+	    
+	    const reset = e.target.closest('#resetFilters');
+	    if(reset){
+	      q.value = '';
+	      sortSel.value = 'date_desc';
+	      typeSel.value = '';
+	      licenseSel.value = '';
+	      activeTags.clear();
+	      page=1; render();
+	      plausible && plausible('ResetFilters'); // 新しいイベントを追加
+	    }
+	  });
 
   // ページャ
   prev.addEventListener('click', ()=>{ page--; render(); });
@@ -329,6 +385,17 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
 
 	  // 初回描画
 	  render();
+	  
+	  // 最終更新日時の表示
+	  if(data.length > 0){
+	    const latestDate = data.reduce((latest, item) => {
+	      const date = toDate(item);
+	      return date > latest ? date : latest;
+	    }, '');
+	    if(latestDate){
+	      lastUpdated.textContent = `最終更新: ${new Date(latestDate).toLocaleDateString('ja-JP', {year: 'numeric', month: 'long', day: 'numeric'})}`;
+	    }
+	  }
 	})();
 	</script>
 	
