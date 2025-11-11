@@ -55,7 +55,8 @@ jobs:
           echo "resources.json のアイテム数: $ITEM_COUNT"
           
           cp data/resources.json docs/resources.json
-          cp data/resources.csv docs/resources.csv
+          cp data/resources.csv docs/resources.csv || true  # ファイルが存在しない場合もエラーを無視
+
 
 
       - name: Commit & push
