@@ -41,7 +41,6 @@ title: Resources
 </div>
 
 <style>
-  /* ここは他テーマに潰されにくいようスコープ弱依存の素朴CSS */
   .chip { display:inline-flex; align-items:center; gap:.35rem; padding:.30rem .65rem;
           border-radius:999px; border:1px solid rgba(0,0,0,.15); font-size:.92rem;
           background:#fff; cursor:pointer; user-select:none; }
@@ -57,10 +56,9 @@ title: Resources
 
 <script>
 (async () => {
-  // ============ 0) ユーティリティ ============
+  // ============ 0) util ============
   const noop = (..._) => {};
   const track = (name, props={}) => (window.plausible || noop)(name, {props});
-  const qs = s => document.querySelector(s);
   const byId = id => document.getElementById(id);
 
   const q = byId('q');
@@ -78,16 +76,14 @@ title: Resources
   let page = 1;
   let activeTags = new Set();
 
-  // ============ 1) データ読込（パス冗長化で0 items対策） ============
+  // ============ 1) fetch data (robust paths) ============
   const CANDIDATES = [
     'resources.json',
     './resources.json',
     'data/resources.json',
     './data/resources.json',
-    // リポジトリ名で公開しているときの保険
     location.pathname.replace(/\/[^/]*$/, '/') + 'resources.json'
   ];
-
   let data = [];
   for (const p of CANDIDATES) {
     try {
@@ -97,7 +93,7 @@ title: Resources
   }
   if (!Array.isArray(data)) data = [];
 
-  // 正規化
+  // normalize
   data = data.map((d, i) => {
     const tags = Array.isArray(d.tags) ? d.tags.filter(Boolean) : [];
     const lic = (tags.find(t => /^license:/i.test(t)) || 'license:unknown').split(':')[1];
@@ -112,7 +108,7 @@ title: Resources
     };
   });
 
-  // ============ 2) セレクトの候補を埋める ============
+  // ============ 2) fill selects ============
   const types = Array.from(new Set(data.map(d => d.source_type))).sort();
   types.forEach(t => {
     const o = document.createElement('option'); o.value = t; o.textContent = t; typeSel.appendChild(o);
@@ -123,11 +119,11 @@ title: Resources
     const o = document.createElement('option'); o.value = t; o.textContent = t; licenseSel.appendChild(o);
   });
 
-  // ============ 3) クイックタグ（上位20件） ============
+  // ============ 3) quick tags (top 20) ============
   const freq = new Map();
   for (const d of data) for (const t of d.tags) freq.set(t, (freq.get(t)||0)+1);
   const TOP = [...freq.entries()]
-    .filter(([t]) => !/^license:/i.test(t))     // license:xxx は除外
+    .filter(([t]) => !/^license:/i.test(t))
     .sort((a,b) => b[1]-a[1]).slice(0, 20);
 
   quick.innerHTML = '';
@@ -147,7 +143,48 @@ title: Resources
     quick.appendChild(chip);
   });
 
-  // ============ 4) フィルタ & ソート & ページング ============
+  // ============ 4) URL params -> 初期状態に反映 ============
+  // 例: ?q=rag&tag=transformers&tag=langchain&type=hf_model&license=apache-2.0&sort=title_asc
+  const params = new URLSearchParams(location.search);
+  const initial = {
+    q: params.get('q') || '',
+    type: params.get('type') || '',
+    license: params.get('license') || '',
+    sort: params.get('sort') || '',
+    // tag は複数指定 or カンマ区切りも許容
+    tags: (() => {
+      const a = params.getAll('tag');
+      const b = (params.get('tags') || '').split(',').map(s => s.trim()).filter(Boolean);
+      return [...new Set([...a, ...b])];
+    })()
+  };
+
+  // 値がセレクトに存在する場合のみセット
+  const setIfOptionExists = (sel, val) => {
+    if (!val) return;
+    const opt = [...sel.options].find(o => o.value === val);
+    if (opt) sel.value = val;
+  };
+
+  if (initial.q) q.value = initial.q;
+  setIfOptionExists(sortSel, initial.sort);
+  setIfOptionExists(typeSel, initial.type);
+  setIfOptionExists(licenseSel, initial.license);
+
+  // チップに反映（存在するものだけ active に）
+  if (initial.tags.length) {
+    const chips = quick.querySelectorAll('[data-tag]');
+    initial.tags.forEach(t => {
+      chips.forEach(ch => {
+        if (ch.getAttribute('data-tag') === t) {
+          ch.classList.add('active');
+          activeTags.add(t);
+        }
+      });
+    });
+  }
+
+  // ============ 5) filters & events ============
   sortSel.addEventListener('change', () => { page = 1; track('Sort', { value: sortSel.value }); render(); });
   typeSel.addEventListener('change', () => { page = 1; track('TypeFilter', { value: typeSel.value }); render(); });
   licenseSel.addEventListener('change', () => { page = 1; track('LicenseFilter', { value: licenseSel.value }); render(); });
@@ -184,8 +221,7 @@ title: Resources
 
   function sortAll(arr) {
     if (sortSel.value === 'title_asc') return arr.sort((a,b)=> a.title.localeCompare(b.title));
-    // デフォルト: score desc（更新/人気の近似）
-    return arr.sort((a,b)=> (b.score||0)-(a.score||0));
+    return arr.sort((a,b)=> (b.score||0)-(a.score||0)); // default: score_desc
   }
 
   function render() {
@@ -211,12 +247,10 @@ title: Resources
       </div>
     `).join('');
 
-    // Open 計測
     list.querySelectorAll('a[data-open]').forEach(a => {
       a.addEventListener('click', () => track('Open', { id: a.getAttribute('data-open') }));
     });
 
-    // ページング
     prev.disabled = (page<=1);
     next.disabled = (page>=maxPage);
     pageInfo.textContent = `${page} / ${maxPage}`;
@@ -225,6 +259,7 @@ title: Resources
   function escapeHtml(s=''){return s.replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));}
   function escapeAttr(s=''){return String(s).replace(/"/g,'&quot;');}
 
+  // 初回レンダー（URLパラメータ反映済み）
   render();
 })();
 </script>
