@@ -5,480 +5,226 @@ title: Resources
 
 <h1>Resources</h1>
 
-<div class="sticky-filter-bar">
-	  <div class="row">
-	    <input id="q" type="search" autocomplete="off"
-	           placeholder="キーワード / tag を入力（例: diffusion, llm）">
-	  </div>
-	
-	  <div class="row" aria-label="並び替え / 種類 / ライセンス">
-	    <select id="sort">
-	      <option value="date_desc">更新が新しい順</option>
-	      <option value="score_desc">スコアが高い順</option>
-	      <option value="title_asc">名前順（A→Z）</option>
-	    </select>
-	    <select id="type">
-	      <option value="">すべての種類</option>
-	    </select>
-	    <select id="license">
-	      <option value="">すべてのライセンス</option>
-	    </select>
-	  </div>
-	
-	  <div id="quickTags" class="chips" aria-label="クイックタグ"></div>
-	</div>
+<!-- 検索ボックス -->
+<input id="q" type="search" placeholder="キーワード / tag を入力（例: diffusion, llm）" style="width:100%;max-width:680px;padding:.8rem 1rem;border-radius:10px;border:1px solid rgba(0,0,0,.15);">
 
-	<div id="count">0 items</div>
-	<div id="lastUpdated" style="font-size: 0.8em; color: var(--color-text); opacity: 0.6; margin-bottom: 10px;"></div>
-<div id="list"></div>
+<!-- コントロール行 -->
+<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:.8rem 0 1rem;">
+  <select id="sortSel" aria-label="並び順" style="padding:.5rem .7rem;border-radius:10px;border:1px solid rgba(0,0,0,.15);">
+    <option value="score_desc">更新/人気が新しい順</option>
+    <option value="title_asc">タイトル A→Z</option>
+  </select>
 
-<div class="pager">
-  <button id="prev" disabled>Prev</button>
-  <div id="pageInfo" aria-live="polite"></div>
-  <button id="next" disabled>Next</button>
+  <select id="typeSel" aria-label="種類" style="padding:.5rem .7rem;border-radius:10px;border:1px solid rgba(0,0,0,.15);">
+    <option value="all">すべての種類</option>
+  </select>
+
+  <select id="licenseSel" aria-label="ライセンス" style="padding:.5rem .7rem;border-radius:10px;border:1px solid rgba(0,0,0,.15);">
+    <option value="all">すべてのライセンス</option>
+  </select>
+</div>
+
+<!-- クイックタグ（上位20件） -->
+<div id="quick" class="chips" style="display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 1rem;"></div>
+
+<!-- 件数 -->
+<div id="count" style="margin:.4rem 0 1rem;color:rgba(0,0,0,.6)">0 items</div>
+
+<!-- リスト -->
+<div id="list" style="display:grid;grid-template-columns:1fr;gap:14px;max-width:900px"></div>
+
+<!-- ページング -->
+<div style="display:flex;align-items:center;gap:.6rem;margin:1rem 0;">
+  <button id="prev" disabled style="padding:.5rem .9rem;border:1px solid rgba(0,0,0,.15);border-radius:10px;background:#fff">Prev</button>
+  <button id="next" disabled style="padding:.5rem .9rem;border:1px solid rgba(0,0,0,.15);border-radius:10px;background:#fff">Next</button>
+  <span id="pageInfo" style="color:rgba(0,0,0,.6)"></span>
 </div>
 
 <style>
-	/* Sticky Filter Bar */
-	.sticky-filter-bar {
-	  position: sticky;
-	  top: 0;
-	  z-index: 10;
-	  background-color: var(--color-background);
-	  padding: 10px 0;
-	  border-bottom: 1px solid var(--color-border);
-	  margin-bottom: 14px;
-	}
-	
-	/* list.htmlの既存のrow, input, select, chips, countのスタイルをここに移動または調整 */
-	
-	
-.row{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 14px}
-input#q{width:100%;max-width:560px;padding:10px;border:1px solid var(--color-border);border-radius:6px;color:var(--color-text);background-color:var(--color-background)}
-select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:var(--color-text);background-color:var(--color-background)}
-#count{color:var(--color-text);opacity:.7;margin:6px 0 10px}
-
-/* タグ・クイックタグ：丸いチップ */
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}
-.chip{
-	  display:inline-block; padding:6px 10px; border:1px solid var(--color-border);
-	  border-radius:9999px; background:var(--color-pill); font-size:13px; line-height:1;
-	  cursor:pointer; user-select:none;
-	  transition: all 0.1s ease;
-	}
-.chip:hover{filter:brightness(0.98)}
-.chip:active{transform:scale(0.98)}
-.chip.active{
-	  background:var(--color-accent);
-	  border-color:var(--color-accent);
-	  color:white;
-	  font-weight:bold;
-	}
-.chip.active::after{content:" ✓"; font-size:12px}
-
-/* カード */
-.card{border:1px solid var(--color-border);border-radius:8px;padding:12px;margin:12px 0;background-color:rgba(255,255,255,0.5);}
-.card b{font-size:18px}
-.card .meta{color:var(--color-text);opacity:.6;font-size:12px;margin-left:6px}
-.card .tags{margin-top:8px}
-.card .tags .chip{background:var(--color-background);opacity:.8;}
-
-.pager{display:flex;gap:10px;margin:10px 0;align-items:center}
-.pager button{padding:8px 12px;border:1px solid #e5e5e5;border-radius:6px;background:#fff;cursor:pointer}
-.pager button:disabled{opacity:.5;cursor:not-allowed}
+  /* ここは他テーマに潰されにくいようスコープ弱依存の素朴CSS */
+  .chip { display:inline-flex; align-items:center; gap:.35rem; padding:.30rem .65rem;
+          border-radius:999px; border:1px solid rgba(0,0,0,.15); font-size:.92rem;
+          background:#fff; cursor:pointer; user-select:none; }
+  .chip.active { background:#2f2f2f; color:#fff; border-color:#2f2f2f; }
+  .tag { display:inline-flex; padding:.18rem .55rem; border:1px solid rgba(0,0,0,.15);
+         border-radius:999px; font-size:.82rem; background:#fff; }
+  .card { padding:14px 16px; border:1px solid rgba(0,0,0,.12); border-radius:14px; background:#fff; }
+  .card h3 { margin:.2rem 0 .4rem; font-size:1.05rem; }
+  .meta { color:rgba(0,0,0,.6); font-size:.9rem; margin-bottom:.35rem; }
+  .tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+  @media (min-width: 760px) { #list { grid-template-columns:1fr 1fr; } }
 </style>
 
 <script>
-(async function(){
-  // ========= 0) helpers =========
-  const esc = s => (s||'').toString()
-     .replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-	  const toDate = x => (x.updated_at || x.pushed_at || x.last_modified || x.date || '');
-	  
-	  // Plausible Open EventにIDとSource Typeを追加
-	  // NOTE: cardHTML関数内で直接イベントを定義するよう変更済み
-	  // const plausibleOpen = (id, src) => plausible && plausible('Open', {props:{id:id, src:src}});
-  const by = f => (a,b)=> (f(b)>f(a)?1:f(b)<f(a)?-1:0);
+(async () => {
+  // ============ 0) ユーティリティ ============
+  const noop = (..._) => {};
+  const track = (name, props={}) => (window.plausible || noop)(name, {props});
+  const qs = s => document.querySelector(s);
+  const byId = id => document.getElementById(id);
 
-  // ========= 1) DOM refs =========
-	  const q         = document.getElementById('q');
-	  const lastUpdated = document.getElementById('lastUpdated');
-  const sortSel   = document.getElementById('sort');
-  const typeSel   = document.getElementById('type');
-  const licenseSel= document.getElementById('license');
-  const quick     = document.getElementById('quickTags');
-  const list      = document.getElementById('list');
-  const count     = document.getElementById('count');
-  const prev      = document.getElementById('prev');
-  const next      = document.getElementById('next');
-  const pageInfo  = document.getElementById('pageInfo');
+  const q = byId('q');
+  const quick = byId('quick');
+  const list = byId('list');
+  const count = byId('count');
+  const prev = byId('prev');
+  const next = byId('next');
+  const pageInfo = byId('pageInfo');
+  const sortSel = byId('sortSel');
+  const typeSel = byId('typeSel');
+  const licenseSel = byId('licenseSel');
 
-  // ========= 2) state =========
   const PAGE = 48;
   let page = 1;
-  let data = [];
   let activeTags = new Set();
 
-  // ========= 3) load JSON (2経路フォールバック) =========
-  async function tryFetch(url){
-    try{
-      const r = await fetch(url,{cache:'no-store'});
-      if(r.ok) return await r.json();
-    }catch(_){}
-    return null;
+  // ============ 1) データ読込（パス冗長化で0 items対策） ============
+  const CANDIDATES = [
+    'resources.json',
+    './resources.json',
+    'data/resources.json',
+    './data/resources.json',
+    // リポジトリ名で公開しているときの保険
+    location.pathname.replace(/\/[^/]*$/, '/') + 'resources.json'
+  ];
+
+  let data = [];
+  for (const p of CANDIDATES) {
+    try {
+      const res = await fetch(p + '?v=' + Date.now());
+      if (res.ok) { data = await res.json(); break; }
+    } catch (e) {}
   }
-  data = await tryFetch('{{ "/resources.json" | relative_url }}')
-      || await tryFetch('./resources.json') // for local dev
-      || await tryFetch('../resources.json') // for local dev
-      || await tryFetch('{{ "/data/resources.json" | relative_url }}')
-      || [];
-  if(!Array.isArray(data)) data = [];
+  if (!Array.isArray(data)) data = [];
 
-  // ========= 4) build selects & quick tags =========
-  // 種類（source_type）
-  const types = [...new Set(data.map(x => x.source_type).filter(Boolean))].sort();
-  types.forEach(t => typeSel.insertAdjacentHTML('beforeend',
-    `<option value="${esc(t)}">${esc(t)}</option>`));
+  // 正規化
+  data = data.map((d, i) => {
+    const tags = Array.isArray(d.tags) ? d.tags.filter(Boolean) : [];
+    const lic = (tags.find(t => /^license:/i.test(t)) || 'license:unknown').split(':')[1];
+    return {
+      id: d.id || ('item-' + i),
+      title: d.title || '(no title)',
+      url: d.url || '#',
+      score: Number(d.score || 0),
+      source_type: d.source_type || 'other',
+      tags,
+      license: lic
+    };
+  });
 
-  // ライセンス（tags から license:xxx を抽出）
-  const licSet = new Set();
-  data.forEach(x => (x.tags||[]).forEach(t=>{
-    if(typeof t==='string' && t.startsWith('license:')) licSet.add(t.slice(8));
-  }));
-  [...licSet].sort().forEach(lc => licenseSel.insertAdjacentHTML('beforeend',
-    `<option value="${esc(lc)}">${esc(lc)}</option>`));
+  // ============ 2) セレクトの候補を埋める ============
+  const types = Array.from(new Set(data.map(d => d.source_type))).sort();
+  types.forEach(t => {
+    const o = document.createElement('option'); o.value = t; o.textContent = t; typeSel.appendChild(o);
+  });
 
-  // 上位タグ20件（dataset:/license:/region: は除外）
-  function topNTags(n=20){
-    const freq = new Map();
-    for(const x of data){
-      for(const traw of (x.tags||[])){
-        const t = (traw||'').toString();
-        if(!t || t.startsWith('dataset:') || t.startsWith('license:') || t.startsWith('region:')) continue;
-        const k = t.trim();
-        freq.set(k, (freq.get(k)||0)+1);
+  const licenses = Array.from(new Set(data.map(d => d.license))).sort();
+  licenses.forEach(t => {
+    const o = document.createElement('option'); o.value = t; o.textContent = t; licenseSel.appendChild(o);
+  });
+
+  // ============ 3) クイックタグ（上位20件） ============
+  const freq = new Map();
+  for (const d of data) for (const t of d.tags) freq.set(t, (freq.get(t)||0)+1);
+  const TOP = [...freq.entries()]
+    .filter(([t]) => !/^license:/i.test(t))     // license:xxx は除外
+    .sort((a,b) => b[1]-a[1]).slice(0, 20);
+
+  quick.innerHTML = '';
+  TOP.forEach(([tag, n]) => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip';
+    chip.setAttribute('data-tag', tag);
+    chip.innerHTML = `${tag} <span style="opacity:.7">(${n})</span>`;
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('active');
+      if (chip.classList.contains('active')) { activeTags.add(tag); } else { activeTags.delete(tag); }
+      page = 1;
+      track('TagFilter', { value: tag });
+      render();
+    });
+    quick.appendChild(chip);
+  });
+
+  // ============ 4) フィルタ & ソート & ページング ============
+  sortSel.addEventListener('change', () => { page = 1; track('Sort', { value: sortSel.value }); render(); });
+  typeSel.addEventListener('change', () => { page = 1; track('TypeFilter', { value: typeSel.value }); render(); });
+  licenseSel.addEventListener('change', () => { page = 1; track('LicenseFilter', { value: licenseSel.value }); render(); });
+
+  let searchTimer = 0;
+  q.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => { page = 1; track('Search', { q: q.value.trim() }); render(); }, 400);
+  });
+
+  prev.addEventListener('click', () => { if (page>1) { page--; render(); } });
+  next.addEventListener('click', () => { page++; render(); });
+
+  function filterAll() {
+    const kw = q.value.trim().toLowerCase();
+    const words = kw ? kw.split(/\s+/) : [];
+    const type = typeSel.value;
+    const lic = licenseSel.value;
+
+    return data.filter(d => {
+      if (type !== 'all' && d.source_type !== type) return false;
+      if (lic !== 'all' && d.license !== lic) return false;
+      if (activeTags.size) {
+        const ok = [...activeTags].every(t => d.tags.includes(t));
+        if (!ok) return false;
       }
-    }
-    return [...freq.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
-  }
-	  for(const t of topNTags(20)){
-	    quick.insertAdjacentHTML('beforeend',
-	      `<button type="button" class="chip" data-tag="${esc(t)}"
-	        aria-pressed="false" aria-label="タグ ${esc(t)}">${esc(t)}</button>`);
-	  }
-	  
-	  // クイックタグのクリックイベント
-	  quick.addEventListener('click', e=>{
-	    const b = e.target.closest('.chip'); if(!b) return;
-	    const tag = b.dataset.tag; if(!tag) return;
-	    
-	    const turnOn = !activeTags.has(tag);
-	    if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
-	    
-		    // 見た目の更新はrender()内で行われるため、ここでは不要
-		    
-		    // 見た目の更新
-		    b.classList.toggle('active', turnOn);
-		    b.setAttribute('aria-pressed', turnOn?'true':'false');
-	    
-	    plausible && plausible('QuickTagFilter', {props:{value: tag}});
-	    page=1; render();
-	  });
-
-  // ========= 5) render =========
-	  function showLoading(){
-	    list.innerHTML = `
-	      <div class="card skeleton"><b></b><div class="meta"></div><div></div><div class="tags chips"></div></div>
-	      <div class="card skeleton"><b></b><div class="meta"></div><div></div><div class="tags chips"></div></div>
-	      <div class="card skeleton"><b></b><div class="meta"></div><div></div><div class="tags chips"></div></div>
-	    `;
-	    count.textContent = 'Loading...';
-	    pageInfo.textContent = '...';
-	    prev.disabled = true;
-	    next.disabled = true;
-	  }
-	  showLoading(); // 初回ロード時に表示
-	
-	  const norm = s => (s||'').toString().toLowerCase();
-  const norm = s => (s||'').toString().toLowerCase();
-  function matches(x, terms){
-    if(!terms.length) return true;
-    const hay = norm(x.title)+' '+norm(x.id)+' '+norm(x.short_desc)+' '+norm((x.tags||[]).join(' '));
-    return terms.every(t => hay.includes(t));
-  }
-  function licenseOf(x){
-    const t = (x.tags||[]).find(v=> (v||'').toString().startsWith('license:'));
-    return t ? t.slice(8) : '';
-  }
-
-	  function cardHTML(x){
-	    const openLink = x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener"
-	           onclick="plausible && plausible('Open',{props:{id:'${esc(x.id)}', src:'${esc(x.source_type)}'}})">Open</a>` : '';
-	
-	    const tagChips = (x.tags||[]).slice(0,30).map(t =>
-	      `<button type="button" class="chip tag" data-tag="${esc(t)}"
-	         role="button" aria-label="タグ ${esc(t)} を切り替え">${esc(t)}</button>`
-	    ).join(' '); // ← 半角スペースで確実に区切る
-	
-	    return `
-	      <div class="card">
-	        <div class="card-header">
-	          <b>${esc(x.title||'')}</b>
-	          ${x.source_type ? `<span class="meta source-type">${esc(x.source_type)}</span>`:''}
-	          ${x.score != null ? `<span class="meta score">Score: ${esc(x.score)}</span>`:''}
-	          ${toDate(x) ? `<span class="meta date">${esc(toDate(x).slice(0,10))}</span>`:''}
-	        </div>
-	        ${x.short_desc ? `<div class="card-desc">${esc(x.short_desc)}</div>`:''}
-	        <div class="tags chips" aria-label="このカードのタグ">${tagChips}</div>
-	        ${openLink}
-	      </div>`;
-	  }[]).slice(0,30).map(t =>
-	      `<button type="button" class="chip tag" data-tag="${esc(t)}"
-	         role="button" aria-label="タグ ${esc(t)} を切り替え">${esc(t)}</button>`
-	    ).join(' '); // ← 半角スペースで確実に区切る
-	
-	    return `
-	      <div class="card">
-	        <div class="card-header">
-	          <b>${esc(x.title||'')}</b>
-	          ${x.source_type ? `<span class="meta source-type">${esc(x.source_type)}</span>`:''}
-	          ${x.score != null ? `<span class="meta score">Score: ${esc(x.score)}</span>`:''}
-	          ${toDate(x) ? `<span class="meta date">${esc(toDate(x).slice(0,10))}</span>`:''}
-	        </div>
-	        ${x.short_desc ? `<div class="card-desc">${esc(x.short_desc)}</div>`:''}
-	        <div class="tags chips" aria-label="このカードのタグ">${tagChips}</div>
-	        ${openLink}
-	      </div>`;
-	  }
-	
-	    const tagChips = (x.tags||[]).slice(0,30).map(t =>
-	      `<button type="button" class="chip tag" data-tag="${esc(t)}"
-	         role="button" aria-label="タグ ${esc(t)} を切り替え">${esc(t)}</button>`
-	    ).join(' '); // ← 半角スペースで確実に区切る
-	
-	    return `
-	      <div class="card">
-	        <div class="card-header">
-	          <b>${esc(x.title||'')}</b>
-	          ${x.source_type ? `<span class="meta source-type">${esc(x.source_type)}</span>`:''}
-	          ${x.score != null ? `<span class="meta score">Score: ${esc(x.score)}</span>`:''}
-	          ${toDate(x) ? `<span class="meta date">${esc(toDate(x).slice(0,10))}</span>`:''}
-	        </div>
-	        ${x.short_desc ? `<div class="card-desc">${esc(x.short_desc)}</div>`:''}
-	        <div class="tags chips" aria-label="このカードのタグ">${tagChips}</div>
-	        ${openLink}
-	      </div>`;
-	  }
-    const tagChips = (x.tags||[]).slice(0,30).map(t =>
-      `<button type="button" class="chip tag" data-tag="${esc(t)}"
-         role="button" aria-label="タグ ${esc(t)} を切り替え">${esc(t)}</button>`
-    ).join(' '); // ← 半角スペースで確実に区切る
-
-    return `
-      <div class="card">
-        <div><b>${esc(x.title||'')}</b>
-          ${x.source_type ? `<span class="meta">${esc(x.source_type)}</span>`:''}
-          ${x.score != null ? `<span class="meta">score:${esc(x.score)}</span>`:''}
-          ${toDate(x) ? `<span class="meta">${esc(toDate(x).slice(0,10))}</span>`:''}
-        </div>
-        ${x.short_desc ? `<div>${esc(x.short_desc)}</div>`:''}
-        <div class="tags chips" aria-label="このカードのタグ">${tagChips}</div>
-	        ${openLink}
-      </div>`;
-  }
-
-  function render(){
-    const terms = norm(q.value).split(/\s+/).filter(Boolean);
-    let arr = data.filter(x => matches(x, terms));
-
-    // tagフィルタ
-    if(activeTags.size){
-      arr = arr.filter(x => {
-        const s = new Set((x.tags||[]).map(String));
-        for(const t of activeTags){ if(!s.has(t)) return false; }
-        return true;
-      });
-    }
-    // 種類
-    if(typeSel.value) arr = arr.filter(x => x.source_type === typeSel.value);
-    // ライセンス
-    if(licenseSel.value) arr = arr.filter(x => licenseOf(x) === licenseSel.value);
-
-    // ソート
-    const mode = sortSel.value;
-    if(mode === 'date_desc') arr.sort(by(x=>toDate(x)||''));
-    else if(mode === 'score_desc') arr.sort(by(x=>+x.score||0));
-    else if(mode === 'title_asc') arr.sort((a,b)=>esc(a.title||'').localeCompare(esc(b.title||'')));
-
-    // ページング
-    const total = arr.length;
-    const pages = Math.max(1, Math.ceil(total / PAGE));
-    page = Math.min(Math.max(1, page), pages);
-    const start = (page-1)*PAGE, end = start + PAGE;
-
-    count.textContent = `${total} items`;
-    pageInfo.textContent = `${page}/${pages}`;
-    prev.disabled = (page<=1);
-    next.disabled = (page>=pages);
-
-	    if(total === 0){
-	      list.innerHTML = `<div class="empty-state">
-	        <p>該当するリソースが見つかりませんでした。</p>
-	        <p>検索条件を変更するか、タグやフィルターを解除してみてください。</p>
-	        <button id="resetFilters" class="chip active" style="margin-top: 15px;">フィルターをリセット</button>
-	      </div>`;
-	    } else {
-	      list.innerHTML = arr.slice(start,end).map(cardHTML).join('');
-	    }
-    // 選択済みタグの見た目同期（クイックタグ）
-    [...quick.querySelectorAll('.chip')].forEach(ch=>{
-      const on = activeTags.has(ch.dataset.tag);
-      ch.classList.toggle('active', on);
-      ch.setAttribute('aria-pressed', on?'true':'false');
+      if (words.length) {
+        const hay = (d.title + ' ' + d.tags.join(' ')).toLowerCase();
+        for (const w of words) if (!hay.includes(w)) return false;
+      }
+      return true;
     });
   }
 
-  // ========= 6) events =========
-  // 検索（デバウンス）
-  let tmr=null;
-  q.addEventListener('input', () => {
-    clearTimeout(tmr);
-    tmr = setTimeout(()=>{
-      plausible && plausible('Search', {props:{value:q.value||'(clear)'}});
-      page=1; render();
-    }, 500);
-  });
+  function sortAll(arr) {
+    if (sortSel.value === 'title_asc') return arr.sort((a,b)=> a.title.localeCompare(b.title));
+    // デフォルト: score desc（更新/人気の近似）
+    return arr.sort((a,b)=> (b.score||0)-(a.score||0));
+  }
 
-  // 並び替え / 種類 / ライセンス
-  sortSel.addEventListener('change', ()=>{
-    plausible && plausible('Sort', {props:{value: sortSel.value}});
-    page=1; render();
-  });
-  typeSel.addEventListener('change', ()=>{
-    plausible && plausible('TypeFilter', {props:{value: typeSel.value || 'all'}});
-    page=1; render();
-  });
-  licenseSel.addEventListener('change', ()=>{
-    plausible && plausible('LicenseFilter', {props:{value: licenseSel.value || 'all'}});
-    page=1; render();
-  });
+  function render() {
+    const filtered = sortAll(filterAll());
+    const total = filtered.length;
+    count.textContent = `${total} items`;
+    const maxPage = Math.max(1, Math.ceil(total / PAGE));
+    if (page > maxPage) page = maxPage;
 
-  // クイックタグ
-  quick.addEventListener('click', e=>{
-    const b = e.target.closest('.chip'); if(!b) return;
-    const tag = b.dataset.tag; if(!tag) return;
-    const turnOn = !activeTags.has(tag);
-    if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
-    plausible && plausible('TagFilter', {props:{value: tag}});
-    page=1; render();
-  });
+    const start = (page-1)*PAGE, end = start + PAGE;
+    const slice = filtered.slice(start, end);
 
-	  // カード内タグとリセットボタン
-	  list.addEventListener('click', e=>{
-	    const b = e.target.closest('.tag');
-	    if(b){
-	      const tag = b.dataset.tag; if(!tag) return;
-	      const turnOn = !activeTags.has(tag);
-	      if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
-	      plausible && plausible('TagFilter', {props:{value: tag}});
-	      page=1; render();
-	      return;
-	    }
-	    
-	    const reset = e.target.closest('#resetFilters');
-	    if(reset){
-	      q.value = '';
-	      sortSel.value = 'date_desc';
-	      typeSel.value = '';
-	      licenseSel.value = '';
-	      activeTags.clear();
-	      page=1; render();
-	      plausible && plausible('ResetFilters'); // 新しいイベントを追加
-	    }
-	  });
+    list.innerHTML = slice.map(d => `
+      <div class="card">
+        <div class="meta">${d.source_type} • score:${(d.score ?? 0).toFixed(2)}</div>
+        <h3>${escapeHtml(d.title)}</h3>
+        <div class="tags">
+          ${d.tags.slice(0, 24).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}
+        </div>
+        <div style="margin-top:.6rem">
+          <a href="${d.url}" target="_blank" rel="noopener" data-open="${escapeAttr(d.id)}">Open</a>
+        </div>
+      </div>
+    `).join('');
 
-  // ページャ
-  prev.addEventListener('click', ()=>{ page--; render(); });
-  next.addEventListener('click', ()=>{ page++; render(); });
+    // Open 計測
+    list.querySelectorAll('a[data-open]').forEach(a => {
+      a.addEventListener('click', () => track('Open', { id: a.getAttribute('data-open') }));
+    });
 
-	  // 初回描画
-	  render();
-	  
-	  // 最終更新日時の表示
-	  if(data.length > 0){
-	    const latestDate = data.reduce((latest, item) => {
-	      const date = toDate(item);
-	      return date > latest ? date : latest;
-	    }, '');
-	    if(latestDate){
-	      lastUpdated.textContent = `最終更新: ${new Date(latestDate).toLocaleDateString('ja-JP', {year: 'numeric', month: 'long', day: 'numeric'})}`;
-	    }
-	  }
-	})();
-	</script>
-	
-	<style>
-	/* Skeleton Loading State CSS */
-	.skeleton {
-	  background-color: #f0f0f0;
-	  background-image: linear-gradient(90deg, #f0f0f0 0px, #f7f7f7 40px, #f0f0f0 80px);
-	  background-size: 600px 100%;
-	  animation: shine 1.5s infinite linear;
-	  border-color: #e0e0e0 !important;
-	  pointer-events: none;
-	}
-	.skeleton * {
-	  visibility: hidden;
-	}
-	.skeleton b {
-	  display: block;
-	  height: 18px;
-	  width: 70%;
-	  margin-bottom: 8px;
-	  background-color: #e0e0e0;
-	  visibility: visible;
-	}
-	.skeleton .meta {
-	  display: inline-block;
-	  height: 12px;
-	  width: 15%;
-	  margin-left: 6px;
-	  background-color: #e0e0e0;
-	  visibility: visible;
-	}
-	.skeleton div:not(.tags) {
-	  height: 14px;
-	  width: 90%;
-	  margin-bottom: 8px;
-	  background-color: #e0e0e0;
-	  visibility: visible;
-	}
-	.skeleton .tags .chip {
-	  display: inline-block;
-	  height: 20px;
-	  width: 50px;
-	  margin-right: 8px;
-	  background-color: #e0e0e0;
-	  border: none;
-	  visibility: visible;
-	}
-	@keyframes shine {
-	  0% { background-position: -100px; }
-	  100% { background-position: 600px; }
-	}
-	
-	/* Empty State CSS */
-	.empty-state {
-	  text-align: center;
-	  padding: 40px 20px;
-	  border: 1px dashed var(--color-border);
-	  border-radius: 8px;
-	  margin-top: 20px;
-	  color: var(--color-text);
-	  opacity: 0.7;
-	}
-	.empty-state p {
-	  margin: 8px 0;
-	}
-	</style>
+    // ページング
+    prev.disabled = (page<=1);
+    next.disabled = (page>=maxPage);
+    pageInfo.textContent = `${page} / ${maxPage}`;
+  }
+
+  function escapeHtml(s=''){return s.replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));}
+  function escapeAttr(s=''){return String(s).replace(/"/g,'&quot;');}
+
+  render();
+})();
 </script>
