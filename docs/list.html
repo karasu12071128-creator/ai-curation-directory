@@ -175,7 +175,11 @@ select{padding:8px;border:1px solid var(--color-border);border-radius:6px;color:
 	    const turnOn = !activeTags.has(tag);
 	    if(turnOn) activeTags.add(tag); else activeTags.delete(tag);
 	    
-	    // 見た目の更新はrender()内で行われるため、ここでは不要
+		    // 見た目の更新はrender()内で行われるため、ここでは不要
+		    
+		    // 見た目の更新
+		    b.classList.toggle('active', turnOn);
+		    b.setAttribute('aria-pressed', turnOn?'true':'false');
 	    
 	    plausible && plausible('QuickTagFilter', {props:{value: tag}});
 	    page=1; render();
