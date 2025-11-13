@@ -10,3 +10,8 @@ exclude:
   - .github
   - scripts
   - data
+url: https://karasu12071128-creator.github.io
+baseurl: /ai-curation-directory
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
