@@ -1,41 +1,68 @@
-# AI Curation Directory — Starter Kit
+# 思考残差 - X自動投稿システム
 
-このキットは **GitHub Pages + GitHub Actions** で「AIリソース自動ディレクトリ」を“手動ほぼゼロ”で公開するための雛形です。
+「思考残差」をテーマにした投稿を、毎日自動でXに投稿するシステムです。
 
-## 使い方（超速）
-1. GitHubで新規リポジトリを作成（例: `ai-curation-directory`）。  
-2. このZIPの中身を丸ごとアップロード → `main` ブランチへコミット。  
-3. GitHub Pages を有効化：Settings → Pages → Branch: `main` / Folder: `/site` 。  
-4. Settings → Secrets and variables → Actions → New repository secret で以下を追加：
-   - `HF_TOKEN`（Hugging Faceのアクセストークン／任意）
-   - `GH_TOKEN`（GitHub Personal Access Token／任意）
-5. Actions タブで `daily-refresh` を `Run workflow`（手動実行可）。  
-6. 成功すると `/data/resources.json` と `/data/resources.csv` が生成され、サイトに一覧が表示されます。
+## 概要
 
-> 注意：APIや各サービスの利用規約に従ってご利用ください。
+**思考残差**とは、考えた"あと"に残る未処理の疲れ（判断・我慢・未送信感情のあと）を指します。
 
-## 構成
-- `/scripts/` … 収集・統合・CSV出力スクリプト
-- `/data/` … 自動生成ファイル（コミットされます）
-- `/site/` … GitHub Pages サイト（Jekyll最小）
-- `/schema/` … リソースのJSONスキーマ
-- `.github/workflows/daily.yml` … 日次自動更新ワークフロー
+このシステムは、その世界観に基づいた静かな独り言のような投稿を、AIが自動生成し、毎日決まった時間にXへ投稿します。
+
+## 投稿スケジュール
+
+- **頻度:** 1日1回
+- **時刻:** 毎日 22:00（日本時間）
+
+## フォルダ構成
+
+```
+.
+├── .github/
+│   └── workflows/
+│       └── x-auto-post.yml    # GitHub Actions設定ファイル
+├── x/                          # 投稿内容の保存フォルダ
+│   └── YYYY-MM-DD_x.md        # 日付ごとの投稿内容
+├── auto_post.py                # 自動投稿プログラム
+├── requirements.txt            # Pythonパッケージ依存関係
+└── README.md                   # このファイル
+```
+
+## 投稿内容の仕様
+
+- **文字数:** 30〜80文字
+- **文体:** 静かな独り言、体言止めや短い文章
+- **禁止事項:**
+  - アドバイス、問いかけ、共感を求める表現
+  - ハッシュタグ、URL、絵文字
+  - 他者への言及
+
+## 必要な環境変数（GitHub Secrets）
+
+以下の環境変数が設定されている必要があります：
+
+- `OPENAI_API_KEY` - OpenAI APIキー
+- `X_API_KEY` - X API Key
+- `X_API_KEY_SECRET` - X API Key Secret
+- `X_ACCESS_TOKEN` - X Access Token
+- `X_ACCESS_TOKEN_SECRET` - X Access Token Secret
+
+## 運用方法
+
+### 自動投稿の停止
+
+一時的に自動投稿を停止したい場合：
+
+1. リポジトリの `Settings` > `Actions` > `General` に移動
+2. `Disable Actions` をクリック
+
+### 投稿スケジュールの変更
+
+`.github/workflows/x-auto-post.yml` ファイルの `cron` 設定を編集してください。
+
+### 手動でのテスト実行
+
+リポジトリの `Actions` タブから、ワークフローを手動で実行できます。
 
 ## ライセンス
-MIT
 
-## 運用手順
-
-### 手動リカバリ手順（データ更新に失敗した場合）
-
-データ更新ジョブが失敗した場合や、公開されているデータが0件になった場合は、以下の手順で手動リカバリを実行します。
-
-1.  **GitHubリポジトリの「Actions」タブに移動します。**
-2.  **左側のワークフロー一覧から「daily-refresh」を選択します。**
-3.  **「Run workflow」ボタンをクリックし、表示されるダイアログで再度「Run workflow」をクリックして、手動でジョブを再実行します。**
-
-ジョブが正常に完了すると、`resources.json`と`resources.csv`が再生成され、サイトにデータが反映されます。
-
-### 監視の確認方法
-
-データ更新ジョブの成否は、GitHub Actionsの実行結果で確認できます。ジョブが失敗した場合、または生成されたデータが0件だった場合は、GitHub Actionsが自動的にエラーを検出し、リポジトリの管理者に通知メールが送信されます。
+このプロジェクトは個人利用を目的としています。

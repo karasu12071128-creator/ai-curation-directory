@@ -1,0 +1,51 @@
+name: X自動投稿
+
+on:
+  schedule:
+    # 毎日 日本時間22:00（UTC 13:00）に実行
+    - cron: '0 13 * * *'
+  
+  workflow_dispatch:  # 手動実行を許可
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Pythonのセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: 依存パッケージのインストール
+        run: |
+          pip install -r requirements.txt
+      
+      - name: 自動投稿を実行
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: |
+          python auto_post.py
+      
+      - name: 生成されたファイルをコミット
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add x/
+          git diff --quiet && git diff --staged --quiet || git commit -m "自動投稿: $(date +'%Y-%m-%d')"
+      
+      - name: 変更をプッシュ
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

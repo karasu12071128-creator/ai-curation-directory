@@ -1,9 +1,27 @@
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-.venv/
+*.so
+.Python
+env/
 venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
 Thumbs.db
-data/*.csv
-data/updates/*.json
+
+# Logs
+*.log
+
+# Environment variables
+.env
