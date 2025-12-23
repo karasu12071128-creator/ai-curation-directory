@@ -13,7 +13,7 @@ from requests_oauthlib import OAuth1
 
 # OpenAI APIの設定
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-OPENAI_BASE_URL = os.environ.get('OPENAI_BASE_URL', 'https://api.openai.com/v1')
+OPENAI_BASE_URL = os.environ.get('OPENAI_BASE_URL') or 'https://api.openai.com/v1'
 
 # X API認証情報
 X_API_KEY = os.environ.get('X_API_KEY')
