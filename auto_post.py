@@ -10,7 +10,7 @@ import sys
 import random
 from datetime import datetime
 import requests
-from requests_oauthlib import OAuth1
+import tweepy
 
 # OpenAI APIの設定
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
@@ -142,9 +142,10 @@ def get_prompt_by_type(post_type):
 
 def generate_content():
     """
-    OpenAI APIを使用して「思考残差」をテーマにした投稿文を生成
-    4つの投稿タイプからランダムに選択
+    OpenAI APIを使用してコンテンツを生成
     """
+    print("📝 コンテンツを生成中...")
+    
     # 投稿タイプをランダムに選択
     post_types = ['A', 'B', 'C', 'D']
     selected_type = random.choice(post_types)
@@ -192,42 +193,32 @@ def generate_content():
 
 def post_to_x(content):
     """
-    生成されたコンテンツをXに投稿
+    生成されたコンテンツをXに投稿（tweepyを使用）
     """
-    url = 'https://api.twitter.com/2/tweets'
-    
-    auth = OAuth1(
-        X_API_KEY,
-        X_API_KEY_SECRET,
-        X_ACCESS_TOKEN,
-        X_ACCESS_TOKEN_SECRET
-    )
-    
-    payload = {
-        'text': content
-    }
-    
     try:
-        response = requests.post(
-            url,
-            auth=auth,
-            json=payload,
-            timeout=30
+        # tweepyクライアントの初期化
+        client = tweepy.Client(
+            consumer_key=X_API_KEY,
+            consumer_secret=X_API_KEY_SECRET,
+            access_token=X_ACCESS_TOKEN,
+            access_token_secret=X_ACCESS_TOKEN_SECRET
         )
-        response.raise_for_status()
         
-        result = response.json()
-        tweet_id = result['data']['id']
+        # ツイートを投稿
+        response = client.create_tweet(text=content)
+        
+        tweet_id = response.data['id']
         
         print(f"✅ 投稿成功！ Tweet ID: {tweet_id}")
         print(f"投稿内容: {content}")
         
         return tweet_id
         
-    except Exception as e:
+    except tweepy.TweepyException as e:
         print(f"エラー: X投稿に失敗しました - {e}")
-        if hasattr(e, 'response') and e.response is not None:
-            print(f"レスポンス: {e.response.text}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"エラー: 予期しないエラーが発生しました - {e}")
         sys.exit(1)
 
 
@@ -256,38 +247,28 @@ def main():
     print("=" * 50)
     print("思考残差 - X自動投稿システム")
     print("=" * 50)
+    print()
     
     # 環境変数のチェック
-    required_vars = [
-        'OPENAI_API_KEY',
-        'X_API_KEY',
-        'X_API_KEY_SECRET',
-        'X_ACCESS_TOKEN',
-        'X_ACCESS_TOKEN_SECRET'
-    ]
-    
-    missing_vars = [var for var in required_vars if not os.environ.get(var)]
-    
-    if missing_vars:
-        print(f"エラー: 以下の環境変数が設定されていません:")
-        for var in missing_vars:
-            print(f"  - {var}")
+    if not all([OPENAI_API_KEY, X_API_KEY, X_API_KEY_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET]):
+        print("エラー: 必要な環境変数が設定されていません")
         sys.exit(1)
     
-    # 1. コンテンツ生成
-    print("\n📝 コンテンツを生成中...")
+    # コンテンツ生成
     content, post_type = generate_content()
     print(f"生成完了: {content}")
     print(f"文字数: {len(content)}文字")
     
-    # 2. ファイルに保存
+    # ファイルに保存
     save_content(content, post_type)
     
-    # 3. Xに投稿
-    print("\n📤 Xに投稿中...")
+    # Xに投稿
+    print()
+    print("📤 Xに投稿中...")
     post_to_x(content)
     
-    print("\n✨ すべての処理が完了しました！")
+    print()
+    print("✨ すべての処理が完了しました！")
 
 
 if __name__ == '__main__':
