@@ -7,6 +7,7 @@
 
 import os
 import sys
+import random
 from datetime import datetime
 import requests
 from requests_oauthlib import OAuth1
@@ -22,30 +23,136 @@ X_ACCESS_TOKEN = os.environ.get('X_ACCESS_TOKEN')
 X_ACCESS_TOKEN_SECRET = os.environ.get('X_ACCESS_TOKEN_SECRET')
 
 
-def generate_content():
+def get_prompt_by_type(post_type):
     """
-    OpenAI APIを使用して「思考残差」をテーマにした投稿文を生成
+    投稿タイプに応じたプロンプトを返す
     """
-    prompt = """# 命令書
+    prompts = {
+        'A': """# 命令書
 
-あなたは「思考残差」をテーマに思考する人です。以下の制約条件と世界観を守り、Xへの投稿を1本生成してください。
+あなたは「思考残差」という概念を静かに表現する人です。以下の制約条件と世界観を守り、Xへの投稿を1本生成してください。
+
+# 投稿タイプ：思考残差・概念
+
+このタイプでは、以下の状態を静かに表現してください：
+・何もしていないのに疲れる状態
+・休んでも回復しない感覚
+・終わっていない思考が残ること
 
 # 世界観
 ・テーマ名：「思考残差」
 ・定義：考えた"あと"に残る未処理の疲れ（判断・我慢・未送信感情のあと）
-・静かな独り言のようなトーンを維持してください。
+・静かで落ち着いた文体を維持してください。
 
-# 制約条件
-・文字数：30〜80文字
-・文体：静かな独り言、体言止めや短い文章を効果的に使う。
-・禁止事項：
-    ・アドバイス、問いかけ、共感を求める表現。
-    ・ハッシュタグ、URL、絵文字の使用。
-    ・他者への言及。
+# 共通ルール
+・280字以内
+・売り込み禁止
+・リンク禁止
+・感情煽り禁止
+・静かで落ち着いた文体
+・断定しすぎない
+
+# 出力形式
+（本文のみをここに記述）""",
+
+        'B': """# 命令書
+
+あなたは「思考残差」という概念を仕事の文脈で構造的に語る人です。以下の制約条件と世界観を守り、Xへの投稿を1本生成してください。
+
+# 投稿タイプ：思考残差 × 仕事
+
+このタイプでは、以下のテーマを構造の話として書いてください：
+・決めきれない仕事
+・優先順位で消耗する状態
+・判断を保留したまま残る思考
+
+# 世界観
+・テーマ名：「思考残差」
+・定義：考えた"あと"に残る未処理の疲れ（判断・我慢・未送信感情のあと）
+・静かで落ち着いた文体を維持してください。
+
+# 共通ルール
+・280字以内
+・売り込み禁止
+・リンク禁止
+・感情煽り禁止
+・静かで落ち着いた文体
+・断定しすぎない
+
+# 出力形式
+（本文のみをここに記述）""",
+
+        'C': """# 命令書
+
+あなたは余白のある一文を書く人です。以下の制約条件と世界観を守り、Xへの投稿を1本生成してください。
+
+# 投稿タイプ：余白のある一文
+
+このタイプでは、以下の特徴を持つ投稿を書いてください：
+・1〜2行
+・問いかけ、または断定未満
+・保存されやすい表現
+
+# 世界観
+・テーマ名：「思考残差」
+・定義：考えた"あと"に残る未処理の疲れ（判断・我慢・未送信感情のあと）
+・静かで落ち着いた文体を維持してください。
+
+# 共通ルール
+・280字以内
+・売り込み禁止
+・リンク禁止
+・感情煽り禁止
+・静かで落ち着いた文体
+・断定しすぎない
+
+# 出力形式
+（本文のみをここに記述）""",
+
+        'D': """# 命令書
+
+あなたはインプレッションを加速させる投稿を書く人です。以下の制約条件と世界観を守り、Xへの投稿を1本生成してください。
+
+# 投稿タイプ：インプレッション加速型
+
+このタイプでは、以下の構造で投稿を書いてください：
+・冒頭で逆説や違和感を出す
+・2〜4行で理由を少しだけ説明
+・結論や解決は書かない
+
+# 世界観
+・テーマ名：「思考残差」
+・定義：考えた"あと"に残る未処理の疲れ（判断・我慢・未送信感情のあと）
+・静かで落ち着いた文体を維持してください。
+
+# 共通ルール
+・280字以内
+・売り込み禁止
+・リンク禁止
+・感情煽り禁止
+・静かで落ち着いた文体
+・断定しすぎない
 
 # 出力形式
 （本文のみをここに記述）"""
+    }
+    
+    return prompts.get(post_type, prompts['A'])
 
+
+def generate_content():
+    """
+    OpenAI APIを使用して「思考残差」をテーマにした投稿文を生成
+    4つの投稿タイプからランダムに選択
+    """
+    # 投稿タイプをランダムに選択
+    post_types = ['A', 'B', 'C', 'D']
+    selected_type = random.choice(post_types)
+    
+    print(f"選択された投稿タイプ: {selected_type}")
+    
+    prompt = get_prompt_by_type(selected_type)
+    
     headers = {
         'Authorization': f'Bearer {OPENAI_API_KEY}',
         'Content-Type': 'application/json'
@@ -57,7 +164,7 @@ def generate_content():
             {'role': 'user', 'content': prompt}
         ],
         'temperature': 0.8,
-        'max_tokens': 200
+        'max_tokens': 300
     }
     
     try:
@@ -72,11 +179,11 @@ def generate_content():
         result = response.json()
         content = result['choices'][0]['message']['content'].strip()
         
-        # 文字数チェック（30〜80文字）
-        if len(content) < 30 or len(content) > 80:
-            print(f"警告: 生成された文字数が範囲外です（{len(content)}文字）")
+        # 文字数チェック（280字以内）
+        if len(content) > 280:
+            print(f"警告: 生成された文字数が280字を超えています（{len(content)}文字）")
         
-        return content
+        return content, selected_type
         
     except Exception as e:
         print(f"エラー: コンテンツ生成に失敗しました - {e}")
@@ -124,7 +231,7 @@ def post_to_x(content):
         sys.exit(1)
 
 
-def save_content(content):
+def save_content(content, post_type):
     """
     生成された投稿内容をファイルに保存
     """
@@ -136,6 +243,7 @@ def save_content(content):
     filename = f'x/{today}_x.md'
     
     with open(filename, 'w', encoding='utf-8') as f:
+        f.write(f"# 投稿タイプ: {post_type}\n\n")
         f.write(content)
     
     print(f"📝 投稿内容を保存しました: {filename}")
@@ -168,12 +276,12 @@ def main():
     
     # 1. コンテンツ生成
     print("\n📝 コンテンツを生成中...")
-    content = generate_content()
+    content, post_type = generate_content()
     print(f"生成完了: {content}")
     print(f"文字数: {len(content)}文字")
     
     # 2. ファイルに保存
-    save_content(content)
+    save_content(content, post_type)
     
     # 3. Xに投稿
     print("\n📤 Xに投稿中...")
