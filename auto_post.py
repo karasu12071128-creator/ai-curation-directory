@@ -143,7 +143,7 @@ def get_prompt_by_type(post_type):
 
 def generate_content():
     """
-    OpenAI APIを使用してコンテンツを生成
+    OpenAI APIを使用してコンテンツを生成（リトライロジック付き）
     """
     print("📝 コンテンツを生成中...")
     
@@ -169,27 +169,55 @@ def generate_content():
         'max_tokens': 300
     }
     
-    try:
-        response = requests.post(
-            f'{OPENAI_BASE_URL}/chat/completions',
-            headers=headers,
-            json=data,
-            timeout=30
-        )
-        response.raise_for_status()
-        
-        result = response.json()
-        content = result['choices'][0]['message']['content'].strip()
-        
-        # 文字数チェック（280字以内）
-        if len(content) > 280:
-            print(f"警告: 生成された文字数が280字を超えています（{len(content)}文字）")
-        
-        return content, selected_type
-        
-    except Exception as e:
-        print(f"エラー: コンテンツ生成に失敗しました - {e}")
-        sys.exit(1)
+    max_retries = 3
+    retry_delay = 30  # 秒
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"試行 {attempt + 1}/{max_retries}...")
+            
+            response = requests.post(
+                f'{OPENAI_BASE_URL}/chat/completions',
+                headers=headers,
+                json=data,
+                timeout=30
+            )
+            
+            # ステータスコードとレスポンス内容をログ出力
+            print(f"ステータスコード: {response.status_code}")
+            
+            if response.status_code != 200:
+                print(f"エラーレスポンス: {response.text[:500]}")
+            
+            response.raise_for_status()
+            
+            result = response.json()
+            content = result['choices'][0]['message']['content'].strip()
+            
+            # 文字数チェック（280字以内）
+            if len(content) > 280:
+                print(f"警告: 生成された文字数が280字を超えています（{len(content)}文字）")
+            
+            print("✅ コンテンツ生成成功")
+            return content, selected_type
+            
+        except requests.exceptions.HTTPError as e:
+            print(f"HTTPエラー（試行 {attempt + 1}/{max_retries}）: {e}")
+            if attempt < max_retries - 1:
+                print(f"{retry_delay}秒待機してから再試行します...")
+                time.sleep(retry_delay)
+            else:
+                print(f"エラー: {max_retries}回の試行後もコンテンツ生成に失敗しました")
+                sys.exit(1)
+                
+        except Exception as e:
+            print(f"予期しないエラー（試行 {attempt + 1}/{max_retries}）: {type(e).__name__}: {e}")
+            if attempt < max_retries - 1:
+                print(f"{retry_delay}秒待機してから再試行します...")
+                time.sleep(retry_delay)
+            else:
+                print(f"エラー: {max_retries}回の試行後もコンテンツ生成に失敗しました")
+                sys.exit(1)
 
 
 def post_to_x(content):
