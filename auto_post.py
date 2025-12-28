@@ -197,19 +197,22 @@ def post_to_x(content):
     生成されたコンテンツをXに投稿（tweepyを使用、リトライロジック付き）
     """
     max_retries = 3
-    retry_delay = 30  # 秒
+    retry_delay = 60  # 秒（待機時間を長くする）
     
     for attempt in range(max_retries):
         try:
             print(f"投稿試行 {attempt + 1}/{max_retries}...")
             
-            # tweepyクライアントの初期化（カスタムUser-Agent付き）
+            # 2回目以降の試行では少し待機してから実行
+            if attempt > 0:
+                print(f"前回の試行から{retry_delay}秒待機しました。")
+            
+            # tweepyクライアントの初期化
             client = tweepy.Client(
                 consumer_key=X_API_KEY,
                 consumer_secret=X_API_KEY_SECRET,
                 access_token=X_ACCESS_TOKEN,
-                access_token_secret=X_ACCESS_TOKEN_SECRET,
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                access_token_secret=X_ACCESS_TOKEN_SECRET
             )
             
             # ツイートを投稿
