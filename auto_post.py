@@ -8,6 +8,7 @@
 import os
 import sys
 import random
+import time
 from datetime import datetime
 import requests
 import tweepy
@@ -193,33 +194,57 @@ def generate_content():
 
 def post_to_x(content):
     """
-    生成されたコンテンツをXに投稿（tweepyを使用）
+    生成されたコンテンツをXに投稿（tweepyを使用、リトライロジック付き）
     """
-    try:
-        # tweepyクライアントの初期化
-        client = tweepy.Client(
-            consumer_key=X_API_KEY,
-            consumer_secret=X_API_KEY_SECRET,
-            access_token=X_ACCESS_TOKEN,
-            access_token_secret=X_ACCESS_TOKEN_SECRET
-        )
-        
-        # ツイートを投稿
-        response = client.create_tweet(text=content)
-        
-        tweet_id = response.data['id']
-        
-        print(f"✅ 投稿成功！ Tweet ID: {tweet_id}")
-        print(f"投稿内容: {content}")
-        
-        return tweet_id
-        
-    except tweepy.TweepyException as e:
-        print(f"エラー: X投稿に失敗しました - {e}")
-        sys.exit(1)
-    except Exception as e:
-        print(f"エラー: 予期しないエラーが発生しました - {e}")
-        sys.exit(1)
+    max_retries = 3
+    retry_delay = 30  # 秒
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"投稿試行 {attempt + 1}/{max_retries}...")
+            
+            # tweepyクライアントの初期化（カスタムUser-Agent付き）
+            client = tweepy.Client(
+                consumer_key=X_API_KEY,
+                consumer_secret=X_API_KEY_SECRET,
+                access_token=X_ACCESS_TOKEN,
+                access_token_secret=X_ACCESS_TOKEN_SECRET,
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            )
+            
+            # ツイートを投稿
+            response = client.create_tweet(text=content)
+            
+            tweet_id = response.data['id']
+            
+            print(f"✅ 投稿成功！ Tweet ID: {tweet_id}")
+            print(f"投稿内容: {content}")
+            
+            return tweet_id
+            
+        except tweepy.TweepyException as e:
+            error_msg = str(e)
+            print(f"エラー（試行 {attempt + 1}/{max_retries}）: X投稿に失敗しました - {error_msg}")
+            
+            # 403エラーまたは最後の試行の場合
+            if "403" in error_msg or "Forbidden" in error_msg:
+                if attempt < max_retries - 1:
+                    print(f"{retry_delay}秒待機してから再試行します...")
+                    time.sleep(retry_delay)
+                    continue
+                else:
+                    print("最大リトライ回数に達しました。投稿に失敗しました。")
+                    sys.exit(1)
+            else:
+                # 403以外のエラーは即座に終了
+                sys.exit(1)
+                
+        except Exception as e:
+            print(f"エラー: 予期しないエラーが発生しました - {e}")
+            sys.exit(1)
+    
+    print("すべてのリトライが失敗しました。")
+    sys.exit(1)
 
 
 def save_content(content, post_type):
