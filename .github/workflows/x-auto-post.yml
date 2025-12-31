@@ -2,8 +2,8 @@ name: X自動投稿
 
 on:
   schedule:
-    # 毎日 日本時間22:00（UTC 13:00）に実行
-    - cron: '0 13 * * *'
+    # 毎日 日本時間22:30（UTC 13:30）に実行
+    - cron: '30 13 * * *'
   
   workflow_dispatch:  # 手動実行を許可
 
@@ -25,6 +25,12 @@ jobs:
       - name: 依存パッケージのインストール
         run: |
           pip install -r requirements.txt
+      
+      - name: ランダムディレイ（レート制限回避）
+        run: |
+          DELAY=$((RANDOM % 60 + 1))
+          echo "Waiting for $DELAY seconds to avoid rate limiting..."
+          sleep $DELAY
       
       - name: 自動投稿を実行
         env:
