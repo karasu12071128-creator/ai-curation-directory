@@ -221,7 +221,8 @@ export default function Home() {
               <ul className="space-y-2 text-sm">
                 <li><Link href="/privacy" className="hover:text-white transition">プライバシーポリシー</Link></li>
                 <li><Link href="/terms" className="hover:text-white transition">利用規約</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition">お問い合わせ</Link></li>
+                <li><Link href="/legal" className="hover:text-white transition">特定商取引法に基づく表記</Link></li>
+                <li><Link href="/submit" className="hover:text-white transition">お問い合わせ</Link></li>
               </ul>
             </div>
           </div>
