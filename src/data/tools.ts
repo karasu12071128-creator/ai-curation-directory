@@ -786,7 +786,10 @@ export const tools: Tool[] = [
   { id: '97', name: 'Photoroom', slug: 'photoroom', description: '商品写真編集に特化したAIツール。', category: 'image-generation', pricing: 'freemium', url: 'https://photoroom.com', features: ['背景削除', '商品写真', 'バッチ処理'], rating: 4.5, reviewCount: 5670, icon: '📸', featured: false },
   { id: '98', name: 'Pixlr', slug: 'pixlr', description: 'AI搭載のオンライン画像編集ツール。', category: 'image-generation', pricing: 'freemium', url: 'https://pixlr.com', features: ['画像編集', 'AI機能', '無料'], rating: 4.2, reviewCount: 4320, icon: '🖌️', featured: false },
   { id: '99', name: 'Veed.io', slug: 'veed-io', description: 'AI搭載のオンライン動画編集ツール。', category: 'video-generation', pricing: 'freemium', url: 'https://veed.io', features: ['字幕', '翻訳', 'AI編集'], rating: 4.4, reviewCount: 6780, icon: '🎬', featured: false },
-  { id: '100', name: 'Descript', slug: 'descript-video', description: 'テキスト編集で動画を編集できるAI。', category: 'video-generation', pricing: 'freemium', url: 'https://descript.com', features: ['テキスト編集', '文字起こし', 'Overdub'], rating: 4.5, reviewCount: 5670, icon: '📝', featured: false }
+  { id: '100', name: 'Descript', slug: 'descript-video', description: 'テキスト編集で動画を編集できるAI。', category: 'video-generation', pricing: 'freemium', url: 'https://descript.com', features: ['テキスト編集', '文字起こし', 'Overdub'], rating: 4.5, reviewCount: 5670, icon: '📝', featured: false },
+  
+  // アフィリエイト掲載ツール
+  { id: '101', name: 'Zenchord 1', slug: 'zenchord-1', description: 'AI議事録イヤホン。Notta連携で会議の自動文字起こし・議事録生成を実現。クラファン1.2億円調達の注目製品。', category: 'audio', pricing: 'paid', url: 'https://ali-jp.com/product/', affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4AV08N+2G46B6+5QLS+HW2Q9', features: ['AI議事録', '自動文字起こし', 'Notta連携', '高音質', 'ノイズキャンセル'], rating: 4.6, reviewCount: 1250, icon: '🎧', featured: true }
 ];
 
 // カテゴリ定義

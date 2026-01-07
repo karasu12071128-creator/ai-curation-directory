@@ -42,6 +42,7 @@ export default async function ToolDetailPage({ params }: Props) {
   }
 
   const category = categories.find(c => c.id === tool.category);
+  const hasAffiliate = !!tool.affiliateUrl;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -93,6 +94,9 @@ export default async function ToolDetailPage({ params }: Props) {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h1 className="text-3xl font-bold text-gray-900">{tool.name}</h1>
+                    {hasAffiliate && (
+                      <span className="text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded">PR</span>
+                    )}
                     <span className={`text-sm px-3 py-1 rounded-full ${
                       tool.pricing === 'free' ? 'bg-green-100 text-green-700' :
                       tool.pricing === 'freemium' ? 'bg-blue-100 text-blue-700' :
@@ -124,9 +128,9 @@ export default async function ToolDetailPage({ params }: Props) {
 
               <div className="mt-6 flex gap-4">
                 <a
-                  href={tool.url}
+                  href={hasAffiliate ? tool.affiliateUrl : tool.url}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel={hasAffiliate ? "nofollow noopener noreferrer" : "noopener noreferrer"}
                   className="flex-1 bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
                 >
                   公式サイトを見る →
@@ -135,6 +139,11 @@ export default async function ToolDetailPage({ params }: Props) {
                   ♡ 保存
                 </button>
               </div>
+              {hasAffiliate && (
+                <p className="mt-3 text-xs text-gray-400 text-center">
+                  ※ 当サイトはアフィリエイトプログラムに参加しています
+                </p>
+              )}
             </div>
 
             {/* Features */}
