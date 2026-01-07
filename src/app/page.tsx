@@ -1,222 +1,157 @@
 import Link from 'next/link';
-
-// 仮のカテゴリデータ（後でSupabaseから取得）
-const categories = [
-  { slug: 'text-generation', name: '文章生成AI', icon: '✍️', count: 25 },
-  { slug: 'image-generation', name: '画像生成AI', icon: '🎨', count: 18 },
-  { slug: 'video-generation', name: '動画生成AI', icon: '🎬', count: 12 },
-  { slug: 'audio-music', name: '音声・音楽AI', icon: '🎵', count: 15 },
-  { slug: 'coding', name: 'コーディング支援AI', icon: '💻', count: 20 },
-  { slug: 'marketing', name: 'マーケティングAI', icon: '📈', count: 14 },
-  { slug: 'seo-content', name: 'SEO・コンテンツAI', icon: '🔍', count: 16 },
-  { slug: 'productivity', name: 'ビジネス・生産性', icon: '💼', count: 22 },
-];
-
-// 仮の注目ツールデータ
-const featuredTools = [
-  {
-    slug: 'chatgpt',
-    name: 'ChatGPT',
-    description: 'OpenAIが開発した対話型AI。文章生成、質問応答、コード作成など幅広いタスクに対応。',
-    category: '文章生成AI',
-    pricing: 'freemium',
-    logo: '🤖',
-  },
-  {
-    slug: 'midjourney',
-    name: 'Midjourney',
-    description: 'テキストから高品質な画像を生成するAI。アート、デザイン、イラスト制作に最適。',
-    category: '画像生成AI',
-    pricing: 'paid',
-    logo: '🎨',
-  },
-  {
-    slug: 'claude',
-    name: 'Claude',
-    description: 'Anthropicが開発した安全性を重視した対話型AI。長文処理と分析に優れる。',
-    category: '文章生成AI',
-    pricing: 'freemium',
-    logo: '🧠',
-  },
-  {
-    slug: 'github-copilot',
-    name: 'GitHub Copilot',
-    description: 'AIペアプログラマー。コード補完、関数生成、バグ修正を支援。',
-    category: 'コーディング支援AI',
-    pricing: 'paid',
-    logo: '👨‍💻',
-  },
-  {
-    slug: 'notion-ai',
-    name: 'Notion AI',
-    description: 'Notionに統合されたAI機能。文章作成、要約、翻訳、ブレインストーミングを支援。',
-    category: 'ビジネス・生産性',
-    pricing: 'paid',
-    logo: '📝',
-  },
-  {
-    slug: 'canva-ai',
-    name: 'Canva AI',
-    description: 'デザインツールCanvaのAI機能。画像生成、背景削除、テキスト生成に対応。',
-    category: 'デザインAI',
-    pricing: 'freemium',
-    logo: '🖼️',
-  },
-];
+import { tools, categories, getFeaturedTools } from '@/data/tools';
 
 export default function Home() {
+  const featuredTools = getFeaturedTools().slice(0, 6);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      {/* ヘッダー */}
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className="text-2xl font-bold text-indigo-600">
-                🚀 AIツールナビ
-              </Link>
-            </div>
+            <Link href="/" className="flex items-center space-x-2">
+              <span className="text-2xl">🚀</span>
+              <span className="font-bold text-xl text-gray-900">AIツールナビ</span>
+            </Link>
             <nav className="hidden md:flex space-x-8">
-              <Link href="/tools" className="text-gray-700 hover:text-indigo-600 transition">
-                ツール一覧
-              </Link>
-              <Link href="/categories" className="text-gray-700 hover:text-indigo-600 transition">
-                カテゴリ
-              </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-indigo-600 transition">
-                ブログ
-              </Link>
-              <Link href="/submit" className="text-gray-700 hover:text-indigo-600 transition">
-                ツール掲載
-              </Link>
+              <Link href="/tools" className="text-gray-600 hover:text-gray-900">ツール一覧</Link>
+              <Link href="/categories" className="text-gray-600 hover:text-gray-900">カテゴリ</Link>
+              <Link href="/blog" className="text-gray-600 hover:text-gray-900">ブログ</Link>
+              <Link href="/submit" className="text-gray-600 hover:text-gray-900">ツール掲載</Link>
             </nav>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/submit"
-                className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
-              >
-                無料で掲載
-              </Link>
-            </div>
+            <Link 
+              href="/submit" 
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              無料で掲載
+            </Link>
           </div>
         </div>
       </header>
 
-      {/* ヒーローセクション */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            あなたに最適な<span className="text-indigo-600">AIツール</span>を見つけよう
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            あなたに最適なAIツールを見つけよう
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            2,000以上のAIツールを日本語で検索・比較。
-            <br />
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            {tools.length}以上のAIツールを日本語で検索・比較。<br />
             ビジネスや創作活動を加速させるツールがきっと見つかります。
           </p>
+          
+          {/* Search Bar */}
           <div className="max-w-2xl mx-auto">
-            <div className="flex items-center bg-white rounded-full shadow-lg p-2">
+            <div className="flex bg-white rounded-lg shadow-lg overflow-hidden">
               <input
                 type="text"
                 placeholder="AIツールを検索..."
-                className="flex-1 px-6 py-3 text-lg focus:outline-none rounded-full"
+                className="flex-1 px-6 py-4 text-gray-900 focus:outline-none"
               />
-              <button className="bg-indigo-600 text-white px-8 py-3 rounded-full hover:bg-indigo-700 transition">
+              <button className="bg-blue-600 px-8 py-4 hover:bg-blue-700 transition">
                 検索
               </button>
             </div>
-          </div>
-          <div className="mt-6 flex flex-wrap justify-center gap-2">
-            <span className="text-sm text-gray-500">人気の検索:</span>
-            {['ChatGPT', '画像生成', 'コード補完', '翻訳', '動画編集'].map((tag) => (
-              <Link
-                key={tag}
-                href={`/tools?search=${tag}`}
-                className="text-sm bg-gray-100 text-gray-700 px-3 py-1 rounded-full hover:bg-indigo-100 hover:text-indigo-700 transition"
-              >
-                {tag}
-              </Link>
-            ))}
+            <div className="mt-4 flex flex-wrap justify-center gap-2">
+              <span className="text-blue-200">人気の検索:</span>
+              {['ChatGPT', '画像生成', 'コード補完', '翻訳', '動画編集'].map((tag) => (
+                <Link
+                  key={tag}
+                  href={`/tools?q=${encodeURIComponent(tag)}`}
+                  className="bg-white/20 px-3 py-1 rounded-full text-sm hover:bg-white/30 transition"
+                >
+                  {tag}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* カテゴリセクション */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">カテゴリから探す</h2>
-            <p className="text-gray-600">目的に合わせてAIツールを見つけましょう</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Categories Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-4">カテゴリから探す</h2>
+          <p className="text-gray-600 text-center mb-12">目的に合わせてAIツールを見つけましょう</p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {categories.map((category) => (
               <Link
-                key={category.slug}
-                href={`/tools?category=${category.slug}`}
-                className="bg-gray-50 rounded-xl p-6 hover:bg-indigo-50 hover:shadow-md transition group"
+                key={category.id}
+                href={`/tools?category=${category.id}`}
+                className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition group"
               >
-                <div className="text-4xl mb-3">{category.icon}</div>
-                <h3 className="font-semibold text-gray-900 group-hover:text-indigo-600 transition">
+                <span className="text-4xl mb-3 block">{category.icon}</span>
+                <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition">
                   {category.name}
                 </h3>
                 <p className="text-sm text-gray-500 mt-1">{category.count}件のツール</p>
               </Link>
             ))}
           </div>
+          
           <div className="text-center mt-8">
-            <Link
-              href="/categories"
-              className="text-indigo-600 hover:text-indigo-700 font-medium"
-            >
+            <Link href="/categories" className="text-blue-600 hover:text-blue-700 font-medium">
               すべてのカテゴリを見る →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 注目ツールセクション */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">注目のAIツール</h2>
-            <p className="text-gray-600">今話題のAIツールをピックアップ</p>
-          </div>
+      {/* Featured Tools Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-4">注目のAIツール</h2>
+          <p className="text-gray-600 text-center mb-12">今話題のAIツールをピックアップ</p>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredTools.map((tool) => (
               <Link
-                key={tool.slug}
+                key={tool.id}
                 href={`/tools/${tool.slug}`}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-lg transition group"
+                className="bg-white rounded-xl shadow-sm hover:shadow-lg transition p-6 group"
               >
-                <div className="flex items-start gap-4">
-                  <div className="text-4xl">{tool.logo}</div>
+                <div className="flex items-start space-x-4">
+                  <span className="text-4xl">{tool.icon}</span>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-semibold text-gray-900 group-hover:text-indigo-600 transition">
-                        {tool.name}
-                      </h3>
-                      <span
-                        className={`text-xs px-2 py-0.5 rounded-full ${
-                          tool.pricing === 'free'
-                            ? 'bg-green-100 text-green-700'
-                            : tool.pricing === 'freemium'
-                            ? 'bg-blue-100 text-blue-700'
-                            : 'bg-orange-100 text-orange-700'
-                        }`}
-                      >
-                        {tool.pricing === 'free' ? '無料' : tool.pricing === 'freemium' ? 'フリーミアム' : '有料'}
+                    <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition">
+                      {tool.name}
+                    </h3>
+                    <div className="flex items-center space-x-2 mt-1">
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        tool.pricing === 'free' ? 'bg-green-100 text-green-700' :
+                        tool.pricing === 'freemium' ? 'bg-blue-100 text-blue-700' :
+                        tool.pricing === 'paid' ? 'bg-orange-100 text-orange-700' :
+                        'bg-purple-100 text-purple-700'
+                      }`}>
+                        {tool.pricing === 'free' ? '無料' :
+                         tool.pricing === 'freemium' ? 'フリーミアム' :
+                         tool.pricing === 'paid' ? '有料' : 'エンタープライズ'}
+                      </span>
+                      <span className="text-xs text-gray-500">
+                        {categories.find(c => c.id === tool.category)?.name}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-500 mb-2">{tool.category}</p>
-                    <p className="text-sm text-gray-600 line-clamp-2">{tool.description}</p>
                   </div>
+                </div>
+                <p className="text-gray-600 mt-4 text-sm line-clamp-2">
+                  {tool.description}
+                </p>
+                <div className="flex items-center mt-4 text-sm text-gray-500">
+                  <span className="text-yellow-500">★</span>
+                  <span className="ml-1">{tool.rating}</span>
+                  <span className="mx-2">•</span>
+                  <span>{tool.reviewCount.toLocaleString()}件のレビュー</span>
                 </div>
               </Link>
             ))}
           </div>
+          
           <div className="text-center mt-8">
-            <Link
-              href="/tools"
-              className="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition"
+            <Link 
+              href="/tools" 
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition"
             >
               すべてのツールを見る
             </Link>
@@ -224,27 +159,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA セクション */}
-      <section className="py-16 px-4 bg-indigo-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            あなたのAIツールを掲載しませんか？
-          </h2>
-          <p className="text-indigo-100 mb-8">
-            月間10万人以上のユーザーにあなたのツールをアピールできます。
-            <br />
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">あなたのAIツールを掲載しませんか？</h2>
+          <p className="text-blue-100 mb-8">
+            月間10万人以上のユーザーにあなたのツールをアピールできます。<br />
             無料プランから始められます。
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/submit"
-              className="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+            <Link 
+              href="/submit" 
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
             >
               無料で掲載申請
             </Link>
-            <Link
-              href="/pricing"
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition"
+            <Link 
+              href="/pricing" 
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
             >
               料金プランを見る
             </Link>
@@ -252,15 +184,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* フッター */}
-      <footer className="bg-gray-900 text-gray-400 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-400 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-white font-bold text-lg mb-4">🚀 AIツールナビ</h3>
+              <div className="flex items-center space-x-2 mb-4">
+                <span className="text-2xl">🚀</span>
+                <span className="font-bold text-xl text-white">AIツールナビ</span>
+              </div>
               <p className="text-sm">
-                日本最大級のAIツールディレクトリ。
-                あなたに最適なAIツールを見つけましょう。
+                日本最大級のAIツールディレクトリ。<br />
+                あなたのビジネスに最適なAIツールを見つけましょう。
               </p>
             </div>
             <div>
