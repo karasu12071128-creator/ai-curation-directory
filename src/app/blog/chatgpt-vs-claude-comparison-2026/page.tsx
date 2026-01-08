@@ -130,6 +130,21 @@ export default function BlogPost() {
               <strong>総合力ではChatGPT</strong>、<strong>長文処理と日本語品質ではClaude</strong>が優れています。
               まずは無料版で両方試してみて、自分の用途に合った方を選ぶことをおすすめします。
             </p>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-8 mb-6">
+              <p className="font-bold text-yellow-800 mb-2">📌 noteでも公開中！</p>
+              <p className="text-gray-700">
+                この記事はnoteでも公開しています。フォローしていただくと最新情報をお届けします。
+              </p>
+              <a 
+                href="https://note.com/legit_oxalis4714/n/n23f5842216eb" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block mt-3 text-blue-600 hover:underline font-medium"
+              >
+                → noteで読む
+              </a>
+            </div>
           </div>
 
           <div className="mt-12 p-6 bg-gray-100 rounded-lg">
