@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { tools, categories, getFeaturedTools } from '@/data/tools';
+import { SpeakBannerSmall, DMMGenAICampBanner } from '@/components/AffiliateBanners';
 
 export default function Home() {
   const featuredTools = getFeaturedTools().slice(0, 6);
@@ -155,6 +156,32 @@ export default function Home() {
             >
               すべてのツールを見る
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* おすすめサービス Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-center mb-2">おすすめのAI学習サービス</h2>
+          <p className="text-gray-600 text-center mb-8">AIを活用したスキルアップにおすすめ</p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Speak - AI英会話 */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+              <span className="inline-block bg-blue-600 text-white text-xs px-2 py-1 rounded-full mb-3">PR</span>
+              <h3 className="font-bold text-lg text-gray-900 mb-2">AIで英会話を学ぶ</h3>
+              <p className="text-gray-600 text-sm mb-4">Speakは、AIとの会話で英語力を向上させるアプリ。いつでもどこでも、あなたのペースで学習できます。</p>
+              <SpeakBannerSmall />
+            </div>
+            
+            {/* DMM 生成AI CAMP */}
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+              <span className="inline-block bg-purple-600 text-white text-xs px-2 py-1 rounded-full mb-3">PR</span>
+              <h3 className="font-bold text-lg text-gray-900 mb-2">生成AIを仕事で活かす</h3>
+              <p className="text-gray-600 text-sm mb-4">DMM 生成AI CAMPで、ChatGPTなどの生成AIを体系的に学べます。無料カウンセリング実施中。</p>
+              <DMMGenAICampBanner />
+            </div>
           </div>
         </div>
       </section>

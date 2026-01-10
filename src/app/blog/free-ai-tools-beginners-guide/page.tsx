@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { SpeakArticleSection, DMMGenAICampArticleSection } from '@/components/AffiliateBanners';
 
 export const metadata: Metadata = {
   title: '【完全無料】初心者におすすめのAIツール20選｜2026年版 | AIツールナビ',
@@ -77,6 +78,9 @@ export default function BlogPost() {
               </div>
             </div>
 
+            {/* DMM生成AI CAMP - ChatGPTを本格的に学びたい人向け */}
+            <DMMGenAICampArticleSection />
+
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🎨 画像生成AI</h2>
             
             <div className="space-y-4 mb-8">
@@ -110,6 +114,9 @@ export default function BlogPost() {
                 <p className="text-gray-700">完全無料。130以上の言語に対応。</p>
               </div>
             </div>
+
+            {/* Speak - AI英会話（翻訳・言語AIセクションの後に自然に配置） */}
+            <SpeakArticleSection />
 
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">🎤 音声・動画AI</h2>
             

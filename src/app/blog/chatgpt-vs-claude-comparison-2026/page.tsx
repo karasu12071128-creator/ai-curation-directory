@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { DMMGenAICampArticleSection } from '@/components/AffiliateBanners';
 
 export const metadata: Metadata = {
   title: '【2026年最新】ChatGPT vs Claude徹底比較！どちらを選ぶべき？ | AIツールナビ',
@@ -95,6 +96,9 @@ export default function BlogPost() {
               <li><strong>ブラウジング機能</strong>：最新情報の検索</li>
               <li><strong>Code Interpreter</strong>：データ分析・可視化</li>
             </ul>
+
+            {/* DMM生成AI CAMPのアフィリエイト - ChatGPTを学びたい人向け */}
+            <DMMGenAICampArticleSection />
 
             <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Claudeの強み</h2>
             <ul className="list-disc pl-6 mb-6 space-y-2 text-gray-700">
